@@ -24,3 +24,43 @@ matrix:
         - AFTER_JOBS=false
   allow_failures:
     - os: windows
+
+env:
+  global:
+    - _R_CHECK_TESTS_NLINES_=0
+
+r_packages:
+  - covr
+  - lintr
+  - roxygen2
+  - pkgdown
+
+script:
+  - R CMD build .
+  - R CMD check *tar.gz
+
+after_script:
+  - |
+    if [[ "$AFTER_JOBS" == "true" ]] && [[ "$TRAVIS_EVENT_TYPE" == "push" ]]; then
+      Rscript -e 'lintr::lint_package()'
+    fi
+
+after_success:
+  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'roxygen2::roxygenise()'
+  - Rscript -e 'pkgdown::build_site()'
+
+deploy:
+  provider: pages                         # Specify the gh-pages deployment method
+  skip_cleanup: true                      # Don't remove files
+  github_token: $GITHUB_TOKEN             # Set in travis-ci.org dashboard
+  local_dir: docs                         # Deploy the docs folder
+  on:
+    branch: master
+    condition: "$AFTER_JOBS = true"
+    type: push
+
+notifications:
+  email:
+    on_success: change # default: change
+    on_failure: change # default: always
