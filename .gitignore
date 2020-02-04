@@ -1,1 +1,9 @@
 .Rproj.user
+.Rhistory
+.RData
+*.Rproj
+.DS_Store # mac
+*.xlsx
+*.csv
+*~ # emacs
+*.tar.gz
