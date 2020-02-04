@@ -17,6 +17,18 @@ matrix:
       env: 
         - DIST=xenial
         - AFTER_JOBS=false
+    - os: linux
+      dist: bionic
+      r: release
+      env: 
+        - DIST=bionic
+        - AFTER_JOBS=false
+    - os: osx
+      osx_image: xcode11.3
+      r: release
+      env: 
+        - DIST=osx
+        - AFTER_JOBS=false
     - os: windows
       r: release
       env: 
