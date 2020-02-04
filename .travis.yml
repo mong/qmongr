@@ -1,8 +1,26 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
-language: R
+language: r
+sudo: false
 cache: packages
+warnings_are_errors: true
 
-
-after_success:
-    - Rscript -e 'covr::codecov()'
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      r: release
+      env: 
+        - DIST=xenial
+        - AFTER_JOBS=true
+    - os: linux
+      dist: xenial
+      r: devel
+      env: 
+        - DIST=xenial
+        - AFTER_JOBS=false
+    - os: windows
+      r: release
+      env: 
+        - DIST=windows
+        - AFTER_JOBS=false
+  allow_failures:
+    - os: windows
