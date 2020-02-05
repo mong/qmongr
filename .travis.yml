@@ -63,9 +63,9 @@ after_success:
   - Rscript -e 'pkgdown::build_site()'
 
 deploy:
-  provider: pages                         # Specify the gh-pages deployment method
-  skip_cleanup: true                      # Don't remove files
-  local_dir: docs                         # Deploy the docs folder
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
   on:
     branch: master
     condition: "$AFTER_JOBS = true"
