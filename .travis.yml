@@ -39,6 +39,10 @@ r_packages:
   - covr
   - lintr
   - roxygen2
+  - devtools
+
+before_script:
+  - export PKG_TARBALL=$(Rscript -e 'pkg <- devtools::as.package("."); cat(paste0(pkg$package,"_",pkg$version,".tar.gz"))')
 
 script:
   - R CMD build .
