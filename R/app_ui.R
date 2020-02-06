@@ -18,15 +18,14 @@ app_ui <- function() {
 #' @export
 
 add_external_resources <- function() {
-  shiny::addResourcePath(
+   shiny::addResourcePath(
     "www", system.file("app/www", package = "qmongr")
-  )
+   )
   shiny::tags$head(
     # Add here all the external resources
     # If you have a custom.css in the inst/app/www
     # Or for example, you can add shinyalert::useShinyalert() here
     shiny::tags$link(
-      rel = "stylesheet", type = "text/css", href = "www/custom.css"
     )
   )
 }
