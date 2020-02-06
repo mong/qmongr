@@ -1,35 +1,57 @@
 ## code to prepare `DATASET` dataset goes here
-#' Generere data til offentlig visning. Kan hende denne må deles i to? 
-#'
-#' @param filUt tilnavn for utdatatabell (fjern?)
-#' @param RegData - data
-#' @param valgtVar - beinsmLavPre, peropKompDura, sympVarighUtstr, NDIendr12mnd35pst
-#' @param datoFra - startdato
-#' @param aar - velge hele år (flervalg)
-#' @return Datafil til Resultatportalen
-#' @export
 
-tilretteleggDataNakke <- function(RegData = RegData, valgtVar, datoFra = '2014-01-01', aar=0,
-                           filUt='dummy'){ 
+#Denne funker bare når database tilgjengelig!:
+library(nakke)
+RegData <- NakkeRegDataSQL()
+RegData <- NakkePreprosess(RegData)
+
+#tilretteleggDataNakke <- function(RegData = RegData, valgtVar, filUt=paste0('Nakke', valgtVar)
+valgtVar <- 'beinsmLavPre' #beinsmLavPre, peropKompDura, sympVarighUtstr, NDIendr12mnd35pst
+datoFra = '2014-01-01'
+aar=0
+# 
+# #' Generere data til offentlig visning.
+# #'
+# #' @param filUt tilnavn for utdatatabell (fjern?)
+# #' @param RegData - data
+# #' @param valgtVar - beinsmLavPre, peropKompDura, sympVarighUtstr, NDIendr12mnd35pst
+# #' @param datoFra - startdato
+# #' @param aar - velge hele år (flervalg)
+# #' @return Datafil til Resultatportalen
+# #' @export
+# 
+# tilretteleggDataNakke <- function(RegData = RegData, valgtVar, datoFra = '2014-01-01', aar=0,
+#                            filUt='dummy'){ 
   
-  if (valgtVar %in% c('KomplStemme3mnd', 'KomplSvelging3mnd')) {myelopati <- 0}
-  if (valgtVar == 'NDIendr12mnd35pst') {
-    myelopati <- 0
-    fremBak<-1}
-  filUt <- paste0('NakkeTilRes', ifelse(filUt=='dummy',  valgtVar, filUt), '.csv')
+nyID <- c('114288'='4000020', '109820'='974589095', '105783'='974749025',
+          '103469'='874716782', '601161'='974795787', '999920'='913705440',
+          '105588'='974557746', '999998'='999998', '110771'='973129856',
+          '4212372'='4212372', '4211880'='999999003', '4211879'='813381192')
+RegData$ID <- as.character(nyID[as.character(RegData$ReshId)])
+resultatVariable <- c('Aar', "ShNavn", "ReshId", "Variabel")
+NakkeKvalInd <- data.frame(NULL) #Aar=NULL, ShNavn=NULL)
+
+kvalIndParam <- c('beinsmLavPre', 'peropKompDura', 'sympVarighUtstr', 'NDIendr12mnd35pst')
+for (valgtVar in kvalIndParam){
+
+  myelopati <- if (valgtVar %in% c('KomplStemme3mnd', 'KomplSvelging3mnd')) {0} else {99}
+  fremBak <- if (valgtVar == 'NDIendr12mnd35pst') {1} else {0}
+  #filUt <- paste0('NakkeKvalInd', ifelse(filUt=='dummy',  valgtVar, filUt), '.csv')
   NakkeVarSpes <- NakkeVarTilrettelegg(RegData=RegData, valgtVar=valgtVar, figurtype = 'andelGrVar')
   NakkeUtvalg <- NakkeUtvalgEnh(RegData=NakkeVarSpes$RegData, aar=aar, datoFra = datoFra,
                                 myelopati=myelopati, fremBak=fremBak) #, hovedkat=hovedkat) # #, datoTil=datoTil)
-  NakkeTilResvalgtVar <- NakkeUtvalg$RegData[ ,c('Aar', "ShNavn", "ReshId", "Variabel")]
+  NakkeKvalInd1 <- NakkeUtvalg$RegData[ , resultatVariable]
+  NakkeKvalInd1$kvalIndID <- valgtVar
   
-  ##x <- unique(tab$ReshId)
-  nyID <- c('114288'='4000020', '109820'='974589095', '105783'='974749025',
-            '103469'='874716782', '601161'='974795787', '999920'='913705440',
-            '105588'='974557746', '999998'='999998', '110771'='973129856',
-            '4212372'='4212372', '4211880'='999999003', '4211879'='813381192')
-  NakkeTilResvalgtVar$ID <- as.character(nyID[as.character(NakkeTilResvalgtVar$ReshId)])
-  info <- c(NakkeVarSpes$tittel, NakkeUtvalg$utvalgTxt)
-  NakkeTilResvalgtVar$info <- c(info, rep(NA, dim(NakkeTilResvalgtVar)[1]-length(info)))
+  NakkeKvalInd <- rbind(NakkeKvalInd, NakkeKvalInd1)
+  #info <- c(NakkeVarSpes$tittel, NakkeUtvalg$utvalgTxt)
+  #NakkeKvalInd$info <- c(info, rep(NA, dim(NakkeKvalInd)[1]-length(info)))
+}  
+
+NakkeKvalInd$Register <- 'Nakke'  #Flytte denne til et sted hvor den ikke må gjentas så mange ganger...?
+usethis::use_data(KvalIndData, overwrite = TRUE)
+
+  
   # 114288=4000020, 109820=974589095, 105783=974749025, 103469=874716782, 601161=974795787, 999920=913705440,
   # 105588=974557746, 999998=999998, 110771=973129856, 4212372=4212372, 4211880=999999003, 4211879=813381192
   #test <- as.character(nyID[as.character(x)])
@@ -46,8 +68,6 @@ tilretteleggDataNakke <- function(RegData = RegData, valgtVar, datoFra = '2014-0
   # 4212372=4212372      Aleris Colosseum Oslo
   # 4211880=999999003             Aleris Nesttun
   # 4211879=813381192 Aleris Colosseum Stavanger
-  
-  
-  return(invisible(NakkeTilResvalgtVar))
-}
-usethis::use_data("DATASET")
+  #return(invisible(NakkeTilResvalgtVar))
+#}
+
