@@ -1,3 +1,4 @@
 test_that("app ui works", {
-  expect_equal(2 * 2, 4)
+  expect_equal(unlist(qmongr::app_ui())[["name"]], "head")
+  expect_equal(unlist(qmongr::app_ui())[["children.name"]], "link")
 })

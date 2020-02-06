@@ -1,3 +1,3 @@
 test_that("run app works", {
-  expect_equal(2 * 2, 4)
+  expect_equal(typeof(qmongr::run_app()), "list")
 })
