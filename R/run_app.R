@@ -7,4 +7,3 @@ run_app <- function() {
     ui = qmongr::app_ui, server = qmongr::app_server
   )
 }
-
