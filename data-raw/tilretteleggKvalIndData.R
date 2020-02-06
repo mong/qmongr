@@ -1,5 +1,5 @@
 ## code to prepare `DATASET` dataset goes here
-#' Generere data til offentlig visning. Kan hende denne må deles i to?
+#' Generere data til offentlig visning. Kan hende denne må deles i to? 
 #'
 #' @param filUt tilnavn for utdatatabell (fjern?)
 #' @param RegData - data
