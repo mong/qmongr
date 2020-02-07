@@ -10,7 +10,7 @@ RegData <- NakkePreprosess(RegData)
 datoFra = '2014-01-01'
 aar=0
 
-KvalIndDataNakke <- function(RegData = RegData, datoFra = '2014-01-01', aar=0,
+KvalIndDataNakke <- tilretteleggDataNakke(RegData = RegData, datoFra = '2014-01-01', aar=0,
                             filUt='dummy')  #valgtVar, 
 
 usethis::use_data(KvalIndDataNakke, overwrite = TRUE)
@@ -39,8 +39,8 @@ nyID <- c('114288'='4000020', '109820'='974589095', '105783'='974749025',
           '103469'='874716782', '601161'='974795787', '999920'='913705440',
           '105588'='974557746', '999998'='999998', '110771'='973129856',
           '4212372'='4212372', '4211880'='999999003', '4211879'='813381192')
-RegData$ID <- as.character(nyID[as.character(RegData$ReshId)])
-resultatVariable <- c('Aar', "ShNavn", "ReshId", "Variabel")
+RegData$SykehusId <- as.character(nyID[as.character(RegData$ReshId)])
+resultatVariable <- c('Aar', "ShNavn", "ReshId", "SykehusId" , "Variabel")
 NakkeKvalInd <- data.frame(NULL) #Aar=NULL, ShNavn=NULL)
 
 kvalIndParam <- c('KomplStemme3mnd', 'KomplSvelging3mnd', 'Komplinfek', 'NDIendr12mnd35pstKI')
