@@ -1,0 +1,538 @@
+RegionNavn,RegionKode,HFnavn,HFkode,Behandlingssted,Enhetskode,ID1,GruppeID,Grupperingsnavn,Kortnavn,KortKortNavn,Sortering
+Helse Sør-Øst RHF,991324968,Sunnaas Sykehus HF,883971752,Sunnaas Sykehus,974589214,Org.nr.,883971752,,,,1
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, Psykiatrisk senter Asker, Psykiatrisk ungdomsteam",410221206,Org.nr.,894166762,,,,2
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, AURA",410221207,Org.nr.,894166762,,,,3
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, Sosialmedisinsk klinikk, Åsterud",410222001,Org.nr.,894166762,,,,4
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Ringerike Sykehus, Psykiatrisk Ungdomsteam",420621201,Org.nr.,894166762,,,,5
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, BUP Bærum",873601612,Org.nr.,894166762,,,,6
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Drammen sykehus, BUP Poliklinisk enhet",874631302,Org.nr.,894166762,,,,7
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, Psykiatrisk senter Bærum, psykiatrisk poliklinikk",973601636,Org.nr.,894166762,,,,8
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,Bergflott Behandlingssenter,974141612,Org.nr.,894166762,,,,9
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Ringerike psykiatrisk senter, voksenpsyk avd, 1",974147289,Org.nr.,894166762,,,,10
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Drammen sykehus, DPS Drammen, 1",974606046,Org.nr.,894166762,,,,11
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Ringerike psykiatrisk senter, voksenpsyk avd, 2",974606224,Org.nr.,894166762,,,,12
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Drammen sykehus, ARP",974606259,Org.nr.,894166762,,,,13
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Drammen sykehus, Psykiatrisk avdeling",974631318,Org.nr.,894166762,,,,14
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,Drammen sykehus,974631326,Org.nr.,894166762,,Drammen sykehus,Drammen,15
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, BUP Kongsberg sykehus",974631377,Org.nr.,894166762,,,,16
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Kongsberg sykehus ",974631385,Org.nr.,894166762,,Kongsberg sykehus,Kongsberg,17
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Ringerike sykehus",974631407,Org.nr.,894166762,,Ringerike sykehus,Ringerike,18
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Buskerud sykehus ",974631426,Org.nr.,894166762,,Buskerud sykehus,Buskerud,19
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus",974705788,Org.nr.,894166762,,Bærum sykehus,Bærum,20
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,Bærum Sykehus Barne- og ungdomspsykiatri,974705888,Org.nr.,894166762,,,,21
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, Blakstad sykehus",974706156,Org.nr.,894166762,,,,22
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,Bjerketun psyk beh hjem,974706164,Org.nr.,894166762,,,,23
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum DPS, poliklinikk for rus og avhengighet",974706180,Org.nr.,894166762,,,,24
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Drammen sykehus, DPS Drammen, 2",975326160,Org.nr.,894166762,,,,25
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, DPS Kongsberg sykehus",975326179,Org.nr.,894166762,,,,26
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Ringerike sykehus, Hallingdal sjukestugu, psykiatrisk enhet",975326187,Org.nr.,894166762,,,,27
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Ringerike sykehus, avdeling BUP",975326195,Org.nr.,894166762,,,,28
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, Psykiatrisk senter Asker",976245725,Org.nr.,894166762,,,,29
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,"Vestre Viken HF, Bærum sykehus, BUP Asker",989012118,Org.nr.,894166762,,,,30
+Helse Sør-Øst RHF,991324968,Vestre Viken HF,894166762,AMK Buskerud,103898,Resh-id,894166762,,,,31
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,Lovisenberg diakonale sykehus ,974207532,Org.nr.,965985166,,Lovisenberg sykehus,Lovisenberg,32
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale sykehus, Nic Waals institutt, Privat",73257579,Org.nr.,965985166,,,,33
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale sykehus, Tøyen DPS, Privat",75324699,Org.nr.,965985166,,,,34
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale sykehus, Lovisenberg DPS, Privat",78618014,Org.nr.,965985166,,,,35
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale Sykehus, Ruspoliklinikken",410321201,Org.nr.,965985166,,,,36
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale sykehus, Nic Waals institutt",973257579,Org.nr.,965985166,,,,37
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale Sykehus, Akuttpsykiatrisk avdeling ",975049418,Org.nr.,965985166,,,,38
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale sykehus, Tøyen DPS",975324699,Org.nr.,965985166,,,,39
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Lovisenberg Diakonale sykehus, Lovisenberg DPS",978618014,Org.nr.,965985166,,,,40
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Oslo hospital, 2",979470681,Org.nr.,965985166,,,,41
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Oslo hospital, 1",973255045,Org.nr.,965985166,,,,42
+Helse Sør-Øst RHF,991324968,Lovisenberg Diakonale ,965985166,"Vor Frue Hospital, almenpsykiatrisk avd. ",980568415,Org.nr.,965985166,,,,43
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,"Diakonhjemmet Sykehus, DPS Vinderen, Privat",80512290,Org.nr.,982791952,,,,44
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,"Diakonhjemmet sykehus, Alderspsykiatrisk avdeling Tåsen, Privat",80512444,Org.nr.,982791952,,,,45
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,Diakonhjemmets Sykehus,974116804,Org.nr.,982791952,,Diakonhjemmets Sykehus,Diakonhjemmet,46
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,"Diakonhjemmet sykehus, Vinderen DPS",410321207,Org.nr.,982791952,,,,47
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,"Diakonhjemmet sykehus, psykiatrisk avdeling Vinderen ",974589117,Org.nr.,982791952,,,,48
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,"Diakonhjemmet Sykehus, DPS Vinderen",980512290,Org.nr.,982791952,,,,49
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,"Diakonhjemmet sykehus, Alderspsykiatrisk avdeling Tåsen",980512444,Org.nr.,982791952,,,,50
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,"Diakonhjemmet sykehus, Psykofarmakologisk avd.",109062000,Org.nr.,982791952,,,,51
+Helse Sør-Øst RHF,991324968,Diakonhjemmet sykehus AS,982791952,BUP Vest,973220489,Org.nr.,982791952,,,,52
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Avdeling for rus og avhengighet (ARA)",410222002,Org.nr.,983971636,,,,53
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus Universitetssykehus HF, avd. spesialpsykiatri",874706582,Org.nr.,983971636,,,,54
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus Universitetssykehus HF, avd. rus og avhengighet",973608665,Org.nr.,983971636,,,,55
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Ski Sykehus",974705192,Org.nr.,983971636,,,,56
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,Akershus Universitetssykehus,974706490,Org.nr.,983971636,,Akershus Universitetssykehus,Ahus,57
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Lillestrøm BUP Poliklinikk",974706520,Org.nr.,983971636,,,,58
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Lillestrømklinikken Bråten psyk. behandligshjem",974706539,Org.nr.,983971636,,,,59
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Stensby sykehus",974706881,Org.nr.,983971636,,,,60
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, BUP Furuset",975296407,Org.nr.,983971636,,,,61
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus Universitetssykehus HF, Lillestrømklinikken, BUP klinikk",975300145,Org.nr.,983971636,,,,62
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, avd. akuttpsykiatri",975300994,Org.nr.,983971636,,,,63
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Grorud BUP poliklinikk",975320804,Org.nr.,983971636,,,,64
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, BUP Follo",975326047,Org.nr.,983971636,,,,65
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Øvre Romerike BUP",976246314,Org.nr.,983971636,,,,66
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, Lillestrøm DPS",979175655,Org.nr.,983971636,,,,67
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, DPS Jessheim",979529031,Org.nr.,983971636,,,,68
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, DPS Grorud",979593422,Org.nr.,983971636,,,,69
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus Universitetssykehus HF, DPS Jessheim, seksjon Døgn Myrvegen",987311924,Org.nr.,983971636,,,,70
+Helse Sør-Øst RHF,991324968,Akershus Universitetssykehus HF,983971636,"Akershus universitetssykehus HF, avd. alderspsykiatri Døgn og poliklinikk",995150999,Org.nr.,983971636,,,,71
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, DPS Lillehammer ",410521201,Org.nr.,983971709,,,,72
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, DPS Kongsvinger",410521202,Org.nr.,983971709,,,,73
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, DPS Tynset",410521203,Org.nr.,983971709,,,,74
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, DPS Hamar",410521204,Org.nr.,983971709,,,,75
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Lillehammer",874632562,Org.nr.,983971709,,"Sykehuset Innlandet, Lillehammer",Lillehammer,76
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, DPS Tynset",875326082,Org.nr.,983971709,,,,77
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Hamar, 1",875326732,Org.nr.,983971709,,,,78
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Døgn, Hagen behandlingsenhet",973662597,Org.nr.,983971709,,,,79
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Hamar, 2",973662600,Org.nr.,983971709,,,,80
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Døgn, Elverum",973662619,Org.nr.,983971709,,,,81
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Hamar, 3",973662627,Org.nr.,983971709,,,,82
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, DPS Kongsvinger",973664670,Org.nr.,983971709,,,,83
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Døgn, Lillehammer",973687506,Org.nr.,983971709,,,,84
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,Valdres Fodestogo,974596725,Org.nr.,983971709,,,,85
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, DPS Gjøvik",974597454,Org.nr.,983971709,,,,86
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Elverum/Hamar",974631768,Org.nr.,983971709,,"Sykehuset Innlandet, Elverum",Elverum,87
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Kongsvinger",974631776,Org.nr.,983971709,,"Sykehuset Innlandet, Kongsvinger",Kongsvinger,88
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, sykehusfunksjoner Sanderud",974631792,Org.nr.,983971709,,,,89
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Lillehammer",974632519,Org.nr.,983971709,,,,90
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Gjøvik",974632535,Org.nr.,983971709,,"Sykehuset Innlandet, Gjøvik",Gjøvik,91
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,Granheim lungesykehus,974632543,Org.nr.,983971709,,,,92
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, sykehusfunksjoner Reinsvoll",974632578,Org.nr.,983971709,,,,93
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Avd. for rusrelatert psykiatri og avhengighet, Sørlihaugen",974632624,Org.nr.,983971709,,,,94
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,Sykehuset Innlandet Hamar,974724960,Org.nr.,983971709,,"Sykehuset Innlandet, Hamar",Hamar,95
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Tynset",974725215,Org.nr.,983971709,,"Sykehuset Innlandet, Tynset",Tynset,96
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Avd. for rusrelatert psykiatri og avhengighet, Hov",974726831,Org.nr.,983971709,,,,97
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, Avd. for rusrelatert psykiatri og avhengighet, Sanderud",976245687,Org.nr.,983971709,,,,98
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Hamar, 4",976476417,Org.nr.,983971709,,,,99
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, DPS Gjøvik",982052254,Org.nr.,983971709,,,,100
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, DPS Lillehammer",982052300,Org.nr.,983971709,,,,101
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Gjøvik",983042090,Org.nr.,983971709,,,,102
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, DPS Hamar",983042104,Org.nr.,983971709,,,,103
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP Døgn, Sanderud",985709629,Org.nr.,983971709,,,,104
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP døgn, Gjøvik",986955534,Org.nr.,983971709,,,,105
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet, BUP døgn, Seljelia",986955607,Org.nr.,983971709,,,,106
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehuset Innlandet HF, DPS Hamar Distriktspsykiatrisk senter",988243205,Org.nr.,983971709,,,,107
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,"Sykehsuet Innlandet HF, Rehabilitering/Habilitering",777777778,Org.nr.,983971709,,,,108
+Helse Sør-Øst RHF,991324968,Sykehuset Innlandet HF,983971709,AMK Innlandet,4204607,Resh-id,983971709,,,,109
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Asebraten BUP, Familieenhet Ostfold",705660,Resh-id,983971768,,,,110
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Avdeling for Rusbehandling Post 5",410121202,Org.nr.,983971768,,,,111
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Avdeling for rusbehandling, LAR-teamet Østfold",410122001,Org.nr.,983971768,,,,112
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, DPS Halden - Sarpsborg",874633682,Org.nr.,983971768,,,,113
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, DPS Moss",875319582,Org.nr.,983971768,,,,114
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Avdeling for rusbehandling, Sosialmedisinsk poliklinikk Fredrikstad",875319612,Org.nr.,983971768,,,,115
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Østfoldklinikken",973070762,Org.nr.,983971768,,,,116
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Konglelunden BUP behandligshjem",974544601,Org.nr.,983971768,,,,117
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold, Moss",974633698,Org.nr.,983971768,,"SØHF, Moss",Moss,118
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Avdeling for rusbehandling, Sosialmedisinsk poliklinikk Moss",974633728,Org.nr.,983971768,,,,119
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold, Kalnes",974633752,Org.nr.,983971768,,"SØHF, Kalnes",Kalnes,120
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, psykiatrisk intermediæravdeling",974633760,Org.nr.,983971768,,,,121
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset i Østfold HF, Åsebråten BUP Klinikk, 1",975290778,Org.nr.,983971768,,,,122
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, BUP Halden",975298787,Org.nr.,983971768,,,,123
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, BUP Moss",975299317,Org.nr.,983971768,,,,124
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Avdeling for rusbehandling, Sosialmedisinsk poliklinikk Sarpsborg",975319571,Org.nr.,983971768,,,,125
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Avdeling for rusbehandling, Sosialmedisinsk poliklinikk, Askim",975319598,Org.nr.,983971768,,,,126
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, BUP Askim",975319601,Org.nr.,983971768,,,,127
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, BUP Sarpsborg",975326810,Org.nr.,983971768,,,,128
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, DPS Fredrikstad, Seksjon for polikliniske tjenester",975326829,Org.nr.,983971768,,,,129
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, Avdeling for rusbehandling, Sosialmedisinsk poliklinikk Halden",976245768,Org.nr.,983971768,,,,130
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, DPS Edwin Ruud",980361756,Org.nr.,983971768,,,,131
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset Østfold HF, BUP Fredrikstad",980683796,Org.nr.,983971768,,,,132
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset i Østfold HF, Ungdomspsykiatrisk poliklinikk Østfold",984828004,Org.nr.,983971768,,,,133
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,"Sykehuset i Østfold HF, Åsebråten BUP klinikk, 2",996703738,Org.nr.,983971768,,,,134
+Helse Sør-Øst RHF,991324968,Sykehuset i Østfold HF,983971768,AMK Østfold,4000002,Laget en id,983971768,,AMK Østfold,,135
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, ABUP Flekkefjord",321012001,Org.nr.,983975240,,,,136
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, ABUP Mandal",321012002,Org.nr.,983975240,,,,137
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, Familie- og ungdomsteam, Kristiansand",321012003,Org.nr.,983975240,,,,138
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, Barne- og familieenheten Arendal",321012005,Org.nr.,983975240,,,,139
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, avdeling for rus- og avhengighetsbehandling",421021201,Org.nr.,983975240,,,,140
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet Sykehus HF, avd. rus- og avhengighetsbehandling, Avgiftningsposten, Arendal.",500000000,Org.nr.,983975240,,,,141
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet Sykehus HF, avd. rus- og avhengighetsbehandling, Ruspoliklinikken Arendal",500000001,Org.nr.,983975240,,,,142
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet Sykehus HF, avd. rus- og avhengighetsbehandling, Ruspoliklinikken Kristiansand",500000002,Org.nr.,983975240,,,,143
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet Sykehus HF, Kristiansand, Psykiatrisk avdeling",875326252,Org.nr.,983975240,,,,144
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, DPS Strømme",973255177,Org.nr.,983975240,,,,145
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, Solvang DPS",973255185,Org.nr.,983975240,,,,146
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandets Sykehus HF, Flekkefjord",974595214,Org.nr.,983975240,,"Sørlandets sykehus, Flekkefjord",Flekkefjord,147
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, Mandal DPS",974595222,Org.nr.,983975240,,,,148
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Klinikk for rehabilitering, Kristiansand",974595230,Org.nr.,983975240,,,,149
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, Lister DPS",974595249,Org.nr.,983975240,,,,150
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,Sørlandet sykehus DPS Aust-Agder,974631083,Org.nr.,983975240,,,,151
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandets Sykehus HF, Arendal",974631091,Org.nr.,983975240,,"Sørlandets Sykehus, Arendal",Arendal,152
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, Ungdomsklinikken Arendal",974631164,Org.nr.,983975240,,,,153
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandets Sykehus HF, Kristiansand",974733013,Org.nr.,983975240,,"Sørlandets Sykehus, Kristiansand",Kristiansand,154
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, ABUP Arendal",975326241,Org.nr.,983975240,,,,155
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, ABUP Farsund",975326268,Org.nr.,983975240,,,,156
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, barne- og ungdomspsykiatri poliklinikk Kristiansand",976245857,Org.nr.,983975240,,,,157
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, rus og avhengighetsbehandling poliklinikk Kristiansand",976246705,Org.nr.,983975240,,,,158
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,"Sørlandet sykehus HF, Voksenpsykiatri psykososialt team sør",993524476,Org.nr.,983975240,,,,159
+Helse Sør-Øst RHF,991324968,Sørlandet Sykehus HF,983975240,AMK Sørlandet,4000001,Laget en id,983975240,,,,160
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"Sykehuset i Vestfold HF, Nordre Vestfold DPS",973754793,Org.nr.,983975259,,,,161
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"Sykehuset i Vestfold HF, Søndre Vestfold DPS",974116995,Org.nr.,983975259,,,,162
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"Klinikk for rehabilitering, Stavern",974575396,Org.nr.,983975259,,,,163
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"Sykehuset i Vestfold HF, rusbehandling",974575434,Org.nr.,983975259,,,,164
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"SIV Vestfold, Larvik",974633558,Org.nr.,983975259,,"SIV Vestfold, Larvik",Larvik,165
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"SIV Vestfold, Sandefjord",974633566,Org.nr.,983975259,,"SIV Vestfold, Sandefjord",Sandefjord,166
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"SIV Vestfold, Tønsberg",974633574,Org.nr.,983975259,,"SIV Vestfold, Tønsberg",Tønsberg,167
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"Psykiatrien i Vestfold HF, BUP Tønsberg CF",975294714,Org.nr.,983975259,,,,168
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"Sykehuset i Vestfold HF, Glenne regionale senter for Autisme",988435481,Org.nr.,983975259,,,,169
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,AMK Vestfold-Telemark,108916,Resh-id,983975259,,,,170
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, DPS Vestmar",42082200,Org.nr.,983975267,,,,171
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, DPS Skien, 1",420822002,Org.nr.,983975267,,,,172
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, rusbehandling",500000016,Org.nr.,983975267,,,,173
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark, Notodden",974633159,Org.nr.,983975267,,"Sykehuset Telemark, Notodden",Notodden,174
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, sykehusfunksjoner Skien",974633183,Org.nr.,983975267,,,,175
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark, Skien",974633191,Org.nr.,983975267,,"Sykehuset Telemark, Skien",Skien,176
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark, Rjukan",974798379,Org.nr.,983975267,,"Sykehuset Telemark, Rjukan",Rjukan,177
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, DPS Notodden",975300153,Org.nr.,983975267,,,,178
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, BUP Skien",975326217,Org.nr.,983975267,,,,179
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, BUP Notodden",975326918,Org.nr.,983975267,,,,180
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, BUP Kragerø",976245873,Org.nr.,983975267,,,,181
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, DPS Skien, 2",982930510,Org.nr.,983975267,,,,182
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark, Kragerø",983974155,Org.nr.,983975267,,"Sykehuset Telemark, Kragerø",Kragerø,183
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark HF, DPS Skien, 3",987582480,Org.nr.,983975267,,,,184
+Helse Sør-Øst RHF,991324968,"Sykehuset i Vestfold HF, Psykiatrien i Vestfold HF",983975305,"Sykehuset i Vestfold HF, Psykiatrisk fylkesavdeling",974575175,Org.nr.,983975305,,,,185
+Helse Sør-Øst RHF,991324968,"Sykehuset i Vestfold HF, Psykiatrien i Vestfold HF",983975305,"Sykehuset i Vestfold, klinikkledelse PHV og RUS",981622405,Org.nr.,983975305,,,,186
+Helse Sør-Øst RHF,991324968,"Sykehuset i Vestfold HF, Psykiatrien i Vestfold HF",983975305,Sykehuset i Vestfold HF (raskere tilbake) ,983975306,Org.nr.,983975305,,,,187
+Helse Sør-Øst RHF,991324968,"Sykehuset i Vestfold HF, Psykiatrien i Vestfold HF",983975305,Psyk i Vestfold Barne- og ungd psyk avd Larvik,984260083,Org.nr.,983975305,,,,188
+Helse Sør-Øst RHF,991324968,"Sykehuset i Vestfold HF, Psykiatrien i Vestfold HF",983975305,Psyk i Vestfold Barne- og ungd psyk avd Holmestrand,987305509,Org.nr.,983975305,,,,189
+Helse Sør-Øst RHF,991324968,"Sykehuset i Vestfold HF, Psykiatrien i Vestfold HF",983975305,Psyk i Vestfold Barne- og ungd psyk avd Tønsberg F,997934091,Org.nr.,983975305,,,,190
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF - Ullevål, Ruspoliklinikken ",410321203,Org.nr.,993467049,,,,191
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, Allmennpsykiatrisk avd., 3",874588962,Org.nr.,993467049,,,,192
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus, Rikshospitalet",874716782,Org.nr.,993467049,,"OUS, Rikshospitalet",Rikshospitalet,193
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Akershus universitetssykehus HF, Alna DPS",875319442,Org.nr.,993467049,,,,194
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, ungdomsavd. for psykisk helse",879593662,Org.nr.,993467049,,,,195
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF - Aker, Avd. rus",879594162,Org.nr.,993467049,,,,196
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,Aker Universitetssykehus,974588951,Org.nr.,993467049,,,,197
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Ullevål",974589095,Org.nr.,993467049,,"OUS, Ullevål",Ullevål,198
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Aker, Klinikk for psykisk helse",974589125,Org.nr.,993467049,,,,199
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,Spesialsykehuset for Epilepsi,974705761,Org.nr.,993467049,,,,200
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Akershus universitetssykehus HF, Follo DPS",974706253,Org.nr.,993467049,,,,201
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,Radiumhospitalet,974707152,Org.nr.,993467049,,"OUS, Radiumhospitalet",Radiumhospitalet,202
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål BUP Nordstrand ",974716828,Org.nr.,993467049,,,,203
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål Lille-Sogn dagenhet for barn",974716836,Org.nr.,993467049,,,,204
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Aker, BUP",975296393,Org.nr.,993467049,,,,205
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, barneavd. for psykisk helse, 2",975297179,Org.nr.,993467049,,,,206
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, FoU, adm. og felles i psykiatri",975299074,Org.nr.,993467049,,,,207
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, Allmennpsykiatrisk avd., 2",975299082,Org.nr.,993467049,,,,208
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål BUP Nordre Aker-Sagene ",975299309,Org.nr.,993467049,,,,209
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål BUP Søndre Nordstrand ",975299937,Org.nr.,993467049,,,,210
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, Josefinegaten DPS",975319431,Org.nr.,993467049,,,,211
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, Søndre Oslo DPS",975322629,Org.nr.,993467049,,,,212
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, Allmennpsykiatrisk avd., 1",975322653,Org.nr.,993467049,,,,213
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål BUP Østensjø ",975326063,Org.nr.,993467049,,,,214
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Rikshospitalet BUP seksjon",975326705,Org.nr.,993467049,,,,215
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, barneavd. for psykisk helse, 1",979593635,Org.nr.,993467049,,,,216
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, Alderspsykiatrisk avdeling",980504913,Org.nr.,993467049,,,,217
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Psykosomatisk avd. psykiatrisk poliklinikk",982442230,Org.nr.,993467049,,,,218
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Aker universitetssykehus",983971652,Org.nr.,993467049,,"OUS, Aker",Aker,219
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Dikemark, Regional sikkerhetsavd.",986375740,Org.nr.,993467049,,,,220
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, PPU",986375805,Org.nr.,993467049,,,,221
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF , Ullevål, Regional avd. for spiseforstyrrelser",987547243,Org.nr.,993467049,,,,222
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo universitetssykehus HF, Ullevål, Akuttpsykiatri døgnavdeling",987547480,Org.nr.,993467049,,,,223
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Ullevål Familieenheten Sogn",990647593,Org.nr.,993467049,,,,224
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Ullevål Nevropsykologisk enhet barn og ungdom",990647623,Org.nr.,993467049,,,,225
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Ullevål Ungdomspsyk enhet UPE",990647631,Org.nr.,993467049,,,,226
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Ullevål Psykoseenhet for ungdom",990647658,Org.nr.,993467049,,,,227
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Ullevål Sogn Døgnenhet for barn",990647666,Org.nr.,993467049,,,,228
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,"Oslo Universitetssykehus HF, Ullevål Ungdomspoliklinikken psykisk helse",995272326,Org.nr.,993467049,,,,229
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,OUS Nasj senter hørsel og psyk helsevern,998455588,Org.nr.,993467049,,,,230
+Helse Sør-Øst RHF,991324968,Oslo Universitetssykehus HF,993467049,AMK Oslo og Akershus,114046,Resh-id,993467049,,,,231
+Helse Sør-Øst RHF,991324968,Martina Hansen Hospital,985962170,Martina Hansens Hospital,974116588,Org.nr.,985962170,,Martina Hansens Hospital,Martina Hansens,232
+Helse Sør-Øst RHF,991324968,"Revmatismesykehuset AS, Lillehammer",985773238,Revmatismesykehuset AS,973254979,Org.nr.,985773238,,Revmatismesykehuset AS,Revmatismesykehuset,233
+Helse Sør-Øst RHF,991324968,Stiftelsen Betanien Hospital Skien,981275721,Betanien Hospital,873255102,Org.nr.,981275721,,Betanien Hospital,Betanien Hospital,234
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Bergfløtt behandlingssenter,975387011,Org.nr.,999999991,"Private, Sør-Øst",,,235
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Borgestadklinikken, Skien",971450231,Org.nr.,999999991,,,,236
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Bymisjonens Psykiatriske Døgnrehabilitering (BPR) ,973107607,Org.nr.,999999991,,,,237
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Capio Anoreksi senter AS,980524493,Org.nr.,999999991,,,,238
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Feiringklinikken,981113950,Org.nr.,999999991,,,,239
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,LHL-klinikkene Feiring,973144383,Org.nr.,999999991,,Feiringklinikken,Feiring,240
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Furukollen psykiatriske senter,970167501,Org.nr.,999999991,,,,241
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Kvinnekollektivet ARKEN,973479091,Org.nr.,999999991,,,,242
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Larkollen, ungdomspsykiatrisk behandligshjem",973107569,Org.nr.,999999991,,,,243
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Manifestsenteret,971517093,Org.nr.,999999991,,,,244
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Modum Bad,970107592,Org.nr.,999999991,,,,245
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Origosenteret,973107593,Org.nr.,999999991,,,,246
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Samtun,986395865,Org.nr.,999999991,,,,247
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Senter for stress- og traumepsykologi,999025722,Org.nr.,999999991,,,,248
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Skjelfoss psykiatriske senter,974337525,Org.nr.,999999991,,,,249
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Fossumkollektivet,971474483,Org.nr.,999999991,,,,250
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Fredheim,970572066,Org.nr.,999999991,,,,251
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Incognito Klinikk,971427051,Org.nr.,999999991,,,,252
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Phoenix Haga,971497289,Org.nr.,999999991,,,,253
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Riisby behandlingssenter,984012721,Org.nr.,999999991,,,,254
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Sollliakollektivet,961790840,Org.nr.,999999991,,,,255
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Trasoppklinikken,871427062,Org.nr.,999999991,,,,256
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Valdresklinikken,963971729,Org.nr.,999999991,,,,257
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Tyrilistiftelsen, Frankmo, Mesnali, Oslo, Sør og Trondheim",961025311,Org.nr.,999999991,,,,258
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Aleris Helse AS Frogner, Oslo",975787419,Org.nr.,999999991,,,,259
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Aleris Helse AS Drammen,879595762,Org.nr.,999999991,,,,260
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Drammen Private Sykehus,979419643,Org.nr.,999999991,,,,261
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Ringvoll Klinikken AS,980693732,Org.nr.,999999991,,,,262
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Sørlandsparken Spesialistsenter,981028848,Org.nr.,999999991,,,,263
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Unicare Psykolog AS,986319492,Org.nr.,999999991,,,,264
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Østbytunet behandlingssenter,974289679,Org.nr.,999999991,,,,265
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Veslelien,873107642,Org.nr.,999999991,,,,266
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Renåvangen,974181010,Org.nr.,999999991,,,,267
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Glittreklinikken,995729717,Org.nr.,999999991,,NPR,Glittreklinikken,268
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Frelsesarmeens behandlingstun, Fetsund",999066941,Org.nr.,999999991,,,,269
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Borgestadklinikken, Loland Behandlingssenter",971815450,Org.nr.,999999991,,,,270
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Borgestadklinikken, Bragernes behandlingssenter",974087278,Org.nr.,999999991,,,,271
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Borgestadklinikken,973347527,Org.nr.,999999991,,,,272
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Blå Kors Senter,974116812,Org.nr.,999999991,,,,273
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,A-senteret,973107577,Org.nr.,999999991,,,,274
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Blå Kors Behandlingssenter, Eina - Blå Kors Øst AS",973255622,Org.nr.,999999991,,,,275
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Volvat Medisinske senter AS Oslo, Majorstuen",973129856,Org.nr.,P2,Volvat,"Volvat, Majorstuen","Volvat, Majorstuen",276
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Volvat Medisinske senter AS Fredrikstad,974183749,Org.nr.,P2,Volvat,"Volvat, Fredrikstad","Volvat, Fredrikstad",277
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Stiftelsen Kirkens bymisjon,944384448,Org.nr.,999999991,,,,278
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,"Norsk idrettsmedisinsk institutt, NIMI AS",999238351,Org.nr.,999999991,,,,279
+Helse Sør-Øst RHF,991324968,"Helse Sør-Øst, private",999999991,Teres Drammen,879595762,Org.nr.,999999991,,,,280
+Helse Midt-Norge RHF,983658776,Rusbehandling Midt-Norge HF UTGÅTT,500000012,Vestmo behandlingssenter,974577135,Org.nr.,500000012,,,,281
+Helse Midt-Norge RHF,983658776,Rusbehandling Midt-Norge HF UTGÅTT,500000012,Veksthuset Molde,974577194,Org.nr.,500000012,,,,282
+Helse Midt-Norge RHF,983658776,Rusbehandling Midt-Norge HF UTGÅTT,500000012,Nidarosklinikken,974748800,Org.nr.,500000012,,,,283
+Helse Midt-Norge RHF,983658776,Rusbehandling Midt-Norge HF UTGÅTT,500000012,"Rusbehandling Midt-Norge HF, Ungdomsklinikken",992851988,Org.nr.,500000012,,,,284
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs Hospital, Psykisk helsevern, Nidaros DPS, Psykiatrisk ungdomsteam",441621204,Org.nr.,883974832,,,,285
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs Hospital HF, Psykisk helsevern, Østmarka",874748722,Org.nr.,883974832,,,,286
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,Orkdal Sjukehus,974329506,Org.nr.,883974832,,Orkdal Sjukehus,Orkdal,287
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs Hospital HF, Orkdal DPS",974748770,Org.nr.,883974832,,,,288
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs Hospital, psykisk helsevern, avd. Brøset",974748789,Org.nr.,883974832,,,,289
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St Olavs Hospital HF, Habiliteringstjenesten for voksne ",974748843,Org.nr.,883974832,,,,290
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs Hospital HF, Tiller DPS",974748894,Org.nr.,883974832,,,,291
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs Hospital HF, Nidaros DPS",974748908,Org.nr.,883974832,,,,292
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs hospital HF, Barne- og ungdomspsykiatrisk klinikk",974748924,Org.nr.,883974832,,,,293
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,Røros sykehus,974749505,Org.nr.,883974832,,"St. Olavs hospital, Røros",Røros,294
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,St. Olavs Hospital,974749025,Org.nr.,883974832,,St. Olavs hospital,St. Olavs,295
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olav HF, BUP klinikk Orkdal",977288053,Org.nr.,883974832,,,,296
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olav HF, BUP klinikk Fosen",981243315,Org.nr.,883974832,,,,297
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olav HF, BUP Poliklinikk Røros",981243994,Org.nr.,883974832,,,,298
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,Senter for legemiddelassistert rehabilitering Trondheim,980291472,Org.nr.,883974832,,,,299
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St.Olavs hospital, Avdeling for rus og avhengighetsmedisin",996320731,Org.nr.,883974832,,,,300
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,"St. Olavs Hospital HF, Psykososialt team for flyktninger i Midt-Norge",988955760,Org.nr.,883974832,,,,301
+Helse Midt-Norge RHF,983658776,St. Olavs Hospital HF,883974832,AMK Sør-Trøndelag,4201312,Resh-id,883974832,,,,302
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Sykehuset Levanger, avd for rusrelatert psykiatri",441721201,Org.nr.,983974791,,,,303
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Sykehuset Namsos, avd. for rusrelatert psykiatri",441721202,Org.nr.,983974791,,,,304
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Helse Nord-Trøndelag HF, Sykehuset Namsos, Psykiatrisk klinikk",874753912,Org.nr.,983974791,,,,305
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Helse Nord-Trøndelag HF, Stjørdal DPS",884038162,Org.nr.,983974791,,,,306
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,Namsos sykehus,974753898,Org.nr.,983974791,,Namsos sykehus,Namsos,307
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,Levanger sykehus,974754118,Org.nr.,983974791,,Levanger sykehus,Levanger,308
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Helse Nord-Trøndelag HF, Sykehuset Levanger, Psykiatrisk klinikk",974754142,Org.nr.,983974791,,,,309
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Helse Nord-Trøndelag HF, Namsos BUP",975326500,Org.nr.,983974791,,,,310
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Helse Nord-Trøndelag HF, Levanger BUP",975326519,Org.nr.,983974791,,,,311
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,"Helse Nord-Trøndelag HF, Kolvereid DPS",981923979,Org.nr.,983974791,,,,312
+Helse Midt-Norge RHF,983658776,Helse Nord-Trøndelag HF,983974791,AMK Nord-Trøndelag,4209090,Resh-id,983974791,,,,313
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Volda Sjukehus, psykiatrisk avdeling",974577208,Org.nr.,997005562,,,,314
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Ålesund Sjukehus, psyk. avd",974747154,Org.nr.,997005562,,,,315
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Molde Sjukehus, psykiatrisk avd",874745642,Org.nr.,997005562,,,,316
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Kristiansund Sykehus, Psykiatrisk avdeling",974577070,Org.nr.,997005562,,,,317
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal, rusteamet Kristiansund",500000008,Org.nr.,997005562,,,,318
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal, rusteamet Volda",500000009,Org.nr.,997005562,,,,319
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal, rusteamet Ålesund",500000010,Org.nr.,997005562,,,,320
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal, rusteamet Molde",500000011,Org.nr.,997005562,,,,321
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal HF, Volda sjukehus, BUP poliklinikk",874747572,Org.nr.,997005562,,,,322
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,Molde Sjukehus,974745569,Org.nr.,997005562,,Molde Sjukehus,Molde,323
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,Kristiansund Sjukehus,974746948,Org.nr.,997005562,,Kristiansund Sjukehus,Kristiansund,324
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,Ålesund sjukehus,974747138,Org.nr.,997005562,,Ålesund sjukehus,Ålesund,325
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,Volda sjukehus,974747545,Org.nr.,997005562,,Volda sjukehus,Volda,326
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal HF, Ålesund sjukehus, BUP poliklinikk",975326454,Org.nr.,997005562,,,,327
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal HF, Kristiansund Sykehus, BUP poliklinikk",975326470,Org.nr.,997005562,,,,328
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal HF, Molde Sjukehus, BUP avd.",975326489,Org.nr.,997005562,,,,329
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,"Helse Møre og Romsdal HF, Ålesund sjukehus, ungdomspsyk. avd",980698688,Org.nr.,997005562,,,,330
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,AMK Sunnmøre,4000003,Laget en id,997005562,,,,331
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,AMK Nordmøre og Romsdal,4000006,Laget en id,997005562,,,,332
+Helse Midt-Norge RHF,983658776,Helse Møre og Romsdal HF,997005562,AMK Møre og Romsdal,4000007,Laget en id,997005562,,,,333
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,"Helse Midt-Norge RHF, private",875034022,Org.nr.,999999993,,"Helse Midt-Norge RHF, private",,334
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,Medi 3 Ålesund AS,941455077,Org.nr.,999999993,,,,335
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,Rosenborgklinikken,948193426,Org.nr.,999999993,,,,336
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,Klinikk Stokkan Trondheim,982746868,Org.nr.,999999993,,,,337
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,"Aleris Helse AS, Trondheim",999999002,Org.nr.,P3,Aleris,"Aleris, Trondheim",,338
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,"Blå Kors Midt og Nord, Lade behandlingssenter BA",892237832,Org.nr.,999999993,,,,339
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,Lade behandlingssenter Blå Kors,974116170,Org.nr.,999999993,,,,340
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,Tyrili Høvringen,990758506,Org.nr.,999999993,,,,341
+Helse Midt-Norge RHF,983658776,"Helse Midt-Norge, Private",999999993,"NKS, Kvamsgrindkollektivet",992085452,Org.nr.,999999993,,,,342
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger, Avdeling unge voksne - enhet for rus",431121203,Org.nr.,983974678,,,,343
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger, psykiatrisk ungdomsteam Sandnes",500000003,Org.nr.,983974678,,,,344
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger, psykiatrisk ungdomsteam Stavanger",500000004,Org.nr.,983974678,,,,345
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger, Veksthuset Rogaland",500000007,Org.nr.,983974678,,,,346
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger, LAR",500000021,Org.nr.,983974678,,,,347
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, avd. unge voksne, Engelsvoll",974624656,Org.nr.,983974678,,,,348
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, Stavanger DPS",974624710,Org.nr.,983974678,,,,349
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, Sandnes DPS, Varatun",974624737,Org.nr.,983974678,,,,350
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, Dalane DPS",974624753,Org.nr.,983974678,,,,351
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, Ryfylke DPS, Randaberg",974624761,Org.nr.,983974678,,,,352
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, avd. unge og voksne, Gauselskogen SRP (rus/psyk) ",974624788,Org.nr.,983974678,,,,353
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,Stavanger Universitetssykehus,974703300,Org.nr.,983974678,,Stavanger Universitetssykehus,Stavanger,354
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, avd. unge voksne, Gausel",974735474,Org.nr.,983974678,,,,355
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,BUPA-Våland sengepost ungdom Barne- og ungdomspsyk,975322610,Org.nr.,983974678,,,,356
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, BUPA",975326322,Org.nr.,983974678,,,,357
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, spesialavd. voksne Våland ",976248910,Org.nr.,983974678,,,,358
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Aleris Helse AS, Stavanger",813381192,Org.nr.,P3,Aleris,"Aleris, Stavanger",,359
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,BUPA-Våland barn (BUPA St. Svithun) Barne- og ungd,976248945,Org.nr.,983974678,,,,360
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,BUP Bryne Barne- og ungdomspsykiatri,987608781,Org.nr.,983974678,,,,361
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,BUP Egersund Barne- og ungdomspsykiatri,987608846,Org.nr.,983974678,,,,362
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,BUP Sandnes Barne- og ungdomspsykiatri,987608897,Org.nr.,983974678,,,,363
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Helse Stavanger HF, Sola Distriktspsykiatriske Senter",989876937,Org.nr.,983974678,,,,364
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,BUP Sola Barne- og ungdomspsykiatri,990799016,Org.nr.,983974678,,,,365
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,AMK Stavanger,4204979,Resh-id,983974678,,,,366
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, Haugesund sjukehus, psykiatrisk avdeling - enhet for rus",431121202,Org.nr.,983974694,,,,367
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, LAR",500000017,Org.nr.,983974694,,,,368
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, psykiatrisk ungdomsteam Haugesund",500000018,Org.nr.,983974694,,,,369
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, Stord DPS",875326392,Org.nr.,983974694,,,,370
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, Haugaland DPS",974624729,Org.nr.,983974694,,,,371
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,Haugesund Sjukehus,974724774,Org.nr.,983974694,,Haugesund Sjukehus,Haugesund,372
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,Stord Sjukehus,974742985,Org.nr.,983974694,,Stord Sjukehus,Stord,373
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, Valen Sjukehus",974743051,Org.nr.,983974694,,,,374
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,Odda Sjukehus,974743086,Org.nr.,983974694,,Odda Sjukehus,Odda,375
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, Haugesund sjukehus, Psykiatrisk avdeling",975324885,Org.nr.,983974694,,,,376
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna HF, BUP Haugesund",975326314,Org.nr.,983974694,,,,377
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna HF, BUP Stord/Kvinnherad",975326403,Org.nr.,983974694,,,,378
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, Folgefonn DPS",975326411,Org.nr.,983974694,,,,379
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Helse Fonna, Karmøy DPS",986272909,Org.nr.,983974694,,,,380
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,Kvinnherad BUP Barne- og ungdomspsykiatri,999219985,Org.nr.,983974694,,,,381
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,AMK Haugesund,4000004,Resh-id,983974694,,,,382
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,Kysthospitalet i Hagevik,874743372,Org.nr.,983974724,,Kysthospitalet i Hagevik,Kysthospitalet,383
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, avd. for rusmedisin",896707612,Org.nr.,983974724,,,,384
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, Bjørgvin DPS",974557223,Org.nr.,983974724,,,,385
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, klinikk for sikkerhetspsykiatyri ",974557738,Org.nr.,983974724,,,,386
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,Haukeland Universitetssykehus,974557746,Org.nr.,983974724,,Haukeland Universitetssykehus,Haukeland,387
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,Voss sjukehus,974743272,Org.nr.,983974724,,Voss sjukehus,Voss,388
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, Klinikk psykisk helsevern for barn og unge",975297195,Org.nr.,983974724,,,,389
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, psykiatrisk klinikk ",975326349,Org.nr.,983974724,,,,390
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, BUP Øyane",975326357,Org.nr.,983974724,,,,391
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, BUP Åsane",975326365,Org.nr.,983974724,,,,392
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, DPS Voss ",975326373,Org.nr.,983974724,,,,393
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, Voss sjukehus, BUP Voss",975326381,Org.nr.,983974724,,,,394
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, Øyane DPS",976246829,Org.nr.,983974724,,,,395
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, Kronstad DPS",980841375,Org.nr.,983974724,,,,396
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, BUP Sentrum",980841561,Org.nr.,983974724,,,,397
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, BUP Nordhordland",980841731,Org.nr.,983974724,,,,398
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, BUP Fana, Fusa og Austevoll",980841804,Org.nr.,983974724,,,,399
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, avd. rusmedisin",991120149,Org.nr.,983974724,,,,400
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, klinikk for psykosomatisk medisin",991992677,Org.nr.,983974724,,,,401
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, BUP Ytrebygda, Os og Samnanger",996227480,Org.nr.,983974724,,,,402
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,"Helse Bergen HF, Klinikk for sikkerhetspsykiatri",974557738,Org.nr.,983974724,,,,403
+Helse Vest RHF,983658725,Helse Bergen HF,983974724,AMK Bergen,109531,Resh-id,983974724,,,,404
+Helse Vest RHF,983658725,Haraldsplass Diakonale Sykehus,984027737,Haraldsplass Diakonale Sykehus,974316285,Org.nr.,984027737,,Haraldsplass sykehus,Haraldsplass,405
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Førde Sentralsjukehus, Psykiatrisk klinikk - enhet for rus ",431421201,Org.nr.,983974732,,,,406
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Indre Sogn psykiatrisenter - enhet for rus",431421202,Org.nr.,983974732,,,,407
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Nordfjord psykiatrisenter - enhet for rus",431421203,Org.nr.,983974732,,,,408
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, psykiatrisk poliklinikk Florø",500000019,Org.nr.,983974732,,,,409
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, psykiatrisk poliklinikk Førde",500000020,Org.nr.,983974732,,,,410
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Indre Sogn psykiatrisenter",974570998,Org.nr.,983974732,,,,411
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Sogndal BUP",974571005,Org.nr.,983974732,,,,412
+Helse Vest RHF,983658725,Helse Førde HF,983974732,Sykehuset Førde,974744570,Org.nr.,983974732,,Førde sentralsjukehus,Førde,413
+Helse Vest RHF,983658725,Helse Førde HF,983974732,Lærdal Sjukehus,974745089,Org.nr.,983974732,,Lærdal sjukehus,Lærdal,414
+Helse Vest RHF,983658725,Helse Førde HF,983974732,Nordfjord Sjukehus,974745364,Org.nr.,983974732,,Nordfjord sjukehus,Nordfjord,415
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Nordfjord psykiatrisenter",974745380,Org.nr.,983974732,,,,416
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Nordfjord BUP",974745399,Org.nr.,983974732,,,,417
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, Førde BUP",975295990,Org.nr.,983974732,,,,418
+Helse Vest RHF,983658725,Helse Førde HF,983974732,Familiehuset Førde BUP,975300161,Org.nr.,983974732,,,,419
+Helse Vest RHF,983658725,Helse Førde HF,983974732,"Helse Førde, psykiatrisk klinikk",976247493,Org.nr.,983974732,,,,420
+Helse Vest RHF,983658725,Helse Førde HF,983974732,Helse Førde UPH,987592060,Org.nr.,983974732,,,,421
+Helse Vest RHF,983658725,Helse Førde HF,983974732,AMK Førde,4000005,Laget en id,983974732,,,,422
+Helse Vest RHF,983658725,Solli sykehus,971427272,Solli sykehus ,973255290,Org.nr.,971427272,,,,423
+Helse Vest RHF,983658725,"Voss DPS, NKS Bjørkeli",916270097,"Voss DPS, NKS Bjørkeli",873255242,Org.nr.,916270097,,,,424
+Helse Vest RHF,983658725,Haugesund sanitetsforenings revmatismesykehus AS,986106839,Haugesund sanitetsforenings revmatismesykehus,973156829,Org.nr.,986106839,,,,425
+Helse Vest RHF,983658725,NKS Olaviken alderspsykiatriske sykehus AS,987554401,NKS Olaviken alderspsykiatriske sykehus AS avd. syekhus,974116928,Org.nr.,987554401,,,,426
+Helse Vest RHF,983658725,NKS Olaviken alderspsykiatriske sykehus AS,987554401,NKS Olaviken alderspsykiatriske sykehus AS avd. poliklinikk,993430005,Org.nr.,987554401,,,,427
+Helse Vest RHF,983658725,NKS Jæren Distriktspsykiatriske senter AS,996380041,NKS Jæren Distriktspsykiatriske AS,973267965,Org.nr.,996380041,,,,428
+Helse Vest RHF,983658725,Stiftelsen Betanien Bergen,968349627,Betanien spesialistpoliklinikk,974737779,Org.nr.,968349627,,,,429
+Helse Vest RHF,983658725,Stiftelsen Betanien Bergen,968349627,Betanien psykiatriske senter sengeavdeling,975032132,Org.nr.,968349627,,,,430
+Helse Vest RHF,983658725,Stiftelsen Betanien Bergen,968349627,Betanien psykiastrikse senter psykiatrisk poliklinikk og dagavdeling,983050336,Org.nr.,968349627,,,,431
+Helse Vest RHF,983658725,Stiftelsen Betanien Bergen,968349627,Betanien psykiatriske senter BUP,983050360,Org.nr.,968349627,,,,432
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Stiftelsen Bergensklinikkene,960893328,Org.nr.,999999992,,,,433
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,"Kirkens bymisjon, Rogaland A-senter",986476695,Org.nr.,999999992,,,,434
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Frelsesarmeens Behandlingssenter Stavanger,973112198,Org.nr.,999999992,,,,435
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,"Haugaland A-senter, poliklinikken",500000023,Org.nr.,999999992,,,,436
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Haugaland A-senter,971815469,Org.nr.,999999992,,,,437
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Rogaland A-senter,973375164,Org.nr.,999999992,,,,438
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Colosseumklinikken Stavanger AS,983887473,Org.nr.,999999992,,,,439
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Bergen Kirurgiske Sykehus AS,974498251,Org.nr.,999999992,,,,440
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,"Aleris Helse AS, Bergen",999999003,Org.nr.,P3,Aleris,"Aleris, Bergen",,441
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Privatsykehuset Haugesund AS,977208734,Org.nr.,999999992,,,,442
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Fana Medisinske Senter AS,981406826,Org.nr.,999999992,,,,443
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,"Volvat Medisinske Senter AS Bergen, Ulriksdal",990240116,Org.nr.,P2,Volvat,"Volvat, Bergen",,444
+Helse Vest RHF,983658725,"Helse Vest RHF, Privat ",999999992,Kalfaret Behandlingssenter,973112406,Org.nr.,999999992,,,,445
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark HF, PUT poliklinikk Midt-Finnmark",101902000,Org.nr.,983974880,,,,446
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Samisk Ungdomspsykiatrisk Team, PUT Karasjok",500000013,Org.nr.,983974880,,,,447
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark, DPS Midt-Finnmark, BUP Karasjok",974795183,Org.nr.,983974880,,,,448
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,Finnmarkku klinihkka / Finnmarksklinikken,974795256,Org.nr.,983974880,,,,449
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Klinikk Hammerfest, Helse Finnmark",974795833,Org.nr.,983974880,,Hammerfest sykehus,Hammerfest,450
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark, DPS Vest-Finnmark, BUP Hammerfest",974795884,Org.nr.,983974880,,,,451
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark, DPS Midt-Finnmark",974795922,Org.nr.,983974880,,,,452
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Klinikk Kirkenes, Helse Finnmark",974795930,Org.nr.,983974880,,Kirkenes sykehus,Kirkenes,453
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark, DPS Øst-Finnmark",974795957,Org.nr.,983974880,,,,454
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark, DPS Vest-Finnmark",975270165,Org.nr.,983974880,,,,455
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,Alta Helsesenter Fodestua,975296296,Org.nr.,983974880,,,,456
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark, DPS Øst-Finnmark, BUP Kirkenes",975299589,Org.nr.,983974880,,,,457
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,"Helse Finnmark, DPS Vest-Finnmark, BUP Alta",979848498,Org.nr.,983974880,,,,458
+Helse Nord RHF,883658752,Helse Finnmark HF,983974880,AMK Finnmark,700851,Resh-id,983974880,,,,459
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Rus og spesialpsykiatrisk klinikk UNN, Ruspoliklinikken",451921204,Org.nr.,983974899,,,,460
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Rus og spesialpsykiatrisk klinikk UNN, LARiNord",451922002,Org.nr.,983974899,,,,461
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Rus og spesialpsykiatrisk klinikk UNN, ReStart",500000015,Org.nr.,983974899,,,,462
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Senter for psykisk helse Nord-Troms - (Storslett)",874547042,Org.nr.,983974899,,,,463
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Barne- og ungdomspsykiatrisk poliklinikk, BUP Nord-Troms",881899272,Org.nr.,983974899,,,,464
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Senter for psykisk helse Midt-Troms - (Silsand)",974546973,Org.nr.,983974899,,,,465
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Barne- og ungdomsklinikken, BUP Tromsø",974547031,Org.nr.,983974899,,,,466
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Rus og spesialpsykiatrisk klinikk UNN, Færingen",974547058,Org.nr.,983974899,,,,467
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,Fodestua i Midt-Troms,974562812,Org.nr.,983974899,,,,468
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Rus og spesialpsykiatrisk klinikk UNN, Nordlandsklinikken",974795191,Org.nr.,983974899,,,,469
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"Universitetssykehuset Nord-Norge, Narvik",974795396,Org.nr.,983974899,,"UNN, Narvik",Narvik,470
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"Universitetssykehuset Nord-Norge, Harstad",974795639,Org.nr.,983974899,,"UNN, Harstad",Harstad,471
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Sykehusseksjon Nord (Tromsø)",974795744,Org.nr.,983974899,,,,472
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Psykiatrisk senter for Tromsø og omegn (Tromsø)",974795760,Org.nr.,983974899,,,,473
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"Universitetssykehuset Nord-Norge, Tromsø",974795787,Org.nr.,983974899,,"UNN, Tromsø",Tromsø,474
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Rus og spesialpsykiatrisk klinikk UNN, Avrusning og utredning",974864177,Org.nr.,983974899,,,,475
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,Helsesenteret Sonjatun Fodestua,975296318,Org.nr.,983974899,,,,476
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Senter for psykisk helse Ofoten - (Narvik)",975326578,Org.nr.,983974899,,,,477
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Senter for psykisk helse Ofoten - BUP (Narvik)",975326586,Org.nr.,983974899,,,,478
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Senter for psykisk helse Sør-Troms - (Harstad)",975326659,Org.nr.,983974899,,,,479
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Senter for psykisk helse Sør-Troms - BUP (Harstad)",975326667,Org.nr.,983974899,,,,480
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Senter for psykisk helse Midt-Troms - BUP (Silsand)",977188822,Org.nr.,983974899,,,,481
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"Universitetssykehuset i Nord-Norge HF, BUP Sjøvegan poliklinikk",977188849,Org.nr.,983974899,,,,482
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Spesialpsykiatrisk avd. Åsgård",988265780,Org.nr.,983974899,,,,483
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,"UNN HF, Longyearbyen sykehus",700628,Resh-id,983974899,,"UNN, Longyearbyen",Longyearbyen,484
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,AMK Tromsø,101682,Resh-id,983974899,,,,485
+Helse Nord RHF,883658752,Universitetssykehuset i Nord-Norge HF,983974899,AMK Harstad,110711,Resh-id,983974899,,,,486
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, Vesterålen DPS, rusbehandling",451821203,Org.nr.,983974910,,,,487
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, Lofoten DPS, rusbehandling",451821204,Org.nr.,983974910,,,,488
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, Salten DPS, rusbehandling",500000014,Org.nr.,983974910,,,,489
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, Rønvik VOP",974795345,Org.nr.,983974910,,,,490
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandsykehuset, Bodø",974795361,Org.nr.,983974910,,"Nordlandsykehuset, Bodø",Bodø,491
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset, Lofoten",974795558,Org.nr.,983974910,,"Nordlandssykehuset, Lofoten",Lofoten,492
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset, Vesterålen",974795574,Org.nr.,983974910,,"Nordlandssykehuset, Vesterålen",Vesterålen,493
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, avd Bodø, BUP",975296008,Org.nr.,983974910,,,,494
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, Vesterålen DPS",975326594,Org.nr.,983974910,,,,495
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, Vesterålen BUP Poliklinikk",975326608,Org.nr.,983974910,,,,496
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, VOP Lofoten",975326616,Org.nr.,983974910,,,,497
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, avd Lofoten, BUP poliklinikk",975326624,Org.nr.,983974910,,,,498
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,Fauske BUP Barne- og ungdomspsykiatri,980989712,Org.nr.,983974910,,,,499
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,"Nordlandssykehuset HF, Salten DPS",980989720,Org.nr.,983974910,,,,500
+Helse Nord RHF,883658752,Nordlandsykehuset HF,983974910,AMK Bodø,101001,Resh-id,983974910,,,,501
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Psykiatrisk senter Ytre-Helgeland",97532655,Org.nr.,983974929,,,,502
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandsykehuset HF, avd Brønnøysund BUP",103161000,Org.nr.,983974929,,,,503
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Mosjøen DPS -rusenhet",451821202,Org.nr.,983974929,,,,504
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,Bronnoysund Fodestue,874044342,Org.nr.,983974929,,,,505
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Mosjøen, BUP poliklinikk",875326562,Org.nr.,983974929,,,,506
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset, Sandnessjøen",974795477,Org.nr.,983974929,,"Helgelandssykehuset, Sandnessjøen",Sandnessjøen,507
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset, Mosjøen",974795485,Org.nr.,983974929,,"Helgelandssykehuset, Mosjøen",Mosjøen,508
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset, Rana",974795515,Org.nr.,983974929,,"Helgelandssykehuset, Rana",Rana,509
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Mo i Rana, psykiatri",975326535,Org.nr.,983974929,,,,510
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Mo i Rana, Psykiatrisk Senter BUP",975326543,Org.nr.,983974929,,,,511
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Mosjøen, DPS",975326551,Org.nr.,983974929,,,,512
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Sandnessjøen VOP poliklinikk",975326632,Org.nr.,983974929,,,,513
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Sandnessjøen, BUP poliklinikk",975326640,Org.nr.,983974929,,,,514
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,"Helgelandssykehuset HF, Mo i Rana, Rus",999999123,Org.nr.,983974929,,,,515
+Helse Nord RHF,883658752,Helgelandsykehuset HF,983974929,AMK Helgeland,4209716,Resh-id,983974929,,,,516
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,"BUE-STiftelsen, Langørjan gård",945981377,Org.nr.,999999994,,,,517
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,Sigma Nord AS,976692888,Org.nr.,999999994,,,,518
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,Stiftelsen Finnmarkskollektivet,980230066,Org.nr.,999999994,,,,519
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,Viken senter for psykiatri og sjelesorg,984806329,Org.nr.,999999994,,,,520
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,Tromsø private sykehus,982838339,Org.nr.,999999994,,,,521
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,Teresklinikken Bodø,992133732,Org.nr.,999999994,,,,522
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,"Aleris Helse AS, Tromsø",999999001,Org.nr.,P3,Aleris,"Aleris, Tromsø","Aleris, Tromsø",523
+Helse Nord RHF,883658752,"Helse Nord RHF, Privat",999999994,N.K.S Kløveråsen AS,993253375,Org.nr.,999999994,,,,524
+Helse Sør-Øst RHF,991324968,Helse Sør-Øst Privat,,Helse Sør-Øst Privat,4000008,Laget en id,,,Helse Sør-Øst Privat,Helse Sør-Øst Privat,525
+Helse Vest RHF,983658725,Helse Vest Privat,,Helse Vest Privat,4000009,Laget en id,,,Helse Vest Privat,Helse Vest Privat,526
+Helse Nord RHF,883658752,Helse Nord Privat,,Helse Nord Privat,4000010,Laget en id,,,Helse Nord Privat,Helse Nord Privat,527
+Helse Midt-Norge RHF,983658776,Helse Midt Privat,,Helse Midt Privat,4000011,Laget en id,,,Helse Midt Privat,Helse Midt Privat,528
+Helse Vest RHF,983658725,Helse Fonna HF,983974694,"Haugesund Sjukehus, avd Sauda",4000012,Laget en id,,,"Haugesund Sjukehus, avd Sauda",Sauda,529
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Stavanger Universitetssykehus, Eigersund",4000019,Laget en id,,,"Stavanger Universitetssykehus, Eigersund",Eigersund,530
+Helse Vest RHF,983658725,Helse Stavanger HF,983974678,"Stavanger Universitetssykehus, Sandnes",4000020,Laget en id,,,"Stavanger Universitetsykehus, Sandnes",Sandnes,531
+Helse Sør-Øst RHF,991324968,Sykehuset i Telemark HF,983975267,"Sykehuset Telemark, Porsgrunn",4000021,Laget en id,,,"Sykehuset Telemark, Porsgrunn",Porsgrunn,532
+Helse Sør-Øst RHF,991324968,Sykehuset i Vestfold HF,983975259,"SIV Vestfold, Horten",4000022,Laget en id,,,"SIV Vestfold, Horten",Horten,533
+Helse Sør-Øst RHF,991324968,Helse Sør-Øst Privat,916270097,Helse Sør-Øst Privat,974917459,Laget en id,,,Norsk Diabetikersenter,Norsk Diabetikersenter,534
+Helse Sør-Øst RHF,991324968,Helse Sør-Øst Privat,916270097,Helse Sør-Øst Privat,991786465,Org.nr.,P1,Oslofjordklinikken,Oslofjordklinikken,"Oslofjordklinikken, Øst",535
+Helse Sør-Øst RHF,991324968,Helse Sør-Øst Privat,916270097,Helse Sør-Øst Privat,913705440,Org.nr.,P1,Oslofjordklinikken,Oslofjordklinikken,"Oslofjordklinikken, Vest",536
+Helse Sør-Øst RHF,991324968,Helse Sør-Øst Privat,916270097,Helse Sør-Øst Privat,4212372,Resh-id,,,Aleris Colosseum,Aleris Colosseum,537
