@@ -4,7 +4,6 @@
 *.Rproj
 .DS_Store # mac
 *.xlsx
-*.csv
 *~ # emacs
 *.tar.gz
 docs/
