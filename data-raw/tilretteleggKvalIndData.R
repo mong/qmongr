@@ -40,10 +40,13 @@ nyID <- c('114288'='4000020', '109820'='974589095', '105783'='974749025',
           '105588'='974557746', '999998'='999998', '110771'='973129856',
           '4212372'='4212372', '4211880'='999999003', '4211879'='813381192')
 RegData$SykehusId <- as.character(nyID[as.character(RegData$ReshId)])
-resultatVariable <- c('Aar', "ShNavn", "ReshId", "SykehusId" , "Variabel")
+resultatVariable <- c('KvalIndId', 'Aar', "ShNavn", "ReshId", "SykehusId" , "Variabel")
 NakkeKvalInd <- data.frame(NULL) #Aar=NULL, ShNavn=NULL)
 
-kvalIndParam <- c('KomplStemme3mnd', 'KomplSvelging3mnd', 'Komplinfek', 'NDIendr12mnd35pstKI')
+kvalIndParam <- c('KomplSvelging3mnd', 'KomplStemme3mnd', 'Komplinfek', 'NDIendr12mnd35pstKI')
+indikatorID <- c('nakke1', 'nakke2', 'nakke3', 'nakke4')
+
+
 for (valgtVar in kvalIndParam){
 
   myelopati <- if (valgtVar %in% c('KomplStemme3mnd', 'KomplSvelging3mnd')) {0} else {99}
@@ -53,7 +56,7 @@ for (valgtVar in kvalIndParam){
   NakkeUtvalg <- NakkeUtvalgEnh(RegData=NakkeVarSpes$RegData, aar=aar, datoFra = datoFra,
                                 myelopati=myelopati, fremBak=fremBak) #, hovedkat=hovedkat) # #, datoTil=datoTil)
   NakkeKvalInd1 <- NakkeUtvalg$RegData[ , resultatVariable]
-  NakkeKvalInd1$kvalIndID <- valgtVar
+  NakkeKvalInd1$kvalIndID <- indikatorID[which(kvalIndParam == valgtVar)]
   
   NakkeKvalInd <- rbind(NakkeKvalInd, NakkeKvalInd1)
   #info <- c(NakkeVarSpes$tittel, NakkeUtvalg$utvalgTxt)
