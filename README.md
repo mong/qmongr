@@ -5,6 +5,7 @@
 [![Travis build status](https://travis-ci.org/SKDE-Felles/qmongr.svg?branch=master)](https://travis-ci.org/SKDE-Felles/qmongr)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/SKDE-Felles/qmongr?branch=master&svg=true)](https://ci.appveyor.com/project/SKDE-Felles/qmongr)
 [![Codecov test coverage](https://codecov.io/gh/SKDE-Felles/qmongr/branch/master/graph/badge.svg)](https://codecov.io/gh/SKDE-Felles/qmongr?branch=master)
+[![GitHub open issues](https://img.shields.io/github/issues/SKDE-Felles/qmongr.svg)](https://github.com/SKDE-Felles/qmongr/issues)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Doc](https://img.shields.io/badge/Doc--grey.svg)](https://skde-felles.github.io/qmongr/)
 <!-- badges: end -->
