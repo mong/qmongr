@@ -11,9 +11,7 @@ RUN apt-get update && apt-get install -y \
     libcairo2-dev \
     libxt-dev \
     libxml2-dev \
-    default-jdk \
-    libssl-dev \
-    libmariadbclient-dev 
+    libssl-dev
 
 # basic R functionality
 RUN R -e "install.packages(c('remotes'), repos='https://cloud.r-project.org/')"
@@ -27,4 +25,4 @@ RUN R -e "remotes::install_github('SKDE-Felles/qmongr')"
 
 EXPOSE 3838
 
-CMD ["R", "-e options('shiny.port'=3838,shiny.host='0.0.0.0'); qmongr::run_app()"]
+CMD ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); qmongr::run_app()"]
