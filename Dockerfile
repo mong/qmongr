@@ -19,10 +19,6 @@ RUN R -e "install.packages(c('remotes'), repos='https://cloud.r-project.org/')"
 # install qmongr app
 RUN R -e "remotes::install_github('SKDE-Felles/qmongr')"
 
-# copy the app to the image, skip it?
-#RUN mkdir /root/qmongr
-#COPY inst/app /root/qmongr
-
 EXPOSE 3838
 
 CMD ["R", "-e", "options(shiny.port=3838,shiny.host='0.0.0.0'); qmongr::run_app()"]
