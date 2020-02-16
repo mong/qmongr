@@ -1,7 +1,5 @@
 language: r
-sudo: false
 cache: packages
-warnings_are_errors: true
 
 matrix:
   include:
@@ -46,7 +44,7 @@ before_script:
 
 script:
   - R CMD build .
-  - R CMD check *tar.gz
+  - R CMD check --as-cran *tar.gz
 
 after_script:
   - |
