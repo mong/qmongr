@@ -1,6 +1,7 @@
 #' html table
 #'
 #' @param table_data a dataframe to construct a html table from
+#' @param enhet the chosen unit
 #' @importFrom shiny tags
 #' @export
 #'
