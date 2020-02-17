@@ -116,7 +116,10 @@ compute_indicator <- function(agg_data)  {
 #'
 compute_national_indicator <- function(kidata) {
   kidata  %>%
-    dplyr::group_by(.data[["Aar"]], .data[["kvalIndID"]], .data[["Variabel"]]) %>%
+    dplyr::group_by(
+      .data[["Aar"]],
+      .data[["kvalIndID"]],
+      .data[["Variabel"]]) %>%
     dplyr::summarise(count = dplyr::n()) %>%
     tidyr::pivot_wider(names_from = .data[["Variabel"]],
                        names_prefix = "national_value",

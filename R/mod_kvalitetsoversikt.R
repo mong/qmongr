@@ -102,7 +102,11 @@ mod_kvalitetsoversikt_server <- function(input,
        qmongr::compute_national_indicator()
 
    ki_joined <- ki_by_sh %>%
-     dplyr::inner_join(ki_national, by = c(.data[["Aar"]], .data[["kvalIndID"]]))
+     dplyr::inner_join(
+       ki_national,
+       by = c(.data[["Aar"]],
+              .data[["kvalIndID"]])
+    )
    qmongr::ki_table(ki_joined, input$velg_behandlingsenhet)
   })
 
@@ -117,7 +121,9 @@ mod_kvalitetsoversikt_server <- function(input,
 
     choices_aar <- shiny::reactive({
       choices_behandlingsenhet() %>%
-      dplyr::filter(.data[["ShNavn"]] == shiny::req(input$velg_behandlingsenhet))
+      dplyr::filter(
+        .data[["ShNavn"]] == shiny::req(input$velg_behandlingsenhet)
+      )
    })
 
 
