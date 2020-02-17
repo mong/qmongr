@@ -72,6 +72,7 @@ table_row_constructor <- function(dataframe_row) {
       } else {
         icon <- shiny::icon("circle-o", class = "lav")
       }
+      return(icon)
     }
   } else  if (indicator_onsket_nivaa == "hoy") {
     indicator_onsket_nivaa <- "H\u00D8YT"
@@ -84,6 +85,7 @@ table_row_constructor <- function(dataframe_row) {
       } else {
         icon <- shiny::icon("circle-o", class = "lav")
       }
+      return(icon)
     }
   }
 
