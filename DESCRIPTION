@@ -33,4 +33,4 @@ RoxygenNote: 7.0.2
 Imports: 
     magrittr,
     shiny
-Depends: R (>= 3.4)
+Depends: R (>= 3.5)
