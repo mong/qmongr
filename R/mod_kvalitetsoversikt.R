@@ -14,7 +14,7 @@
 #' @export
 #' @importFrom shiny NS tagList
 mod_kvalitetsoversikt_ui <- function(id) {
-  ns <- NS(id)
+  ns <- shiny::NS(id)
   tagList(
     shiny::fluidPage(
       shiny::tags$div(
@@ -103,9 +103,6 @@ mod_kvalitetsoversikt_server <- function(input,
 
    ki_joined <- ki_by_sh %>%
      dplyr::inner_join(ki_national, by = c("Aar", "kvalIndID"))
-   print(ki_by_sh)
-   print(ki_joined)
-
    qmongr::ki_table(ki_joined, input$velg_behandlingsenhet)
   })
 
