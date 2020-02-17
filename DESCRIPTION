@@ -25,8 +25,7 @@ Suggests:
     covr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
-Depends:
-    R (>= 2.10.0)
+
 Imports: 
     magrittr,
     shiny,
