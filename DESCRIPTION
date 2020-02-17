@@ -11,7 +11,12 @@ Authors@R: c(
            family = "Edvardsen",
            role = c("aut"),
            email = "biorakel@gmail.com",
-           comment = c(ORCID = "0000-0002-5210-3656"))
+           comment = c(ORCID = "0000-0002-5210-3656")),
+    person(given = "Arnfinn Hykkerud",
+           family = "Steindal",
+           role = c("aut"),
+           email = "arnfinn.steindal@gmail.com",
+           comment = c(ORCID = "0000-0002-4088-7860"))
     )
 Description: A web application that provides an interactive presentation of
     quality indicators for Norwegian hospitals. Results are provided along
@@ -28,3 +33,4 @@ RoxygenNote: 7.0.2
 Imports: 
     magrittr,
     shiny
+Depends: R (>= 3.4)
