@@ -1,7 +1,5 @@
 language: r
-sudo: false
 cache: packages
-warnings_are_errors: true
 
 matrix:
   include:
@@ -23,13 +21,6 @@ matrix:
       env: 
         - DIST=bionic
         - AFTER_JOBS=false
-    - os: windows
-      r: release
-      env: 
-        - DIST=windows
-        - AFTER_JOBS=false
-  allow_failures:
-    - os: windows
 
 env:
   global:
@@ -46,7 +37,7 @@ before_script:
 
 script:
   - R CMD build .
-  - R CMD check *tar.gz
+  - R CMD check --as-cran *tar.gz
 
 after_script:
   - |
