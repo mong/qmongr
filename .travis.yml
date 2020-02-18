@@ -1,6 +1,9 @@
 language: r
 cache: packages
 
+services:
+  - docker
+
 matrix:
   include:
     - os: linux
@@ -32,12 +35,17 @@ r_packages:
   - roxygen2
   - devtools
 
+before_install:
+  - docker build -t hnske/qmongr .
+  - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
+
 before_script:
   - export PKG_TARBALL=$(Rscript -e 'pkg <- devtools::as.package("."); cat(paste0(pkg$package,"_",pkg$version,".tar.gz"))')
 
 script:
   - R CMD build .
   - R CMD check --as-cran *tar.gz
+  - docker ps | grep -q qmongr
 
 after_script:
   - |
