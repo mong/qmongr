@@ -1,6 +1,7 @@
 FROM rocker/r-base
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
+LABEL com.centurylinklabs.watchtower.enable="true"
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
