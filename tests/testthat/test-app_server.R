@@ -1,3 +1,3 @@
 test_that("app server works", {
-  expect_equal(qmongr::app_server(), NULL)
+  expect_error(qmongr::app_server())
 })
