@@ -1,6 +1,9 @@
 language: r
 cache: packages
 
+services:
+  - docker
+
 matrix:
   include:
     - os: linux
@@ -32,12 +35,17 @@ r_packages:
   - roxygen2
   - devtools
 
+before_install:
+  - docker build -t hnskde/qmongr .
+  - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
+
 before_script:
   - export PKG_TARBALL=$(Rscript -e 'pkg <- devtools::as.package("."); cat(paste0(pkg$package,"_",pkg$version,".tar.gz"))')
 
 script:
   - R CMD build .
   - R CMD check --as-cran *tar.gz
+  - docker ps | grep -q qmongr
 
 after_script:
   - |
@@ -51,13 +59,20 @@ after_success:
 
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
-  provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github()'
-  skip_cleanup: true
-  on:
-    branch: master
-    condition: "$AFTER_JOBS = true"
-    type: push
+  # our site to gh_pages
+  - provider: script
+    script: Rscript -e 'pkgdown::deploy_site_github()'
+    skip_cleanup: true
+    on:
+      branch: master
+      condition: "$AFTER_JOBS = true"
+      type: push
+  # our image to dockerhub
+  - provider: script
+    script: docker_push
+    on:
+      branch: master
+      condition: "$AFTER_JOBS = true"
 
 notifications:
   email:
