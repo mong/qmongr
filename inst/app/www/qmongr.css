@@ -1,0 +1,150 @@
+body {
+ margin: 0;
+ padding: 0;
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+.behandlings_enhet {
+  margin: 20px auto;
+  padding: 10px;
+  width: 90%;
+  background-color: rgb(126,190,199);
+}
+
+.behandlings_enhet h3{
+  float: right;
+}
+
+.behandlings_enhet .shiny-input-container{
+  border-radius: 5px;
+  margin-top:20px;
+  float: left;
+}
+
+.table_legend {
+  margin: 40px auto;
+}
+
+.table_legend ul{
+  margin: auto;
+}
+
+.table_legend li{
+  display: inline;
+  margin-left: 30px;
+}
+
+.hoy i{
+  color: #bfe398;
+}
+
+.moderat i{
+  color: orange;
+}
+
+.lav i{
+  color: red;
+
+}
+
+.table_legend li {
+  font-size: 22px;
+}
+
+.nivaa .hoy{
+  color: #bfe398;
+}
+
+.nivaa .moderat{
+  color: orange;
+}
+
+.nivaa .lav{
+  color: red;
+}
+
+.nivaa i{
+  font-size: 22px;
+}
+
+
+table {
+  width: 100%;
+  margin: auto;
+  border-spacing: 0;
+}
+
+thead {
+  background-color: #00263d;
+  color: white;
+}
+
+thead tr {
+  box-shadow: -1px 2px 2px -1px black;
+  height: 60px;
+}
+
+tbody tr {
+  box-shadow: 0 4px 5PX -1px #DCDCDC;
+}
+
+th {
+  margin: 0;
+  padding: 0;
+}
+
+th h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  font-weight: 100;
+  margin: 7px;
+}
+
+.kvalitetsindikator {
+  text-align: left;
+  width: 60%;
+}
+
+.valgt_enhet {
+  width: 20%;
+  text-align: center;
+}
+
+.nasjonalt {
+  text-align: center;
+  width: 20%;
+}
+
+.register_navn h4 {
+ margin: 10px 15% 5px 7px;
+ font-weight: 100;
+ font-size: 1.2em;
+}
+
+.kvalitetsindikator_navn h1{
+  margin: 10px 15% 5px 7px;
+  font-size: 1.7em;
+  font-weight: 100;
+ }
+
+.ki_lang_beskrivelse p{
+  margin: 5px 15% 20px 7px;
+  color: #7d8588;
+  font-size: 1em;
+}
+
+.onsket_maalnivaa h4{
+  margin: 20px 15% 10px 7px;
+  color: #7ebec7;
+  font-weight: 700;
+}
+
+tbody .valgt_enhet {
+  background-color: rgba(126,190,199,0.20);
+}
+
+
+tbody tr:hover {
+  background-color: rgba(126,190,199,0.30);
+}
+

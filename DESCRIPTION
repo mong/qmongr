@@ -1,12 +1,11 @@
 Package: qmongr
 Title: Lightweight Quality Assessment of Norwegian Hospitals 
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
-    person(given = "First",
-           family = "Last",
+    person(given = "Yohannes",
+           family = "Tesfay",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")),
+           email = "yohannes.tesfay@helse-nord.no"),
     person(given = "Are",
            family = "Edvardsen",
            role = c("aut"),
@@ -32,5 +31,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
 Imports: 
     magrittr,
-    shiny
+    shiny,
+    dplyr,
+    tidyr,
+    rlang,
+    qmongrdata (>= 0.0.0.9000)
 Depends: R (>= 3.5)
+Remotes:  
+    skde-felles/qmongrdata
