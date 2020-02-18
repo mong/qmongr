@@ -35,5 +35,8 @@ Imports:
     shiny,
     dplyr,
     tidyr,
-    rlang
+    rlang,
+    qmongrdata (>= 0.0.0.9000)
 Depends: R (>= 3.5)
+Remotes:  
+    skde-felles/qmongrdata

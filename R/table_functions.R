@@ -16,11 +16,11 @@ load_data <- function(data_type = "begge") {
   stopifnot(data_type %in% c("beskrivelse", "indikator", "begge"))
   invisible(
     switch(data_type,
-      "beskrivelse" = list(beskrivelse = qmongr::IndBeskrNakke),
-      "indikator" = list(indikator = qmongr::KvalIndData),
+      "beskrivelse" = list(beskrivelse = qmongrdata::IndBeskrNakke),
+      "indikator" = list(indikator = qmongrdata::KvalIndData),
       "begge" = list(
-        beskrivelse = qmongr::IndBeskrNakke,
-        indikator   = qmongr::KvalIndData
+        beskrivelse = qmongrdata::IndBeskrNakke,
+        indikator   = qmongrdata::KvalIndData
       )
     )
   )
@@ -99,7 +99,7 @@ aggregate_data <- function(data_list) {
 
 compute_indicator <- function(agg_data)  {
 
-  if(!"value1" %in% names(agg_data)) {
+  if (!"value1" %in% names(agg_data)) {
     agg_data[["value1"]] <- 0
   }
   agg_data %>%
