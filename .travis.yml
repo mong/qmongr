@@ -36,7 +36,7 @@ r_packages:
   - devtools
 
 before_install:
-  - docker build -t hnske/qmongr .
+  - docker build -t hnskde/qmongr .
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
 
 before_script:
@@ -72,6 +72,7 @@ deploy:
     script: docker_push
     on:
       branch: master
+      condition: "$AFTER_JOBS = true"
 
 notifications:
   email:
