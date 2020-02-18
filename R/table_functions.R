@@ -98,6 +98,10 @@ aggregate_data <- function(data_list) {
 #' @export
 
 compute_indicator <- function(agg_data)  {
+
+  if(!"value1" %in% names(agg_data)) {
+    agg_data[["value1"]] <- 0
+  }
   agg_data %>%
     dplyr::mutate(
       total = .data[["value0"]] + .data[["value1"]],
