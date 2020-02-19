@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 RUN R -e "install.packages(c('remotes'), repos='https://cloud.r-project.org/')"
 
 # install qmongr app
-RUN R -e "remotes::install_github('SKDE-Felles/qmongr')"
+RUN R -e "remotes::install_github('SKDE-Felles/qmongr', upgrade = 'never')"
 
 EXPOSE 3838
 
