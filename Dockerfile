@@ -1,4 +1,4 @@
-FROM rocker/r-base
+FROM rocker/tidyverse
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 LABEL com.centurylinklabs.watchtower.enable="true"
