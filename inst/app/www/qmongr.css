@@ -4,18 +4,18 @@ body {
  font-family: Arial, Helvetica, sans-serif;
 }
 
-.behandlings_enhet {
+.treatment_unit {
   margin: 20px auto;
   padding: 10px;
   width: 90%;
   background-color: rgb(126,190,199);
 }
 
-.behandlings_enhet h3{
+.treatment_unit h3{
   float: right;
 }
 
-.behandlings_enhet .shiny-input-container{
+.treatment_unit .shiny-input-container{
   border-radius: 5px;
   margin-top:20px;
   float: left;
@@ -34,7 +34,7 @@ body {
   margin-left: 30px;
 }
 
-.hoy i{
+.high i{
   color: #bfe398;
 }
 
@@ -51,19 +51,19 @@ body {
   font-size: 22px;
 }
 
-.nivaa .hoy{
+.level .high{
   color: #bfe398;
 }
 
-.nivaa .moderat{
+.level .moderat{
   color: orange;
 }
 
-.nivaa .lav{
+.level .lav{
   color: red;
 }
 
-.nivaa i{
+.level i{
   font-size: 22px;
 }
 
@@ -100,46 +100,46 @@ th h2 {
   margin: 7px;
 }
 
-.kvalitetsindicator {
+.quality_indicator {
   text-align: left;
   width: 60%;
 }
 
-.valgt_enhet {
+.selected_unit {
   width: 20%;
   text-align: center;
 }
 
-.nasjonalt {
+.nationally {
   text-align: center;
   width: 20%;
 }
 
-.register_navn h4 {
+.register_name h4 {
  margin: 10px 15% 5px 7px;
  font-weight: 100;
  font-size: 1.2em;
 }
 
-.kvalitetsindicator_navn h1{
+.quality_indicator_name h1{
   margin: 10px 15% 5px 7px;
   font-size: 1.7em;
   font-weight: 100;
  }
 
-.qi_lang_description p{
+.qi_long_description p{
   margin: 5px 15% 20px 7px;
   color: #7d8588;
   font-size: 1em;
 }
 
-.onsket_maalnivaa h4{
+.desired_target_level h4{
   margin: 20px 15% 10px 7px;
   color: #7ebec7;
   font-weight: 700;
 }
 
-tbody .valgt_enhet {
+tbody .selected_unit {
   background-color: rgba(126,190,199,0.20);
 }
 

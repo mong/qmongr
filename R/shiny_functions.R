@@ -11,15 +11,15 @@ qi_table <- function(table_data, enhet) {
     tags$thead(
       tags$tr(
         tags$th(
-          class = "kvalitetsindicator",
-          tags$h2("Kvalitetsindicator")
+          class = "quality_indicator",
+          tags$h2("Kvalitetsindikator")
         ),
         tags$th(
-          class = "valgt_enhet",
+          class = "selected_unit",
           tags$h2(enhet)
         ),
         tags$th(
-          class = "nasjonalt",
+          class = "nationally",
           tags$h2("Nasjonalt")
         ),
       )
@@ -65,7 +65,7 @@ table_row_constructor <- function(dataframe_row) {
     indicator_onsket_nivaa <- "LAVT"
     icon_type <- function(indicator) {
       if (indicator < indicator_description$MaalNivaaGronn) {
-        icon <- shiny::icon("fas fa-circle", class = "hoy")
+        icon <- shiny::icon("fas fa-circle", class = "high")
       } else if (indicator > indicator_description$MaalNivaaGronn &
                 indicator < indicator_description$MaalNivaaGul) {
         icon <- shiny::icon("fas fa-adjust", class = "moderal")
@@ -78,7 +78,7 @@ table_row_constructor <- function(dataframe_row) {
     indicator_onsket_nivaa <- "H\u00D8YT"
     icon_type <- function(indicator) {
       if (indicator > indicator_description$MaalNivaaGronn) {
-        icon <- shiny::icon("fas fa-circle", class = "hoy")
+        icon <- shiny::icon("fas fa-circle", class = "high")
       } else if (indicator < indicator_description$MaalNivaaGronn &
                  indicator > indicator_description$MaalNivaaGul) {
         icon <- shiny::icon("fas fa-adjust", class = "moderal")
@@ -91,31 +91,31 @@ table_row_constructor <- function(dataframe_row) {
 
   tags$tr(
     tags$td(
-      class = "kvalitetsindicator",
+      class = "quality_indicator",
       tags$div(
-        class = "register_navn",
+        class = "register_name",
         tags$h4(reg_name)),
       tags$div(
-        class = "kvalitetsindicator_navn",
+        class = "quality_indicator_name",
         tags$h1(indicator_title)
         ),
       tags$div(
-        class = "qi_lang_description",
+        class = "qi_long_description",
         tags$p(indicator_long_desc)),
       tags$div(
-        class = "onsket_maalnivaa",
+        class = "desired_target_level",
         tags$h4(paste0(
           "\u00D8NSKET M\U00C5LNIV\U00C5: ",
           indicator_onsket_nivaa)))
     ),
     tags$td(
-      class = "valgt_enhet",
+      class = "selected_unit",
       tags$div(
         class = "aarstall",
         tags$p(year)
       ),
       tags$div(
-        class = "nivaa",
+        class = "level",
         tags$h1(paste0(indicator_value, " %"),
                 icon_type(indicator_value / 100))
       ),
@@ -125,13 +125,13 @@ table_row_constructor <- function(dataframe_row) {
       )
     ),
     tags$td(
-      class = "nasjonalt",
+      class = "nationally",
       tags$div(
         class = "aarstall",
         tags$p(year)
       ),
       tags$div(
-        class = "nivaa",
+        class = "level",
         tags$div(
           class = "value",
           tags$h1(paste0(indicator_value_n, "%"),

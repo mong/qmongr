@@ -1,6 +1,6 @@
 # Module UI
 
-#' @title   mod_kvalitetsoverview_ui and mod_kvalitetsoverview_server
+#' @title   mod_quality_overview_ui and mod_quality_overview_server
 #' @description  A shiny Module.
 #'
 #' @param id shiny id
@@ -8,17 +8,17 @@
 #' @param output internal
 #' @param session internal
 #'
-#' @rdname mod_kvalitetsoverview
+#' @rdname mod_quality_overview
 #'
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-mod_kvalitetsoverview_ui <- function(id) {
+mod_quality_overview_ui <- function(id) {
   ns <- shiny::NS(id)
   tagList(
     shiny::fluidPage(
       shiny::tags$div(
-        class = "behandlings_enhet",
+        class = "treatment_unit",
         shiny::fluidRow(
           shiny::column(
             width = 3,
@@ -45,7 +45,7 @@ mod_kvalitetsoverview_ui <- function(id) {
             width = 7,
             offset = 4,
             shiny::tags$ul(
-              shiny::tags$li(class = "hoy",
+              shiny::tags$li(class = "high",
                 shiny::icon("fas fa-circle"),
                 "H\u00F8y m\u00E5loppn\u00E5else"),
               shiny::tags$li(class = "moderat",
@@ -79,12 +79,12 @@ mod_kvalitetsoverview_ui <- function(id) {
 
 # Module Server
 
-#' @rdname mod_kvalitetsoverview
+#' @rdname mod_quality_overview
 #' @importFrom rlang .data
 #' @export
 #' @keywords internal
 
-mod_kvalitetsoverview_server <- function(input,
+mod_quality_overview_server <- function(input,
                                          output,
                                          session) {
 
