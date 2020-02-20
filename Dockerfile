@@ -14,8 +14,6 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libssl-dev
 
-# basic R functionality
-RUN R -e "install.packages(c('remotes'), repos='https://cloud.r-project.org/')"
 
 # install package dependency from github
 RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', upgrade = 'always')"
