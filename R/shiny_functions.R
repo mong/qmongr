@@ -11,8 +11,8 @@ ki_table <- function(table_data, enhet) {
     tags$thead(
       tags$tr(
         tags$th(
-          class = "kvalitetsindikator",
-          tags$h2("Kvalitetsindikator")
+          class = "kvalitetsindicator",
+          tags$h2("Kvalitetsindicator")
         ),
         tags$th(
           class = "valgt_enhet",
@@ -43,13 +43,13 @@ ki_table <- function(table_data, enhet) {
 #'
 table_row_constructor <- function(dataframe_row) {
 
-  indicator_description <- qmongr::load_data("beskrivelse")[["beskrivelse"]]
+  indicator_description <- qmongr::load_data("description")[["description"]]
   indicator_id <- dataframe_row[["kvalIndID"]]
   indicator_description <- indicator_description %>%
     dplyr::filter(.data[["IndID"]] ==  indicator_id)
   reg_name <- indicator_description[["Register"]]
   indicator_title <- indicator_description[["IndTittel"]]
-  indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
+  indicator_long_desc <- indicator_description[["descriptionKort"]]
   indicator_onsket_nivaa <- indicator_description[["MaalRetn"]]
 
   year <- dataframe_row[["Aar"]]
@@ -91,16 +91,16 @@ table_row_constructor <- function(dataframe_row) {
 
   tags$tr(
     tags$td(
-      class = "kvalitetsindikator",
+      class = "kvalitetsindicator",
       tags$div(
         class = "register_navn",
         tags$h4(reg_name)),
       tags$div(
-        class = "kvalitetsindikator_navn",
+        class = "kvalitetsindicator_navn",
         tags$h1(indicator_title)
         ),
       tags$div(
-        class = "ki_lang_beskrivelse",
+        class = "ki_lang_description",
         tags$p(indicator_long_desc)),
       tags$div(
         class = "onsket_maalnivaa",

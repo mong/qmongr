@@ -98,7 +98,7 @@ mod_kvalitetsoversikt_server <- function(input,
       qmongr::filter_data(filter_list) %>%
       qmongr::aggregate_data() %>%
       qmongr::compute_indicator()
-   ki_national <- qmongr::load_data("indikator")[["indikator"]] %>%
+   ki_national <- qmongr::load_data("indicator")[["indicator"]] %>%
        qmongr::compute_national_indicator()
 
    ki_joined <- ki_by_sh %>%

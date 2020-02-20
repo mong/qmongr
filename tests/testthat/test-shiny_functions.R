@@ -4,7 +4,7 @@ test_that("shiny table functions work", {
       filter_settings = list(Aar = 2017, ShNavn = "Trondheim, St. Olav")) %>%
     qmongr::aggregate_data() %>%
     qmongr::compute_indicator()
-  national_data <- qmongr::load_data("indikator")[["indikator"]] %>%
+  national_data <- qmongr::load_data("indicator")[["indicator"]] %>%
     qmongr::compute_national_indicator()
   table_data <- ind_data %>%
     dplyr::inner_join(
