@@ -110,7 +110,7 @@ compute_indicator <- function(agg_data)  {
 
 #'calculates the values of national KI
 #'
-#' @param kidata a dataframe
+#' @param qi_data a dataframe
 #'
 #' @importFrom rlang .data
 #'
@@ -118,8 +118,8 @@ compute_indicator <- function(agg_data)  {
 #' @export
 #'
 #'
-compute_national_indicator <- function(kidata) {
-  kidata  %>%
+compute_national_indicator <- function(qi_data) {
+  qi_data  %>%
     dplyr::group_by(
       .data[["Aar"]],
       .data[["kvalIndID"]],

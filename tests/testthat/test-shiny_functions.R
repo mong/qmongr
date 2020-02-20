@@ -13,7 +13,7 @@ test_that("shiny table functions work", {
              .data[["kvalIndID"]]))
 
   expect_type(
-    qmongr::ki_table(table_data, "Trondheim, St. Olav"), "list")
+    qmongr::qi_table(table_data, "Trondheim, St. Olav"), "list")
   expect_equal(
-    qmongr::ki_table(table_data, "Trondheim, St. Olav")$name, "table")
+    qmongr::qi_table(table_data, "Trondheim, St. Olav")$name, "table")
 })

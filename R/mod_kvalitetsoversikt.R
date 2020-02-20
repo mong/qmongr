@@ -1,6 +1,6 @@
 # Module UI
 
-#' @title   mod_kvalitetsoversikt_ui and mod_kvalitetsoversikt_server
+#' @title   mod_kvalitetsoverview_ui and mod_kvalitetsoverview_server
 #' @description  A shiny Module.
 #'
 #' @param id shiny id
@@ -8,12 +8,12 @@
 #' @param output internal
 #' @param session internal
 #'
-#' @rdname mod_kvalitetsoversikt
+#' @rdname mod_kvalitetsoverview
 #'
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-mod_kvalitetsoversikt_ui <- function(id) {
+mod_kvalitetsoverview_ui <- function(id) {
   ns <- shiny::NS(id)
   tagList(
     shiny::fluidPage(
@@ -63,13 +63,13 @@ mod_kvalitetsoversikt_ui <- function(id) {
           offset = 1,
           width = 2,
           shiny::uiOutput(
-            outputId = ns("ki_oversikt")
+            outputId = ns("qi_overview")
           )
         ),
         shiny::column(
           width = 8,
           shiny::uiOutput(
-            outputId = ns("ki_tabell")
+            outputId = ns("qi_table")
           )
         )
       )
@@ -79,35 +79,35 @@ mod_kvalitetsoversikt_ui <- function(id) {
 
 # Module Server
 
-#' @rdname mod_kvalitetsoversikt
+#' @rdname mod_kvalitetsoverview
 #' @importFrom rlang .data
 #' @export
 #' @keywords internal
 
-mod_kvalitetsoversikt_server <- function(input,
+mod_kvalitetsoverview_server <- function(input,
                                          output,
                                          session) {
 
   ns <- session$ns
-  output$ki_tabell <- shiny::renderUI({
+  output$qi_table <- shiny::renderUI({
     filter_list <-  list(
       ShNavn = shiny::req(input$velg_behandlingsenhet),
       Aar = shiny::req(input$velg_aar)
     )
-   ki_by_sh <-  qmongr::load_data() %>%
+   qi_by_sh <-  qmongr::load_data() %>%
       qmongr::filter_data(filter_list) %>%
       qmongr::aggregate_data() %>%
       qmongr::compute_indicator()
-   ki_national <- qmongr::load_data("indicator")[["indicator"]] %>%
+   qi_national <- qmongr::load_data("indicator")[["indicator"]] %>%
        qmongr::compute_national_indicator()
 
-   ki_joined <- ki_by_sh %>%
+   qi_joined <- qi_by_sh %>%
      dplyr::inner_join(
-       ki_national,
+       qi_national,
        by = c(.data[["Aar"]],
               .data[["kvalIndID"]])
     )
-   qmongr::ki_table(ki_joined, input$velg_behandlingsenhet)
+   qmongr::qi_table(qi_joined, input$velg_behandlingsenhet)
   })
 
    choices_behandlingsenhet <- shiny::reactive({

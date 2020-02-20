@@ -6,7 +6,7 @@
 #' @export
 #'
 
-ki_table <- function(table_data, enhet) {
+qi_table <- function(table_data, enhet) {
   tags$table(
     tags$thead(
       tags$tr(
@@ -100,7 +100,7 @@ table_row_constructor <- function(dataframe_row) {
         tags$h1(indicator_title)
         ),
       tags$div(
-        class = "ki_lang_description",
+        class = "qi_lang_description",
         tags$p(indicator_long_desc)),
       tags$div(
         class = "onsket_maalnivaa",
