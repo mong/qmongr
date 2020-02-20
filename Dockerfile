@@ -1,4 +1,4 @@
-FROM rocker/tidyverse
+FROM hnskde/qmongr-base-r
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 LABEL com.centurylinklabs.watchtower.enable="true"
