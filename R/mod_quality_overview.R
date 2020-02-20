@@ -94,14 +94,14 @@ mod_quality_overview_server <- function(input,
       ShNavn = shiny::req(input$pick_treatment_unit),
       Aar = shiny::req(input$pick_year)
     )
-   qi_by_sh <-  qmongr::load_data() %>%
+   qi_by_treatment_unit <-  qmongr::load_data() %>%
       qmongr::filter_data(filter_list) %>%
       qmongr::aggregate_data() %>%
       qmongr::compute_indicator()
    qi_national <- qmongr::load_data("indicator")[["indicator"]] %>%
        qmongr::compute_national_indicator()
 
-   qi_joined <- qi_by_sh %>%
+   qi_joined <- qi_by_treatment_unit %>%
      dplyr::inner_join(
        qi_national,
        by = c(.data[["Aar"]],

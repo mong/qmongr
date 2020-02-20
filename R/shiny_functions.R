@@ -49,7 +49,7 @@ table_row_constructor <- function(dataframe_row) {
     dplyr::filter(.data[["IndID"]] ==  indicator_id)
   reg_name <- indicator_description[["Register"]]
   indicator_title <- indicator_description[["IndTittel"]]
-  indicator_long_desc <- indicator_description[["descriptionKort"]]
+  indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
   indicator_desired_level <- indicator_description[["MaalRetn"]]
 
   year <- dataframe_row[["Aar"]]
