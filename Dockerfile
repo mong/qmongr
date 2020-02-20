@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 RUN R -e "install.packages(c('remotes'), repos='https://cloud.r-project.org/')"
 
 # install package dependency from github
-RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', upgrade = 'never')"
+RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', upgrade = 'always')"
 
 # add package tarball
 COPY *.tar.gz .
