@@ -5,7 +5,7 @@ LABEL com.centurylinklabs.watchtower.enable="true"
 
 
 # install package dependency from github
-RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', upgrade = 'always')"
+RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', upgrade = 'never')"
 
 # add package tarball
 COPY *.tar.gz .
