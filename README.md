@@ -37,15 +37,21 @@ This R package can be added to a docker image together with all _R_ and system d
 ### Build
 
 Since the _qmongr_ _R_ package is to be installed into the image please make sure to build the source tarball first. From a system command terminal navigate into the _qmongr_-directory and run:
-```R CMD build .```
+```
+R CMD build .
+```
 
 Then, build the docker image:
-```docker build -t qmongr .```
+```
+docker build -t qmongr .
+```
 
 ### Run
 
 To run the docker container from a system command terminal do:
-```docker run -p 3838:3838 qmongr```
+```
+docker run -p 3838:3838 qmongr
+```
 
 Then, open a web browser window and navigate to [your localhost at port 3838](http://127.0.0.1:3838) to use the _qmongr_ web application.
 
