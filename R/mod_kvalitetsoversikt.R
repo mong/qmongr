@@ -26,7 +26,7 @@ mod_quality_overview_ui <- function(id) {
           ),
           shiny::column(
             width = 3,
-            shiny::uiOutput(outputId = ns("behandlingsenhet"))
+            shiny::uiOutput(outputId = ns("treatment_unit"))
           ),
           shiny::column(
             width = 3,
@@ -34,7 +34,7 @@ mod_quality_overview_ui <- function(id) {
           ),
           shiny::column(
             width = 3,
-            shiny::uiOutput(outputId = ns("aar"))
+            shiny::uiOutput(outputId = ns("year"))
           )
         )
       ),
@@ -51,7 +51,7 @@ mod_quality_overview_ui <- function(id) {
               shiny::tags$li(class = "moderate",
                 shiny::icon("fas fa-adjust"),
                 "Moderat m\u00E5loppn\u00E5else"),
-              shiny::tags$li(class = "lav",
+              shiny::tags$li(class = "low",
                 shiny::icon("circle-o"),
                 "Lav m\u00E5loppn\u00E5else"),
             )
@@ -91,8 +91,8 @@ mod_quality_overview_server <- function(input,
   ns <- session$ns
   output$qi_table <- shiny::renderUI({
     filter_list <-  list(
-      ShNavn = shiny::req(input$velg_behandlingsenhet),
-      Aar = shiny::req(input$velg_aar)
+      ShNavn = shiny::req(input$pick_treatment_unit),
+      Aar = shiny::req(input$pick_year)
     )
    qi_by_sh <-  qmongr::load_data() %>%
       qmongr::filter_data(filter_list) %>%
@@ -107,10 +107,10 @@ mod_quality_overview_server <- function(input,
        by = c(.data[["Aar"]],
               .data[["kvalIndID"]])
     )
-   qmongr::qi_table(qi_joined, input$velg_behandlingsenhet)
+   qmongr::qi_table(qi_joined, input$pick_treatment_unit)
   })
 
-   choices_behandlingsenhet <- shiny::reactive({
+   choices_treatment_unit <- shiny::reactive({
       qmongr::load_data() %>%
       qmongr::filter_data() %>%
       qmongr::aggregate_data() %>%
@@ -119,29 +119,29 @@ mod_quality_overview_server <- function(input,
    })
 
 
-    choices_aar <- shiny::reactive({
-      choices_behandlingsenhet() %>%
+    choices_year <- shiny::reactive({
+      choices_treatment_unit() %>%
       dplyr::filter(
-        .data[["ShNavn"]] == shiny::req(input$velg_behandlingsenhet)
+        .data[["ShNavn"]] == shiny::req(input$pick_treatment_unit)
       )
    })
 
 
-  output$behandlingsenhet <- shiny::renderUI({
+  output$treatment_unit <- shiny::renderUI({
     shiny::selectInput(
       label = NULL,
-      inputId = ns("velg_behandlingsenhet"),
-      choices = choices_behandlingsenhet()[["ShNavn"]] %>%
+      inputId = ns("pick_treatment_unit"),
+      choices = choices_treatment_unit()[["ShNavn"]] %>%
         unique() %>%
         sort()
     )
   })
 
- output$aar <-  shiny::renderUI({
+ output$year <-  shiny::renderUI({
    shiny::selectInput(
       label = NULL,
-      inputId = ns("velg_aar"),
-      choices = choices_aar()[["Aar"]] %>%
+      inputId = ns("pick_year"),
+      choices = choices_year()[["Aar"]] %>%
         unique() %>%
         sort()
 
