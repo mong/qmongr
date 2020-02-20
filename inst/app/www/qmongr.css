@@ -38,7 +38,7 @@ body {
   color: #bfe398;
 }
 
-.moderat i{
+.moderate i{
   color: orange;
 }
 
@@ -55,11 +55,11 @@ body {
   color: #bfe398;
 }
 
-.level .moderat{
+.level .moderate{
   color: orange;
 }
 
-.level .lav{
+.level .low{
   color: red;
 }
 

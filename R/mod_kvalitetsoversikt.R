@@ -48,7 +48,7 @@ mod_quality_overview_ui <- function(id) {
               shiny::tags$li(class = "high",
                 shiny::icon("fas fa-circle"),
                 "H\u00F8y m\u00E5loppn\u00E5else"),
-              shiny::tags$li(class = "moderat",
+              shiny::tags$li(class = "moderate",
                 shiny::icon("fas fa-adjust"),
                 "Moderat m\u00E5loppn\u00E5else"),
               shiny::tags$li(class = "lav",

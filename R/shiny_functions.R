@@ -50,7 +50,7 @@ table_row_constructor <- function(dataframe_row) {
   reg_name <- indicator_description[["Register"]]
   indicator_title <- indicator_description[["IndTittel"]]
   indicator_long_desc <- indicator_description[["descriptionKort"]]
-  indicator_onsket_nivaa <- indicator_description[["MaalRetn"]]
+  indicator_desired_level <- indicator_description[["MaalRetn"]]
 
   year <- dataframe_row[["Aar"]]
   indicator_value <- dataframe_row[["andel"]]
@@ -61,29 +61,29 @@ table_row_constructor <- function(dataframe_row) {
   number_of_ones_n <- dataframe_row[["national_value1"]]
   total_n <- dataframe_row[["national_total"]]
 
-  if (indicator_onsket_nivaa == "lav") {
-    indicator_onsket_nivaa <- "LAVT"
+  if (indicator_desired_level == "lav") {
+    indicator_desired_level <- "LAVT"
     icon_type <- function(indicator) {
       if (indicator < indicator_description$MaalNivaaGronn) {
         icon <- shiny::icon("fas fa-circle", class = "high")
       } else if (indicator > indicator_description$MaalNivaaGronn &
                 indicator < indicator_description$MaalNivaaGul) {
-        icon <- shiny::icon("fas fa-adjust", class = "moderal")
+        icon <- shiny::icon("fas fa-adjust", class = "moderate")
       } else {
-        icon <- shiny::icon("circle-o", class = "lav")
+        icon <- shiny::icon("circle-o", class = "low")
       }
       return(icon)
     }
-  } else  if (indicator_onsket_nivaa == "hoy") {
-    indicator_onsket_nivaa <- "H\u00D8YT"
+  } else  if (indicator_desired_level == "hoy") {
+    indicator_desired_level <- "H\u00D8YT"
     icon_type <- function(indicator) {
       if (indicator > indicator_description$MaalNivaaGronn) {
         icon <- shiny::icon("fas fa-circle", class = "high")
       } else if (indicator < indicator_description$MaalNivaaGronn &
                  indicator > indicator_description$MaalNivaaGul) {
-        icon <- shiny::icon("fas fa-adjust", class = "moderal")
+        icon <- shiny::icon("fas fa-adjust", class = "moderate")
       } else {
-        icon <- shiny::icon("circle-o", class = "lav")
+        icon <- shiny::icon("circle-o", class = "low")
       }
       return(icon)
     }
@@ -106,12 +106,12 @@ table_row_constructor <- function(dataframe_row) {
         class = "desired_target_level",
         tags$h4(paste0(
           "\u00D8NSKET M\U00C5LNIV\U00C5: ",
-          indicator_onsket_nivaa)))
+          indicator_desired_level)))
     ),
     tags$td(
       class = "selected_unit",
       tags$div(
-        class = "aarstall",
+        class = "year",
         tags$p(year)
       ),
       tags$div(
@@ -127,7 +127,7 @@ table_row_constructor <- function(dataframe_row) {
     tags$td(
       class = "nationally",
       tags$div(
-        class = "aarstall",
+        class = "year",
         tags$p(year)
       ),
       tags$div(
