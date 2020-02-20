@@ -17,8 +17,17 @@ RUN apt-get update && apt-get install -y \
 # basic R functionality
 RUN R -e "install.packages(c('remotes'), repos='https://cloud.r-project.org/')"
 
-# install qmongr app
-RUN R -e "remotes::install_github('SKDE-Felles/qmongr', upgrade = 'never')"
+# install package dependency from github
+RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', upgrade = 'never')"
+
+# add package tarball
+COPY *.tar.gz .
+
+# install package
+RUN R CMD INSTALL --clean *.tar.gz
+
+# clean up
+RUN rm *.tar.gz
 
 EXPOSE 3838
 
