@@ -4,10 +4,10 @@
 \alias{compute_national_indicator}
 \title{calculates the values of national KI}
 \usage{
-compute_national_indicator(kidata)
+compute_national_indicator(qi_data)
 }
 \arguments{
-\item{kidata}{a dataframe}
+\item{qi_data}{a dataframe}
 }
 \value{
 dataframe with the the values of national ki

@@ -4,11 +4,11 @@
 \alias{load_data}
 \title{load data}
 \usage{
-load_data(data_type = "begge")
+load_data(data_type = "both")
 }
 \arguments{
 \item{data_type}{the dataframe to be loaded.
-It can be "beskrivelse", "indikator" or "begge".}
+It can be "description", "indicator" or "both".}
 }
 \value{
 a list with dataframes
@@ -17,8 +17,8 @@ a list with dataframes
 load data
 }
 \examples{
-indkator_beskrivelse <- load_data(data_type = "beskrivelse")
-indkator_data <- load_data(data_type = "indikator")
-indikator_med_beskrivelse <- load_data()
+indicator_description <- load_data(data_type = "description")
+indicator_data <- load_data(data_type = "indicator")
+indicator_with_description <- load_data()
 
 }

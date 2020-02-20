@@ -1,26 +1,26 @@
 #' load data
 #'
 #' @param data_type the dataframe to be loaded.
-#'    It can be "beskrivelse", "indikator" or "begge".
+#'    It can be "description", "indicator" or "both".
 #'
 #' @return a list with dataframes
 #' @export
 #'
 #' @examples
-#' indkator_beskrivelse <- load_data(data_type = "beskrivelse")
-#' indkator_data <- load_data(data_type = "indikator")
-#' indikator_med_beskrivelse <- load_data()
+#' indicator_description <- load_data(data_type = "description")
+#' indicator_data <- load_data(data_type = "indicator")
+#' indicator_with_description <- load_data()
 #'
 
-load_data <- function(data_type = "begge") {
-  stopifnot(data_type %in% c("beskrivelse", "indikator", "begge"))
+load_data <- function(data_type = "both") {
+  stopifnot(data_type %in% c("description", "indicator", "both"))
   invisible(
     switch(data_type,
-      "beskrivelse" = list(beskrivelse = qmongrdata::IndBeskrNakke),
-      "indikator" = list(indikator = qmongrdata::KvalIndData),
-      "begge" = list(
-        beskrivelse = qmongrdata::IndBeskrNakke,
-        indikator   = qmongrdata::KvalIndData
+      "description" = list(description = qmongrdata::IndBeskrNakke),
+      "indicator" = list(indicator = qmongrdata::KvalIndData),
+      "both" = list(
+        description = qmongrdata::IndBeskrNakke,
+        indicator   = qmongrdata::KvalIndData
       )
     )
   )
@@ -44,7 +44,7 @@ filter_data <- function(data_list, filter_settings = NULL) {
     return(data_list)
   } else {
     if (!is.null(filter_settings[["kvalIndID"]])) {
-      filter_settings[["kvalIndID"]] <- data_list[["beskrivelse"]] %>%
+      filter_settings[["kvalIndID"]] <- data_list[["description"]] %>%
         dplyr::filter(.data[["Register"]] == filter_settings[["kvalIndID"]]) %>%
         dplyr::select(.data[["indID"]]) %>%
         unique()
@@ -52,7 +52,7 @@ filter_data <- function(data_list, filter_settings = NULL) {
     length_of_filter <-  length(names(filter_settings))
 
     for (i in seq_len(length_of_filter)) {
-      data_list[["indikator"]] <-  data_list[["indikator"]] %>%
+      data_list[["indicator"]] <-  data_list[["indicator"]] %>%
         dplyr::filter(
           .data[[names(filter_settings)[[i]]]] %in%
           filter_settings[[names(filter_settings)[[i]]]]
@@ -73,7 +73,7 @@ filter_data <- function(data_list, filter_settings = NULL) {
 #'
 
 aggregate_data <- function(data_list) {
- agg_data <-  data_list[["indikator"]] %>%
+ agg_data <-  data_list[["indicator"]] %>%
     dplyr::group_by(
       .data[["ShNavn"]],
       .data[["Aar"]],
@@ -110,7 +110,7 @@ compute_indicator <- function(agg_data)  {
 
 #'calculates the values of national KI
 #'
-#' @param kidata a dataframe
+#' @param qi_data a dataframe
 #'
 #' @importFrom rlang .data
 #'
@@ -118,8 +118,8 @@ compute_indicator <- function(agg_data)  {
 #' @export
 #'
 #'
-compute_national_indicator <- function(kidata) {
-  kidata  %>%
+compute_national_indicator <- function(qi_data) {
+  qi_data  %>%
     dplyr::group_by(
       .data[["Aar"]],
       .data[["kvalIndID"]],
