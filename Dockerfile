@@ -1,19 +1,29 @@
+# first intermediate stage
+FROM hnskde/qmongr-base-r AS intermediate
+
+## in case we need an access token for upgrading during ci
+ARG GITHUB_PAT
+
+## upgrade qmongrdata from github
+RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', dependencies = FALSE, upgrade = 'never')"
+
+
+# second stage
 FROM hnskde/qmongr-base-r
+
+## copy updated from intermediate stage
+COPY --from=intermediate --chown=root:staff /usr/local/lib/R/site-library/qmongrdata /usr/local/lib/R/site-library/qmongrdata/
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 LABEL com.centurylinklabs.watchtower.enable="true"
 
-
-# install package dependency from github
-RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', upgrade = 'never')"
-
-# add package tarball
+## add package tarball
 COPY *.tar.gz .
 
-# install package
+## install package
 RUN R CMD INSTALL --clean *.tar.gz
 
-# clean up
+## clean up
 RUN rm *.tar.gz
 
 EXPOSE 3838
