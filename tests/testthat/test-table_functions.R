@@ -46,13 +46,13 @@ test_that("filter_data", {
 test_that("aggregate_data", {
   filtered_nkr1 <- readRDS("data/filter_data1.rds")
   expect_equal_to_reference(qmongr::aggregate_data(filtered_nkr1), "data/aggregate_data1.rds")
+
   filtered_nkr2 <- readRDS("data/filter_data2.rds")
   expect_equal_to_reference(qmongr::aggregate_data(filtered_nkr2), "data/aggregate_data2.rds")
 })
 
 
-test_that("compute_indicator works", {
-
+test_that("compute_indicator", {
   agg_nkr <- readRDS("data/aggregate_data1.rds")
   expect_equal_to_reference(qmongr::compute_indicator(agg_nkr), "data/compute_indicator1.rds")
 
