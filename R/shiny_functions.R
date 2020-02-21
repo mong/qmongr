@@ -6,20 +6,20 @@
 #' @export
 #'
 
-ki_table <- function(table_data, enhet) {
+qi_table <- function(table_data, enhet) {
   tags$table(
     tags$thead(
       tags$tr(
         tags$th(
-          class = "kvalitetsindikator",
+          class = "quality_indicator",
           tags$h2("Kvalitetsindikator")
         ),
         tags$th(
-          class = "valgt_enhet",
+          class = "selected_unit",
           tags$h2(enhet)
         ),
         tags$th(
-          class = "nasjonalt",
+          class = "nationally",
           tags$h2("Nasjonalt")
         ),
       )
@@ -43,14 +43,14 @@ ki_table <- function(table_data, enhet) {
 #'
 table_row_constructor <- function(dataframe_row) {
 
-  indicator_description <- qmongr::load_data("beskrivelse")[["beskrivelse"]]
+  indicator_description <- qmongr::load_data("description")[["description"]]
   indicator_id <- dataframe_row[["kvalIndID"]]
   indicator_description <- indicator_description %>%
     dplyr::filter(.data[["IndID"]] ==  indicator_id)
   reg_name <- indicator_description[["Register"]]
   indicator_title <- indicator_description[["IndTittel"]]
   indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
-  indicator_onsket_nivaa <- indicator_description[["MaalRetn"]]
+  indicator_desired_level <- indicator_description[["MaalRetn"]]
 
   year <- dataframe_row[["Aar"]]
   indicator_value <- dataframe_row[["andel"]]
@@ -61,29 +61,29 @@ table_row_constructor <- function(dataframe_row) {
   number_of_ones_n <- dataframe_row[["national_value1"]]
   total_n <- dataframe_row[["national_total"]]
 
-  if (indicator_onsket_nivaa == "lav") {
-    indicator_onsket_nivaa <- "LAVT"
+  if (indicator_desired_level == "lav") {
+    indicator_desired_level <- "LAVT"
     icon_type <- function(indicator) {
       if (indicator < indicator_description$MaalNivaaGronn) {
-        icon <- shiny::icon("fas fa-circle", class = "hoy")
+        icon <- shiny::icon("fas fa-circle", class = "high")
       } else if (indicator > indicator_description$MaalNivaaGronn &
                 indicator < indicator_description$MaalNivaaGul) {
-        icon <- shiny::icon("fas fa-adjust", class = "moderal")
+        icon <- shiny::icon("fas fa-adjust", class = "moderate")
       } else {
-        icon <- shiny::icon("circle-o", class = "lav")
+        icon <- shiny::icon("circle-o", class = "low")
       }
       return(icon)
     }
-  } else  if (indicator_onsket_nivaa == "hoy") {
-    indicator_onsket_nivaa <- "H\u00D8YT"
+  } else  if (indicator_desired_level == "hoy") {
+    indicator_desired_level <- "H\u00D8YT"
     icon_type <- function(indicator) {
       if (indicator > indicator_description$MaalNivaaGronn) {
-        icon <- shiny::icon("fas fa-circle", class = "hoy")
+        icon <- shiny::icon("fas fa-circle", class = "high")
       } else if (indicator < indicator_description$MaalNivaaGronn &
                  indicator > indicator_description$MaalNivaaGul) {
-        icon <- shiny::icon("fas fa-adjust", class = "moderal")
+        icon <- shiny::icon("fas fa-adjust", class = "moderate")
       } else {
-        icon <- shiny::icon("circle-o", class = "lav")
+        icon <- shiny::icon("circle-o", class = "low")
       }
       return(icon)
     }
@@ -91,31 +91,31 @@ table_row_constructor <- function(dataframe_row) {
 
   tags$tr(
     tags$td(
-      class = "kvalitetsindikator",
+      class = "quality_indicator",
       tags$div(
-        class = "register_navn",
+        class = "register_name",
         tags$h4(reg_name)),
       tags$div(
-        class = "kvalitetsindikator_navn",
+        class = "quality_indicator_name",
         tags$h1(indicator_title)
         ),
       tags$div(
-        class = "ki_lang_beskrivelse",
+        class = "qi_long_description",
         tags$p(indicator_long_desc)),
       tags$div(
-        class = "onsket_maalnivaa",
+        class = "desired_target_level",
         tags$h4(paste0(
           "\u00D8NSKET M\U00C5LNIV\U00C5: ",
-          indicator_onsket_nivaa)))
+          indicator_desired_level)))
     ),
     tags$td(
-      class = "valgt_enhet",
+      class = "selected_unit",
       tags$div(
-        class = "aarstall",
+        class = "year",
         tags$p(year)
       ),
       tags$div(
-        class = "nivaa",
+        class = "level",
         tags$h1(paste0(indicator_value, " %"),
                 icon_type(indicator_value / 100))
       ),
@@ -125,13 +125,13 @@ table_row_constructor <- function(dataframe_row) {
       )
     ),
     tags$td(
-      class = "nasjonalt",
+      class = "nationally",
       tags$div(
-        class = "aarstall",
+        class = "year",
         tags$p(year)
       ),
       tags$div(
-        class = "nivaa",
+        class = "level",
         tags$div(
           class = "value",
           tags$h1(paste0(indicator_value_n, "%"),

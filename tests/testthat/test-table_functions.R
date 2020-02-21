@@ -2,14 +2,14 @@ test_that("data loads", {
   expect_type(qmongr::load_data(), "list")
   expect_equal(
     names(qmongr::load_data()),
-    c("beskrivelse", "indikator")
+    c("description", "indicator")
   )
   expect_equal(
-    names(qmongr::load_data("beskrivelse")),
-    "beskrivelse"
+    names(qmongr::load_data("description")),
+    "description"
   )
   expect_equal(
-    names(qmongr::load_data("indikator")), "indikator")
+    names(qmongr::load_data("indicator")), "indicator")
 })
 
 nkr_data <- qmongr::load_data()
@@ -19,12 +19,12 @@ test_that("filter works", {
   expect_equal(
     unique(qmongr::filter_data(
       nkr_data,
-      filter_settings = list(Aar = 2015))[["indikator"]][["Aar"]]),
+      filter_settings = list(Aar = 2015))[["indicator"]][["Aar"]]),
     2015)
   expect_equal(
     unique(qmongr::filter_data(
       nkr_data,
-      filter_settings = list(ShNavn = "OUS, RH"))[["indikator"]][["ShNavn"]]),
+      filter_settings = list(ShNavn = "OUS, RH"))[["indicator"]][["ShNavn"]]),
     "OUS, RH")
 })
 
@@ -47,17 +47,17 @@ test_that("compute_indicator works", {
 
 test_that("compute_indicator works", {
   expect_type(
-    qmongr::compute_national_indicator(nkr_data[["indikator"]]), "list")
+    qmongr::compute_national_indicator(nkr_data[["indicator"]]), "list")
   expect_true(
     "national_value0" %in% names(
-      qmongr::compute_national_indicator(nkr_data[["indikator"]])))
+      qmongr::compute_national_indicator(nkr_data[["indicator"]])))
   expect_true(
     "national_value1" %in% names(
-      qmongr::compute_national_indicator(nkr_data[["indikator"]])))
+      qmongr::compute_national_indicator(nkr_data[["indicator"]])))
   expect_true(
     "national_total" %in% names(
-      qmongr::compute_national_indicator(nkr_data[["indikator"]])))
+      qmongr::compute_national_indicator(nkr_data[["indicator"]])))
   expect_true(
     "national_andel" %in% names(
-      qmongr::compute_national_indicator(nkr_data[["indikator"]])))
+      qmongr::compute_national_indicator(nkr_data[["indicator"]])))
 })
