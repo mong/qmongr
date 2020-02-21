@@ -39,6 +39,7 @@ r_packages:
 before_install:
   - R CMD build .
   - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t hnskde/qmongr .
+  - rm qmongr_*.tar.gz
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
 
 before_script:
@@ -59,6 +60,7 @@ after_success:
   - Rscript -e 'covr::codecov()'
   - Rscript -e 'roxygen2::roxygenise()'
 
+before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   # our site to gh_pages
   - provider: script
