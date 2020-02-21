@@ -23,7 +23,9 @@ test_that("filter_data", {
   nkr_data <- readRDS("data/load_data1.rds")
 
   expect_equal_to_reference(qmongr::filter_data(nkr_data), "data/filter_data1.rds")
-  expect_equal_to_reference(qmongr::filter_data(nkr_data, filter_settings = list(Aar = 2017, ShNavn = "Trondheim, St. Olav")), "data/filter_data2.rds")
+  expect_equal_to_reference(qmongr::filter_data(nkr_data,
+                                                filter_settings = list(Aar = 2017, ShNavn = "Trondheim, St. Olav")),
+                            "data/filter_data2.rds")
 
   expect_type(qmongr::filter_data(nkr_data), "list")
 
@@ -60,5 +62,6 @@ test_that("compute_indicator works", {
 
 test_that("compute_national_indicator", {
   nkr_data <- readRDS("data/load_data1.rds")
-  expect_equal_to_reference(qmongr::compute_national_indicator(nkr_data[["indicator"]]), "data/compute_national_indicator1.rds")
+  expect_equal_to_reference(qmongr::compute_national_indicator(nkr_data[["indicator"]]),
+                            "data/compute_national_indicator1.rds")
 })

@@ -9,5 +9,6 @@ test_that("qi_table", {
              .data[["kvalIndID"]]))
 
   expect_error(qmongr::qi_table(table_data))
-  expect_equal_to_reference(qmongr::qi_table(table_data, "Trondheim, St. Olav"), "data/qi_table1.rds")
+  expect_equal_to_reference(qmongr::qi_table(table_data, "Trondheim, St. Olav"),
+                            "data/qi_table1.rds")
 })
