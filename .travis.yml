@@ -30,6 +30,7 @@ deploy:
   # our site to gh_pages
   - provider: script
     script: Rscript -e 'pkgdown::deploy_site_github()'
+    skip_cleanup: true
     on:
       branch: travis_reboot
   # our image to dockerhub
