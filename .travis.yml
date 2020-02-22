@@ -11,6 +11,7 @@ services:
 
 r_github_packages:
   - jimhester/covr
+  - jimhester/lintr
 
 before_install:
   - R CMD build .
@@ -26,14 +27,14 @@ deploy:
     cleanup: false
     on:
       branch: travis_reboot
-      condition: "$AFTER_JOBS = true"
   # our image to dockerhub
   - provider: script
     script: docker_push
     on:
       branch: master
-      condition: "$AFTER_JOBS = true"
 
 after_success:
+  - R CMD INSTALL $PKG_TARBALL
+  - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'covr::codecov()'
 
