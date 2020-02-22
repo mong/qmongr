@@ -1,64 +1,22 @@
 language: r
 cache: packages
-os: linux
+
+r:
+  - oldrel
+  - release
+  - devel
 
 services:
   - docker
 
-jobs:
-  include:
-    - os: linux
-      dist: xenial
-      r: release
-      env: 
-        - DIST=xenial
-        - AFTER_JOBS=true
-    - os: linux
-      dist: xenial
-      r: devel
-      env: 
-        - DIST=xenial
-        - AFTER_JOBS=false
-    - os: linux
-      dist: bionic
-      r: release
-      env: 
-        - DIST=bionic
-        - AFTER_JOBS=false
-
-env:
-  global:
-    - _R_CHECK_TESTS_NLINES_=0
-
-r_packages:
-  - covr
-  - lintr
-  - roxygen2
-  - devtools
+r_github_packages:
+  - jimhester/covr
 
 before_install:
   - R CMD build .
   - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t hnskde/qmongr .
   - rm qmongr_*.tar.gz
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
-
-before_script:
-  - export PKG_TARBALL=$(Rscript -e 'pkg <- devtools::as.package("."); cat(paste0(pkg$package,"_",pkg$version,".tar.gz"))')
-
-script:
-  - R CMD build .
-  - R CMD check --as-cran *tar.gz
-  - docker ps | grep -q qmongr
-
-after_script:
-  - |
-    if [[ "$AFTER_JOBS" == "true" ]] && [[ "$TRAVIS_EVENT_TYPE" == "push" ]]; then
-      Rscript -e 'lintr::lint_package()'
-    fi
-
-after_success:
-  - Rscript -e 'covr::codecov()'
-  - Rscript -e 'roxygen2::roxygenise()'
 
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
@@ -67,7 +25,7 @@ deploy:
     script: Rscript -e 'pkgdown::deploy_site_github()'
     cleanup: false
     on:
-      branch: master
+      branch: travis_reboot
       condition: "$AFTER_JOBS = true"
   # our image to dockerhub
   - provider: script
@@ -76,7 +34,6 @@ deploy:
       branch: master
       condition: "$AFTER_JOBS = true"
 
-notifications:
-  email:
-    on_success: change # default: change
-    on_failure: change # default: always
+after_success:
+  - Rscript -e 'covr::codecov()'
+
