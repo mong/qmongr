@@ -36,6 +36,7 @@ deploy:
   # our image to dockerhub
   - provider: script
     script: bash docker_push
+    skip_cleanup: true
     on:
       branch: master
 
