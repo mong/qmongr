@@ -12,6 +12,7 @@ services:
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
+  - r-lib/pkgdown
 
 before_install:
   - R CMD build .
@@ -19,7 +20,12 @@ before_install:
   - rm qmongr_*.tar.gz
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
 
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+after_success:
+  - R CMD INSTALL $PKG_TARBALL
+  - Rscript -e 'lintr::lint_package()'
+  - rm -rf qmongr.Rcheck
+  - Rscript -e 'covr::codecov()'
+
 deploy:
   # our site to gh_pages
   - provider: script
@@ -32,9 +38,4 @@ deploy:
     script: docker_push
     on:
       branch: master
-
-after_success:
-  - R CMD INSTALL $PKG_TARBALL
-  - Rscript -e 'lintr::lint_package()'
-  - Rscript -e 'covr::codecov()'
 
