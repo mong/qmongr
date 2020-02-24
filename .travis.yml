@@ -39,5 +39,6 @@ deploy:
     skip_cleanup: true
     on:
       branch: travis_reboot
+      condition: $TRAVIS_R_VERSION_STRING == "release"
 
 
