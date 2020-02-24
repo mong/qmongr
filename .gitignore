@@ -7,3 +7,4 @@
 *~ # emacs
 *.tar.gz
 docs/
+_qmongr.yml
