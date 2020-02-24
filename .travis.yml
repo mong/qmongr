@@ -32,13 +32,15 @@ deploy:
     script: Rscript -e 'pkgdown::deploy_site_github()'
     skip_cleanup: true
     on:
-      branch: master 
+      branch: master
+      condition: $TRAVIS_R_VERSION_STRING == "release"
   # our image to dockerhub
   - provider: script
     script: bash docker_push
     skip_cleanup: true
     on:
-      branch: travis_reboot
+      # next two maybe to be replaced by: 'tags: true'
+      branch: master
       condition: $TRAVIS_R_VERSION_STRING == "release"
 
 
