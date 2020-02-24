@@ -24,15 +24,18 @@ after_success:
   - R CMD INSTALL $PKG_TARBALL
   - Rscript -e 'lintr::lint_package()'
   - rm -rf qmongr.Rcheck
+  - Rscript -e 'pkgdown::build_site()'
   - Rscript -e 'covr::codecov()'
 
 deploy:
   # our site to gh_pages
-  - provider: script
-    script: Rscript -e 'pkgdown::deploy_site_github()'
+  - provider: pages
     skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep-history: false
+    local-dir: docs
     on:
-      branch: master
+      branch: build_site
       condition: $TRAVIS_R_VERSION_STRING == "release"
   # our image to dockerhub
   - provider: script
