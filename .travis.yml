@@ -1,40 +1,18 @@
 language: r
 cache: packages
-os: linux
+
+r:
+  - oldrel
+  - release
+  - devel
 
 services:
   - docker
 
-jobs:
-  include:
-    - os: linux
-      dist: xenial
-      r: release
-      env: 
-        - DIST=xenial
-        - AFTER_JOBS=true
-    - os: linux
-      dist: xenial
-      r: devel
-      env: 
-        - DIST=xenial
-        - AFTER_JOBS=false
-    - os: linux
-      dist: bionic
-      r: release
-      env: 
-        - DIST=bionic
-        - AFTER_JOBS=false
-
-env:
-  global:
-    - _R_CHECK_TESTS_NLINES_=0
-
-r_packages:
-  - covr
-  - lintr
-  - roxygen2
-  - devtools
+r_github_packages:
+  - jimhester/covr
+  - jimhester/lintr
+  - r-lib/pkgdown
 
 before_install:
   - R CMD build .
@@ -42,41 +20,27 @@ before_install:
   - rm qmongr_*.tar.gz
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
 
-before_script:
-  - export PKG_TARBALL=$(Rscript -e 'pkg <- devtools::as.package("."); cat(paste0(pkg$package,"_",pkg$version,".tar.gz"))')
-
-script:
-  - R CMD build .
-  - R CMD check --as-cran *tar.gz
-  - docker ps | grep -q qmongr
-
-after_script:
-  - |
-    if [[ "$AFTER_JOBS" == "true" ]] && [[ "$TRAVIS_EVENT_TYPE" == "push" ]]; then
-      Rscript -e 'lintr::lint_package()'
-    fi
-
 after_success:
+  - R CMD INSTALL $PKG_TARBALL
+  - Rscript -e 'lintr::lint_package()'
+  - rm -rf qmongr.Rcheck
   - Rscript -e 'covr::codecov()'
-  - Rscript -e 'roxygen2::roxygenise()'
 
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   # our site to gh_pages
   - provider: script
     script: Rscript -e 'pkgdown::deploy_site_github()'
-    cleanup: false
+    skip_cleanup: true
     on:
       branch: master
-      condition: "$AFTER_JOBS = true"
+      condition: $TRAVIS_R_VERSION_STRING == "release"
   # our image to dockerhub
   - provider: script
-    script: docker_push
+    script: bash docker_push
+    skip_cleanup: true
     on:
+      # next two maybe to be replaced by: 'tags: true'
       branch: master
-      condition: "$AFTER_JOBS = true"
+      condition: $TRAVIS_R_VERSION_STRING == "release"
 
-notifications:
-  email:
-    on_success: change # default: change
-    on_failure: change # default: always
+
