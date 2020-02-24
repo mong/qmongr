@@ -32,10 +32,10 @@ deploy:
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
-    keep-history: false
-    local-dir: docs
+    keep_history: false
+    local_dir: docs
     on:
-      branch: build_site
+      branch: master
       condition: $TRAVIS_R_VERSION_STRING == "release"
   # our image to dockerhub
   - provider: script
