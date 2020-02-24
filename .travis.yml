@@ -32,11 +32,12 @@ deploy:
     script: Rscript -e 'pkgdown::deploy_site_github()'
     skip_cleanup: true
     on:
-      branch: travis_reboot
+      branch: master 
   # our image to dockerhub
   - provider: script
     script: bash docker_push
     skip_cleanup: true
     on:
-      branch: master
+      branch: travis_reboot
+
 
