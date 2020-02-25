@@ -30,9 +30,9 @@ after_success:
     if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]] && [[ "TRAVIS_EVENT_TYPE" == "push" ]]; then
       Rscript -e 'lintr::lint_package()'
       Rscript -e 'covr::codecov()'
-      Rscript -e 'pkgdown::build_site()'
     fi
   - rm -rf qmongr.Rcheck
+  - Rscript -e 'pkgdown::build_site()'
 
 deploy:
   # our site to gh_pages
