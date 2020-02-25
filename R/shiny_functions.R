@@ -7,9 +7,9 @@
 #'
 
 qi_table <- function(table_data, enhet){
-  tags$table(
-    tags$thead(
-      tags$tr(
+  tags$table( 
+    tags$thead( 
+      tags$tr( 
         tags$th(
           class = "quality_indicator",
           tags$h2("Kvalitetsindikator")
