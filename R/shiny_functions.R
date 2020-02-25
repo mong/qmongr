@@ -6,7 +6,7 @@
 #' @export
 #'
 
-qi_table <- function(table_data, enhet) {
+qi_table <- function(table_data, enhet){
   tags$table(
     tags$thead(
       tags$tr(
