@@ -9,6 +9,10 @@ r:
 services:
   - docker
 
+env:
+  global:
+    - _R_CHECK_TESTS_NLINES_=0
+
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
