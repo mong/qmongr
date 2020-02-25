@@ -23,24 +23,21 @@
 #' @export
 create_config <- function() {
   file <- system.file("qmongr.yml", package = "qmongr")
-  created <- file.copy(file, to = config_file)
-  if (created)
-    cli::cli_alert_success("_qmongr.yml file copied: fill it in")
-  else
-    cli::cli_alert_danger("Cannot create config file")
-
-  invisible()
+  if (!file.exists("_qmongr.yml")) {
+    file.copy(file, to = "_qmongr.yml")
+    return("_qmongr.yml file copied: fill it in")
+  } else {
+    return("Cannot create _qmongr.yml config file: already exists")
+  }
 }
-
-config_file <- "_qmongr.yml"
 
 #' Retrieve Config
 #'
 #' Retrieves config file.
 #'
 #' @keywords internal
-get_config <- function() {
-  has_config()
+get_config <- function(config_file) {
+  has_config(config_file)
   config <- yaml::read_yaml(config_file)
   check_config(config)
   return(config)
@@ -57,7 +54,7 @@ check_config <- function(config) {
 #' Ensure config file is present.
 #'
 #' @keywords internal
-has_config <- function() {
+has_config <- function(config_file) {
   has_config <- file.exists(config_file)
   if (!has_config)
     stop(
