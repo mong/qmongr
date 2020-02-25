@@ -46,7 +46,7 @@ get_config <- function(config_file) {
 }
 
 check_config <- function(config) {
-  if (config$database$user == "me" && config$database$password == "password" && config$database$name == "name")
+  if (!is.character(config$app_text$menus$unit))
     stop("Complete the config file: _qmongr.yml")
   invisible()
 }
