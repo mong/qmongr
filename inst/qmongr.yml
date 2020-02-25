@@ -1,20 +1,20 @@
 app_text:
     menus:
-        - unit: "Velg behandlingssted"
-        - year: "Velg år"
+        unit: "Velg behandlingssted"
+        year: "Velg år"
     indicators:
-        - high: "Høy måloppnåelse"
-        - moderate: "Moderat måloppnåelse"
-        - low: "Lav måloppnåelse"
+        high: "Høy måloppnåelse"
+        moderate: "Moderat måloppnåelse"
+        low: "Lav måloppnåelse"
     table:
-        - main_column: "Kvalitetsindikator"
-        - national_column: "Nasjonalt"
-        - desired_level: "Ønsket målnivå"
+        main_column: "Kvalitetsindikator"
+        national_column: "Nasjonalt"
+        desired_level: "Ønsket målnivå"
 data:
     column:
-        - year: "Aar"
-        - qi_id: "kvalIndID"
-        - unit: "ShNavn"
-        - unit_id: "SykehusId"
-        - variable: "Variabel"
-        - source: "Register"
+        year: "Aar"
+        qi_id: "kvalIndID"
+        unit: "ShNavn"
+        unit_id: "SykehusId"
+        variable: "Variabel"
+        source: "Register"

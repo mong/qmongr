@@ -4,7 +4,10 @@
 \alias{has_config}
 \title{Has Config}
 \usage{
-has_config()
+has_config(config_file)
+}
+\arguments{
+\item{config_file}{Config file to ensure is present}
 }
 \description{
 Ensure config file is present.

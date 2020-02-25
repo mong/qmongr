@@ -35,6 +35,8 @@ create_config <- function() {
 #'
 #' Retrieves config file.
 #'
+#' @param config_file Config file to extract (yaml)
+#'
 #' @keywords internal
 get_config <- function(config_file) {
   has_config(config_file)
@@ -52,6 +54,8 @@ check_config <- function(config) {
 #' Has Config
 #'
 #' Ensure config file is present.
+#'
+#' @param config_file Config file to ensure is present
 #'
 #' @keywords internal
 has_config <- function(config_file) {
