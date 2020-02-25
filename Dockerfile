@@ -20,6 +20,9 @@ LABEL com.centurylinklabs.watchtower.enable="true"
 ## add package tarball
 COPY *.tar.gz .
 
+## install dependencies
+RUN R -e "remotes::install_deps()"
+
 ## install package
 RUN R CMD INSTALL --clean *.tar.gz
 
