@@ -30,7 +30,7 @@ after_success:
     if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]] && [[ "$TRAVIS_EVENT_TYPE" == "push" ]]; then
       Rscript -e 'lintr::lint_package()'
       Rscript -e 'covr::codecov()'
-    fi  
+    fi
   - rm -rf qmongr.Rcheck
   - Rscript -e 'pkgdown::build_site()'
 
