@@ -20,7 +20,7 @@ Authors@R: c(
 Description: A web application that provides an interactive presentation of
     quality indicators for Norwegian hospitals. Results are provided along
     different dimensions such as treatment, tenant and geography. The
-    application itself can be accessed here <https://mongr.no/qmongr>.
+    application itself can be accessed here <https://mongr.no/app/qmongr>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
