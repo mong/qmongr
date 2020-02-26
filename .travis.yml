@@ -27,7 +27,7 @@ before_install:
 after_success:
   - R CMD INSTALL $PKG_TARBALL
   - |
-    if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]] && [[ "TRAVIS_EVENT_TYPE" == "push" ]]; then
+    if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]] && [[ "$TRAVIS_EVENT_TYPE" == "push" ]]; then
       Rscript -e 'lintr::lint_package()'
       Rscript -e 'covr::codecov()'
     fi
@@ -38,7 +38,7 @@ deploy:
   # our site to gh_pages
   - provider: pages
     skip_cleanup: true
-    github_token: $GITHUB_TOKEN
+    token: $GH_TOKEN
     keep_history: false
     local_dir: docs
     on:
