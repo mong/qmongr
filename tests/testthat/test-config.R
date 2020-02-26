@@ -1,6 +1,6 @@
 test_that("create_config", {
   expect_equal(create_config(dir = "data"), "Cannot create data/_qmongr.yml config file: already exists")
-  
+
   expect_equal(create_config(), "./_qmongr.yml file created: fill it in")
   file.remove("_qmongr.yml")
 })
@@ -14,7 +14,7 @@ test_that("check_config", {
 
   test_config <- list()
   expect_error(check_config(test_config))
-  
+
   test_config <- list("a" = 2.5, "b" = TRUE)
   expect_error(check_config(test_config))
 
