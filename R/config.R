@@ -19,7 +19,8 @@
 #'
 #' Creates a configuration file based on the default shipped with qmongr package.
 #'
-#' @rdname config
+#' @param dir Folder to put config file
+#'
 #' @export
 create_config <- function(dir = ".") {
   ref_file <- system.file("qmongr.yml", package = "qmongr")
@@ -36,6 +37,8 @@ create_config <- function(dir = ".") {
 #'
 #' Retrieves config file.
 #'
+#' @param dir Folder location of _qmongr.yml file
+#'
 #' @export
 get_config <- function(dir = ".") {
   config_file <- paste(dir, "_qmongr.yml", sep = "/")
@@ -48,6 +51,10 @@ get_config <- function(dir = ".") {
   return(config)
 }
 
+#' Check config file
+#'
+#' @param config Config file to check
+#'
 check_config <- function(config) {
   if ((class(config) != "list") | (!("app_text" %in% attributes(config)$names))) {
     stop("Complete the config file: _qmongr.yml")
