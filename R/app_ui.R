@@ -2,8 +2,8 @@
 #'
 #' @return user interface
 #' @export
-app_ui <- function(){
-  shiny::tagList( 
+app_ui <- function() {
+  shiny::tagList(
     # Leave this function for adding external resources
     qmongr::add_external_resources(),
     # List the first level UI elements here
