@@ -20,11 +20,8 @@ LABEL com.centurylinklabs.watchtower.enable="true"
 ## add package tarball
 COPY *.tar.gz .
 
-## add package DESCRIPTION file
-COPY DESCRIPTION .
-
-## install dependencies
-RUN R -e "remotes::install_deps()"
+## install dependencies not yet in qmongr-base-r
+RUN R -e "install.packages('yaml')"
 
 ## install package
 RUN R CMD INSTALL --clean *.tar.gz
