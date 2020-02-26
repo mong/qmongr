@@ -12,6 +12,7 @@ services:
 env:
   global:
     - _R_CHECK_TESTS_NLINES_=0
+    - GITHUB_TOKEN=
 
 r_github_packages:
   - jimhester/covr
@@ -38,7 +39,7 @@ deploy:
   # our site to gh_pages
   - provider: pages
     skip_cleanup: true
-    github_token: $GITHUB_TOKEN
+    token: $GH_TOKEN
     keep_history: false
     local_dir: docs
     on:
