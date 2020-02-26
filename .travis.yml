@@ -27,10 +27,8 @@ before_install:
 after_success:
   - R CMD INSTALL $PKG_TARBALL
   - |
-    if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]] && [[ "$TRAVIS_EVENT_TYPE" == "pull_request" ]]; then
-      Rscript -e 'lintr::lint_package()'
-    fi
     if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]] && [[ "$TRAVIS_EVENT_TYPE" == "push" ]]; then
+      Rscript -e 'lintr::lint_package()'
       Rscript -e 'covr::codecov()'
     fi  
   - rm -rf qmongr.Rcheck
