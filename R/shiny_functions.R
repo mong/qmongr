@@ -1,33 +1,35 @@
 #' html table
 #'
 #' @param table_data a dataframe to construct a html table from
-#' @param enhet the chosen unit
+#' @param unit the chosen unit
+#' @param config the configuration setup
+#'
 #' @importFrom shiny tags
 #' @export
 #'
 
-qi_table <- function(table_data, enhet) {
+qi_table <- function(table_data, unit, config) {
   tags$table(
     tags$thead(
       tags$tr(
         tags$th(
           class = "quality_indicator",
-          tags$h2("Kvalitetsindikator")
+          tags$h2(config$app_text$table$main_column)
         ),
         tags$th(
           class = "selected_unit",
-          tags$h2(enhet)
+          tags$h2(unit)
         ),
         tags$th(
           class = "nationally",
-          tags$h2("Nasjonalt")
+          tags$h2(config$app_text$table$national_column)
         ),
       )
     ),
     tags$tbody(
       lapply(
         seq_along(table_data[[1]]),
-        function(x) qmongr::table_row_constructor(table_data[x, ]))
+        function(x) qmongr::table_row_constructor(table_data[x, ], config))
     )
   )
 }
@@ -36,12 +38,14 @@ qi_table <- function(table_data, enhet) {
 #'constructs a row of a html table
 #'
 #' @param dataframe_row a row of a df
+#' @param config the configuration setup
+#'
 #' @importFrom rlang .data
 #' @importFrom shiny tags
 #' @return a row of html table
 #' @export
 #'
-table_row_constructor <- function(dataframe_row) {
+table_row_constructor <- function(dataframe_row, config) {
 
   indicator_description <- qmongr::load_data("description")[["description"]]
   indicator_id <- dataframe_row[["kvalIndID"]]
@@ -105,7 +109,7 @@ table_row_constructor <- function(dataframe_row) {
       tags$div(
         class = "desired_target_level",
         tags$h4(paste0(
-          "\u00D8NSKET M\U00C5LNIV\U00C5: ",
+          config$app_text$table$desired_level,
           indicator_desired_level)))
     ),
     tags$td(

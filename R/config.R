@@ -1,0 +1,54 @@
+# MIT License
+# Copyright (c) 2020 John Coene
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+# the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+# THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+#' Configuration
+#'
+#' Creates a configuration file based on the default shipped with qmongr package.
+#'
+#' @rdname config
+#' @export
+create_config <- function() {
+  file <- system.file("qmongr.yml", package = "qmongr")
+  if (!file.exists("_qmongr.yml")) {
+    file.copy(file, to = "_qmongr.yml")
+    return("_qmongr.yml file copied: fill it in")
+  } else {
+    return("Cannot create _qmongr.yml config file: already exists")
+  }
+}
+
+#' Retrieve Config
+#'
+#' Retrieves config file.
+#'
+#' @export
+get_config <- function() {
+  config_file <- "_qmongr.yml"
+  if (!file.exists(config_file)) {
+    # Use the default if _qmongr.yml does not exist
+    config_file <- system.file("qmongr.yml", package = "qmongr")
+  }
+  config <- yaml::read_yaml(config_file)
+  check_config(config)
+  return(config)
+}
+
+check_config <- function(config) {
+  if (!is.character(config$app_text$menus$unit))
+    stop("Complete the config file: _qmongr.yml")
+  invisible()
+}

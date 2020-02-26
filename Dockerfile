@@ -20,6 +20,9 @@ LABEL com.centurylinklabs.watchtower.enable="true"
 ## add package tarball
 COPY *.tar.gz .
 
+## install dependencies not yet in qmongr-base-r
+RUN R -e "install.packages('yaml')"
+
 ## install package
 RUN R CMD INSTALL --clean *.tar.gz
 
