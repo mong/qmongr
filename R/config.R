@@ -17,7 +17,7 @@
 
 #' Configuration
 #'
-#' Creates a configuration file.
+#' Creates a configuration file based on the default shipped with qmongr package.
 #'
 #' @rdname config
 #' @export
@@ -35,11 +35,13 @@ create_config <- function() {
 #'
 #' Retrieves config file.
 #'
-#' @param config_file Config file to extract (yaml)
-#'
-#' @keywords internal
-get_config <- function(config_file) {
-  has_config(config_file)
+#' @export
+get_config <- function() {
+  config_file <- "_qmongr.yml"
+  if (!file.exists(config_file)) {
+    # Use the default if _qmongr.yml does not exist
+    config_file <- system.file("qmongr.yml", package = "qmongr")
+  }
   config <- yaml::read_yaml(config_file)
   check_config(config)
   return(config)
@@ -48,22 +50,5 @@ get_config <- function(config_file) {
 check_config <- function(config) {
   if (!is.character(config$app_text$menus$unit))
     stop("Complete the config file: _qmongr.yml")
-  invisible()
-}
-
-#' Has Config
-#'
-#' Ensure config file is present.
-#'
-#' @param config_file Config file to ensure is present
-#'
-#' @keywords internal
-has_config <- function(config_file) {
-  has_config <- file.exists(config_file)
-  if (!has_config)
-    stop(
-      "Missing config file, see `create_config`", call. = FALSE
-    )
-
   invisible()
 }

@@ -4,12 +4,8 @@
 \alias{get_config}
 \title{Retrieve Config}
 \usage{
-get_config(config_file)
-}
-\arguments{
-\item{config_file}{Config file to extract (yaml)}
+get_config()
 }
 \description{
 Retrieves config file.
 }
-\keyword{internal}

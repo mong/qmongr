@@ -7,5 +7,5 @@
 create_config()
 }
 \description{
-Creates a configuration file.
+Creates a configuration file based on the default shipped with qmongr package.
 }

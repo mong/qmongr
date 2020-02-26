@@ -4,12 +4,14 @@
 \alias{qi_table}
 \title{html table}
 \usage{
-qi_table(table_data, enhet)
+qi_table(table_data, unit, config)
 }
 \arguments{
 \item{table_data}{a dataframe to construct a html table from}
 
-\item{enhet}{the chosen unit}
+\item{unit}{the chosen unit}
+
+\item{config}{the configuration setup}
 }
 \description{
 html table

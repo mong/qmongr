@@ -15,6 +15,7 @@
 #' @importFrom shiny NS tagList
 mod_quality_overview_ui <- function(id) {
   ns <- shiny::NS(id)
+  config <- qmongr::get_config()
   tagList(
     shiny::fluidPage(
       shiny::tags$div(
@@ -22,7 +23,7 @@ mod_quality_overview_ui <- function(id) {
         shiny::fluidRow(
           shiny::column(
             width = 3,
-            shiny::tags$h3("Velg behandlingsenhet: ")
+            shiny::tags$h3(config$app_text$menus$unit)
           ),
           shiny::column(
             width = 3,
@@ -30,7 +31,7 @@ mod_quality_overview_ui <- function(id) {
           ),
           shiny::column(
             width = 3,
-            shiny::tags$h3("Velg \u00E5r : ")
+            shiny::tags$h3(config$app_text$menus$year)
           ),
           shiny::column(
             width = 3,
@@ -47,13 +48,13 @@ mod_quality_overview_ui <- function(id) {
             shiny::tags$ul(
               shiny::tags$li(class = "high",
                 shiny::icon("fas fa-circle"),
-                "H\u00F8y m\u00E5loppn\u00E5else"),
+                config$app_text$indicators$high),
               shiny::tags$li(class = "moderate",
                 shiny::icon("fas fa-adjust"),
-                "Moderat m\u00E5loppn\u00E5else"),
+                config$app_text$indicators$moderate),
               shiny::tags$li(class = "low",
                 shiny::icon("circle-o"),
-                "Lav m\u00E5loppn\u00E5else"),
+                config$app_text$indicators$low),
             )
           )
         )
@@ -89,6 +90,7 @@ mod_quality_overview_server <- function(input,
                                          session) {
 
   ns <- session$ns
+  config <- qmongr::get_config()
   output$qi_table <- shiny::renderUI({
     filter_list <-  list(
       ShNavn = shiny::req(input$pick_treatment_unit),
@@ -107,7 +109,7 @@ mod_quality_overview_server <- function(input,
        by = c(.data[["Aar"]],
               .data[["kvalIndID"]])
     )
-   qmongr::qi_table(qi_joined, input$pick_treatment_unit)
+   qmongr::qi_table(qi_joined, input$pick_treatment_unit, config)
   })
 
    choices_treatment_unit <- shiny::reactive({

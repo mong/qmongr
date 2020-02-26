@@ -4,10 +4,12 @@
 \alias{table_row_constructor}
 \title{constructs a row of a html table}
 \usage{
-table_row_constructor(dataframe_row)
+table_row_constructor(dataframe_row, config)
 }
 \arguments{
 \item{dataframe_row}{a row of a df}
+
+\item{config}{the configuration setup}
 }
 \value{
 a row of html table
