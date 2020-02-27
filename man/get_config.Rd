@@ -4,7 +4,10 @@
 \alias{get_config}
 \title{Retrieve Config}
 \usage{
-get_config()
+get_config(dir = ".")
+}
+\arguments{
+\item{dir}{Folder location of _qmongr.yml file}
 }
 \description{
 Retrieves config file.

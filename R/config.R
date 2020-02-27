@@ -19,15 +19,17 @@
 #'
 #' Creates a configuration file based on the default shipped with qmongr package.
 #'
-#' @rdname config
+#' @param dir Folder to put config file
+#'
 #' @export
-create_config <- function() {
-  file <- system.file("qmongr.yml", package = "qmongr")
-  if (!file.exists("_qmongr.yml")) {
-    file.copy(file, to = "_qmongr.yml")
-    return("_qmongr.yml file copied: fill it in")
+create_config <- function(dir = ".") {
+  ref_file <- system.file("qmongr.yml", package = "qmongr")
+  new_file <- paste(dir, "_qmongr.yml", sep = "/")
+  if (!file.exists(new_file)) {
+    file.copy(ref_file, to = new_file)
+    return(paste0(new_file, " file created: fill it in"))
   } else {
-    return("Cannot create _qmongr.yml config file: already exists")
+    return(paste0("Cannot create ", new_file, " config file: already exists"))
   }
 }
 
@@ -35,9 +37,11 @@ create_config <- function() {
 #'
 #' Retrieves config file.
 #'
+#' @param dir Folder location of _qmongr.yml file
+#'
 #' @export
-get_config <- function() {
-  config_file <- "_qmongr.yml"
+get_config <- function(dir = ".") {
+  config_file <- paste(dir, "_qmongr.yml", sep = "/")
   if (!file.exists(config_file)) {
     # Use the default if _qmongr.yml does not exist
     config_file <- system.file("qmongr.yml", package = "qmongr")
@@ -47,8 +51,13 @@ get_config <- function() {
   return(config)
 }
 
+#' Check config file
+#'
+#' @param config Config file to check
+#'
 check_config <- function(config) {
-  if (!is.character(config$app_text$menus$unit))
+  if ((class(config) != "list") | (!("app_text" %in% attributes(config)$names))) {
     stop("Complete the config file: _qmongr.yml")
+  }
   invisible()
 }
