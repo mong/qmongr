@@ -4,7 +4,10 @@
 \alias{create_config}
 \title{Configuration}
 \usage{
-create_config()
+create_config(dir = ".")
+}
+\arguments{
+\item{dir}{Folder to put config file}
 }
 \description{
 Creates a configuration file based on the default shipped with qmongr package.
