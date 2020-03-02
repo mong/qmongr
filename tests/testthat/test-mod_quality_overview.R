@@ -16,7 +16,7 @@ test_that("mod_quality_overview_server", {
         expect_error(output$qi_table)
         expect_equal(output$year[["deps"]][[1]][["name"]], "selectize")
         expect_equal(output$treatment_unit[["deps"]][[1]][["name"]], "selectize")
-        
+
         # Select non-selectable year
         session$setInputs(pick_treatment_unit = "Oslofjordklinikken")
         session$setInputs(pick_year = "qwerty")
@@ -29,24 +29,27 @@ test_that("mod_quality_overview_server", {
 
 test_that("mod_quality_overview_ui", {
     # These tests are fragile, since they are depending on the order of elements in shiny output.
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["attribs"]][["class"]],
-    "container-fluid")
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[1]][["attribs"]][["class"]],
-    "treatment_unit")
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[1]],
-    "Velg behandlingssted:")
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[2]][["children"]][[1]][["attribs"]][["id"]],
-    "test-treatment_unit")
+    high_level <- mod_quality_overview_ui("test")[[1]][[3]][[1]]
+    expect_equal(high_level[["attribs"]][["class"]],
+                 "container-fluid")
+    expect_equal(high_level[["children"]][[1]][["attribs"]][["class"]],
+                 "treatment_unit")
 
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[3]][["children"]][[1]][["children"]][[1]],
-    "Velg år:")
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[4]][["children"]][[1]][["attribs"]][["id"]],
-    "test-year")
+    children_one <- high_level[["children"]][[1]][["children"]][[1]]
+    expect_equal(children_one[["children"]][[1]][["children"]][[1]][["children"]][[1]],
+                 "Velg behandlingssted:")
+    expect_equal(children_one[["children"]][[2]][["children"]][[1]][["attribs"]][["id"]],
+                 "test-treatment_unit")
+    expect_equal(children_one[["children"]][[3]][["children"]][[1]][["children"]][[1]],
+                 "Velg år:")
+    expect_equal(children_one[["children"]][[4]][["children"]][[1]][["attribs"]][["id"]],
+                 "test-year")
 
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[2]][["children"]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[2]],
-    "H\u00F8y m\u00E5loppn\u00E5else")
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[2]][["children"]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[2]][["children"]][[2]],
-    "Moderat m\u00E5loppn\u00E5else")
-    expect_equal(mod_quality_overview_ui("test")[[1]][[3]][[1]][["children"]][[2]][["children"]][[1]][["children"]][[1]][["children"]][[1]][["children"]][[3]][["children"]][[2]],
-    "Lav m\u00E5loppn\u00E5else")
+    children_two <- high_level[["children"]][[2]][["children"]][[1]][["children"]][[1]][["children"]][[1]]
+    expect_equal(children_two[["children"]][[1]][["children"]][[2]],
+                 "H\u00F8y m\u00E5loppn\u00E5else")
+    expect_equal(children_two[["children"]][[2]][["children"]][[2]],
+                 "Moderat m\u00E5loppn\u00E5else")
+    expect_equal(children_two[["children"]][[3]][["children"]][[2]],
+                 "Lav m\u00E5loppn\u00E5else")
 })
