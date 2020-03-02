@@ -29,6 +29,7 @@ test_that("mod_quality_overview_server", {
 
 test_that("mod_quality_overview_ui", {
     # These tests are fragile, since they are depending on the order of elements in shiny output.
+    config <- get_config()
     high_level <- mod_quality_overview_ui("test")[[1]][[3]][[1]]
     expect_equal(high_level[["attribs"]][["class"]],
                  "container-fluid")
@@ -37,19 +38,19 @@ test_that("mod_quality_overview_ui", {
 
     children_one <- high_level[["children"]][[1]][["children"]][[1]]
     expect_equal(children_one[["children"]][[1]][["children"]][[1]][["children"]][[1]],
-                 "Velg behandlingssted:")
+                 config$app_text$menus$unit)
     expect_equal(children_one[["children"]][[2]][["children"]][[1]][["attribs"]][["id"]],
                  "test-treatment_unit")
     expect_equal(children_one[["children"]][[3]][["children"]][[1]][["children"]][[1]],
-                 "Velg år:")
+                 config$app_text$menus$year)
     expect_equal(children_one[["children"]][[4]][["children"]][[1]][["attribs"]][["id"]],
                  "test-year")
 
     children_two <- high_level[["children"]][[2]][["children"]][[1]][["children"]][[1]][["children"]][[1]]
     expect_equal(children_two[["children"]][[1]][["children"]][[2]],
-                 "H\u00F8y m\u00E5loppn\u00E5else")
+                 config$app_text$indicators$high)
     expect_equal(children_two[["children"]][[2]][["children"]][[2]],
-                 "Moderat m\u00E5loppn\u00E5else")
+                 config$app_text$indicators$moderate)
     expect_equal(children_two[["children"]][[3]][["children"]][[2]],
-                 "Lav m\u00E5loppn\u00E5else")
+                 config$app_text$indicators$low)
 })
