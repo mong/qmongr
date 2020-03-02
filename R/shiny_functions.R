@@ -91,6 +91,11 @@ table_row_constructor <- function(dataframe_row, config) {
       }
       return(icon)
     }
+  } else {
+    indicator_desired_level <- "FIX ME!!!"
+    icon_type <- function(indicator) {
+      shiny::icon("circle-o", class = "low")
+    }
   }
 
   tags$tr(
