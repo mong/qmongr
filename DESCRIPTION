@@ -40,4 +40,4 @@ Imports:
 Depends: R (>= 3.5)
 Remotes:  
     skde-felles/qmongrdata,
-    github::rstudio/shiny
+    rstudio/shiny
