@@ -16,10 +16,10 @@ load_data <- function(data_type = "both") {
   stopifnot(data_type %in% c("description", "indicator", "both"))
   invisible(
     switch(data_type,
-      "description" = list(description = qmongrdata::IndBeskrNakke),
+      "description" = list(description = qmongrdata::IndBeskr),
       "indicator" = list(indicator = qmongrdata::KvalIndData),
       "both" = list(
-        description = qmongrdata::IndBeskrNakke,
+        description = qmongrdata::IndBeskr,
         indicator   = qmongrdata::KvalIndData
       )
     )
