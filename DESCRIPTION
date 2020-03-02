@@ -39,5 +39,5 @@ Imports:
     qmongrdata (>= 0.0.0.9000)
 Depends: R (>= 3.5)
 Remotes:  
-    skde-felles/qmongrdata
+    skde-felles/qmongrdata,
     github::rstudio/shiny
