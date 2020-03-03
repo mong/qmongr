@@ -36,7 +36,8 @@ Imports:
     tidyr,
     rlang,
     yaml,
-    qmongrdata (>= 0.0.0.9000)
+    qmongrdata (>= 0.0.0.9000),
+    lubridate
 Depends: R (>= 3.5)
-Remotes:  
+Remotes: 
     skde-felles/qmongrdata
