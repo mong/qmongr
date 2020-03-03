@@ -2,19 +2,20 @@
 % Please edit documentation in R/table_functions.R
 \name{load_data}
 \alias{load_data}
-\title{load data}
+\title{load data from qmongrdata}
 \usage{
-load_data(data_type = "both")
+load_data(data_type = "all")
 }
 \arguments{
-\item{data_type}{the dataframe to be loaded.
-It can be "description", "indicator" or "both".}
+\item{data_type}{the dataframes to be loaded.
+It can be "description", "indicator", "hospital_name_structure"
+and "all".}
 }
 \value{
 a list with dataframes
 }
 \description{
-load data
+load data from qmongrdata
 }
 \examples{
 indicator_description <- load_data(data_type = "description")

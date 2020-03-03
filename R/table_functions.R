@@ -1,7 +1,8 @@
-#' load data
+#' load data from qmongrdata
 #'
-#' @param data_type the dataframe to be loaded.
-#'    It can be "description", "indicator" or "both".
+#' @param data_type the dataframes to be loaded.
+#'    It can be "description", "indicator", "hospital_name_structure"
+#'    and "all".
 #'
 #' @return a list with dataframes
 #' @export
@@ -12,83 +13,127 @@
 #' indicator_with_description <- load_data()
 #'
 
-load_data <- function(data_type = "both") {
-  stopifnot(data_type %in% c("description", "indicator", "both"))
+load_data <- function(data_type = "all") {
+  stopifnot(
+    data_type %in%
+      c("description", "indicator", "hospital_name_structure", "all"))
   invisible(
     switch(data_type,
-      "description" = list(description = qmongrdata::IndBeskrNakke),
+      "description" = list(description = qmongrdata::IndBeskr),
       "indicator" = list(indicator = qmongrdata::KvalIndData),
-      "both" = list(
-        description = qmongrdata::IndBeskrNakke,
-        indicator   = qmongrdata::KvalIndData
+      "hospital_name_structure" = list(
+        hospital_name_structure = qmongrdata::SykehusNavnStruktur),
+      "all" = list(
+        description = qmongrdata::IndBeskr,
+        indicator   = qmongrdata::KvalIndData,
+        hospital_name_structure = qmongrdata::SykehusNavnStruktur
       )
     )
   )
 }
 
-#' filter data
-#' @param data_list a list of dataframes
-#' @param filter_settings list of values that will be used to subset the
-#'   dataframe. The list elements should have the same name as the columns
-#'   in the dataframe.
+#' adds HF or RHF organization nr
+#'
+#' @param data_list a list of dataframe
+#' @param by can be RHF or HF
+#'
 #' @importFrom rlang .data
-#' @return list of filtered dataframes
+#' @return the input data with organization nr appended
 #' @export
 #'
-#'
-#'
 
-filter_data <- function(data_list, filter_settings = NULL) {
+add_orgnr <- function(data_list, by = "RHF") {
+  org_column <- paste0("OrgNr", by)
+  
+    
 
-  if (is.null(filter_settings)) {
-    return(data_list)
-  } else {
-    if (!is.null(filter_settings[["kvalIndID"]])) {
-      filter_settings[["kvalIndID"]] <- data_list[["description"]] %>%
-        dplyr::filter(.data[["Register"]] == filter_settings[["kvalIndID"]]) %>%
-        dplyr::select(.data[["indID"]]) %>%
-        unique()
-    }
-    length_of_filter <-  length(names(filter_settings))
-
-    for (i in seq_len(length_of_filter)) {
-      data_list[["indicator"]] <-  data_list[["indicator"]] %>%
-        dplyr::filter(
-          .data[[names(filter_settings)[[i]]]] %in%
-          filter_settings[[names(filter_settings)[[i]]]]
-      )
-    }
-    return(data_list)
-  }
+    #adds the RHF or HF organization nr
+    data_list[["indicator"]] <-  data_list[["indicator"]] %>%
+      dplyr::left_join(
+        data_list[["hospital_name_structure"]] %>%
+          dplyr::select(
+            .data[[org_column]],
+            .data[["OrgNrShus"]],
+            .data[["SykehusNavn"]]) %>%
+          dplyr::mutate(
+            "OrgNrShus" = as.character(.data[["OrgNrShus"]])),
+        by = c("SykehusId" = "OrgNrShus")
+      ) %>%
+      dplyr:: filter(!is.na(.data[["SykehusNavn"]]))
 }
 
-#' aggregate data
+#' group data
 #'
-#' @inheritParams filter_data
+#' @inheritParams add_orgnr
+#' @param by can be RHF, HF, hospital og an empty string
 #'
 #' @importFrom rlang .data
 #'
 #' @return aggregated data
 #' @export
 #'
+group_data <- function(data_list, by) {
+  if (by == "RHF" | by == "HF") {
+    org_column <- paste0("OrgNr", by)
+    data_list[["indicator"]] <- add_orgnr(data_list, by) %>%
+      dplyr::group_by(
+        .data[[org_column]],
+        .data[["Aar"]],
+        .data[["kvalIndID"]]
+     )
+  } else if (by == "hospital") {
+    data_list[["indicator"]] <- data_list[["indicator"]] %>%
+      dplyr::group_by(
+        .data[["SykehusId"]],
+        .data[["Aar"]],
+        .data[["kvalIndID"]]
+      )
+  } else if (by == "") {
+    data_list[["indicator"]] <- data_list[["indicator"]] %>%
+      dplyr::group_by(
+        .data[["Aar"]],
+        .data[["kvalIndID"]]
+      )
+  }
+  #
+  indicator_median <- "intensiv2"
+  indicator_mean <- c(
+    "nakke1", "nakke2", "nakke3", "nakke4", "intensiv1"
+  )
+  grouped_mean <- data_list[["indicator"]] %>%
+    dplyr::filter(.data[["kvalIndID"]] %in% indicator_mean) %>%
+    compute_indicator_mean()
 
-aggregate_data <- function(data_list) {
- agg_data <-  data_list[["indicator"]] %>%
-    dplyr::group_by(
-      .data[["ShNavn"]],
-      .data[["Aar"]],
-      .data[["Variabel"]],
-      .data[["kvalIndID"]])  %>%
-    dplyr::summarise(count = dplyr::n()) %>%
-    tidyr::pivot_wider(
-      names_from = .data[["Variabel"]],
-      names_prefix = "value",
-      values_from = .data[["count"]],
-      values_fill = list(count = 0))
+  grouped_median <- data_list[["indicator"]] %>%
+    dplyr::filter(.data[["kvalIndID"]] %in% indicator_median) %>%
+    compute_indicator_median()
+  grouped <- dplyr::bind_rows(grouped_mean, grouped_median) %>%
+    dplyr::arrange(.data[["kvalIndID"]]) %>%
+    dplyr::ungroup() %>%
+    as.data.frame()
+  levels_added <- get_indicator_level(
+    grouped_data = grouped,
+    description = data_list[["description"]]
+  )
 }
 
+#' calculates  mean value of the grouped variabels
 #'
-#' calculates ki (portion in % )
+#' @param grouped_data aggregated data
+#'
+#' @importFrom rlang .data
+#'
+#' @return aggrgated data with indicators
+#' @export
+
+compute_indicator_mean <- function(grouped_data)  {
+  grouped_data %>%
+    dplyr::summarise(
+      count = dplyr::n(),
+      indicator = mean(Variabel)
+    )
+}
+#' calculates median (portion in % )
 #'
 #' @param agg_data aggregated data
 #'
@@ -97,42 +142,86 @@ aggregate_data <- function(data_list) {
 #' @return aggrgated data with indicators
 #' @export
 
-compute_indicator <- function(agg_data)  {
-
-  if (!"value1" %in% names(agg_data)) {
-    agg_data[["value1"]] <- 0
-  }
-  agg_data %>%
-    dplyr::mutate(
-      total = .data[["value0"]] + .data[["value1"]],
-      andel = round(.data[["value1"]] * 100 / .data[["total"]]))
+compute_indicator_median <- function(grouped_data)  {
+  grouped_data %>%
+    dplyr::summarise(
+      count = dplyr::n(),
+      indicator = median(Variabel)
+    )
 }
 
-#'calculates the values of national KI
-#'
-#' @param qi_data a dataframe
+#' Adds a column with inidcator levels and
+#' and another with desired levels to the grouped data
+#' 
+#' @param grouped_data a dataframe
+#' @param description a
 #'
 #' @importFrom rlang .data
-#'
-#' @return dataframe with the the values of national ki
+#' @return the input data with additional indicator level
+#'  and desired level columns
 #' @export
 #'
-#'
-compute_national_indicator <- function(qi_data) {
-  qi_data  %>%
-    dplyr::group_by(
-      .data[["Aar"]],
-      .data[["kvalIndID"]],
-      .data[["Variabel"]]) %>%
-    dplyr::summarise(count = dplyr::n()) %>%
-    tidyr::pivot_wider(names_from = .data[["Variabel"]],
-                       names_prefix = "national_value",
-                       values_from = .data[["count"]],
-                       values_fill = list(count = 0)) %>%
-    dplyr::mutate(
-      national_total =
-        .data[["national_value0"]] + .data[["national_value1"]],
-      national_andel =
-        round(.data[["national_value1"]] * 100 / .data[["national_total"]])
-    )
+get_indicator_level <- function(grouped_data, description) {
+  grouped_data$level <- ""
+  grouped_data$desired_level <- ""
+  high <- function(indicator, green, yellow) {
+    if (indicator > green) {
+      level <- "H"
+    } else if (indicator < green & indicator > yellow) {
+      level <- "M"
+    } else {
+      level <- "L"
+    }
+    desired_level <-  "H\u00F8yt"
+    return(list(level = level, desired_level = desired_level))
+  }
+  low <- function(indicator, green, yellow) {
+    if (indicator < green) {
+      level <- "H"
+    } else if (indicator > green & indicator < yellow) {
+      level <- "M"
+    } else {
+      level <- "L"
+    }
+    desired_level <-  "Lavt"
+    return(list(level = level, desired_level = desired_level))
+  }
+  lapply(
+    seq_len(nrow(grouped_data)),
+    function(x) {
+      data_row <- grouped_data[x, ]
+      description <- description %>%
+        dplyr::filter(.data[["IndID"]] == data_row[["kvalIndID"]])
+      if (!is.na(description[["MaalRetn"]])) {
+        if (!is.na(description[["MaalNivaaGronn"]]) &
+            !is.na(description[["MaalNivaaGul"]])) {
+          if (description[["MaalRetn"]] == "hoy") {
+            level <- high(
+              indicator = data_row[["indicator"]],
+              green = description[["MaalNivaaGronn"]],
+              yellow = description[["MaalNivaaGul"]]
+            )
+          } else if (description[["MaalRetn"]] == "lav") {
+            level <- low(
+              indicator = data_row[["indicator"]],
+              green = description[["MaalNivaaGronn"]],
+              yellow =  description[["MaalNivaaGul"]]
+            )
+          }
+        } else {
+          desired_level <- switch(
+            description[["MaalRetn"]],
+            "hoy" =  "H\u00F8yt",
+            "lav" =  "Lavt"
+          )
+          level <- list(level = "ikke definert", desired_level = desired_level)
+        }
+      } else{
+        level <- list(level = "ikke definert", desired_level = "ikke definert")
+      }
+      grouped_data$level[x] <<- level$level
+      grouped_data$desired_level[x] <<- level$desired_level
+    }
+  )
+  return(grouped_data)
 }
