@@ -7,7 +7,7 @@ test_that("qi_table", {
     dplyr::inner_join(
       national_data,
       by = c(.data[["Aar"]],
-             .data[["kvalIndID"]]))
+             .data[["KvalIndID"]]))
 
   expect_error(qmongr::qi_table(table_data))
   expect_equal(qmongr::qi_table(table_data, "Trondheim, St. Olav", config)
