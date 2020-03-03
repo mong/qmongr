@@ -48,7 +48,7 @@ qi_table <- function(table_data, unit, config) {
 table_row_constructor <- function(dataframe_row, config) {
 
   indicator_description <- qmongr::load_data("description")[["description"]]
-  indicator_id <- dataframe_row[["kvalIndID"]]
+  indicator_id <- dataframe_row[["KvalIndID"]]
   indicator_description <- indicator_description %>%
     dplyr::filter(.data[["IndID"]] ==  indicator_id)
   reg_name <- indicator_description[["Register"]]

@@ -43,9 +43,9 @@ filter_data <- function(data_list, filter_settings = NULL) {
   if (is.null(filter_settings)) {
     return(data_list)
   } else {
-    if (!is.null(filter_settings[["kvalIndID"]])) {
-      filter_settings[["kvalIndID"]] <- data_list[["description"]] %>%
-        dplyr::filter(.data[["Register"]] == filter_settings[["kvalIndID"]]) %>%
+    if (!is.null(filter_settings[["KvalIndID"]])) {
+      filter_settings[["KvalIndID"]] <- data_list[["description"]] %>%
+        dplyr::filter(.data[["Register"]] == filter_settings[["KvalIndID"]]) %>%
         dplyr::select(.data[["indID"]]) %>%
         unique()
     }
@@ -78,7 +78,7 @@ aggregate_data <- function(data_list) {
       .data[["ShNavn"]],
       .data[["Aar"]],
       .data[["Variabel"]],
-      .data[["kvalIndID"]])  %>%
+      .data[["KvalIndID"]])  %>%
     dplyr::summarise(count = dplyr::n()) %>%
     tidyr::pivot_wider(
       names_from = .data[["Variabel"]],
@@ -122,7 +122,7 @@ compute_national_indicator <- function(qi_data) {
   qi_data  %>%
     dplyr::group_by(
       .data[["Aar"]],
-      .data[["kvalIndID"]],
+      .data[["KvalIndID"]],
       .data[["Variabel"]]) %>%
     dplyr::summarise(count = dplyr::n()) %>%
     tidyr::pivot_wider(names_from = .data[["Variabel"]],

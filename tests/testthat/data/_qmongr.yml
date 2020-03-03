@@ -13,8 +13,8 @@ app_text:
 data:
     column:
         year: "Aar"
-        qi_id: "kvalIndID"
+        qi_id: "KvalIndID"
         unit: "ShNavn"
-        unit_id: "SykehusId"
+        unit_id: "OrgNrShus"
         variable: "Variabel"
         source: "Register"

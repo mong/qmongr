@@ -107,7 +107,7 @@ mod_quality_overview_server <- function(input,
      dplyr::inner_join(
        qi_national,
        by = c(.data[["Aar"]],
-              .data[["kvalIndID"]])
+              .data[["KvalIndID"]])
     )
    qmongr::qi_table(qi_joined, input$pick_treatment_unit, config)
   })
