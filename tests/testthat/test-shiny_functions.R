@@ -7,9 +7,12 @@ test_that("qi_table", {
     dplyr::inner_join(
       national_data,
       by = c(.data[["Aar"]],
-             .data[["kvalIndID"]]))
+             .data[["KvalIndID"]]))
 
   expect_error(qmongr::qi_table(table_data))
-  expect_equal_to_reference(qmongr::qi_table(table_data, "Trondheim, St. Olav", config),
-                            "data/qi_table1.rds")
+  expect_equal(qmongr::qi_table(table_data, "Trondheim, St. Olav", config)
+               [["children"]][[1]][["children"]][[1]]
+               [["children"]][[1]][["children"]][[1]]
+               [["children"]][[1]],
+               config$app_text$table$main_column)
 })

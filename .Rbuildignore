@@ -11,3 +11,4 @@
 ^data-raw$
 ^Dockerfile$
 ^docker_push$
+^\.lintr$
