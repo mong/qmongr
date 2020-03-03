@@ -7,6 +7,6 @@
 
 # qmongr 0.1.0
 
-First working version of app (mainly #15 by @yte1 and #16 by @lenaringstado)
+First working version of app (mainly #15 by @yte0 and #16 by @lenaringstado)
 
 ![qmongr 0.1.0](https://user-images.githubusercontent.com/136346/74818563-2b035c00-52ff-11ea-999a-a3a0630eeb5f.png)
