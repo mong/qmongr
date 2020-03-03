@@ -15,6 +15,6 @@ data:
         year: "Aar"
         qi_id: "KvalIndID"
         unit: "ShNavn"
-        unit_id: "SykehusId"
+        unit_id: "OrgNrShus"
         variable: "Variabel"
         source: "Register"
