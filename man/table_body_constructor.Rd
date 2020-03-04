@@ -4,7 +4,7 @@
 \alias{table_body_constructor}
 \title{constructs a row of a html table}
 \usage{
-table_body_constructor(datatable, unit, config)
+table_body_constructor(datatable, units, config)
 }
 \arguments{
 \item{config}{the configuration setup}
