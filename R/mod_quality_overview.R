@@ -92,10 +92,10 @@ mod_quality_overview_server <- function(input,
   ns <- session$ns
   config <- qmongr::get_config()
   register_data <- qmongr::load_data()
-  grouped_by_HF <- qmongr::group_data(register_data, by = "HF") %>% 
+  grouped_by_HF <- qmongr::group_data(register_data, by = "HF") %>%
       dplyr::left_join(
-        register_data[["hospital_name_structure"]] %>% 
-          dplyr::select( 
+        register_data[["hospital_name_structure"]] %>%
+          dplyr::select(
             .data[["HF"]],
             .data[["OrgNrHF"]]
           ) %>%
@@ -105,20 +105,20 @@ mod_quality_overview_server <- function(input,
   grouped_by_RHF <- qmongr::group_data(
     register_data,
     by = "RHF"
-  ) %>% 
+  ) %>%
     dplyr::left_join(
-      register_data[["hospital_name_structure"]] %>% 
-        dplyr::select( 
+      register_data[["hospital_name_structure"]] %>%
+        dplyr::select(
           .data[["RHF"]],
           .data[["OrgNrRHF"]]
-        ) %>% 
+        ) %>%
         unique(),
       by = "OrgNrRHF"
     )
   grouped_by_hospital <- qmongr::group_data(
     register_data,
     by = "hospital"
-  ) %>% 
+  ) %>%
     dplyr::left_join(
       register_data[["hospital_name_structure"]] %>%
         dplyr::select(
@@ -130,52 +130,45 @@ mod_quality_overview_server <- function(input,
       by = c("SykehusId" = "OrgNrShus"),
     ) %>%
     dplyr::filter(!is.na(.data[["SykehusNavn"]]))
-  
   national_data <- qmongr::group_data(
     register_data,
     by = ""
   )
-
-
   output$qi_table <- shiny::renderUI({
     selected_units <- list()
-    selected_units$RHF <- input$pick_treatment_units[
+    selected_units[["RHF"]] <- input$pick_treatment_units[
       req(input$pick_treatment_units) %in%
-      choices_treatment$RHF]
+      choices_treatment[["RHF"]]]
     selected_units$HF <- input$pick_treatment_units[
       req(input$pick_treatment_units) %in%
         choices_treatment$HF]
     selected_units$SykehusNavn <- input$pick_treatment_units[
       req(input$pick_treatment_units) %in%
         choices_treatment$Sykehus]
-    
     selected_data <- list()
-    if(!rlang::is_empty(selected_units$RHF)) {
-      selected_data$RHF <- grouped_by_RHF %>% 
+    if (!rlang::is_empty(selected_units[["RHF"]])) {
+      selected_data[["RHF"]] <- grouped_by_RHF %>%
         dplyr::filter(
-          .data[["RHF"]] %in% selected_units$RHF,
+          .data[["RHF"]] %in% selected_units[["RHF"]],
           .data[["count"]] > 5,
           .data[["Aar"]] == input$pick_year)
     }
-    
-    if(!rlang::is_empty(selected_units$HF)) {
-      selected_data$HF <- grouped_by_HF %>% 
+    if (!rlang::is_empty(selected_units$HF)) {
+      selected_data[["HF"]] <- grouped_by_HF %>%
         dplyr::filter(
-          .data[["HF"]] %in% selected_units$HF,
+          .data[["HF"]] %in% selected_units[["HF"]],
           .data[["count"]] > 5,
           .data[["Aar"]] == input$pick_year)
     }
-    if(!rlang::is_empty(selected_units$Sykehus)) {
-      selected_data$SykehusNavn <- grouped_by_hospital %>% 
+    if (!rlang::is_empty(selected_units$Sykehus)) {
+      selected_data[["SykehusNavn"]] <- grouped_by_hospital %>%
         dplyr::filter(
           .data[["SykehusNavn"]] %in% selected_units$SykehusNavn,
           .data[["count"]] > 5,
           .data[["Aar"]] == input$pick_year)
     }
-    
-    selected_data$national <- national_data
-    
-    
+    selected_data$national <- national_data %>%
+      dplyr::filter(.data[["Aar"]] == input$pick_year)
     qmongr::qi_table(selected_data, selected_units, config)
   })
 
@@ -185,11 +178,10 @@ mod_quality_overview_server <- function(input,
       sort(),
     "HF" = grouped_by_HF$HF %>%
       unique() %>%
-      sort(), 
+      sort(),
     "Sykehus" = grouped_by_hospital$SykehusNavn %>%
       unique() %>%
       sort())
- 
   output$treatment_unit <- shiny::renderUI({
     shiny::selectInput(
       label = NULL,
@@ -198,18 +190,12 @@ mod_quality_overview_server <- function(input,
       multiple = TRUE
     )
   })
-  
   output$year <-  shiny::renderUI({
     shiny::selectInput(
       label = NULL,
       inputId = ns("pick_year"),
-      choices = c(2016,2017,2018,2019) %>%
+      choices = c(2016, 2017, 2018, 2019) %>%
         sort(decreasing = T)
-
     )
   })
- 
- 
-
-
 }

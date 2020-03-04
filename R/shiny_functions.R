@@ -9,33 +9,33 @@
 #'
 
 qi_table <- function(table_data, selected_units, config) {
+  national <- table_data$national
   if (!rlang::is_empty(table_data$RHF)) {
     colnames(table_data$RHF)[
       colnames(table_data$RHF) == "OrgNrRHF"] = "OrgNr" 
     colnames(table_data$RHF)[
-      colnames(table_data$RHF) == "RHF"] = "enhet" 
+      colnames(table_data$RHF) == "RHF"] = "treatment_units" 
   }
   if (!rlang::is_empty(table_data$HF)) {
     colnames(table_data$HF)[
       colnames(table_data$HF) == "OrgNrHF"] = "OrgNr"
     colnames(table_data$HF)[
-      colnames(table_data$HF) == "HF"] = "enhet" 
+      colnames(table_data$HF) == "HF"] = "treatment_units" 
   }
   if (!rlang::is_empty(table_data$Sykehus)) {
     colnames(table_data$Sykehus)[
       colnames(table_data$Sykehus) == "SykehusId"] = "OrgNr" 
     colnames(table_data$Sykehus)[
-      colnames(table_data$Sykehus) == "SykehusNavn"] = "enhet"
+      colnames(table_data$Sykehus) == "SykehusNavn"] = "treatment_units"
     table_data$Sykehus$OrgNr <- 
       as.numeric(table_data$Sykehus$OrgNr)
-    
+
   }
   table_data <- dplyr::bind_rows(
     table_data$Sykehus,
     table_data$HF,
     table_data$RHF
   )
-  
   tags$table(
     tags$thead(
       tags$tr(
@@ -44,7 +44,7 @@ qi_table <- function(table_data, selected_units, config) {
           tags$h2(config$app_text$table$main_column)
         ),
         lapply(
-          table_data$enhet %>% unique(),
+          table_data$treatment_units %>% unique(),
           function(x) {
             shiny::tags$th(
               class = "selected_unit",
@@ -62,13 +62,14 @@ qi_table <- function(table_data, selected_units, config) {
       qmongr::table_body_constructor(
         datatable = table_data,
         units = selected_units,
+        national = national,
         config = config)
     )
   )
 }
 
 #'
-#'constructs a row of a html table
+#'constructs the body of a table
 #'
 #' @param dataframe_row a row of a df
 #' @param config the configuration setup
@@ -78,7 +79,7 @@ qi_table <- function(table_data, selected_units, config) {
 #' @return a row of html table
 #' @export
 #'
-table_body_constructor <- function(datatable, units, config) {
+table_body_constructor <- function(datatable, units, national, config) {
   indicator_description <- qmongr::load_data("description")[["description"]]
   reg_name <- indicator_description %>%
     dplyr::filter(.data[["IndID"]] %in%
@@ -116,33 +117,12 @@ table_body_constructor <- function(datatable, units, config) {
           indicator_description = indicator_description,
           config = config,
           datatable = datatable,
-          units = units
+          units = units,
+          national = national
         )
       )
     }
   )
-  
- 
-    
-    
-    
-    
-    
-    # indicator_name <- indicator_name
-    # indicator_id <- datatable[["kvalIndID"]]
-    # indicator_description <- indicator_description %>%
-    #   dplyr::filter(.data[["IndID"]] ==  indicator_id)
-    # 
-    # indicator_title <- indicator_description[["IndTittel"]]
-    # indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
-    # indicator_desired_level <- indicator_description[["MaalRetn"]]
-  
-  # indicator_value_n <- dataframe_row[["national_andel"]]
-  # number_of_ones_n <- dataframe_row[["national_value1"]]
-  # total_n <- dataframe_row[["national_total"]]
-  # 
-  # 
-  # 
 
 }
 
@@ -157,21 +137,38 @@ table_body_constructor <- function(datatable, units, config) {
 #'
 #' @export
 #'
-indicator_rows <- function(indicator_name, indicator_description, config, datatable, units) {
+indicator_rows <- function(indicator_name, indicator_description, config, datatable, units, national) {
 
   indicator_description <- indicator_description %>%
         dplyr::filter(.data[["IndID"]] ==  indicator_name)
   reg_name <- indicator_description[["Register"]]
   indicator_title <- indicator_description[["IndTittel"]]
   indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
-  indicator_desired_level <- grouped_by_HF %>%
+  indicator_desired_level <- datatable %>%
     dplyr::filter(.data[["kvalIndID"]] == indicator_name) %>%
     dplyr::select(.data[["desired_level"]]) %>%
     unique() %>%
     as.list.data.frame() %>%
     as.array()
-  treatment_units <- datatable$enhet %>% unique()
-    return(
+  treatment_units <- datatable$treatment_units %>% unique()
+ 
+  national <- national %>% dplyr::filter(
+    .data[["kvalIndID"]] == indicator_name)
+  year <- national[["Aar"]]
+  total_n <- national[["count"]]
+  level <- national[["level"]]
+  if (national[["kvalIndID"]] == "intensiv2"){
+    indicator_value_n <- national[["indicator"]]
+    number_of_ones_n = ""
+  } else {
+    indicator_value_n <-paste0(round(
+      national[["indicator"]] * 100
+    ),"%")
+    number_of_ones_n = round(
+      total_n * national[["indicator"]]
+    )
+  }
+  return(
     tags$tr(
       tags$td(
         class = "quality_indicator",
@@ -190,58 +187,34 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
           tags$h4(paste0(
             config$app_text$table$desired_level, ": ",
             indicator_desired_level)))
-     ), 
-     
-     td <- lapply(
-       treatment_units,
-       qmongr::table_data,
-       table_cell_data = datatable,
-       indicator_name = indicator_name
+      ), 
+      td <- lapply(
+        treatment_units,
+        qmongr::table_data,
+        table_cell_data = datatable,
+        indicator_name = indicator_name
+      ),
+      tags$td(
+        class = "nationally",
+        tags$div(
+          class = "year",
+          tags$p(year)
+        ),
+        tags$div(
+          class = "level",
+        tags$div(
+          class = "value",
+          tags$h3(paste0(indicator_value_n),
+                  icon_type(level)))
+        ),
+        tags$div(
+          class = "ones_of_total",
+          tags$p(paste0(number_of_ones_n, " av ", total_n))
+        )
+      )
     )
-     
-     )
-    )
-{
-      #   tags$td(
-      #     class = "selected_unit",
-      #     tags$div(
-      #       class = "year",
-      #       tags$p(year)
-      #     ),
-      #     tags$div(
-      #       class = "level",
-      #       tags$h1(paste0(indicator_value, " %"),
-      #               icon_type(indicator_value / 100))
-      #     ),
-      #     tags$div(
-      #       class = "ones_of_total",
-      #       tags$p(paste0(number_of_ones, " av ", total))
-      #     )
-      #   ),
-      #   tags$td(
-      #     class = "nationally",
-      #     tags$div(
-      #       class = "year",
-      #       tags$p(year)
-      #     ),
-      #     tags$div(
-      #       class = "level",
-      #       tags$div(
-      #         class = "value",
-      #         tags$h1(paste0(indicator_value_n, "%"),
-      #                 icon_type(indicator_value_n / 100)))
-      #     ),
-      #     tags$div(
-      #       class = "ones_of_total",
-      #       tags$p(paste0(number_of_ones_n, " av ", total_n))
-      #     )
-      #   )
-      # )
-      }     
-    
-    
+  )
 }
-
 
 #'insert values to a td tag
 #'
@@ -257,7 +230,7 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
 table_data <- function(units, table_cell_data, indicator_name){
  
   table_cell_data <- table_cell_data %>%
-    dplyr::filter(.data[["enhet"]] == units,
+    dplyr::filter(.data[["treatment_units"]] == units,
                   .data[["kvalIndID"]] == indicator_name)
   if (nrow(table_cell_data) == 0) {
     return(
@@ -305,17 +278,11 @@ table_data <- function(units, table_cell_data, indicator_name){
   }
 }
 
-
-
-#'
 #'adds an icon to the table cells with qi
 #'
 #' @param level the indicator level
 #'
 #' @export
-#'
-#'
-#'
 #'
 
 icon_type <- function(level) {
@@ -326,8 +293,5 @@ icon_type <- function(level) {
     "L" = shiny::icon("circle-o", class = "low"),
     "ikke definert" = NULL
   )  
- 
-    return(icon)
+  return(icon)
 }
-
-
