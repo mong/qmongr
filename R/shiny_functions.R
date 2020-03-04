@@ -228,7 +228,7 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
 #' @export
 #'
 table_data <- function(units, table_cell_data, indicator_name){
- 
+  config <- qmongr::get_config()
   table_cell_data <- table_cell_data %>%
     dplyr::filter(.data[["treatment_units"]] == units,
                   .data[[config$data$column$qi_id]] == indicator_name)
