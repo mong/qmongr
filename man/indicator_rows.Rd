@@ -4,7 +4,14 @@
 \alias{indicator_rows}
 \title{adds table rows with the values of quality indicators}
 \usage{
-indicator_rows(indicator_name, indicator_description, config, datatable, units)
+indicator_rows(
+  indicator_name,
+  indicator_description,
+  config,
+  datatable,
+  units,
+  national
+)
 }
 \arguments{
 \item{indicator_name}{names of the input qi}

@@ -2,9 +2,9 @@
 % Please edit documentation in R/shiny_functions.R
 \name{table_body_constructor}
 \alias{table_body_constructor}
-\title{constructs a row of a html table}
+\title{constructs the body of a table}
 \usage{
-table_body_constructor(datatable, units, config)
+table_body_constructor(datatable, units, national, config)
 }
 \arguments{
 \item{config}{the configuration setup}
@@ -15,5 +15,5 @@ table_body_constructor(datatable, units, config)
 a row of html table
 }
 \description{
-constructs a row of a html table
+constructs the body of a table
 }

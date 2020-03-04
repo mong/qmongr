@@ -13,7 +13,8 @@ get_indicator_level(grouped_data, description)
 \item{description}{a}
 }
 \value{
-the input data with additional indicator level
+the input data with ad
+ditional indicator level
 and desired level columns
 }
 \description{
