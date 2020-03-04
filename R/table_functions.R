@@ -43,6 +43,7 @@ load_data <- function(data_type = "all") {
 #'
 
 add_orgnr <- function(data_list, by = "RHF") {
+  config <- qmongr::get_config()
   org_column <- paste0("OrgNr", by)
   
     
@@ -73,26 +74,27 @@ add_orgnr <- function(data_list, by = "RHF") {
 #' @export
 #'
 group_data <- function(data_list, by) {
+  config <- qmongr::get_config()
   if (by == "RHF" | by == "HF") {
     org_column <- paste0("OrgNr", by)
     data_list[["indicator"]] <- add_orgnr(data_list, by) %>%
       dplyr::group_by(
         .data[[org_column]],
         .data[["Aar"]],
-        .data[["kvalIndID"]]
+        .data[[config$data$column$qi_id]]
      )
   } else if (by == "hospital") {
     data_list[["indicator"]] <- data_list[["indicator"]] %>%
       dplyr::group_by(
-        .data[["SykehusId"]],
+        .data[[config$data$column$unit_id$sh]],
         .data[["Aar"]],
-        .data[["kvalIndID"]]
+        .data[[config$data$column$qi_id]]
       )
   } else if (by == "") {
     data_list[["indicator"]] <- data_list[["indicator"]] %>%
       dplyr::group_by(
         .data[["Aar"]],
-        .data[["kvalIndID"]]
+        .data[[config$data$column$qi_id]]
       )
   }
   #
@@ -101,14 +103,14 @@ group_data <- function(data_list, by) {
     "nakke1", "nakke2", "nakke3", "nakke4", "intensiv1"
   )
   grouped_mean <- data_list[["indicator"]] %>%
-    dplyr::filter(.data[["kvalIndID"]] %in% indicator_mean) %>%
+    dplyr::filter(.data[[config$data$column$qi_id]] %in% indicator_mean) %>%
     compute_indicator_mean()
 
   grouped_median <- data_list[["indicator"]] %>%
-    dplyr::filter(.data[["kvalIndID"]] %in% indicator_median) %>%
+    dplyr::filter(.data[[config$data$column$qi_id]] %in% indicator_median) %>%
     compute_indicator_median()
   grouped <- dplyr::bind_rows(grouped_mean, grouped_median) %>%
-    dplyr::arrange(.data[["kvalIndID"]]) %>%
+    dplyr::arrange(.data[[config$data$column$qi_id]]) %>%
     dplyr::ungroup() %>%
     as.data.frame()
   levels_added <- get_indicator_level(
@@ -162,6 +164,7 @@ compute_indicator_median <- function(grouped_data)  {
 #' @export
 #'
 get_indicator_level <- function(grouped_data, description) {
+  config <- qmongr::get_config()
   grouped_data$level <- ""
   grouped_data$desired_level <- ""
   high <- function(indicator, green, yellow) {
@@ -191,7 +194,7 @@ get_indicator_level <- function(grouped_data, description) {
     function(x) {
       data_row <- grouped_data[x, ]
       description <- description %>%
-        dplyr::filter(.data[["IndID"]] == data_row[["kvalIndID"]])
+        dplyr::filter(.data[["IndID"]] == data_row[[config$data$column$qi_id]])
       if (!is.na(description[["MaalRetn"]])) {
         if (!is.na(description[["MaalNivaaGronn"]]) &
             !is.na(description[["MaalNivaaGul"]])) {

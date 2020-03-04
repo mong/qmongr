@@ -15,7 +15,7 @@ FROM hnskde/qmongr-base-r
 COPY --from=intermediate --chown=root:staff /usr/local/lib/R/site-library/qmongrdata /usr/local/lib/R/site-library/qmongrdata/
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
-LABEL com.centurylinklabs.watchtower.enable="true"
+LABEL no.mongr.cd.enable="true"
 
 ## add package tarball
 COPY *.tar.gz .
