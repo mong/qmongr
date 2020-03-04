@@ -127,7 +127,7 @@ mod_quality_overview_server <- function(input,
         ) %>%
         dplyr::mutate(
           "SykehusNavn" = as.character(.data[[config$data$column$unit_id$sh]])),
-      by = c(config$data$column$unit_id$sh),
+      by = c("SykehusId" = "OrgNrShus"),
     ) %>%
     dplyr::filter(!is.na(.data[[config$data$column$unit_name$sh]]))
   

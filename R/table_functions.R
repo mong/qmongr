@@ -58,7 +58,7 @@ add_orgnr <- function(data_list, by = "RHF") {
             .data[["SykehusNavn"]]) %>%
           dplyr::mutate(
             "OrgNrShus" = as.character(.data[["OrgNrShus"]])),
-        by = c(config$data$column$unit_id$sh)
+        by = c("SykehusId" = "OrgNrShus")
       ) %>%
       dplyr:: filter(!is.na(.data[["SykehusNavn"]]))
 }
