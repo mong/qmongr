@@ -153,11 +153,11 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
   treatment_units <- datatable$treatment_units %>% unique()
  
   national <- national %>% dplyr::filter(
-    .data[["kvalIndID"]] == indicator_name)
+    .data[["KvalIndID"]] == indicator_name)
   year <- national[["Aar"]]
   total_n <- national[["count"]]
   level <- national[["level"]]
-  if (national[["kvalIndID"]] == "intensiv2"){
+  if (national[["KvalIndID"]] == "intensiv2"){
     indicator_value_n <- national[["indicator"]]
     number_of_ones_n = ""
   } else {

@@ -58,7 +58,7 @@ add_orgnr <- function(data_list, by = "RHF") {
             .data[["SykehusNavn"]]) %>%
           dplyr::mutate(
             "OrgNrShus" = as.character(.data[["OrgNrShus"]])),
-        by = c("SykehusId" = "OrgNrShus")
+        by = c( "OrgNrShus")
       ) %>%
       dplyr:: filter(!is.na(.data[["SykehusNavn"]]))
 }
@@ -159,7 +159,8 @@ compute_indicator_median <- function(grouped_data)  {
 #' @param description a
 #'
 #' @importFrom rlang .data
-#' @return the input data with additional indicator level
+#' @return the input data with ad
+#' ditional indicator level
 #'  and desired level columns
 #' @export
 #'
@@ -198,13 +199,13 @@ get_indicator_level <- function(grouped_data, description) {
       if (!is.na(description[["MaalRetn"]])) {
         if (!is.na(description[["MaalNivaaGronn"]]) &
             !is.na(description[["MaalNivaaGul"]])) {
-          if (description[["MaalRetn"]] == "hoy") {
+          if (description[["MaalRetn"]] == 1) {
             level <- high(
               indicator = data_row[["indicator"]],
               green = description[["MaalNivaaGronn"]],
               yellow = description[["MaalNivaaGul"]]
             )
-          } else if (description[["MaalRetn"]] == "lav") {
+          } else if (description[["MaalRetn"]] == 0) {
             level <- low(
               indicator = data_row[["indicator"]],
               green = description[["MaalNivaaGronn"]],
@@ -213,14 +214,14 @@ get_indicator_level <- function(grouped_data, description) {
           }
         } else {
           desired_level <- switch(
-            description[["MaalRetn"]],
-            "hoy" =  "H\u00F8yt",
-            "lav" =  "Lavt"
+            paste(description[["MaalRetn"]]),
+            "1" =  "H\u00F8yt",
+            "0" =  "Lavt"
           )
-          level <- list(level = "ikke definert", desired_level = desired_level)
+          level <- list(level = "undefined", desired_level = desired_level)
         }
       } else{
-        level <- list(level = "ikke definert", desired_level = "ikke definert")
+        level <- list(level = "undefined", desired_level = "undefined")
       }
       grouped_data$level[x] <<- level$level
       grouped_data$desired_level[x] <<- level$desired_level

@@ -128,7 +128,7 @@ mod_quality_overview_server <- function(input,
         ) %>%
         dplyr::mutate(
           "SykehusNavn" = as.character(.data[[config$data$column$unit_id$sh]])),
-      by = c("SykehusId" = "OrgNrShus"),
+      by = c("OrgNrShus"),
     ) %>%
     dplyr::filter(!is.na(.data[[config$data$column$unit_name$sh]]))
   national_data <- qmongr::group_data(
