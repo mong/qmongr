@@ -14,7 +14,13 @@ data:
     column:
         year: "Aar"
         qi_id: "KvalIndID"
-        unit: "ShNavn"
-        unit_id: "OrgNrShus"
+        unit_name:
+            sh: "SykehusNavn"
+            hf: "HF"
+            rhf: "RHF"
+        unit_id:
+            sh: "OrgNrShus"
+            hf: "OrgNrHF"
+            rhf: "OrgNrRHF"
         variable: "Variabel"
         source: "Register"

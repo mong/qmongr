@@ -82,8 +82,8 @@ table_body_constructor <- function(datatable, units, config) {
   indicator_description <- qmongr::load_data("description")[["description"]]
   reg_name <- indicator_description %>%
     dplyr::filter(.data[["IndID"]] %in%
-      unique(datatable[["kvalIndID"]])  
-    ) %>% dplyr::select(.data[["Register"]]) %>%
+      unique(datatable[[config$data$column$qi_id]])  
+    ) %>% dplyr::select(.data[[config$data$column$source]]) %>%
     unique() %>%
     unlist() %>% 
     sort()
@@ -97,8 +97,8 @@ table_body_constructor <- function(datatable, units, config) {
     function(rn) {
       indicator_name <- indicator_description %>%
         dplyr::filter(
-          .data[["Register"]] == rn,
-          .data[["IndID"]] %in% datatable[["kvalIndID"]]) %>%
+          .data[[config$data$column$source]] == rn,
+          .data[["IndID"]] %in% datatable[[config$data$column$qi_id]]) %>%
         dplyr::select(.data[["IndID"]]) %>%
         unique() %>%
         unlist() %>%
@@ -129,7 +129,7 @@ table_body_constructor <- function(datatable, units, config) {
     
     
     # indicator_name <- indicator_name
-    # indicator_id <- datatable[["kvalIndID"]]
+    # indicator_id <- datatable[[config$data$column$qi_id]]
     # indicator_description <- indicator_description %>%
     #   dplyr::filter(.data[["IndID"]] ==  indicator_id)
     # 
@@ -165,7 +165,7 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
   indicator_title <- indicator_description[["IndTittel"]]
   indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
   indicator_desired_level <- grouped_by_HF %>%
-    dplyr::filter(.data[["kvalIndID"]] == indicator_name) %>%
+    dplyr::filter(.data[[config$data$column$qi_id]] == indicator_name) %>%
     dplyr::select(.data[["desired_level"]]) %>%
     unique() %>%
     as.list.data.frame() %>%
@@ -258,7 +258,7 @@ table_data <- function(units, table_cell_data, indicator_name){
  
   table_cell_data <- table_cell_data %>%
     dplyr::filter(.data[["enhet"]] == units,
-                  .data[["kvalIndID"]] == indicator_name)
+                  .data[[config$data$column$qi_id]] == indicator_name)
   if (nrow(table_cell_data) == 0) {
     return(
       tags$td(
@@ -270,7 +270,7 @@ table_data <- function(units, table_cell_data, indicator_name){
   year <- table_cell_data[["Aar"]]
   total <- table_cell_data[["count"]]
   level <- table_cell_data[["level"]]
-  if (table_cell_data[["kvalIndID"]] == "intensiv2"){
+  if (table_cell_data[[config$data$column$qi_id]] == "intensiv2"){
     indicator_value <- table_cell_data[["indicator"]]
     number_of_ones = ""
   } else {
