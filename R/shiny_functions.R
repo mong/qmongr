@@ -79,8 +79,6 @@ qi_table <- function(table_data, selected_units, config) {
 #' @export
 #'
 table_body_constructor <- function(datatable, units, config) {
-  
-  #datatable <- grouped_by_RHF %>% dplyr::filter(.data[["Aar"]] == 2018)
   indicator_description <- qmongr::load_data("description")[["description"]]
   reg_name <- indicator_description %>%
     dplyr::filter(.data[["IndID"]] %in%
@@ -98,7 +96,9 @@ table_body_constructor <- function(datatable, units, config) {
     reg_name,
     function(rn) {
       indicator_name <- indicator_description %>%
-        dplyr::filter(.data[["Register"]] == rn ) %>%
+        dplyr::filter(
+          .data[["Register"]] == rn,
+          .data[["IndID"]] %in% datatable[["kvalIndID"]]) %>%
         dplyr::select(.data[["IndID"]]) %>%
         unique() %>%
         unlist() %>%
@@ -170,6 +170,7 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
     unique() %>%
     as.list.data.frame() %>%
     as.array()
+  treatment_units <- datatable$enhet %>% unique()
     return(
     tags$tr(
       tags$td(
@@ -191,13 +192,12 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
             indicator_desired_level)))
      ), 
      
-     # td <- lapply(
-     #   datatable$enhet %>% unique(),
-     #   qmongr::table_data,
-     #   table_cell_data = datatable,
-     #   indicator_name = indicator_name
-      
-    #)
+     td <- lapply(
+       treatment_units,
+       qmongr::table_data,
+       table_cell_data = datatable,
+       indicator_name = indicator_name
+    )
      
      )
     )
@@ -243,11 +243,6 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
 }
 
 
-
-
-
-
-
 #'insert values to a td tag
 #'
 #' @param units selected treatment units
@@ -260,42 +255,54 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
 #' @export
 #'
 table_data <- function(units, table_cell_data, indicator_name){
-  
-  #units <- "Helse Nord RHF"
-  table_cell_data <-  table_cell_data#grouped_by_RHF %>% dplyr::filter(.data[["Aar"]] == 2018)
+ 
   table_cell_data <- table_cell_data %>%
-    dplyr::filter(.data[["enhet"]] == units, .data[["kvalIndID"]] == indicator_name)
-  year <- table_cell_data[["Aar"]]
-  total <- table_cell_data[["count"]]
-  indicator_value <- round(
-    table_cell_data[["indicator"]] * 100
-  )
-  
-  if (table_cell_data[["kvalIndID"]] == "intensiv2"){
-    number_of_ones = ""
-  } else {
-    number_of_ones = round(
-      total * table_cell_data[["indicator"]]
-    )
-  }
-  return(
-    shiny::tags$td( class = "selected_unit",
-      tags$div(
-        class = "year",
-        tags$p(year)
-      ),
-      tags$div(
-        class = "level",
-        tags$h3(paste0(indicator_value, "%"),
-                icon_type("H")
-                )
-      ),
-      tags$div(
-        class = "ones_of_total",
-        tags$p(paste0(number_of_ones, " av ", total))
+    dplyr::filter(.data[["enhet"]] == units,
+                  .data[["kvalIndID"]] == indicator_name)
+  if (nrow(table_cell_data) == 0) {
+    return(
+      tags$td(
+        class = "selected_unit",
+        ""
       )
     )
-  )
+  } else {
+  year <- table_cell_data[["Aar"]]
+  total <- table_cell_data[["count"]]
+  level <- table_cell_data[["level"]]
+  if (table_cell_data[["kvalIndID"]] == "intensiv2"){
+    indicator_value <- table_cell_data[["indicator"]]
+    number_of_ones = ""
+  } else {
+    indicator_value <-paste0(round(
+      table_cell_data[["indicator"]] * 100
+    ),"%")
+    number_of_ones = round(
+      total * table_cell_data[["indicator"]]
+      
+    )
+    
+  }
+  
+    return(
+      shiny::tags$td( class = "selected_unit",
+        tags$div(
+          class = "year",
+          tags$p(year)
+        ),
+        tags$div(
+          class = "level",
+          tags$h3(paste0(indicator_value),
+                  icon_type(level)
+          )
+        ),
+        tags$div(
+          class = "ones_of_total",
+          tags$p(paste0(number_of_ones, " av ", total))
+        )
+      )
+    )
+  }
 }
 
 
@@ -303,9 +310,9 @@ table_data <- function(units, table_cell_data, indicator_name){
 #'
 #'adds an icon to the table cells with qi
 #'
-#'@param level the indicator level
+#' @param level the indicator level
 #'
-#'@export
+#' @export
 #'
 #'
 #'
@@ -317,7 +324,7 @@ icon_type <- function(level) {
     "H" = shiny::icon("fas fa-circle", class = "high"),
     "M" =  shiny::icon("fas fa-adjust", class = "moderate"),
     "L" = shiny::icon("circle-o", class = "low"),
-    "undefined" = NULL
+    "ikke definert" = NULL
   )  
  
     return(icon)
