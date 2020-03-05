@@ -46,8 +46,6 @@ add_orgnr <- function(data_list, by = "RHF") {
   config <- qmongr::get_config()
   org_column <- paste0("OrgNr", by)
   
-    
-
     #adds the RHF or HF organization nr
     data_list[["indicator"]] <-  data_list[["indicator"]] %>%
       dplyr::left_join(
@@ -100,7 +98,10 @@ group_data <- function(data_list, by) {
   #
   indicator_median <- "intensiv2"
   indicator_mean <- c(
-    "nakke1", "nakke2", "nakke3", "nakke4", "intensiv1"
+    "nakke1", "nakke2", "nakke3", "nakke4", "intensiv1",
+    "norgast1",  "norgast2",  "norgast3",  "norgast4",
+    "norgast5",  "norgast6",  "norgast7",  "norgast8", 
+    "norgast9",  "norgast10"
   )
   grouped_mean <- data_list[["indicator"]] %>%
     dplyr::filter(.data[[config$data$column$qi_id]] %in% indicator_mean) %>%
