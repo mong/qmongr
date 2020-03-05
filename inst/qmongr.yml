@@ -18,6 +18,7 @@ data:
             sh: "SykehusNavn"
             hf: "HF"
             rhf: "RHF"
+            hfshort: "Hfkortnavn"
         unit_id:
             sh: "OrgNrShus"
             hf: "OrgNrHF"

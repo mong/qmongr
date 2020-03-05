@@ -92,11 +92,14 @@ mod_quality_overview_server <- function(input,
   ns <- session$ns
   config <- qmongr::get_config()
   register_data <- qmongr::load_data()
-  grouped_by_HF <- qmongr::group_data(register_data, by = config$data$column$unit_name$hf) %>% 
-      dplyr::left_join(
-        register_data[["hospital_name_structure"]] %>% 
+  grouped_by_HF <- qmongr::group_data(
+    register_data,
+    by = config$data$column$unit_name$hf
+  ) %>% 
+    dplyr::left_join(
+      register_data[["hospital_name_structure"]] %>% 
           dplyr::select( 
-            .data[[config$data$column$unit_name$hf]],
+            .data[[config$data$column$unit_name$hfshort]],
             .data[[config$data$column$unit_id$hf]]
 
           ) %>%
@@ -125,10 +128,8 @@ mod_quality_overview_server <- function(input,
         dplyr::select(
           .data[[config$data$column$unit_name$sh]],
           .data[[config$data$column$unit_id$sh]]
-        ) %>%
-        dplyr::mutate(
-          "SykehusNavn" = as.character(.data[[config$data$column$unit_id$sh]])),
-      by = c("OrgNrShus"),
+        ),
+      by = c(config$data$column$unit_id$sh),
     ) %>%
     dplyr::filter(!is.na(.data[[config$data$column$unit_name$sh]]))
   national_data <- qmongr::group_data(
@@ -158,8 +159,7 @@ mod_quality_overview_server <- function(input,
     if(!rlang::is_empty(selected_units$HF)) {
       selected_data$HF <- grouped_by_HF %>% 
         dplyr::filter(
-          .data[[config$data$column$unit_name$hf]] %in% selected_units$HF,
-
+          .data[[config$data$column$unit_name$hfshort]] %in% selected_units$HF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year)
     }
@@ -179,7 +179,7 @@ mod_quality_overview_server <- function(input,
     "RHF" = grouped_by_RHF$RHF %>%
       unique() %>%
       sort(),
-    "HF" = grouped_by_HF$HF %>%
+    "HF" = grouped_by_HF[[config$data$column$unit_name$hfshort]]%>%
       unique() %>%
       sort(),
     "Sykehus" = grouped_by_hospital$SykehusNavn %>%
