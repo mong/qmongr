@@ -19,6 +19,12 @@ indicator_rows(
 \item{indicator_description}{indicator description}
 
 \item{config}{the configuration setup}
+
+\item{datatable}{a row of a df}
+
+\item{units}{selected treatment units}
+
+\item{national}{a df with national indicator values}
 }
 \description{
 adds table rows with the values of quality indicators

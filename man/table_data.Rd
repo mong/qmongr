@@ -10,6 +10,8 @@ table_data(units, table_cell_data, indicator_name)
 \item{units}{selected treatment units}
 
 \item{table_cell_data}{table cell data}
+
+\item{indicator_name}{names of the input qi}
 }
 \value{
 the contnets of a td tag

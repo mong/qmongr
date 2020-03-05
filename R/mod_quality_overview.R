@@ -139,13 +139,13 @@ mod_quality_overview_server <- function(input,
   output$qi_table <- shiny::renderUI({
     selected_units <- list()
     selected_units[["RHF"]] <- input$pick_treatment_units[
-      req(input$pick_treatment_units) %in%
+      shiny::req(input$pick_treatment_units) %in%
       choices_treatment[["RHF"]]]
     selected_units$HF <- input$pick_treatment_units[
-      req(input$pick_treatment_units) %in%
+      shiny::req(input$pick_treatment_units) %in%
         choices_treatment$HF]
     selected_units$SykehusNavn <- input$pick_treatment_units[
-      req(input$pick_treatment_units) %in%
+      shiny::req(input$pick_treatment_units) %in%
         choices_treatment$Sykehus]
     selected_data <- list()
     if (!rlang::is_empty(selected_units[["RHF"]])) {

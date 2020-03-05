@@ -2,16 +2,16 @@
 % Please edit documentation in R/table_functions.R
 \name{compute_indicator_median}
 \alias{compute_indicator_median}
-\title{calculates median (portion in \% )}
+\title{calculates median}
 \usage{
 compute_indicator_median(grouped_data)
 }
 \arguments{
-\item{agg_data}{aggregated data}
+\item{grouped_data}{grouped data}
 }
 \value{
 aggrgated data with indicators
 }
 \description{
-calculates median (portion in \% )
+calculates median
 }

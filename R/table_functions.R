@@ -133,12 +133,12 @@ compute_indicator_mean <- function(grouped_data)  {
   grouped_data %>%
     dplyr::summarise(
       count = dplyr::n(),
-      indicator = mean(Variabel)
+      indicator = mean(.data[["Variabel"]])
     )
 }
-#' calculates median (portion in % )
+#' calculates median 
 #'
-#' @param agg_data aggregated data
+#' @param grouped_data grouped data
 #'
 #' @importFrom rlang .data
 #'
@@ -149,7 +149,7 @@ compute_indicator_median <- function(grouped_data)  {
   grouped_data %>%
     dplyr::summarise(
       count = dplyr::n(),
-      indicator = median(Variabel)
+      indicator = stats::median(.data[["Variabel"]])
     )
 }
 

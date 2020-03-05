@@ -1,7 +1,8 @@
 #' html table
 #'
-#' @param table_data a dataframe to construct a html table from
-#' @param unit the chosen unit
+#' @param table_data a dataframe to construct the
+#'   table from
+#' @param selected_units the chosen unit
 #' @param config the configuration setup
 #'
 #' @importFrom shiny tags
@@ -68,7 +69,9 @@ qi_table <- function(table_data, selected_units, config) {
 #'
 #'constructs the body of a table
 #'
-#' @param dataframe_row a row of a df
+#' @param datatable a row of a df
+#' @param units selected treatment units
+#' @param national a df with national indicator values
 #' @param config the configuration setup
 #'
 #' @importFrom rlang .data
@@ -123,6 +126,7 @@ table_body_constructor <- function(datatable, units, national, config) {
 }
 
 #' adds table rows with the values of quality indicators
+#' @inheritParams table_body_constructor
 #' @param indicator_name names of the input qi
 #' @param indicator_description indicator description
 #' @param config the configuration setup
@@ -215,7 +219,7 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
 
 #'insert values to a td tag
 #'
-#' @param units selected treatment units
+#' @inheritParams indicator_rows
 #' @param table_cell_data table cell data
 #'
 #' @importFrom rlang .data

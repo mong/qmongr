@@ -7,9 +7,13 @@
 table_body_constructor(datatable, units, national, config)
 }
 \arguments{
-\item{config}{the configuration setup}
+\item{datatable}{a row of a df}
 
-\item{dataframe_row}{a row of a df}
+\item{units}{selected treatment units}
+
+\item{national}{a df with national indicator values}
+
+\item{config}{the configuration setup}
 }
 \value{
 a row of html table
