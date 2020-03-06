@@ -7,6 +7,8 @@ test_that("mod_quality_overview_server", {
                      c("html", "character"))
         expect_equal(output$treatment_unit[["deps"]][[1]][["name"]],
                      "selectize")
+        expect_equal_to_reference(output$treatment_unit[["html"]],
+                                  "data/output_treatment_unit_html.rds")
 
         expect_equal_to_reference(output$year[["html"]],
                                   "data/output_year_html.rds")
