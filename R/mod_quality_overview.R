@@ -30,11 +30,11 @@ mod_quality_overview_ui <- function(id) {
             shiny::uiOutput(outputId = ns("treatment_unit"))
           ),
           shiny::column(
-            width = 3,
+            width = 2,
             shiny::tags$h3(config$app_text$menus$year)
           ),
           shiny::column(
-            width = 3,
+            width = 2,
             shiny::uiOutput(outputId = ns("year"))
           )
         )
@@ -86,69 +86,119 @@ mod_quality_overview_ui <- function(id) {
 #' @keywords internal
 
 mod_quality_overview_server <- function(input,
-                                         output,
-                                         session) {
+                                        output,
+                                        session) {
 
   ns <- session$ns
   config <- qmongr::get_config()
-  output$qi_table <- shiny::renderUI({
-    filter_list <-  list(
-      ShNavn = shiny::req(input$pick_treatment_unit),
-      Aar = shiny::req(input$pick_year)
-    )
-   qi_by_treatment_unit <-  qmongr::load_data() %>%
-      qmongr::filter_data(filter_list) %>%
-      qmongr::aggregate_data() %>%
-      qmongr::compute_indicator()
-   qi_national <- qmongr::load_data("indicator")[["indicator"]] %>%
-       qmongr::compute_national_indicator()
+  register_data <- qmongr::load_data()
+  grouped_by_hf <- qmongr::group_data(
+    register_data,
+    by = config$data$column$unit_name$hf
+  ) %>%
+    dplyr::left_join(
+      register_data[["hospital_name_structure"]] %>%
+          dplyr::select(
+            .data[[config$data$column$unit_name$hfshort]],
+            .data[[config$data$column$unit_id$hf]]
 
-   qi_joined <- qi_by_treatment_unit %>%
-     dplyr::inner_join(
-       qi_national,
-       by = c(.data[["Aar"]],
-              .data[["KvalIndID"]])
+          ) %>%
+          unique(),
+        by = config$data$column$unit_id$hf
+      )
+  grouped_by_rhf <- qmongr::group_data(
+    register_data,
+    by = config$data$column$unit_name$rhf
+  ) %>%
+    dplyr::left_join(
+      register_data[["hospital_name_structure"]] %>%
+        dplyr::select(
+          .data[[config$data$column$unit_name$rhf]],
+          .data[[config$data$column$unit_id$rhf]]
+        ) %>%
+        unique(),
+      by = config$data$column$unit_id$rhf
     )
-   qmongr::qi_table(qi_joined, input$pick_treatment_unit, config)
+  grouped_by_hospital <- qmongr::group_data(
+    register_data,
+    by = "hospital"
+  ) %>%
+    dplyr::left_join(
+      register_data[["hospital_name_structure"]] %>%
+        dplyr::select(
+          .data[[config$data$column$unit_name$sh]],
+          .data[[config$data$column$unit_id$sh]]
+        ),
+      by = c(config$data$column$unit_id$sh),
+    ) %>%
+    dplyr::filter(!is.na(.data[[config$data$column$unit_name$sh]]))
+  national_data <- qmongr::group_data(
+    register_data,
+    by = ""
+  )
+  output$qi_table <- shiny::renderUI({
+    selected_units <- list()
+    selected_units[["RHF"]] <- input$pick_treatment_units[
+      shiny::req(input$pick_treatment_units) %in%
+      choices_treatment[["RHF"]]]
+    selected_units[["HF"]] <- input$pick_treatment_units[
+      shiny::req(input$pick_treatment_units) %in%
+        choices_treatment$HF]
+    selected_units[["SykehusNavn"]] <- input$pick_treatment_units[
+      shiny::req(input$pick_treatment_units) %in%
+        choices_treatment$Sykehus]
+    selected_data <- list()
+    if (!rlang::is_empty(selected_units[["RHF"]])) {
+      selected_data[["RHF"]] <- grouped_by_rhf %>%
+        dplyr::filter(
+          .data[[config$data$column$unit_name$rhf]] %in% selected_units$RHF,
+          .data[["count"]] > 5,
+          .data[[config$data$column$year]] == input$pick_year)
+    }
+
+    if (!rlang::is_empty(selected_units$HF)) {
+      selected_data[["HF"]] <- grouped_by_hf %>%
+        dplyr::filter(
+          .data[[config$data$column$unit_name$hfshort]] %in% selected_units$HF,
+          .data[["count"]] > 5,
+          .data[[config$data$column$year]] == input$pick_year)
+    }
+    if (!rlang::is_empty(selected_units$Sykehus)) {
+      selected_data[["SykehusNavn"]] <- grouped_by_hospital %>%
+        dplyr::filter(
+          .data[[config$data$column$unit_name$sh]] %in% selected_units$SykehusNavn,
+          .data[["count"]] > 5,
+          .data[[config$data$column$year]] == input$pick_year)
+    }
+    selected_data$national <- national_data %>%
+      dplyr::filter(.data[["Aar"]] == input$pick_year)
+    qmongr::qi_table(selected_data, selected_units, config)
   })
 
-   choices_treatment_unit <- shiny::reactive({
-      qmongr::load_data() %>%
-      qmongr::filter_data() %>%
-      qmongr::aggregate_data() %>%
-      qmongr::compute_indicator() %>%
-      dplyr::filter(.data[["total"]] > 5)
-   })
-
-
-    choices_year <- shiny::reactive({
-      choices_treatment_unit() %>%
-      dplyr::filter(
-        .data[["ShNavn"]] == shiny::req(input$pick_treatment_unit)
-      )
-   })
-
-
+  choices_treatment <- list(
+    "RHF" = grouped_by_rhf$RHF %>%
+      unique() %>%
+      sort(),
+    "HF" = grouped_by_hf[[config$data$column$unit_name$hfshort]] %>%
+      unique() %>%
+      sort(),
+    "Sykehus" = grouped_by_hospital$SykehusNavn %>%
+      unique() %>%
+      sort())
   output$treatment_unit <- shiny::renderUI({
     shiny::selectInput(
       label = NULL,
-      inputId = ns("pick_treatment_unit"),
-      choices = choices_treatment_unit()[["ShNavn"]] %>%
-        unique() %>%
-        sort()
+      inputId = ns("pick_treatment_units"),
+      choices =  choices_treatment,
+      multiple = TRUE
     )
   })
-
- output$year <-  shiny::renderUI({
-   shiny::selectInput(
+  output$year <-  shiny::renderUI({
+    shiny::selectInput(
       label = NULL,
       inputId = ns("pick_year"),
-      choices = choices_year()[["Aar"]] %>%
-        unique() %>%
-        sort()
-
+      choices = c(2016, 2017, 2018, 2019) %>%
+        sort(decreasing = T)
     )
   })
-
-
 }
