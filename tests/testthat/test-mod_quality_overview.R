@@ -48,11 +48,10 @@ test_that("mod_quality_overview_server", {
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_qwerty.rds")
         suppressWarnings(session$setInputs(pick_treatment_units = "qwerty"))
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_qwerty.rds")
-        
+
         suppressWarnings(session$setInputs(pick_year = "2019"))
         suppressWarnings(session$setInputs(pick_treatment_units = "Førde"))
         expect_error(output$qi_table)
-        
     })
 })
 
