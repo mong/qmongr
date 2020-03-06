@@ -10,18 +10,18 @@
 #'
 
 qi_table <- function(table_data, selected_units, config) {
-  national <- table_data$national
-  if (!rlang::is_empty(table_data$RHF)) {
-    colnames(table_data$RHF)[
-      colnames(table_data$RHF) == "OrgNrRHF"] = "OrgNr" 
-    colnames(table_data$RHF)[
-      colnames(table_data$RHF) == "RHF"] = "treatment_units" 
+  national <- table_data[["national"]]
+  if (!rlang::is_empty(table_data[["RHF"]])) {
+    colnames(table_data[["RHF"]])[
+      colnames(table_data[["RHF"]]) == "OrgNrRHF"] = "OrgNr" 
+    colnames(table_data[["RHF"]])[
+      colnames(table_data[["RHF"]]) == "RHF"] = "treatment_units" 
   }
-  if (!rlang::is_empty(table_data$HF)) {
-    colnames(table_data$HF)[
-      colnames(table_data$HF) == "OrgNrHF"] = "OrgNr"
-    colnames(table_data$HF)[
-      colnames(table_data$HF) == "Hfkortnavn"] = "treatment_units" 
+  if (!rlang::is_empty(table_data[["HF"]])) {
+    colnames(table_data[["HF"]])[
+      colnames(table_data[["HF"]]) == "OrgNrHF"] = "OrgNr"
+    colnames(table_data[["HF"]])[
+      colnames(table_data[["HF"]]) == "Hfkortnavn"] = "treatment_units" 
   }
   if (!rlang::is_empty(table_data$Sykehus)) {
     colnames(table_data$Sykehus)[
@@ -30,9 +30,9 @@ qi_table <- function(table_data, selected_units, config) {
       colnames(table_data$Sykehus) == "SykehusNavn"] = "treatment_units"
   }
   table_data <- dplyr::bind_rows(
-    table_data$Sykehus,
-    table_data$HF,
-    table_data$RHF
+    table_data[["Sykehus"]],
+    table_data[["HF"]],
+    table_data[["RHF"]]
   )
   tags$table(
     tags$thead(
