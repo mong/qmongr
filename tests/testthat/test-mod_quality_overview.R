@@ -1,57 +1,15 @@
 test_that("mod_quality_overview_server", {
     shiny::testModule(mod_quality_overview_server, {
+        expect_equal(class(input), "reactivevalues")
+        expect_equal(class(output), "shinyoutput")
 
-        # Table without defined pick_treatment_unit and pick_year
-        expect_error(output$qi_table)
+        expect_equal_to_reference(output$treatment_unit[["html"]], "data/output_treatment_unit_html.rds")
+        expect_equal(class(output$treatment_unit[["html"]]), c("html", "character"))
+        expect_equal(output$treatment_unit[["deps"]][[1]][["name"]], "selectize")
 
-        session$setInputs(pick_treatment_unit = "Oslofjordklinikken")
-
-        # Table without defined pick_year
-        expect_error(output$qi_table)
-
-        session$setInputs(pick_year = "2018")
-
-        expect_true(grepl("Oslofjordklinikken", as.character(output$qi_table$html), fixed = TRUE))
-        expect_false(grepl("Aker", as.character(output$qi_table$html), fixed = TRUE))
-        expect_true(grepl("2018", as.character(output$qi_table$html), fixed = TRUE))
-        expect_true(grepl("Oslofjordklinikken", as.character(output$treatment_unit$html), fixed = TRUE))
-        expect_true(grepl("Aker", as.character(output$treatment_unit$html), fixed = TRUE))
-        expect_true(grepl("2016", as.character(output$year$html), fixed = TRUE))
-        expect_true(grepl("2017", as.character(output$year$html), fixed = TRUE))
-        expect_true(grepl("2018", as.character(output$year$html), fixed = TRUE))
-
-        # Change treatment unit
-        session$setInputs(pick_treatment_unit = "Aker")
-        session$setInputs(pick_year = "2018")
-        expect_true(grepl("Aker", as.character(output$qi_table$html), fixed = TRUE))
-        expect_false(grepl("Oslofjordklinikken", as.character(output$qi_table$html), fixed = TRUE))
-        expect_true(grepl("2018", as.character(output$qi_table$html), fixed = TRUE))
-        expect_true(grepl("Oslofjordklinikken", as.character(output$treatment_unit$html), fixed = TRUE))
-        expect_true(grepl("Aker", as.character(output$treatment_unit$html), fixed = TRUE))
-        expect_true(grepl("2016", as.character(output$year$html), fixed = TRUE))
-        expect_true(grepl("2017", as.character(output$year$html), fixed = TRUE))
-        expect_true(grepl("2018", as.character(output$year$html), fixed = TRUE))
-
-        # Select non-selectable hospital
-        session$setInputs(pick_treatment_unit = "qwerty")
-        session$setInputs(pick_year = "2018")
-        expect_error(output$qi_table)
-        expect_true(grepl("Oslofjordklinikken", as.character(output$treatment_unit$html), fixed = TRUE))
-        expect_true(grepl("Aker", as.character(output$treatment_unit$html), fixed = TRUE))
-        # Not sure why these suddenly are false...
-        expect_false(grepl("2016", as.character(output$year$html), fixed = TRUE))
-        expect_false(grepl("2017", as.character(output$year$html), fixed = TRUE))
-        expect_false(grepl("2018", as.character(output$year$html), fixed = TRUE))
-
-        # Select non-selectable year
-        session$setInputs(pick_treatment_unit = "Oslofjordklinikken")
-        session$setInputs(pick_year = "qwerty")
-        expect_error(output$qi_table)
-        expect_true(grepl("Oslofjordklinikken", as.character(output$treatment_unit$html), fixed = TRUE))
-        expect_true(grepl("Aker", as.character(output$treatment_unit$html), fixed = TRUE))
-        expect_true(grepl("2016", as.character(output$year$html), fixed = TRUE))
-        expect_true(grepl("2017", as.character(output$year$html), fixed = TRUE))
-        expect_true(grepl("2018", as.character(output$year$html), fixed = TRUE))
+        expect_equal_to_reference(output$year[["html"]], "data/output_year_html.rds")
+        expect_equal(class(output$year[["html"]]), c("html", "character"))
+        expect_equal(output$year[["deps"]][[1]][["name"]], "selectize")
 })
 })
 
