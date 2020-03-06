@@ -92,13 +92,13 @@ mod_quality_overview_server <- function(input,
   ns <- session$ns
   config <- qmongr::get_config()
   register_data <- qmongr::load_data()
-  grouped_by_HF <- qmongr::group_data(
+  grouped_by_hf <- qmongr::group_data(
     register_data,
     by = config$data$column$unit_name$hf
-  ) %>% 
+  ) %>%
     dplyr::left_join(
-      register_data[["hospital_name_structure"]] %>% 
-          dplyr::select( 
+      register_data[["hospital_name_structure"]] %>%
+          dplyr::select(
             .data[[config$data$column$unit_name$hfshort]],
             .data[[config$data$column$unit_id$hf]]
 
@@ -106,16 +106,16 @@ mod_quality_overview_server <- function(input,
           unique(),
         by = config$data$column$unit_id$hf
       )
-  grouped_by_RHF <- qmongr::group_data(
+  grouped_by_rhf <- qmongr::group_data(
     register_data,
     by = config$data$column$unit_name$rhf
-  ) %>% 
+  ) %>%
     dplyr::left_join(
-      register_data[["hospital_name_structure"]] %>% 
-        dplyr::select( 
+      register_data[["hospital_name_structure"]] %>%
+        dplyr::select(
           .data[[config$data$column$unit_name$rhf]],
           .data[[config$data$column$unit_id$rhf]]
-        ) %>% 
+        ) %>%
         unique(),
       by = config$data$column$unit_id$rhf
     )
@@ -141,23 +141,23 @@ mod_quality_overview_server <- function(input,
     selected_units[["RHF"]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
       choices_treatment[["RHF"]]]
-    selected_units$HF <- input$pick_treatment_units[
+    selected_units[["HF"]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
         choices_treatment$HF]
-    selected_units$SykehusNavn <- input$pick_treatment_units[
+    selected_units[["SykehusNavn"]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
         choices_treatment$Sykehus]
     selected_data <- list()
     if (!rlang::is_empty(selected_units[["RHF"]])) {
-      selected_data[["RHF"]] <- grouped_by_RHF %>%
+      selected_data[["RHF"]] <- grouped_by_rhf %>%
         dplyr::filter(
           .data[[config$data$column$unit_name$rhf]] %in% selected_units$RHF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year)
     }
 
-    if(!rlang::is_empty(selected_units$HF)) {
-      selected_data$HF <- grouped_by_HF %>% 
+    if (!rlang::is_empty(selected_units$HF)) {
+      selected_data[["HF"]] <- grouped_by_hf %>%
         dplyr::filter(
           .data[[config$data$column$unit_name$hfshort]] %in% selected_units$HF,
           .data[["count"]] > 5,
@@ -176,10 +176,10 @@ mod_quality_overview_server <- function(input,
   })
 
   choices_treatment <- list(
-    "RHF" = grouped_by_RHF$RHF %>%
+    "RHF" = grouped_by_rhf$RHF %>%
       unique() %>%
       sort(),
-    "HF" = grouped_by_HF[[config$data$column$unit_name$hfshort]]%>%
+    "HF" = grouped_by_hf[[config$data$column$unit_name$hfshort]] %>%
       unique() %>%
       sort(),
     "Sykehus" = grouped_by_hospital$SykehusNavn %>%

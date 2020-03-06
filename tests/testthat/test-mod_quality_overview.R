@@ -3,6 +3,7 @@ test_that("mod_quality_overview_server", {
         expect_equal(class(input), "reactivevalues")
         expect_equal(class(output), "shinyoutput")
 
+        print(output$treatment_unit["html"])
         expect_equal_to_reference(output$treatment_unit[["html"]],
                                   "data/output_treatment_unit_html.rds")
         expect_equal(class(output$treatment_unit[["html"]]),

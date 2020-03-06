@@ -45,20 +45,20 @@ load_data <- function(data_type = "all") {
 add_orgnr <- function(data_list, by = "RHF") {
   config <- qmongr::get_config()
   org_column <- paste0("OrgNr", by)
-  
+
     #adds the RHF or HF organization nr
     data_list[["indicator"]] <-  data_list[["indicator"]] %>%
       dplyr::left_join(
         data_list[["hospital_name_structure"]] %>%
           dplyr::select(
             .data[[org_column]],
-            .data[["OrgNrShus"]],
-            .data[["SykehusNavn"]]) %>%
+            .data[[config[["data"]][["column"]][["unit_id"]][["sh"]]]],
+            .data[[config[["data"]][["column"]][["unit_name"]][["sh"]]]]) %>%
           dplyr::mutate(
-            "OrgNrShus" = as.character(.data[["OrgNrShus"]])),
-        by = c( "OrgNrShus")
+            "OrgNrShus" = as.character(.data[[config[["data"]][["column"]][["unit_id"]][["sh"]]]])),
+        by = config[["data"]][["column"]][["unit_id"]][["sh"]]
       ) %>%
-      dplyr:: filter(!is.na(.data[["SykehusNavn"]]))
+      dplyr:: filter(!is.na(.data[[config[["data"]][["column"]][["unit_name"]][["sh"]]]]))
 }
 
 #' group data
@@ -100,7 +100,7 @@ group_data <- function(data_list, by) {
   indicator_mean <- c(
     "nakke1", "nakke2", "nakke3", "nakke4", "intensiv1",
     "norgast1",  "norgast2",  "norgast3",  "norgast4",
-    "norgast5",  "norgast6",  "norgast7",  "norgast8", 
+    "norgast5",  "norgast6",  "norgast7",  "norgast8",
     "norgast9",  "norgast10"
   )
   grouped_mean <- data_list[["indicator"]] %>%
@@ -136,7 +136,7 @@ compute_indicator_mean <- function(grouped_data)  {
       indicator = mean(.data[["Variabel"]])
     )
 }
-#' calculates median 
+#' calculates median
 #'
 #' @param grouped_data grouped data
 #'
@@ -155,7 +155,7 @@ compute_indicator_median <- function(grouped_data)  {
 
 #' Adds a column with inidcator levels and
 #' and another with desired levels to the grouped data
-#' 
+#'
 #' @param grouped_data a dataframe
 #' @param description a
 #'
