@@ -4,10 +4,6 @@ cache: packages
 r:
   - oldrel
   - release
-  - devel
-jobs:
-  allow_failures:
-    - env: TRAVIS_R_VERSION_STRING=devel
 
 services:
   - docker
