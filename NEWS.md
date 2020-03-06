@@ -1,4 +1,4 @@
-# Unreleased
+# qmongr 0.3.0
 
 * Total rewrite of the app [#73](https://github.com/SKDE-Felles/qmongr/pull/73)
   -  Drop down menu with hierarchy
