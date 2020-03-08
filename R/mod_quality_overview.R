@@ -137,6 +137,9 @@ mod_quality_overview_server <- function(input,
     by = ""
   )
   output$qi_table <- shiny::renderUI({
+    if (length(input$pick_year) > 1) {
+      return(NULL)
+    }
     selected_units <- list()
     selected_units[["RHF"]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
