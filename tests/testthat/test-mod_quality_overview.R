@@ -8,9 +8,14 @@ test_that("mod_quality_overview_server", {
         expect_equal(output$treatment_unit[["deps"]][[1]][["name"]],
                      "selectize")
         print("REF")
-        print(readRDS("data/output_treatment_unit_html.rds"))
+        ref <- readRDS("data/output_treatment_unit_html.rds")
+        print(ref)
         print("TEST")
-        print(output$treatment_unit[["html"]])        
+        test <- output$treatment_unit[["html"]]
+        print(test)
+        compare(test, ref)
+#        output_treatment_unit_html <- output$treatment_unit[["html"]]
+        saveRDS(output_treatment_unit_html, file = "data/output_treatment_unit_html.rds")
         expect_equal_to_reference(output$treatment_unit[["html"]],
                                   "data/output_treatment_unit_html.rds")
 
