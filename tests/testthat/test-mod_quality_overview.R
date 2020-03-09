@@ -9,6 +9,8 @@ test_that("mod_quality_overview_server", {
                      "selectize")
         mylist <- c("Ålesund", "Arendal")
         print(sort(mylist))
+        print(stringr::str_sort(mylist, locale = "en"))
+        print(stringr::str_sort(mylist, locale = "no"))
         
         print("REF")
         ref <- readRDS("data/output_treatment_unit_html.rds")

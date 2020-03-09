@@ -181,13 +181,13 @@ mod_quality_overview_server <- function(input,
   choices_treatment <- list(
     "RHF" = grouped_by_rhf$RHF %>%
       unique() %>%
-      sort(),
+      stringr::str_sort(locale = "no"),
     "HF" = grouped_by_hf[[config$data$column$unit_name$hfshort]] %>%
       unique() %>%
-      sort(),
+      stringr::str_sort(locale = "no"),
     "Sykehus" = grouped_by_hospital$SykehusNavn %>%
       unique() %>%
-      sort())
+      stringr::str_sort(locale = "no"))
   output$treatment_unit <- shiny::renderUI({
     shiny::selectInput(
       label = NULL,
