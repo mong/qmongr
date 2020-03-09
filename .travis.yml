@@ -1,6 +1,5 @@
 language: r
 cache: packages
-os: linux
 
 r:
   - oldrel
@@ -24,7 +23,6 @@ before_install:
   - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t hnskde/qmongr .
   - rm qmongr_*.tar.gz
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
-  - Rscript -e 'remotes::install_github("SKDE-Felles/qmongrdata", ref = "csv")'
 
 after_success:
   - R CMD INSTALL $PKG_TARBALL
@@ -54,3 +52,5 @@ deploy:
       # next two maybe to be replaced by: 'tags: true'
       branch: master
       condition: $TRAVIS_R_VERSION_STRING == "release"
+
+
