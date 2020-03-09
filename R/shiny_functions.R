@@ -92,7 +92,7 @@ table_body_constructor <- function(datatable, units, national, config) {
     dplyr::select(.data[[config$data$column$source]]) %>%
     unique() %>%
     unlist() %>%
-    sort()
+    stringr::str_sort(locale = config$language)
   names(reg_name) <- NULL
 
   #adds a table row tag with the register names and passes it to a function
@@ -107,7 +107,7 @@ table_body_constructor <- function(datatable, units, national, config) {
         dplyr::select(.data[["IndID"]]) %>%
         unique() %>%
         unlist() %>%
-        sort()
+        stringr::str_sort(locale = config$language)
       names(indicator_name) <- NULL
       tagList(
         shiny::tags$tr(class = "register-row",

@@ -35,6 +35,7 @@ Imports:
     shiny,
     dplyr,
     tidyr,
+    stringr,
     rlang,
     yaml,
     qmongrdata (>= 0.1.0),
