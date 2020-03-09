@@ -130,6 +130,7 @@ group_data <- function(data_list, by) {
 #' @export
 
 compute_indicator_mean <- function(grouped_data)  {
+  config <- qmongr::get_config()
   grouped_data %>%
     dplyr::summarise(
       count = dplyr::n(),
@@ -146,6 +147,7 @@ compute_indicator_mean <- function(grouped_data)  {
 #' @export
 
 compute_indicator_median <- function(grouped_data)  {
+  config <- qmongr::get_config()
   grouped_data %>%
     dplyr::summarise(
       count = dplyr::n(),
