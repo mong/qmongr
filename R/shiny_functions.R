@@ -11,28 +11,33 @@
 
 qi_table <- function(table_data, selected_units, config) {
   national <- table_data[["national"]]
-  if (!rlang::is_empty(table_data[["RHF"]])) {
-    colnames(table_data[["RHF"]])[
-      colnames(table_data[["RHF"]]) == "OrgNrRHF"] <- "OrgNr"
-    colnames(table_data[["RHF"]])[
-      colnames(table_data[["RHF"]]) == "RHF"] <- "treatment_units"
+  if (!rlang::is_empty(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])) {
+    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])[
+      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]) ==
+        config[["data"]][["column"]][["unit_id"]][["rhf"]]] <- "OrgNr"
+    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])[
+      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]) ==
+        config[["data"]][["column"]][["unit_name"]][["rhf"]]] <- "treatment_units"
   }
-  if (!rlang::is_empty(table_data[["HF"]])) {
-    colnames(table_data[["HF"]])[
-      colnames(table_data[["HF"]]) == "OrgNrHF"] <- "OrgNr"
-    colnames(table_data[["HF"]])[
-      colnames(table_data[["HF"]]) == "Hfkortnavn"] <- "treatment_units"
+  if (!rlang::is_empty(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])) {
+    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])[
+      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]]) ==
+        config[["data"]][["column"]][["unit_id"]][["hf"]]] <- "OrgNr"
+    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])[
+      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])
+      == "Hfkortnavn"] <- "treatment_units"
   }
   if (!rlang::is_empty(table_data$Sykehus)) {
     colnames(table_data$Sykehus)[
       colnames(table_data$Sykehus) == "SykehusId"] <- "OrgNr"
     colnames(table_data$Sykehus)[
-      colnames(table_data$Sykehus) == "SykehusNavn"] <- "treatment_units"
+      colnames(table_data$Sykehus) ==
+        config[["data"]][["column"]][["unit_name"]][["sh"]]] <- "treatment_units"
   }
   table_data <- dplyr::bind_rows(
     table_data[["Sykehus"]],
-    table_data[["HF"]],
-    table_data[["RHF"]]
+    table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]],
+    table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]
   )
   tags$table(
     tags$thead(
@@ -152,11 +157,11 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
   treatment_units <- datatable$treatment_units %>% unique()
 
   national <- national %>% dplyr::filter(
-    .data[["KvalIndID"]] == indicator_name)
-  year <- national[["Aar"]]
+    .data[[config[["data"]][["column"]][["qi_id"]]]] == indicator_name)
+  year <- national[[config[["data"]][["column"]][["year"]]]]
   total_n <- national[["count"]]
   level <- national[["level"]]
-  if (national[["KvalIndID"]] == "intensiv2") {
+  if (national[[config[["data"]][["column"]][["qi_id"]]]] == "intensiv2") {
     indicator_value_n <- national[["indicator"]]
     number_of_ones_n <- ""
   } else {
@@ -240,7 +245,7 @@ table_data <- function(units, table_cell_data, indicator_name) {
       )
     )
   } else {
-  year <- table_cell_data[["Aar"]]
+  year <- table_cell_data[[config[["data"]][["column"]][["year"]]]]
   total <- table_cell_data[["count"]]
   level <- table_cell_data[["level"]]
   if (table_cell_data[[config$data$column$qi_id]] == "intensiv2") {
