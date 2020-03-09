@@ -1,6 +1,5 @@
 test_that("mod_quality_overview_server", {
     shiny::testModule(mod_quality_overview_server, {
-        Sys.setlocale(category = "LC_ALL", locale = "no_NO.UTF-8")
         expect_equal(class(input), "reactivevalues")
         expect_equal(class(output), "shinyoutput")
 
