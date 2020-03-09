@@ -1,5 +1,6 @@
 language: r
 cache: packages
+os: linux
 
 r:
   - oldrel
@@ -19,8 +20,6 @@ r_github_packages:
   - r-lib/pkgdown
 
 before_install:
-  - locale -a
-  - Rscript -e 'Sys.setlocale(category = "LC_ALL", locale = "nb_NO.utf8")'
   - R CMD build .
   - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t hnskde/qmongr .
   - rm qmongr_*.tar.gz
@@ -55,5 +54,3 @@ deploy:
       # next two maybe to be replaced by: 'tags: true'
       branch: master
       condition: $TRAVIS_R_VERSION_STRING == "release"
-
-
