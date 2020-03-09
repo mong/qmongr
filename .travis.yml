@@ -25,7 +25,7 @@ r_github_packages:
 
 before_install:
   - locale -a
-  - Rscript -e 'Sys.setlocale(category = "LC_ALL", locale = "no_NO.UTF-8")'
+  - Rscript -e 'Sys.setlocale(category = "LC_ALL", locale = "nb_NO.utf8")'
   - R CMD build .
   - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t hnskde/qmongr .
   - rm qmongr_*.tar.gz
