@@ -50,8 +50,8 @@ test_that("mod_quality_overview_server", {
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_multiple_2019.rds")
 
         session$setInputs(pick_treatment_units = "Trondheim")
-        expect_warning(session$setInputs(pick_year = c("2017", "2018", "2019")))
-        expect_error(output$qi_table)
+        session$setInputs(pick_year = c("2017", "2018", "2019"))
+        expect_null(output$qi_table)
 
         session$setInputs(pick_year = "qwerty")
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_qwerty.rds")
