@@ -15,7 +15,7 @@ test_that("mod_quality_overview_server", {
         print(test)
         compare(test, ref)
 #        output_treatment_unit_html <- output$treatment_unit[["html"]]
-        saveRDS(output_treatment_unit_html, file = "data/output_treatment_unit_html.rds")
+#        saveRDS(output_treatment_unit_html, file = "data/output_treatment_unit_html.rds")
         expect_equal_to_reference(output$treatment_unit[["html"]],
                                   "data/output_treatment_unit_html.rds")
 
