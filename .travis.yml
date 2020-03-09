@@ -9,11 +9,6 @@ r:
 services:
   - docker
 
-addons:
-  apt:
-    packages:
-      - language-pack-nb
-
 env:
   global:
     - _R_CHECK_TESTS_NLINES_=0
