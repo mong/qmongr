@@ -141,18 +141,18 @@ mod_quality_overview_server <- function(input,
       return(NULL)
     }
     selected_units <- list()
-    selected_units[["RHF"]] <- input$pick_treatment_units[
+    selected_units[[config$data$column$unit_name$rhf]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
-      choices_treatment[["RHF"]]]
-    selected_units[["HF"]] <- input$pick_treatment_units[
+      choices_treatment[[config$data$column$unit_name$rhf]]]
+    selected_units[[config$data$column$unit_name$hf]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
         choices_treatment$HF]
-    selected_units[["SykehusNavn"]] <- input$pick_treatment_units[
+    selected_units[[config$data$column$unit_name$sh]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
         choices_treatment$Sykehus]
     selected_data <- list()
-    if (!rlang::is_empty(selected_units[["RHF"]])) {
-      selected_data[["RHF"]] <- grouped_by_rhf %>%
+    if (!rlang::is_empty(selected_units[[config$data$column$unit_name$rhf]])) {
+      selected_data[[config$data$column$unit_name$rhf]] <- grouped_by_rhf %>%
         dplyr::filter(
           .data[[config$data$column$unit_name$rhf]] %in% selected_units$RHF,
           .data[["count"]] > 5,
@@ -160,21 +160,21 @@ mod_quality_overview_server <- function(input,
     }
 
     if (!rlang::is_empty(selected_units$HF)) {
-      selected_data[["HF"]] <- grouped_by_hf %>%
+      selected_data[[config$data$column$unit_name$hf]] <- grouped_by_hf %>%
         dplyr::filter(
           .data[[config$data$column$unit_name$hfshort]] %in% selected_units$HF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year)
     }
     if (!rlang::is_empty(selected_units$Sykehus)) {
-      selected_data[["SykehusNavn"]] <- grouped_by_hospital %>%
+      selected_data[[config$data$column$unit_name$sh]] <- grouped_by_hospital %>%
         dplyr::filter(
           .data[[config$data$column$unit_name$sh]] %in% selected_units$SykehusNavn,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year)
     }
     selected_data$national <- national_data %>%
-      dplyr::filter(.data[["Aar"]] == input$pick_year)
+      dplyr::filter(.data[[config$data$column$year]] == input$pick_year)
     qmongr::qi_table(selected_data, selected_units, config)
   })
 
