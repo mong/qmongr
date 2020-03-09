@@ -1,3 +1,4 @@
+language: "no"
 app_text:
     menus:
         unit: "Velg behandlingssted:"
