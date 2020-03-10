@@ -7,9 +7,15 @@ test_that("mod_quality_overview_server", {
                      c("html", "character"))
         expect_equal(output$treatment_unit[["deps"]][[1]][["name"]],
                      "selectize")
-        expect_equal_to_reference(output$treatment_unit[["html"]],
-                                  "data/output_treatment_unit_html.rds")
 
+        treatment_units <- as.character(output$treatment_unit[["html"]])
+        expect_true(grepl("Hammerfest", treatment_units))
+        expect_true(grepl("Troms\u00f8", treatment_units))
+        expect_true(grepl("shiny-input-container", treatment_units))
+        expect_true(grepl("mock-session-pick_treatment_units", treatment_units))
+        expect_true(grepl("<optgroup label=\"RHF\">", treatment_units))
+        expect_true(grepl("Mo i Rana", treatment_units))
+        
         expect_equal_to_reference(output$year[["html"]],
                                   "data/output_year_html.rds")
         expect_equal(class(output$year[["html"]]),
