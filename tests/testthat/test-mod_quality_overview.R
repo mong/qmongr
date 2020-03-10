@@ -23,12 +23,10 @@ test_that("mod_quality_overview_server", {
         expect_equal(output$year[["deps"]][[1]][["name"]],
                      "selectize")
 
-        print("error 1")
-        print(output$qi_table)
         expect_error(output$qi_table)
         session$setInputs(pick_treatment_units = "Trondheim")
-        print("error 2")
-        print(output$qi_table)
+#        print("error 2")
+#        print(output$qi_table)
         expect_error(output$qi_table)
         session$setInputs(pick_year = "2018")
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_trondheim_2018.rds")
