@@ -23,16 +23,26 @@ test_that("mod_quality_overview_server", {
         expect_equal(output$year[["deps"]][[1]][["name"]],
                      "selectize")
 
+        print("error 1")
+        print(output$qi_table)
         expect_error(output$qi_table)
         session$setInputs(pick_treatment_units = "Trondheim")
+        print("error 2")
+        print(output$qi_table)
         expect_error(output$qi_table)
         session$setInputs(pick_year = "2018")
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_trondheim_2018.rds")
         session$setInputs(pick_year = "2016")
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_trondheim_2016.rds")
         session$setInputs(pick_year = "2017")
+        
         session$setInputs(pick_treatment_units = "Troms\u00f8")
+        print("REF")
+        print(readRDS("data/output_qi_table_tromso_2017.rds"))
+        print("TEST")
+        print(output$qi_table)
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_tromso_2017.rds")
+        
 
         session$setInputs(pick_treatment_units = "Helse Nord RHF")
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_helse_nord_2017.rds")
@@ -57,6 +67,8 @@ test_that("mod_quality_overview_server", {
 
         suppressWarnings(session$setInputs(pick_year = "2019"))
         suppressWarnings(session$setInputs(pick_treatment_units = "Førde"))
+        print("error 3")
+        print(output$qi_table)
         expect_error(output$qi_table)
     })
 })
