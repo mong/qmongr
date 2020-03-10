@@ -15,7 +15,7 @@ test_that("mod_quality_overview_server", {
         expect_true(grepl("mock-session-pick_treatment_units", treatment_units))
         expect_true(grepl("<optgroup label=\"RHF\">", treatment_units))
         expect_true(grepl("Mo i Rana", treatment_units))
-        
+
         expect_equal_to_reference(output$year[["html"]],
                                   "data/output_year_html.rds")
         expect_equal(class(output$year[["html"]]),
