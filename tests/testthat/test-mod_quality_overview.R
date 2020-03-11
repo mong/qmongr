@@ -33,8 +33,6 @@ test_that("mod_quality_overview_server", {
         session$setInputs(pick_year = "2017")
         
         session$setInputs(pick_treatment_units = "Troms\u00f8")
-        print("REF")
-        print(readRDS("data/output_qi_table_tromso_2017.rds"))
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_tromso_2017.rds")
         
 
@@ -61,8 +59,6 @@ test_that("mod_quality_overview_server", {
 
         suppressWarnings(session$setInputs(pick_year = "2019"))
         suppressWarnings(session$setInputs(pick_treatment_units = "Førde"))
-        print("error 3")
-        print(output$qi_table)
         expect_error(output$qi_table)
     })
 })
