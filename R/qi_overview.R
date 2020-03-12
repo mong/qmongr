@@ -1,13 +1,11 @@
 #' Makes html list of clickable links
-#' 
 #' @param id unique id for each link
-#' @param category_name the names of a category that will 
+#' @param category_name the names of a category that will
 #'  be displayed
 #' @param nr_of_reg the nr of registers included in a category
 #' @importFrom shiny tags
 #' @return html tags
-#' 
-overview_list <- function(id, category_name, nr_of_reg ) {
+overview_list <- function(id, category_name, nr_of_reg) {
   shiny::tags$ul(
     tags$li(
       class = "title",
@@ -21,7 +19,7 @@ overview_list <- function(id, category_name, nr_of_reg ) {
           class = "nr_of_reg",
           tags$div(
             class = "nr_of_reg_text",
-            sum(nr_of_reg) 
+            sum(nr_of_reg)
           )
         )
       )
@@ -48,7 +46,7 @@ overview_list <- function(id, category_name, nr_of_reg ) {
               class = "nr_of_reg",
               tags$div(
                 class = "nr_of_reg_text",
-                z  
+                z
               )
             )
           )

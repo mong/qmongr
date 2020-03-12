@@ -204,7 +204,6 @@ mod_quality_overview_server <- function(input,
         sort(decreasing = T)
     )
   })
-  
   output$qi_overview <- renderUI({
     id <- names(qmongrdata::fagomr)
     category <- lapply(
@@ -214,7 +213,7 @@ mod_quality_overview_server <- function(input,
     qmongr:::overview_list(
       id = id,
       category_name = category,
-      nr_of_reg = sample(1:5,length(category),TRUE)
+      nr_of_reg = sample(1:5, length(category), TRUE)
       )
   })
 }
