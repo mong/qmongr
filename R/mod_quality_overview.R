@@ -204,13 +204,13 @@ mod_quality_overview_server <- function(input,
         sort(decreasing = T)
     )
   })
-  output$qi_overview <- renderUI({
+  output$qi_overview <- shiny::renderUI({
     id <- names(qmongrdata::fagomr)
     category <- lapply(
       qmongrdata::fagomr,
       function(x) x$name
     )
-    qmongr:::overview_list(
+    overview_list(
       id = id,
       category_name = category,
       nr_of_reg = sample(1:5, length(category), TRUE)
