@@ -1,5 +1,7 @@
 # Unreleased
 
+# qmongr 0.3.1
+
 - Use `stringr::str_sort(locale = "no")` instead of `sort()`, e.g. to sort *Arendal* before *Ålesund*.
 
 # qmongr 0.3.0
