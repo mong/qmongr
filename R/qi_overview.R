@@ -6,12 +6,12 @@
 #' @importFrom shiny tags
 #' @return html tags
 overview_list <- function(id, category_name, nr_of_reg) {
-  shiny::tags$ul(
+  tags$ul(
     tags$li(
       class = "title",
       tags$div(
         class = "category_and_number",
-        shiny::tags$div(
+        tags$div(
           class = "qi_category",
           shiny::tags$h2("Alle")
         ),
