@@ -1,3 +1,3 @@
-test_that("app ui works", {
-  expect_equal(typeof(app_ui()), "list")
+test_that("app_ui", {
+  expect_equal_to_reference(app_ui(), "data/app_ui.rds")
 })
