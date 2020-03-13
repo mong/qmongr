@@ -1,3 +1,5 @@
-test_that("add external resources works", {
-  expect_equal(typeof(qmongr::add_external_resources()), "list")
+test_that("add_external_resources", {
+  expect_equal_to_reference(add_external_resources(),
+                            "data/add_external_resources.rds"
+                            )
 })

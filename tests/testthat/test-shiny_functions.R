@@ -9,8 +9,8 @@ test_that("qi_table", {
       by = c(.data[["Aar"]],
              .data[["KvalIndID"]]))
 
-  expect_error(qmongr::qi_table(table_data))
-  expect_equal(qmongr::qi_table(table_data, "Trondheim, St. Olav", config)
+  expect_error(qi_table(table_data))
+  expect_equal(qi_table(table_data, "Trondheim, St. Olav", config)
                [["children"]][[1]][["children"]][[1]]
                [["children"]][[1]][["children"]][[1]]
                [["children"]][[1]],
