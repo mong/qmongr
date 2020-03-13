@@ -1,3 +1,17 @@
 test_that("app_ui", {
-  expect_equal_to_reference(app_ui(), "data/app_ui.rds")
+  config <- get_config()
+  ref_chr <- as.character(purrr::flatten(app_ui()))[4]
+
+  expect_true(grepl("treatment_unit", ref_chr, fixed = TRUE))
+  expect_true(grepl("quality_overview_ui_1-qi_overview", ref_chr, fixed = TRUE))
+  expect_true(grepl(config$app_text$menus$unit, ref_chr, fixed = TRUE))
+  expect_true(grepl(config$app_text$menus$year, ref_chr, fixed = TRUE))
+  expect_true(grepl(config$app_text$indicators$high, ref_chr, fixed = TRUE))
+  expect_true(grepl(config$app_text$indicators$moderate, ref_chr, fixed = TRUE))
+  expect_true(grepl(config$app_text$indicators$low, ref_chr, fixed = TRUE))
+
+  expect_true(grepl("shiny-html-output", ref_chr, fixed = TRUE))
+  expect_true(grepl("high", ref_chr, fixed = TRUE))
+  expect_true(grepl("moderate", ref_chr, fixed = TRUE))
+  expect_true(grepl("low", ref_chr, fixed = TRUE))
 })
