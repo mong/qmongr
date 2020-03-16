@@ -23,19 +23,19 @@ mod_quality_overview_ui <- function(id) {
         shiny::fluidRow(
           shiny::column(
             width = 3,
-            shiny::tags$h3(config$app_text$menus$unit)
+            "placeholder1"
           ),
           shiny::column(
-            width = 3,
+            width = 5,
             shiny::uiOutput(outputId = ns("treatment_unit"))
           ),
           shiny::column(
             width = 2,
-            shiny::tags$h3(config$app_text$menus$year)
+            shiny::uiOutput(outputId = ns("year"))
           ),
           shiny::column(
             width = 2,
-            shiny::uiOutput(outputId = ns("year"))
+            "placeholder2"
           )
         )
       ),
@@ -189,11 +189,15 @@ mod_quality_overview_server <- function(input,
       unique() %>%
       stringr::str_sort(locale = config$language))
   output$treatment_unit <- shiny::renderUI({
-    shiny::selectInput(
+    shiny::selectizeInput(
       label = NULL,
       inputId = ns("pick_treatment_units"),
       choices =  choices_treatment,
-      multiple = TRUE
+      multiple = TRUE,
+      options = list(
+        placeholder = config$app_text$menus$unit,
+        onInitialize = I('function() { this.setValue(""); }')
+      )
     )
   })
   output$year <-  shiny::renderUI({
