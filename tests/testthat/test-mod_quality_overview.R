@@ -68,8 +68,6 @@ test_that("mod_quality_overview_ui", {
     config <- get_config()
     ref_chr <- as.character(purrr::flatten(mod_quality_overview_ui("test")))[3]
 
-    expect_true(grepl(config$app_text$menus$unit, ref_chr, fixed = TRUE))
-    expect_true(grepl(config$app_text$menus$year, ref_chr, fixed = TRUE))
     expect_true(grepl(config$app_text$indicators$high, ref_chr, fixed = TRUE))
     expect_true(grepl(config$app_text$indicators$moderate, ref_chr, fixed = TRUE))
     expect_true(grepl(config$app_text$indicators$low, ref_chr, fixed = TRUE))
