@@ -1,8 +1,8 @@
 language: "no"
 app_text:
     menus:
-        unit: "Velg behandlingssted:"
-        year: "Velg år:"
+        unit: "Velg behandlingssted"
+        year: "År:"
     indicators:
         high: "Høy måloppnåelse"
         moderate: "Moderat måloppnåelse"
