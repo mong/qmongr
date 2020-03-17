@@ -34,7 +34,7 @@ overview_list <- function(id, category_name, nr_of_reg, all_id) {
         id,
         nr_of_reg
       ),
-      function(x, y, z) {
+      function(name, id, nr_of_reg) {
         tags$li(
           tags$div(
             class = "category_and_number",
