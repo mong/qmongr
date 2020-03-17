@@ -38,7 +38,7 @@ Imports:
     stringr,
     rlang,
     yaml,
-    qmongrdata (>= 0.2.1),
+    qmongrdata (>= 0.2.3),
     lubridate
 Depends: R (>= 3.5)
 Remotes: 
