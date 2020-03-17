@@ -5,7 +5,7 @@
 #' @param nr_of_reg the nr of registers included in a category
 #' @importFrom shiny tags
 #' @return html tags
-overview_list <- function(id, category_name, nr_of_reg) {
+overview_list <- function(id, category_name, nr_of_reg, all_id) {
   tags$ul(
     tags$li(
       class = "title",
@@ -13,7 +13,10 @@ overview_list <- function(id, category_name, nr_of_reg) {
         class = "category_and_number",
         tags$div(
           class = "qi_category",
-          shiny::tags$h2("Alle")
+          shiny::actionLink( 
+            inputId = all_id,
+            shiny::tags$h2("Alle")
+          )
         ),
         tags$div(
           class = "nr_of_reg",
