@@ -240,9 +240,7 @@ mod_quality_overview_server <- function(input,
       all_id = ns("alle")
     )
   })
-  filter_indicator <- shiny::reactiveValues(
-    indicator = NULL
-  )
+  filter_indicator <- shiny::reactiveValues()
   shiny::observe({
     fagomr <- names(qmongrdata::fagomr)
     clicked_register <- lapply(
