@@ -88,7 +88,7 @@ mod_quality_overview_ui <- function(id) {
 mod_quality_overview_server <- function(input,
                                         output,
                                         session) {
-
+  #All the processed data
   ns <- session$ns
   config <- qmongr::get_config()
   register_data <- qmongr::load_data()
@@ -101,7 +101,6 @@ mod_quality_overview_server <- function(input,
           dplyr::select(
             .data[[config$data$column$unit_name$hfshort]],
             .data[[config$data$column$unit_id$hf]]
-
           ) %>%
           unique(),
         by = config$data$column$unit_id$hf
@@ -136,48 +135,67 @@ mod_quality_overview_server <- function(input,
     register_data,
     by = ""
   )
-  output$qi_table <- shiny::renderUI({
-    if (length(input$pick_year) > 1) {
-      return(NULL)
-    }
+  #picked treatment units
+  selected_units <- shiny::reactive({
     selected_units <- list()
     selected_units[[config$data$column$unit_name$rhf]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
-      choices_treatment[[config$data$column$unit_name$rhf]]]
+        choices_treatment[[config$data$column$unit_name$rhf]]]
     selected_units[[config$data$column$unit_name$hf]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
         choices_treatment$HF]
     selected_units[[config$data$column$unit_name$sh]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
         choices_treatment$Sykehus]
+    return(selected_units)
+  })
+  #filtered data that makes up the table content
+  filtered_data <- shiny::reactive({
+    if (rlang::is_empty(filter_indicator$indicator)) {
+      filter_indicator$indicator <- register_data[["description"]] %>%
+        purrr::pluck("IndID") %>%
+        unique()
+    }
     selected_data <- list()
-    if (!rlang::is_empty(selected_units[[config$data$column$unit_name$rhf]])) {
+    if (!rlang::is_empty(selected_units()[[config$data$column$unit_name$rhf]])) {
       selected_data[[config$data$column$unit_name$rhf]] <- grouped_by_rhf %>%
         dplyr::filter(
-          .data[[config$data$column$unit_name$rhf]] %in% selected_units$RHF,
+          .data[[config$data$column$unit_name$rhf]] %in% selected_units()$RHF,
           .data[["count"]] > 5,
-          .data[[config$data$column$year]] == input$pick_year)
+          .data[[config$data$column$year]] == input$pick_year,
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+        )
     }
-
-    if (!rlang::is_empty(selected_units$HF)) {
+    if (!rlang::is_empty(selected_units()$HF)) {
       selected_data[[config$data$column$unit_name$hf]] <- grouped_by_hf %>%
         dplyr::filter(
-          .data[[config$data$column$unit_name$hfshort]] %in% selected_units$HF,
+          .data[[config$data$column$unit_name$hfshort]] %in% selected_units()$HF,
           .data[["count"]] > 5,
-          .data[[config$data$column$year]] == input$pick_year)
+          .data[[config$data$column$year]] == input$pick_year,
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+        )
     }
-    if (!rlang::is_empty(selected_units$Sykehus)) {
+    if (!rlang::is_empty(selected_units()$Sykehus)) {
       selected_data[[config$data$column$unit_name$sh]] <- grouped_by_hospital %>%
         dplyr::filter(
-          .data[[config$data$column$unit_name$sh]] %in% selected_units$SykehusNavn,
+          .data[[config$data$column$unit_name$sh]] %in% selected_units()$SykehusNavn,
           .data[["count"]] > 5,
-          .data[[config$data$column$year]] == input$pick_year)
+          .data[[config$data$column$year]] == input$pick_year,
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+        )
     }
     selected_data$national <- national_data %>%
       dplyr::filter(.data[[config$data$column$year]] == input$pick_year)
-    qmongr::qi_table(selected_data, selected_units, config)
+    return(selected_data)
   })
-
+  #table output
+  output$qi_table <- shiny::renderUI({
+    if (length(input$pick_year) > 1) {
+      return(NULL)
+    }
+    qmongr::qi_table(filtered_data(), selected_units(), config)
+  })
+  #list of treatment units
   choices_treatment <- list(
     "RHF" = grouped_by_rhf$RHF %>%
       unique() %>%
@@ -200,6 +218,7 @@ mod_quality_overview_server <- function(input,
       )
     )
   })
+  # input years
   output$year <-  shiny::renderUI({
     shiny::selectInput(
       label = NULL,
@@ -208,4 +227,47 @@ mod_quality_overview_server <- function(input,
         sort(decreasing = T)
     )
   })
+  #filtering by field
+  output$qi_overview <- shiny::renderUI({
+    id <- lapply(
+      names(qmongrdata::fagomr),
+      ns
+    )
+    category <- lapply(
+      qmongrdata::fagomr,
+      function(x) x$name
+    )
+    overview_list(
+      id = id,
+      category_name = category,
+      nr_of_reg = sample(1:5, length(category), TRUE),
+      all_id = ns("alle")
+    )
+  })
+  filter_indicator <- shiny::reactiveValues()
+  shiny::observe({
+    fagomr <- names(qmongrdata::fagomr)
+    clicked_register <- lapply(
+      fagomr,
+      function(x) {
+       shiny::observeEvent(
+         input[[x]], {
+            clicked_reg <- qmongrdata::fagomr[[x]][["key"]]
+            filter_indicator$indicator <- register_data[["description"]] %>%
+              dplyr::filter(
+                .data[["Register"]] %in% clicked_reg
+              ) %>%
+            purrr::pluck("IndID") %>%
+            unique()
+         }
+       )
+      }
+    )
+    shiny::observeEvent(
+      input$alle, {
+        filter_indicator$indicator <- register_data[["description"]] %>%
+        purrr::pluck("IndID") %>%
+        unique()
+      })
+   })
 }
