@@ -42,15 +42,15 @@ overview_list <- function(id, category_name, nr_of_reg, all_id) {
               class = "qi_category",
               shiny::actionLink(
                 class = "qi_category_link",
-                inputId = paste0(y),
-                label = paste0(x)
+                inputId = paste0(id),
+                label = paste0(name)
               )
             ),
             tags$div(
               class = "nr_of_reg",
               tags$div(
                 class = "nr_of_reg_text",
-                z
+                nr_of_reg
               )
             )
           )
