@@ -100,7 +100,7 @@ mod_quality_overview_server <- function(input,
       register_data[["hospital_name_structure"]] %>%
           dplyr::select(
             .data[[config$data$column$unit_name$hfshort]],
-            .data[[config$data$column$unit_id$hf]],
+            .data[[config$data$column$unit_id$hf]]
           ) %>%
           unique(),
         by = config$data$column$unit_id$hf
