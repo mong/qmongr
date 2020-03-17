@@ -41,20 +41,33 @@ mod_quality_overview_ui <- function(id) {
       ),
       shiny::tags$div(
         class = "table_legend",
-        shiny::fluidRow(
-          shiny::column(
-            width = 7,
-            offset = 4,
-            shiny::tags$ul(
-              shiny::tags$li(class = "high",
-                shiny::icon("fas fa-circle"),
-                config$app_text$indicators$high),
-              shiny::tags$li(class = "moderate",
-                shiny::icon("fas fa-adjust"),
-                config$app_text$indicators$moderate),
-              shiny::tags$li(class = "low",
-                shiny::icon("circle-o"),
-                config$app_text$indicators$low),
+        shiny::tags$div(
+          class = "high",
+          shiny::actionLink(
+            inputId = ns("legend_high"),
+            label = shiny::tags$p(
+              shiny::icon("fas fa-circle"),
+              config$app_text$indicators$high
+            )
+          )
+        ),
+        shiny::tags$div(
+          class = "moderate",
+          shiny::actionLink(
+            inputId = ns("legend_mod"),
+            label = shiny::tags$p(
+              shiny::icon("fas fa-adjust"),
+              config$app_text$indicators$moderate
+            )
+          )
+        ),
+        shiny::tags$div(
+          class = "low",
+          shiny::actionLink(
+            inputId = ns("legend_low"),
+            label = shiny::tags$p(
+              shiny::icon("circle-o"),
+              config$app_text$indicators$low
             )
           )
         )
