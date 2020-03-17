@@ -61,6 +61,19 @@ test_that("mod_quality_overview_server", {
         suppressWarnings(session$setInputs(pick_year = "2019"))
         suppressWarnings(session$setInputs(pick_treatment_units = "Førde"))
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_forde_2019.rds")
+        
+        session$setInputs(pick_treatment_units =  "Helse Nord RHF")
+        session$setInputs(intensiv = 1)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_intensiv_2019.rds")
+        
+        session$setInputs(pick_treatment_units =  "Bergen HF")
+        session$setInputs(tarm = 1)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_tarm_2019.rds")
+        
+        session$setInputs(pick_treatment_units =  "Skien")
+        session$setInputs(muskel = 1)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_muskel_2019.rds")
+        
     })
 })
 
