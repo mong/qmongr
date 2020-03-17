@@ -14,7 +14,7 @@ overview_list <- function(id, category_name, nr_of_reg, all_id) {
         class = "category_and_number",
         tags$div(
           class = "qi_category",
-          shiny::actionLink( 
+          shiny::actionLink(
             inputId = all_id,
             shiny::tags$h2("Alle")
           )

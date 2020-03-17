@@ -135,7 +135,7 @@ mod_quality_overview_server <- function(input,
     register_data,
     by = ""
   )
-  #picked treatment units 
+  #picked treatment units
   selected_units <- shiny::reactive({
     selected_units <- list()
     selected_units[[config$data$column$unit_name$rhf]] <- input$pick_treatment_units[
@@ -188,7 +188,6 @@ mod_quality_overview_server <- function(input,
       dplyr::filter(.data[[config$data$column$year]] == input$pick_year)
     return(selected_data)
   })
-  
   #table output
   output$qi_table <- shiny::renderUI({
     if (length(input$pick_year) > 1) {
@@ -196,7 +195,6 @@ mod_quality_overview_server <- function(input,
     }
     qmongr::qi_table(filtered_data(), selected_units(), config)
   })
-  
   #list of treatment units
   choices_treatment <- list(
     "RHF" = grouped_by_rhf$RHF %>%
@@ -225,7 +223,7 @@ mod_quality_overview_server <- function(input,
         sort(decreasing = T)
     )
   })
-  #filtering by field 
+  #filtering by field
   output$qi_overview <- shiny::renderUI({
     id <- lapply(
       names(qmongrdata::fagomr),
@@ -238,26 +236,22 @@ mod_quality_overview_server <- function(input,
     overview_list(
       id = id,
       category_name = category,
-      nr_of_reg = sample(1:5, length(category), TRUE), 
+      nr_of_reg = sample(1:5, length(category), TRUE),
       all_id = ns("alle")
     )
   })
-  
   filter_indicator <- shiny::reactiveValues(
     indicator = NULL
   )
-  
   shiny::observe({
     fagomr <- names(qmongrdata::fagomr)
-  
     clicked_register <- lapply(
       fagomr,
-      function (x) {
+      function(x) {
        shiny::observeEvent(
-         input[[x]],
-         {clicked_reg <- qmongrdata::fagomr[[x]][["key"]]
-         
-         filter_indicator$indicator <- register_data[["description"]] %>%
+         input[[x]], {
+            clicked_reg <- qmongrdata::fagomr[[x]][["key"]]
+            filter_indicator$indicator <- register_data[["description"]] %>%
               dplyr::filter(
                 .data[["Register"]] %in% clicked_reg
               ) %>%
@@ -267,13 +261,11 @@ mod_quality_overview_server <- function(input,
        )
       }
     )
-    
     shiny::observeEvent(
-      input$alle,
-      {filter_indicator$indicator <- register_data[["description"]] %>%
+      input$alle, {
+        filter_indicator$indicator <- register_data[["description"]] %>%
         purrr::pluck("IndID") %>%
         unique()
-      
       })
    })
 }
