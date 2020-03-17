@@ -1,4 +1,10 @@
-# Unreleased
+# qmongr 0.4.0
+
+* Add qi overview ([#84](https://github.com/SKDE-Felles/qmongr/pull/84))
+  - Possible to filter on medical field
+* Nav tab ([#88](https://github.com/SKDE-Felles/qmongr/pull/88)). Re-defining structure and looks
+* Use at least `qmongrdata` [version 0.2.3](https://skde-felles.github.io/qmongrdata/news/index.html#qmongrdata-0-2-3) 
+* Test updates
 
 # qmongr 0.3.1
 
@@ -7,7 +13,7 @@
 # qmongr 0.3.0
 
 * Total rewrite of the app [#73](https://github.com/SKDE-Felles/qmongr/pull/73)
-  -  Drop down menu with hierarchy
+  - Drop down menu with hierarchy
   - Show several hospitals at once, including HF and RHF
   - Working with `qmongrdata` [version 0.1.0](https://skde-felles.github.io/qmongrdata/news/index.html#qmongrdata-0-1-0)  
 
