@@ -4,7 +4,7 @@
 \alias{overview_list}
 \title{Makes html list of clickable links}
 \usage{
-overview_list(id, category_name, nr_of_reg)
+overview_list(id, category_name, nr_of_reg, all_id)
 }
 \arguments{
 \item{id}{unique id for each link}
@@ -13,6 +13,8 @@ overview_list(id, category_name, nr_of_reg)
 be displayed}
 
 \item{nr_of_reg}{the nr of registers included in a category}
+
+\item{all_id}{the inputId for the Alle actionLink}
 }
 \value{
 html tags

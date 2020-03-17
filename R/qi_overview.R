@@ -3,6 +3,7 @@
 #' @param category_name the names of a category that will
 #'  be displayed
 #' @param nr_of_reg the nr of registers included in a category
+#' @param all_id the inputId for the Alle actionLink
 #' @importFrom shiny tags
 #' @return html tags
 overview_list <- function(id, category_name, nr_of_reg, all_id) {
