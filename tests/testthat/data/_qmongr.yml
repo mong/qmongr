@@ -1,7 +1,8 @@
+language: "no"
 app_text:
     menus:
-        unit: "Velg behandlingssted:"
-        year: "Velg år:"
+        unit: "Velg behandlingssted"
+        year: "År:"
     indicators:
         high: "Høy måloppnåelse"
         moderate: "Moderat måloppnåelse"
@@ -14,7 +15,14 @@ data:
     column:
         year: "Aar"
         qi_id: "KvalIndID"
-        unit: "ShNavn"
-        unit_id: "OrgNrShus"
+        unit_name:
+            sh: "SykehusNavn"
+            hf: "HF"
+            rhf: "RHF"
+            hfshort: "Hfkortnavn"
+        unit_id:
+            sh: "OrgNrShus"
+            hf: "OrgNrHF"
+            rhf: "OrgNrRHF"
         variable: "Variabel"
         source: "Register"
