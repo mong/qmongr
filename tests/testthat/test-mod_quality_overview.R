@@ -43,10 +43,10 @@ test_that("mod_quality_overview_server", {
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_qwerty.rds")
         session$setInputs(pick_year = "2019")
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_private_2019.rds")
-        session$setInputs(pick_treatment_units = "Bergen")
+        session$setInputs(pick_treatment_units = "Bergen HF")
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_bergen_2019.rds")
 
-        session$setInputs(pick_treatment_units = c("Molde", "Helgeland", "Helse Vest RHF"))
+        session$setInputs(pick_treatment_units = c("Molde", "Helgeland HF", "Helse Vest RHF"))
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_multiple_2019.rds")
 
         session$setInputs(pick_treatment_units = "Trondheim")
@@ -60,7 +60,7 @@ test_that("mod_quality_overview_server", {
 
         suppressWarnings(session$setInputs(pick_year = "2019"))
         suppressWarnings(session$setInputs(pick_treatment_units = "Førde"))
-        expect_error(output$qi_table)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_forde_2019.rds")
     })
 })
 
