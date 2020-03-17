@@ -1,3 +1,5 @@
+# Unreleased
+
 # qmongr 0.4.0
 
 * Add qi overview ([#84](https://github.com/SKDE-Felles/qmongr/pull/84))
