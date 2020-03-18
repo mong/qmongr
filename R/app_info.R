@@ -15,21 +15,21 @@ NULL
 #' version_info()
 
 version_info <- function(newline = "<br>") {
-  
+
   conf <- get_config()
   pkg <- conf$app_text$info$version$app
-  m <-installed.packages()[pkg, c(1,3)]
+  m <- installed.packages()[pkg, c(1, 3)]
   paste0(pkg, " v", m[pkg, "Version"], newline, collapse = "")
 }
 
 
 #' @rdname app_info
 #' @export
-#' @examples 
+#' @examples
 #' no_opt_out_ok()
 
 no_opt_out_ok <- function() {
-  
+
   conf <- get_config()
   msg <- conf$app_text$info$action_button$no_opt_out_ok
   sample(msg, 1)

@@ -7,6 +7,8 @@ test_that("configured ok messages can be retreived", {
 })
 
 test_that("ok message samling works, e.g. different messages are provided", {
-  f <- function(){no_opt_out_ok()}
+  f <- function() {
+    no_opt_out_ok()
+  }
   expect_false(identical(c(f(), f()), c(f(), f())))
-})  
+})
