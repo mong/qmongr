@@ -1,14 +1,14 @@
 # Unreleased
 
+## Internal
+
+* Restructured `mod_quality_overview_server` tests.
+
 # qmongr 0.5.0
 
 ## New features
 
 * Enable filtering by the achievment level of the qi([#89](https://github.com/SKDE-Felles/qmongr/pull/89))
-
-## Internal
-
-* Restructured `mod_quality_overview_server` tests.
 
 # qmongr 0.4.0
 
