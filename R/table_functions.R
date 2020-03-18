@@ -52,13 +52,13 @@ add_orgnr <- function(data_list, by = "RHF") {
         data_list[["hospital_name_structure"]] %>%
           dplyr::select(
             .data[[org_column]],
-            .data[[config[["data"]][["column"]][["unit_id"]][["sh"]]]],
-            .data[[config[["data"]][["column"]][["unit_name"]][["sh"]]]]) %>%
+            .data[[config$data$column$unit_id$sh]],
+            .data[[config$data$column$unit_name$sh]]) %>%
           dplyr::mutate(
-            "OrgNrShus" = as.character(.data[[config[["data"]][["column"]][["unit_id"]][["sh"]]]])),
-        by = config[["data"]][["column"]][["unit_id"]][["sh"]]
+            "OrgNrShus" = as.character(.data[[config$data$column$unit_id$sh]])),
+        by = config$data$column$unit_id$sh
       ) %>%
-      dplyr:: filter(!is.na(.data[[config[["data"]][["column"]][["unit_name"]][["sh"]]]]))
+      dplyr:: filter(!is.na(.data[[config$data$column$unit_name$sh]]))
 }
 
 #' group data
@@ -78,20 +78,20 @@ group_data <- function(data_list, by) {
     data_list[["indicator"]] <- add_orgnr(data_list, by) %>%
       dplyr::group_by(
         .data[[org_column]],
-        .data[[config[["data"]][["column"]][["year"]]]],
+        .data[[config$data$column$year]],
         .data[[config$data$column$qi_id]]
      )
   } else if (by == "hospital") {
     data_list[["indicator"]] <- data_list[["indicator"]] %>%
       dplyr::group_by(
         .data[[config$data$column$unit_id$sh]],
-        .data[[config[["data"]][["column"]][["year"]]]],
+        .data[[config$data$column$year]],
         .data[[config$data$column$qi_id]]
       )
   } else if (by == "") {
     data_list[["indicator"]] <- data_list[["indicator"]] %>%
       dplyr::group_by(
-        .data[[config[["data"]][["column"]][["year"]]]],
+        .data[[config$data$column$year]],
         .data[[config$data$column$qi_id]]
       )
   }
@@ -134,7 +134,7 @@ compute_indicator_mean <- function(grouped_data)  {
   grouped_data %>%
     dplyr::summarise(
       count = dplyr::n(),
-      indicator = mean(.data[[config[["data"]][["column"]][["variable"]]]])
+      indicator = mean(.data[[config$data$column$variable]])
     )
 }
 #' calculates median
@@ -151,7 +151,7 @@ compute_indicator_median <- function(grouped_data)  {
   grouped_data %>%
     dplyr::summarise(
       count = dplyr::n(),
-      indicator = stats::median(.data[[config[["data"]][["column"]][["variable"]]]])
+      indicator = stats::median(.data[[config$data$column$variable]])
     )
 }
 
