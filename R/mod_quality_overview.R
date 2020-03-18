@@ -286,7 +286,7 @@ mod_quality_overview_server <- function(input,
         unique()
       })
    })
-  #filtering by achivment levels
+  #filtering by achievement levels
   observe({
     clicked_level <- list(F,F,F)
     names(clicked_level) <- c("legend_high","legend_mod","legend_low")
@@ -297,7 +297,6 @@ mod_quality_overview_server <- function(input,
       function (button) {
         shiny::observeEvent(
           req(input[[button]]),{
-            print(paste("clicked:",button, "val: ", clicked_level[[button]]))
             if(clicked_level[[button]]){
               clicked_level <<- list(F,F,F)
               names(clicked_level) <<- c("legend_high","legend_mod","legend_low")
