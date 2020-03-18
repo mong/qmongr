@@ -73,6 +73,21 @@ test_that("mod_quality_overview_server", {
         session$setInputs(pick_treatment_units =  "Skien")
         session$setInputs(muskel = 1)
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_muskel_2019.rds")
+        
+        session$setInputs(pick_treatment_units =  "Helse vest RHF")
+        session$setInputs(legend_high = 1)
+        session$setInputs(pick_year = 2017)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_high_2017.rds")
+        
+        session$setInputs(pick_treatment_units =  "UNN HF")
+        session$setInputs(legend_mod = 1)
+        session$setInputs(pick_year = 2018)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_mod_2018.rds")
+        
+        session$setInputs(pick_treatment_units =  "Akershus")
+        session$setInputs(legend_low = 1)
+        session$setInputs(pick_year = 2019)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_low_2019.rds")
     })
 })
 
