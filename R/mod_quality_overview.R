@@ -288,33 +288,30 @@ mod_quality_overview_server <- function(input,
    })
   #filtering by achievement levels
   shiny::observe({
-    clicked_level <- list(F,F,F)
-    names(clicked_level) <- c("legend_high","legend_mod","legend_low")
+    clicked_level <- list(F, F, F)
+    names(clicked_level) <- c("legend_high", "legend_mod", "legend_low")
     filter_indicator$level <- list("H", "M", "L", "undefined")
-    
+
     level_buttons <- lapply(
       names(clicked_level),
-      function (button) {
+      function(button) {
         shiny::observeEvent(
-          shiny::req(input[[button]]),{
-            if(clicked_level[[button]]){
-              clicked_level <<- list(F,F,F)
-              names(clicked_level) <<- c("legend_high","legend_mod","legend_low")
+          shiny::req(input[[button]]), {
+            if (clicked_level[[button]]) {
+              clicked_level <<- list(F, F, F)
+              names(clicked_level) <<- c("legend_high", "legend_mod", "legend_low")
               filter_indicator$level <- list("H", "M", "L", "undefined")
-              
             } else {
-              clicked_level <<- list(F,F,F)
-              names(clicked_level) <<- c("legend_high","legend_mod","legend_low")
+              clicked_level <<- list(F, F, F)
+              names(clicked_level) <<- c("legend_high", "legend_mod", "legend_low")
               clicked_level[[button]] <<- T
               filter_indicator$level <- list("H", "M", "L")[unlist(clicked_level)]
             }
-              
           }
         )
       }
     )
-    
   })
-  
-  
+
+
 }
