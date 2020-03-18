@@ -92,7 +92,7 @@ test_that("mod_quality_overview_server", {
         session$setInputs(legend_mod = 0)
         session$setInputs(legend_low = 0)
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_high_2017.rds")
-        
+
         session$setInputs(pick_treatment_units =  "UNN HF")
         session$setInputs(legend_mod = 1)
         session$setInputs(pick_year = 2018)
