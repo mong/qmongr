@@ -33,6 +33,7 @@ RoxygenNote: 7.0.2
 Imports: 
     magrittr,
     shiny,
+    shinyalert,
     dplyr,
     tidyr,
     stringr,
