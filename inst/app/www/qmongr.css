@@ -15,10 +15,16 @@ body {
   float: right;
 }
 
-.treatment_unit .shiny-input-container{
+.treatment_unit .shiny-input-container {
   border-radius: 5px;
   margin-top:20px;
   float: left;
+}
+
+.treatment_unit .action-button {
+  border-radius: 5px;
+  margin-top: 20px;
+  float: right;
 }
 
 .table_legend {
