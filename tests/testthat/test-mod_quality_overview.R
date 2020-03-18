@@ -44,7 +44,7 @@ test_that("mod_quality_overview_server errors", {
   })
 })
 
-test_that("mod_quality_overview_server simple input", {
+test_that("mod_quality_overview_server basic input", {
   shiny::testModule(mod_quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
     session$setInputs(pick_year = "2018")
@@ -122,7 +122,7 @@ test_that("mod_quality_overview_server filter medical field", {
   })
 })
 
-test_that("mod_quality_overview_server filter ", {
+test_that("mod_quality_overview_server filter level", {
   shiny::testModule(mod_quality_overview_server, {
     session$setInputs(pick_year = 2017)
     session$setInputs(pick_treatment_units =  "Helse Vest RHF")
