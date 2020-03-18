@@ -176,7 +176,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$rhf]] %in% selected_units()$RHF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
+          .data[["level"]] %in% filter_indicator$level
         )
     }
     if (!rlang::is_empty(selected_units()$HF)) {
@@ -185,7 +186,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$hfshort]] %in% selected_units()$HF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
+          .data[["level"]] %in% filter_indicator$level
         )
     }
     if (!rlang::is_empty(selected_units()$Sykehus)) {
@@ -194,7 +196,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$sh]] %in% selected_units()$SykehusNavn,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
+          .data[["level"]] %in% filter_indicator$level
         )
     }
     selected_data$national <- national_data %>%
@@ -283,4 +286,36 @@ mod_quality_overview_server <- function(input,
         unique()
       })
    })
+  #filtering by achivment levels
+  observe({
+    clicked_level <- list(F,F,F)
+    names(clicked_level) <- c("legend_high","legend_mod","legend_low")
+    filter_indicator$level <- list("H", "M", "L", "undefined")
+    
+    level_buttons <- lapply(
+      names(clicked_level),
+      function (button) {
+        shiny::observeEvent(
+          req(input[[button]]),{
+            print(paste("clicked:",button, "val: ", clicked_level[[button]]))
+            if(clicked_level[[button]]){
+              clicked_level <<- list(F,F,F)
+              names(clicked_level) <<- c("legend_high","legend_mod","legend_low")
+              filter_indicator$level <- list("H", "M", "L", "undefined")
+              
+            } else {
+              clicked_level <<- list(F,F,F)
+              names(clicked_level) <<- c("legend_high","legend_mod","legend_low")
+              clicked_level[[button]] <<- T
+              filter_indicator$level <- list("H", "M", "L")[unlist(clicked_level)]
+            }
+              
+          }
+        )
+      }
+    )
+    
+  })
+  
+  
 }
