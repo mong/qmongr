@@ -41,20 +41,33 @@ mod_quality_overview_ui <- function(id) {
       ),
       shiny::tags$div(
         class = "table_legend",
-        shiny::fluidRow(
-          shiny::column(
-            width = 7,
-            offset = 4,
-            shiny::tags$ul(
-              shiny::tags$li(class = "high",
-                shiny::icon("fas fa-circle"),
-                config$app_text$indicators$high),
-              shiny::tags$li(class = "moderate",
-                shiny::icon("fas fa-adjust"),
-                config$app_text$indicators$moderate),
-              shiny::tags$li(class = "low",
-                shiny::icon("circle-o"),
-                config$app_text$indicators$low),
+        shiny::tags$div(
+          class = "high",
+          shiny::actionLink(
+            inputId = ns("legend_high"),
+            label = shiny::tags$p(
+              shiny::icon("fas fa-circle"),
+              config$app_text$indicators$high
+            )
+          )
+        ),
+        shiny::tags$div(
+          class = "moderate",
+          shiny::actionLink(
+            inputId = ns("legend_mod"),
+            label = shiny::tags$p(
+              shiny::icon("fas fa-adjust"),
+              config$app_text$indicators$moderate
+            )
+          )
+        ),
+        shiny::tags$div(
+          class = "low",
+          shiny::actionLink(
+            inputId = ns("legend_low"),
+            label = shiny::tags$p(
+              shiny::icon("circle-o"),
+              config$app_text$indicators$low
             )
           )
         )
@@ -163,7 +176,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$rhf]] %in% selected_units()$RHF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
+          .data[["level"]] %in% filter_indicator$level
         )
     }
     if (!rlang::is_empty(selected_units()$HF)) {
@@ -172,7 +186,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$hfshort]] %in% selected_units()$HF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
+          .data[["level"]] %in% filter_indicator$level
         )
     }
     if (!rlang::is_empty(selected_units()$Sykehus)) {
@@ -181,7 +196,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$sh]] %in% selected_units()$SykehusNavn,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == input$pick_year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
+          .data[["level"]] %in% filter_indicator$level
         )
     }
     selected_data$national <- national_data %>%
@@ -270,4 +286,32 @@ mod_quality_overview_server <- function(input,
         unique()
       })
    })
+  #filtering by achievement levels
+  shiny::observe({
+    clicked_level <- list(F, F, F)
+    names(clicked_level) <- c("legend_high", "legend_mod", "legend_low")
+    filter_indicator$level <- list("H", "M", "L", "undefined")
+
+    level_buttons <- lapply(
+      names(clicked_level),
+      function(button) {
+        shiny::observeEvent(
+          shiny::req(input[[button]]), {
+            if (clicked_level[[button]]) {
+              clicked_level <<- list(F, F, F)
+              names(clicked_level) <<- c("legend_high", "legend_mod", "legend_low")
+              filter_indicator$level <- list("H", "M", "L", "undefined")
+            } else {
+              clicked_level <<- list(F, F, F)
+              names(clicked_level) <<- c("legend_high", "legend_mod", "legend_low")
+              clicked_level[[button]] <<- T
+              filter_indicator$level <- list("H", "M", "L")[unlist(clicked_level)]
+            }
+          }
+        )
+      }
+    )
+  })
+
+
 }

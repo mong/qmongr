@@ -66,6 +66,14 @@ test_that("mod_quality_overview_server", {
         session$setInputs(intensiv = 1)
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_intensiv_2019.rds")
 
+        session$setInputs(pick_treatment_units =  "OUS HF")
+        session$setInputs(pick_year = 2018)
+        session$setInputs(legend_high = 0)
+        session$setInputs(legend_mod = 0)
+        session$setInputs(legend_low = 0)
+        session$setInputs(alle = 1)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_reset_field_2018.rds")
+
         session$setInputs(pick_treatment_units =  "Bergen HF")
         session$setInputs(tarm = 1)
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_tarm_2019.rds")
@@ -73,6 +81,27 @@ test_that("mod_quality_overview_server", {
         session$setInputs(pick_treatment_units =  "Skien")
         session$setInputs(muskel = 1)
         expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_muskel_2019.rds")
+
+        session$setInputs(pick_treatment_units =  "Helse vest RHF")
+        session$setInputs(legend_high = 1)
+        session$setInputs(pick_year = 2017)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_high_2017.rds")
+
+        session$setInputs(legend_high = 1)
+        session$setInputs(legend_high = 1)
+        session$setInputs(legend_mod = 0)
+        session$setInputs(legend_low = 0)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_high_2017.rds")
+
+        session$setInputs(pick_treatment_units =  "UNN HF")
+        session$setInputs(legend_mod = 1)
+        session$setInputs(pick_year = 2018)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_mod_2018.rds")
+
+        session$setInputs(pick_treatment_units =  "Akershus")
+        session$setInputs(legend_low = 1)
+        session$setInputs(pick_year = 2019)
+        expect_equal_to_reference(output$qi_table, "data/output_qi_table_filter_level_low_2019.rds")
     })
 })
 
