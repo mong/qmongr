@@ -287,7 +287,7 @@ mod_quality_overview_server <- function(input,
       })
    })
   #filtering by achievement levels
-  observe({
+  shiny::observe({
     clicked_level <- list(F,F,F)
     names(clicked_level) <- c("legend_high","legend_mod","legend_low")
     filter_indicator$level <- list("H", "M", "L", "undefined")
@@ -296,7 +296,7 @@ mod_quality_overview_server <- function(input,
       names(clicked_level),
       function (button) {
         shiny::observeEvent(
-          req(input[[button]]),{
+          shiny::req(input[[button]]),{
             if(clicked_level[[button]]){
               clicked_level <<- list(F,F,F)
               names(clicked_level) <<- c("legend_high","legend_mod","legend_low")
