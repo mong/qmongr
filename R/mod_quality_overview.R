@@ -18,6 +18,7 @@ mod_quality_overview_ui <- function(id) {
   config <- qmongr::get_config()
   tagList(
     shiny::fluidPage(
+      shinyalert::useShinyalert(),
       shiny::tags$div(
         class = "treatment_unit",
         shiny::fluidRow(
@@ -35,7 +36,7 @@ mod_quality_overview_ui <- function(id) {
           ),
           shiny::column(
             width = 2,
-            "placeholder2"
+            shiny::uiOutput(outputId = ns("appInfo"))
           )
         )
       ),
@@ -207,5 +208,20 @@ mod_quality_overview_server <- function(input,
       choices = c(2016, 2017, 2018, 2019) %>%
         sort(decreasing = T)
     )
+  })
+  output$appInfo <- shiny::renderUI({
+    shiny::actionButton(
+      inputId = ns("app_info"),
+      label = "",
+      icon = shiny::icon("info")
+    )
+  })
+  shiny::observeEvent(input$app_info, {
+    shinyalert::shinyalert(title = config$app_text$info$title,
+                           text = qmongr::version_info(),
+                           type = "",
+                           closeOnEsc = TRUE, closeOnClickOutside = TRUE,
+                           html = TRUE,
+                           confirmButtonText = qmongr::no_opt_out_ok())
   })
 }
