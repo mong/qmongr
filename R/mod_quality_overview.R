@@ -36,7 +36,7 @@ mod_quality_overview_ui <- function(id) {
           ),
           shiny::column(
             width = 2,
-            shiny::uiOutput(outputId = ns("appInfo"))
+            shiny::uiOutput(outputId = ns("app_info"))
           )
         )
       ),
@@ -229,7 +229,7 @@ mod_quality_overview_server <- function(input,
     )
   })
 
-  output$appInfo <- shiny::renderUI({
+  output$app_info <- shiny::renderUI({
     shiny::actionButton(
       inputId = ns("app_info"),
       label = "",
