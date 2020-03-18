@@ -1,5 +1,10 @@
 # Unreleased
 
+# qmongr 0.4.1
+
+* Enable filtering by the achievment level of the qi([#89](https://github.com/SKDE-Felles/qmongr/pull/89))
+  
+  
 # qmongr 0.4.0
 
 * Add qi overview ([#84](https://github.com/SKDE-Felles/qmongr/pull/84))
