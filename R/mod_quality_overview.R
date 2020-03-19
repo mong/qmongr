@@ -105,50 +105,12 @@ mod_quality_overview_server <- function(input,
   #All the processed data
   ns <- session$ns
   config <- qmongr::get_config()
-  register_data <- qmongr::load_data()
-  grouped_by_hf <- qmongr::group_data(
-    register_data,
-    by = config$data$column$unit_name$hf
-  ) %>%
-    dplyr::left_join(
-      register_data[["hospital_name_structure"]] %>%
-          dplyr::select(
-            .data[[config$data$column$unit_name$hfshort]],
-            .data[[config$data$column$unit_id$hf]]
-          ) %>%
-          unique(),
-        by = config$data$column$unit_id$hf
-      )
-  grouped_by_rhf <- qmongr::group_data(
-    register_data,
-    by = config$data$column$unit_name$rhf
-  ) %>%
-    dplyr::left_join(
-      register_data[["hospital_name_structure"]] %>%
-        dplyr::select(
-          .data[[config$data$column$unit_name$rhf]],
-          .data[[config$data$column$unit_id$rhf]]
-        ) %>%
-        unique(),
-      by = config$data$column$unit_id$rhf
-    )
-  grouped_by_hospital <- qmongr::group_data(
-    register_data,
-    by = "hospital"
-  ) %>%
-    dplyr::left_join(
-      register_data[["hospital_name_structure"]] %>%
-        dplyr::select(
-          .data[[config$data$column$unit_name$sh]],
-          .data[[config$data$column$unit_id$sh]]
-        ),
-      by = c(config$data$column$unit_id$sh),
-    ) %>%
-    dplyr::filter(!is.na(.data[[config$data$column$unit_name$sh]]))
-  national_data <- qmongr::group_data(
-    register_data,
-    by = ""
-  )
+  app_data <- app_data(config)
+  register_data <- app_data[["register_data"]] 
+  grouped_by_hf <- app_data[["grouped_by_hf"]]  
+  grouped_by_rhf <- app_data[["grouped_by_rhf"]]
+  grouped_by_hospital <- app_data[["grouped_by_hospital"]]  
+  national_data <- app_data[["national_data"]]  
   #picked treatment units
   selected_units <- shiny::reactive({
     selected_units <- list()
