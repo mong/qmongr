@@ -4,6 +4,10 @@
 
 * Restructured `mod_quality_overview_server` tests.
 
+# qmongr 0.6.0
+
+* Added information widget ([#90](https://github.com/SKDE-Felles/qmongr/pull/90))
+
 # qmongr 0.5.0
 
 ## New features
