@@ -11,6 +11,25 @@ app_text:
         main_column: "Kvalitetsindikator"
         national_column: "Nasjonalt"
         desired_level: "Ønsket målnivå"
+    info:
+        title: Informasjon
+        version:
+            app:
+            - qmongr
+            - qmongrdata
+        action_button:
+            no_opt_out_ok:
+            - Den er grei
+            - Om du sier det, så
+            - Ok, da
+            - Javel, da
+            - Ja, da er det vel sånn
+            - Fint
+            - Flott!
+            - Klart
+            - Mottatt
+            - Akkurat
+            - Livet er herlig!
 data:
     column:
         year: "Aar"

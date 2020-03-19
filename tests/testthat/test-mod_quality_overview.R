@@ -179,3 +179,12 @@ test_that("mod_quality_overview_ui", {
     expect_false(grepl("test-qi_overview", ref_chr, fixed = TRUE))
     expect_false(grepl("test-qi_table", ref_chr, fixed = TRUE))
 })
+
+test_that("info pop-up can be activated", {
+    shiny::testModule(mod_quality_overview_server, {
+        # bump the action button value to trigger pop-up
+        session$setInputs(app_info = 10)
+        # no actual testing of pop-up per se, any output will do
+        expect_true(grepl("button", output$app_info$html))
+    })
+})

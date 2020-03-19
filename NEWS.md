@@ -1,4 +1,8 @@
-# Unreleased
+# qmongr 0.6.0
+
+## New feature
+
+* Added information widget ([#90](https://github.com/SKDE-Felles/qmongr/pull/90))
 
 ## Internal
 
@@ -6,7 +10,7 @@
 
 # qmongr 0.5.0
 
-## New features
+## New feature
 
 * Enable filtering by the achievment level of the qi([#89](https://github.com/SKDE-Felles/qmongr/pull/89))
 

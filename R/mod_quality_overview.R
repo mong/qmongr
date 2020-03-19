@@ -18,12 +18,13 @@ mod_quality_overview_ui <- function(id) {
   config <- qmongr::get_config()
   tagList(
     shiny::fluidPage(
+      shinyalert::useShinyalert(),
       shiny::tags$div(
         class = "treatment_unit",
         shiny::fluidRow(
           shiny::column(
             width = 3,
-            "placeholder1"
+            NULL
           ),
           shiny::column(
             width = 5,
@@ -35,7 +36,7 @@ mod_quality_overview_ui <- function(id) {
           ),
           shiny::column(
             width = 2,
-            "placeholder2"
+            shiny::uiOutput(outputId = ns("app_info"))
           )
         )
       ),
@@ -243,6 +244,23 @@ mod_quality_overview_server <- function(input,
         sort(decreasing = T)
     )
   })
+
+  output$app_info <- shiny::renderUI({
+    shiny::actionButton(
+      inputId = ns("app_info"),
+      label = "",
+      icon = shiny::icon("info")
+    )
+  })
+  shiny::observeEvent(input$app_info, {
+    shinyalert::shinyalert(title = config$app_text$info$title,
+                           text = qmongr::version_info(),
+                           type = "",
+                           closeOnEsc = TRUE, closeOnClickOutside = TRUE,
+                           html = TRUE,
+                           confirmButtonText = qmongr::no_opt_out_ok())
+  })
+
   #filtering by field
   output$qi_overview <- shiny::renderUI({
     id <- lapply(
