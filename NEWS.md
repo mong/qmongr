@@ -1,5 +1,9 @@
 # Unreleased
 
+## Internal
+
+* Restructured `mod_quality_overview_server` tests.
+
 # qmongr 0.5.0
 
 ## New features
