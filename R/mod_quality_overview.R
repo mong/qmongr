@@ -24,7 +24,7 @@ mod_quality_overview_ui <- function(id) {
         shiny::fluidRow(
           shiny::column(
             width = 3,
-            "placeholder1"
+            NULL
           ),
           shiny::column(
             width = 5,
