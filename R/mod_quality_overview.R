@@ -25,38 +25,9 @@ mod_quality_overview_ui <- function(id) {
           mod_top_navbar_ui("quality_overview_ui_1")
         )
       ),
-      shiny::tags$div(
-        class = "table_legend",
-        shiny::tags$div(
-          class = "high",
-          shiny::actionLink(
-            inputId = ns("legend_high"),
-            label = shiny::tags$p(
-              shiny::icon("fas fa-circle"),
-              config$app_text$indicators$high
-            )
-          )
-        ),
-        shiny::tags$div(
-          class = "moderate",
-          shiny::actionLink(
-            inputId = ns("legend_mod"),
-            label = shiny::tags$p(
-              shiny::icon("fas fa-adjust"),
-              config$app_text$indicators$moderate
-            )
-          )
-        ),
-        shiny::tags$div(
-          class = "low",
-          shiny::actionLink(
-            inputId = ns("legend_low"),
-            label = shiny::tags$p(
-              shiny::icon("circle-o"),
-              config$app_text$indicators$low
-            )
-          )
-        )
+      mod_table_legend_ui(
+        "quality_overview_ui_1",
+        config = config
       ),
       shiny::fluidRow(
         shiny::column(
@@ -103,8 +74,16 @@ mod_quality_overview_server <- function(input,
     app_data = app_data,
     config = config
   )
-  shiny::observe({print(selected_units())})
-
+  filter_indicator <- shiny::reactiveValues()
+  filter_indicator$level <- shiny::callModule(
+    mod_table_legend_server,
+    NULL
+  )
+  filter_indicator$indicator <- shiny::callModule(
+    mod_sidebar_qo_server,
+    NULL,
+    register_data[["description"]]
+  )
   #filtered data that makes up the table content
   filtered_data <- shiny::reactive({
     if (rlang::is_empty(filter_indicator$indicator)) {
@@ -119,8 +98,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$rhf]] %in% selected_units()$RHF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == selected_units()$year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
-          .data[["level"]] %in% filter_indicator$level
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator(),
+          .data[["level"]] %in% filter_indicator$level()
         )
     }
     if (!rlang::is_empty(selected_units()$HF)) {
@@ -129,8 +108,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$hfshort]] %in% selected_units()$HF,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == selected_units()$year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
-          .data[["level"]] %in% filter_indicator$level
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator(),
+          .data[["level"]] %in% filter_indicator$level()
         )
     }
     if (!rlang::is_empty(selected_units()$Sykehus)) {
@@ -139,8 +118,8 @@ mod_quality_overview_server <- function(input,
           .data[[config$data$column$unit_name$sh]] %in% selected_units()$SykehusNavn,
           .data[["count"]] > 5,
           .data[[config$data$column$year]] == selected_units()$year,
-          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator,
-          .data[["level"]] %in% filter_indicator$level
+          .data[[config$data$column$qi_id]] %in% filter_indicator$indicator(),
+          .data[["level"]] %in% filter_indicator$level()
         )
     }
     selected_data$national <- national_data %>%
@@ -158,71 +137,6 @@ mod_quality_overview_server <- function(input,
 
   #filtering by field
   output$qi_overview <- shiny::renderUI({
-    id <- lapply(
-      names(qmongrdata::fagomr),
-      ns
-    )
-    category <- lapply(
-      qmongrdata::fagomr,
-      function(x) x$name
-    )
-    overview_list(
-      id = id,
-      category_name = category,
-      nr_of_reg = sample(1:5, length(category), TRUE),
-      all_id = ns("alle")
-    )
-  })
-  filter_indicator <- shiny::reactiveValues()
-  shiny::observe({
-    fagomr <- names(qmongrdata::fagomr)
-    clicked_register <- lapply(
-      fagomr,
-      function(x) {
-       shiny::observeEvent(
-         input[[x]], {
-            clicked_reg <- qmongrdata::fagomr[[x]][["key"]]
-            filter_indicator$indicator <- register_data[["description"]] %>%
-              dplyr::filter(
-                .data[["Register"]] %in% clicked_reg
-              ) %>%
-            purrr::pluck("IndID") %>%
-            unique()
-         }
-       )
-      }
-    )
-    shiny::observeEvent(
-      input$alle, {
-        filter_indicator$indicator <- register_data[["description"]] %>%
-        purrr::pluck("IndID") %>%
-        unique()
-      })
-   })
-  #filtering by achievement levels
-  shiny::observe({
-    clicked_level <- list(F, F, F)
-    names(clicked_level) <- c("legend_high", "legend_mod", "legend_low")
-    filter_indicator$level <- list("H", "M", "L", "undefined")
-
-    level_buttons <- lapply(
-      names(clicked_level),
-      function(button) {
-        shiny::observeEvent(
-          shiny::req(input[[button]]), {
-            if (clicked_level[[button]]) {
-              clicked_level <<- list(F, F, F)
-              names(clicked_level) <<- c("legend_high", "legend_mod", "legend_low")
-              filter_indicator$level <- list("H", "M", "L", "undefined")
-            } else {
-              clicked_level <<- list(F, F, F)
-              names(clicked_level) <<- c("legend_high", "legend_mod", "legend_low")
-              clicked_level[[button]] <<- T
-              filter_indicator$level <- list("H", "M", "L")[unlist(clicked_level)]
-            }
-          }
-        )
-      }
-    )
+    mod_sidebar_qo_ui("quality_overview_ui_1")
   })
 }
