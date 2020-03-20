@@ -1,3 +1,7 @@
+# qmongr 0.6.1
+
+* Test of qmongr site response added during ci/cd ([#98](https://github.com/SKDE-Felles/qmongr/pull/98))
+
 # qmongr 0.6.0
 
 ## New feature
