@@ -24,7 +24,7 @@ before_install:
   - rm qmongr_*.tar.gz
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
 
-script:
+before_script:
   - docker ps | grep -q qmongr
 
 after_success:
