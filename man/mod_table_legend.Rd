@@ -5,12 +5,14 @@
 \alias{mod_table_legend_server}
 \title{Table legend}
 \usage{
-mod_table_legend_ui(id)
+mod_table_legend_ui(id, config)
 
 mod_table_legend_server(input, output, session)
 }
 \arguments{
 \item{id}{shiny id}
+
+\item{config}{configuration file}
 
 \item{input}{internal}
 

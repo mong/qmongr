@@ -4,6 +4,7 @@
 #' @description  A shiny Module.
 #'
 #' @param id shiny id
+#' @param config configuration file
 #' @param input internal
 #' @param output internal
 #' @param session internal
@@ -13,7 +14,7 @@
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-mod_table_legend_ui <- function(id) {
+mod_table_legend_ui <- function(id, config) {
   ns <- NS(id)
   shiny::tags$div(
     class = "table_legend",
