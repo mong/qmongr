@@ -8,12 +8,12 @@
 #' @param output internal
 #' @param session internal
 #'
-#' @rdname mod_sidebar_qo
+#' @rdname sidebar_qo
 #'
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-mod_sidebar_qo_ui <- function(id) {
+sidebar_qo_ui <- function(id) {
   ns <- NS(id)
   id <- lapply(
     names(qmongrdata::fagomr),
@@ -31,10 +31,10 @@ mod_sidebar_qo_ui <- function(id) {
   )
 }
 
-#' @rdname mod_sidebar_qo
+#' @rdname sidebar_qo
 #' @export
 #' @keywords internal
-mod_sidebar_qo_server <- function(input, output, session, register_data_description) {
+sidebar_qo_server <- function(input, output, session, register_data_description) {
 
   filter_indicator <- shiny::reactiveValues()
   shiny::observe({

@@ -13,7 +13,7 @@
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-mod_quality_overview_ui <- function(id) {
+quality_overview_ui <- function(id) {
   ns <- shiny::NS(id)
   config <- qmongr::get_config()
   tagList(
@@ -22,10 +22,10 @@ mod_quality_overview_ui <- function(id) {
       shiny::tags$div(
         class = "treatment_unit",
         shiny::fluidRow(
-          mod_top_navbar_ui("quality_overview_ui_1")
+          top_navbar_ui("quality_overview_ui_1")
         )
       ),
-      mod_table_legend_ui(
+      table_legend_ui(
         "quality_overview_ui_1",
         config = config
       ),
@@ -55,7 +55,7 @@ mod_quality_overview_ui <- function(id) {
 #' @export
 #' @keywords internal
 
-mod_quality_overview_server <- function(input,
+quality_overview_server <- function(input,
                                         output,
                                         session) {
   #All the processed data
@@ -69,18 +69,18 @@ mod_quality_overview_server <- function(input,
   national_data <- app_data[["national_data"]]
 
   selected_units <- shiny::callModule(
-    mod_top_navbar_server,
+    top_navbar_server,
     NULL,
     app_data = app_data,
     config = config
   )
   filter_indicator <- shiny::reactiveValues()
   filter_indicator$level <- shiny::callModule(
-    mod_table_legend_server,
+    table_legend_server,
     NULL
   )
   filter_indicator$indicator <- shiny::callModule(
-    mod_sidebar_qo_server,
+    sidebar_qo_server,
     NULL,
     register_data[["description"]]
   )
@@ -133,6 +133,6 @@ mod_quality_overview_server <- function(input,
 
   #filtering by field
   output$qi_overview <- shiny::renderUI({
-    mod_sidebar_qo_ui("quality_overview_ui_1")
+    sidebar_qo_ui("quality_overview_ui_1")
   })
 }

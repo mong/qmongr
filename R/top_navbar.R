@@ -13,7 +13,7 @@
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-mod_top_navbar_ui <- function(id) {
+top_navbar_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
     shiny::column(
@@ -40,7 +40,7 @@ mod_top_navbar_ui <- function(id) {
 #' @param config configuration file
 #' @export
 #' @keywords internal
-mod_top_navbar_server <- function(input, output, session, app_data, config) {
+top_navbar_server <- function(input, output, session, app_data, config) {
   ns <- session$ns
   # the ns function adds "quality_overview_ui_1--" to the input and
   # output names inside

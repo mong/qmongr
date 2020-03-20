@@ -9,12 +9,12 @@
 #' @param output internal
 #' @param session internal
 #'
-#' @rdname mod_table_legend
+#' @rdname table_legend
 #'
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-mod_table_legend_ui <- function(id, config) {
+table_legend_ui <- function(id, config) {
   ns <- NS(id)
   shiny::tags$div(
     class = "table_legend",
@@ -51,10 +51,10 @@ mod_table_legend_ui <- function(id, config) {
   )
 }
 
-#' @rdname mod_table_legend
+#' @rdname table_legend
 #' @export
 #' @keywords internal
-mod_table_legend_server <- function(input, output, session) {
+table_legend_server <- function(input, output, session) {
 
   filter_indicator <- shiny::reactiveValues()
   #filtering by achievement levels

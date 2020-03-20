@@ -8,7 +8,7 @@ app_ui <- function() {
     qmongr::add_external_resources(),
     # List the first level UI elements here
     shiny::tagList(
-      mod_quality_overview_ui("quality_overview_ui_1")
+      quality_overview_ui("quality_overview_ui_1")
     )
   )
 }
