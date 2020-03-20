@@ -1,3 +1,9 @@
+# qmongr 0.6.1
+
+## Internal
+
+* Split the shiny module `quality_overview` into several modules  ([#97](https://github.com/SKDE-Felles/qmongr/pull/97))
+
 # qmongr 0.6.0
 
 ## New feature
