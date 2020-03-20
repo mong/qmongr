@@ -59,15 +59,15 @@ mod_quality_overview_server <- function(input,
                                         output,
                                         session) {
   #All the processed data
-  ns <- session$ns
+
   config <- qmongr::get_config()
   app_data <- app_data(config)
-  register_data <- app_data[["register_data"]] 
-  grouped_by_hf <- app_data[["grouped_by_hf"]]  
+  register_data <- app_data[["register_data"]]
+  grouped_by_hf <- app_data[["grouped_by_hf"]]
   grouped_by_rhf <- app_data[["grouped_by_rhf"]]
-  grouped_by_hospital <- app_data[["grouped_by_hospital"]]  
-  national_data <- app_data[["national_data"]]  
-  
+  grouped_by_hospital <- app_data[["grouped_by_hospital"]]
+  national_data <- app_data[["national_data"]]
+
   selected_units <- shiny::callModule(
     mod_top_navbar_server,
     NULL,
@@ -86,11 +86,7 @@ mod_quality_overview_server <- function(input,
   )
   #filtered data that makes up the table content
   filtered_data <- shiny::reactive({
-    if (rlang::is_empty(filter_indicator$indicator)) {
-      filter_indicator$indicator <- register_data[["description"]] %>%
-        purrr::pluck("IndID") %>%
-        unique()
-    }
+
     selected_data <- list()
     if (!rlang::is_empty(selected_units()[[config$data$column$unit_name$rhf]])) {
       selected_data[[config$data$column$unit_name$rhf]] <- grouped_by_rhf %>%

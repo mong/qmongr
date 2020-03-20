@@ -55,14 +55,14 @@ mod_table_legend_ui <- function(id, config) {
 #' @export
 #' @keywords internal
 mod_table_legend_server <- function(input, output, session) {
-  ns <- session$ns
+
   filter_indicator <- shiny::reactiveValues()
   #filtering by achievement levels
   shiny::observe({
     clicked_level <- list(F, F, F)
     names(clicked_level) <- c("legend_high", "legend_mod", "legend_low")
     filter_indicator$level <- list("H", "M", "L", "undefined")
-    
+
     level_buttons <- lapply(
       names(clicked_level),
       function(button) {
@@ -84,7 +84,8 @@ mod_table_legend_server <- function(input, output, session) {
     )
   })
   return(
-    level <- shiny::reactive({filter_indicator$level})
+    level <- shiny::reactive({
+      filter_indicator$level
+    })
   )
- 
 }

@@ -44,7 +44,7 @@ mod_top_navbar_server <- function(input, output, session, app_data, config) {
   ns <- session$ns
   # the ns function adds "quality_overview_ui_1--" to the input and
   # output names inside
-  
+
   #list of treatment units
   choices_treatment <- list(
     "RHF" = app_data[["grouped_by_rhf"]] %>%
@@ -99,8 +99,6 @@ mod_top_navbar_server <- function(input, output, session, app_data, config) {
                            html = TRUE,
                            confirmButtonText = qmongr::no_opt_out_ok())
   })
-  
-
   #selected treatment units
   return(
     selected_units = shiny::reactive({

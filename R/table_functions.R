@@ -234,7 +234,6 @@ get_indicator_level <- function(grouped_data, description) {
 }
 
 #' makes the data ready to be used by the app
-#' 
 #' @param config configuration file
 #' @return input data to the html table in the app
 #'
@@ -293,4 +292,3 @@ app_data <- function(config) {
     )
   )
 }
-

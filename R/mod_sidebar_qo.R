@@ -35,7 +35,7 @@ mod_sidebar_qo_ui <- function(id) {
 #' @export
 #' @keywords internal
 mod_sidebar_qo_server <- function(input, output, session, register_data_description) {
-  ns <- session$ns
+
   filter_indicator <- shiny::reactiveValues()
   shiny::observe({
     fagomr <- names(qmongrdata::fagomr)
@@ -63,7 +63,13 @@ mod_sidebar_qo_server <- function(input, output, session, register_data_descript
       })
   })
   return(
-    indicator <- shiny::reactive({filter_indicator$indicator})
+    indicator <- shiny::reactive({
+      if (rlang::is_empty(filter_indicator$indicator)) {
+        filter_indicator$indicator <- register_data_description %>%
+          purrr::pluck("IndID") %>%
+          unique()
+      }
+      filter_indicator$indicator
+    })
   )
-
 }
