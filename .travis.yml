@@ -26,6 +26,7 @@ before_install:
 
 before_script:
   - docker ps | grep -q qmongr
+  - curl -IsSf 127.0.0.1:3838 > /dev/null
 
 after_success:
   - R CMD INSTALL $PKG_TARBALL
