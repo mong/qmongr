@@ -232,3 +232,63 @@ get_indicator_level <- function(grouped_data, description) {
   )
   return(grouped_data)
 }
+
+#' makes the data ready to be used by the app
+#' @param config configuration file
+#' @return input data to the html table in the app
+#'
+app_data <- function(config) {
+  register_data <- qmongr::load_data()
+  grouped_by_hf <- qmongr::group_data(
+    register_data,
+    by = config$data$column$unit_name$hf
+  ) %>%
+    dplyr::left_join(
+      register_data[["hospital_name_structure"]] %>%
+        dplyr::select(
+          .data[[config$data$column$unit_name$hfshort]],
+          .data[[config$data$column$unit_id$hf]]
+        ) %>%
+        unique(),
+      by = config$data$column$unit_id$hf
+    )
+  grouped_by_rhf <- qmongr::group_data(
+    register_data,
+    by = config$data$column$unit_name$rhf
+  ) %>%
+    dplyr::left_join(
+      register_data[["hospital_name_structure"]] %>%
+        dplyr::select(
+          .data[[config$data$column$unit_name$rhf]],
+          .data[[config$data$column$unit_id$rhf]]
+        ) %>%
+        unique(),
+      by = config$data$column$unit_id$rhf
+    )
+  grouped_by_hospital <- qmongr::group_data(
+    register_data,
+    by = "hospital"
+  ) %>%
+    dplyr::left_join(
+      register_data[["hospital_name_structure"]] %>%
+        dplyr::select(
+          .data[[config$data$column$unit_name$sh]],
+          .data[[config$data$column$unit_id$sh]]
+        ),
+      by = c(config$data$column$unit_id$sh),
+    ) %>%
+    dplyr::filter(!is.na(.data[[config$data$column$unit_name$sh]]))
+  national_data <- qmongr::group_data(
+    register_data,
+    by = ""
+  )
+  return(
+    list(
+      register_data = register_data,
+      grouped_by_hospital = grouped_by_hospital,
+      grouped_by_hf = grouped_by_hf,
+      grouped_by_rhf = grouped_by_rhf,
+      national_data = national_data
+    )
+  )
+}

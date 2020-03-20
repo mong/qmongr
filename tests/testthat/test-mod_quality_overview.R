@@ -1,5 +1,5 @@
-test_that("mod_quality_overview_server without input", {
-    shiny::testModule(mod_quality_overview_server, {
+test_that("quality_overview_server without input", {
+    shiny::testModule(quality_overview_server, {
         expect_equal(class(input), "reactivevalues")
         expect_equal(class(output), "shinyoutput")
 
@@ -27,8 +27,8 @@ test_that("mod_quality_overview_server without input", {
     })
 })
 
-test_that("mod_quality_overview_server errors", {
-  shiny::testModule(mod_quality_overview_server, {
+test_that("quality_overview_server errors", {
+  shiny::testModule(quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
     expect_error(output$qi_table)
 
@@ -44,8 +44,8 @@ test_that("mod_quality_overview_server errors", {
   })
 })
 
-test_that("mod_quality_overview_server basic input", {
-  shiny::testModule(mod_quality_overview_server, {
+test_that("quality_overview_server basic input", {
+  shiny::testModule(quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
     session$setInputs(pick_year = "2018")
     expect_equal_to_reference(output$qi_table,
@@ -87,8 +87,8 @@ test_that("mod_quality_overview_server basic input", {
   })
 })
 
-test_that("mod_quality_overview_server filter medical field", {
-  shiny::testModule(mod_quality_overview_server, {
+test_that("quality_overview_server filter medical field", {
+  shiny::testModule(quality_overview_server, {
 
     session$setInputs(pick_year = "2017")
     session$setInputs(pick_treatment_units =  "Helse Nord RHF")
@@ -122,8 +122,8 @@ test_that("mod_quality_overview_server filter medical field", {
   })
 })
 
-test_that("mod_quality_overview_server filter level", {
-  shiny::testModule(mod_quality_overview_server, {
+test_that("quality_overview_server filter level", {
+  shiny::testModule(quality_overview_server, {
     session$setInputs(pick_year = 2017)
     session$setInputs(pick_treatment_units =  "Helse Vest RHF")
     session$setInputs(legend_high = 1)
@@ -156,24 +156,24 @@ test_that("mod_quality_overview_server filter level", {
   })
 })
 
-test_that("mod_quality_overview_ui", {
+test_that("quality_overview_ui", {
     config <- get_config()
-    ref_chr <- as.character(purrr::flatten(mod_quality_overview_ui("test")))[3]
+    ref_chr <- as.character(purrr::flatten(quality_overview_ui("test")))[3]
 
     expect_true(grepl(config$app_text$indicators$high, ref_chr, fixed = TRUE))
     expect_true(grepl(config$app_text$indicators$moderate, ref_chr, fixed = TRUE))
     expect_true(grepl(config$app_text$indicators$low, ref_chr, fixed = TRUE))
 
-    expect_true(grepl("test-treatment_unit", ref_chr, fixed = TRUE))
+    expect_true(grepl("quality_overview_ui_1-treatment_unit", ref_chr, fixed = TRUE))
     expect_true(grepl("shiny-html-output", ref_chr, fixed = TRUE))
-    expect_true(grepl("test-year", ref_chr, fixed = TRUE))
+    expect_true(grepl("quality_overview_ui_1-year", ref_chr, fixed = TRUE))
     expect_true(grepl("high", ref_chr, fixed = TRUE))
     expect_true(grepl("moderate", ref_chr, fixed = TRUE))
     expect_true(grepl("low", ref_chr, fixed = TRUE))
     expect_true(grepl("test-qi_overview", ref_chr, fixed = TRUE))
     expect_true(grepl("test-qi_table", ref_chr, fixed = TRUE))
 
-    ref_chr <- as.character(purrr::flatten(mod_quality_overview_ui("qwerty")))[3]
+    ref_chr <- as.character(purrr::flatten(quality_overview_ui("qwerty")))[3]
     expect_false(grepl("test-treatment_unit", ref_chr, fixed = TRUE))
     expect_false(grepl("test-year", ref_chr, fixed = TRUE))
     expect_false(grepl("test-qi_overview", ref_chr, fixed = TRUE))
@@ -181,7 +181,7 @@ test_that("mod_quality_overview_ui", {
 })
 
 test_that("info pop-up can be activated", {
-    shiny::testModule(mod_quality_overview_server, {
+    shiny::testModule(quality_overview_server, {
         # bump the action button value to trigger pop-up
         session$setInputs(app_info = 10)
         # no actual testing of pop-up per se, any output will do

@@ -1,6 +1,12 @@
-# qmongr 0.6.1
+# qmongr 0.6.2
 
 * Test of qmongr site response added during ci/cd ([#98](https://github.com/SKDE-Felles/qmongr/pull/98))
+
+# qmongr 0.6.1
+
+## Internal
+
+* Split the shiny module `quality_overview` into several modules  ([#97](https://github.com/SKDE-Felles/qmongr/pull/97))
 
 # qmongr 0.6.0
 

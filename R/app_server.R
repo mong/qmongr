@@ -8,6 +8,6 @@
 #' @export
 app_server <- function(input, output, session) {
   # List the first level callModules here
-  shiny::callModule(qmongr::mod_quality_overview_server,
+  shiny::callModule(quality_overview_server,
                     "quality_overview_ui_1")
 }
