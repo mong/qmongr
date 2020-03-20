@@ -1,6 +1,6 @@
 # Module UI
 
-#' @title   mod_quality_overview_ui and mod_quality_overview_server
+#' @title   quality_overview_ui and quality_overview_server
 #' @description  A shiny Module.
 #'
 #' @param id shiny id
@@ -8,7 +8,7 @@
 #' @param output internal
 #' @param session internal
 #'
-#' @rdname mod_quality_overview
+#' @rdname quality_overview
 #'
 #' @keywords internal
 #' @export
@@ -50,7 +50,7 @@ quality_overview_ui <- function(id) {
 
 # Module Server
 
-#' @rdname mod_quality_overview
+#' @rdname quality_overview
 #' @importFrom rlang .data
 #' @export
 #' @keywords internal
