@@ -5,7 +5,7 @@ FROM hnskde/qmongr-base-r AS intermediate
 ARG GITHUB_PAT
 
 ## upgrade qmongrdata from github
-RUN R -e "remotes::install_github('SKDE-Felles/qmongrdata', dependencies = FALSE, upgrade = 'never')"
+RUN R -e "remotes::install_github('mong/qmongrdata', dependencies = FALSE, upgrade = 'never')"
 
 
 # second stage
