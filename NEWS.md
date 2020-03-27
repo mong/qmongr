@@ -1,4 +1,10 @@
-# Unreleased
+# qmongr 0.6.3
+
+- Tag and push docker image with `test` if not a release ([#101](https://github.com/mong/qmongr/pull/101)).
+- Moved repository to mong ([#100](https://github.com/mong/qmongr/pull/100))
+    * renamed all SKDE-Felles with mong
+    * github shiny only needed for testing, not for running app. Thus, only depend on cran version of shiny in DESCRIPTION.
+    * appveyor and travis: install shiny from github
 
 # qmongr 0.6.2
 
