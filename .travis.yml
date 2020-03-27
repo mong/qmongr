@@ -54,7 +54,6 @@ deploy:
     script: bash docker_push
     skip_cleanup: true
     on:
-      # next two maybe to be replaced by: 'tags: true'
       branch: master
       condition: $TRAVIS_R_VERSION_STRING == "release"
 

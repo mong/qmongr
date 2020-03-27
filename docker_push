@@ -1,3 +1,9 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push hnskde/qmongr
+
+if [[ "$TRAVIS_TAG" == "true" ]]; then
+  docker push hnskde/qmongr
+else
+  docker tag hnskde/qmongr hnskde/qmongr:test
+  docker push hnskde/qmongr:test
+fi
