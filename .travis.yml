@@ -24,6 +24,7 @@ before_install:
   - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t hnskde/qmongr .
   - rm qmongr_*.tar.gz
   - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
+  - docker tag hnskde/qmongr hnskde/qmongr_test
 
 before_script:
   - docker ps | grep -q qmongr
@@ -49,9 +50,17 @@ deploy:
     on:
       branch: master
       condition: $TRAVIS_R_VERSION_STRING == "release"
-  # our image to dockerhub
+  # our image to dockerhub for tags
   - provider: script
-    script: bash docker_push
+    script: bash docker_push qmongr
+    skip_cleanup: true
+    on:
+      tags: true
+      branch: master
+      condition: $TRAVIS_R_VERSION_STRING == "release"
+  # our image to dockerhub for commits to master
+  - provider: script
+    script: bash docker_push qmongr_test
     skip_cleanup: true
     on:
       # next two maybe to be replaced by: 'tags: true'
