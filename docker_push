@@ -1,3 +1,11 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push hnskde/$1
+
+if [[ "$TRAVIS_EVENT_TYPE" == "push" ]]; then
+  if [[ "$TRAVIS_TAG" == "true" ]]; then
+    docker push hnskde/qmongr
+  else
+    docker -t hnskde/qmongr hnskde/qmongr:test
+    docker push hnskde/qmongr:test
+  fi
+fi
