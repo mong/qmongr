@@ -55,6 +55,3 @@ deploy:
     skip_cleanup: true
     on:
       all_branches: true
-      condition: $TRAVIS_R_VERSION_STRING == "release"
-
-

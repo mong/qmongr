@@ -1,11 +1,15 @@
 #!/bin/bash
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-if [[ "$TRAVIS_TAG" == "true" ]]; then
-  docker push hnskde/qmongr
-fi
+if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]]; then
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  if [[ "$TRAVIS_TAG" == "true" ]]; then
+    docker push hnskde/qmongr
+  fi
 
-if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-  docker tag hnskde/qmongr hnskde/qmongr:test
-  docker push hnskde/qmongr:test
+  if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+    docker tag hnskde/qmongr hnskde/qmongr:test
+    docker push hnskde/qmongr:test
+  fi
+else
+  echo "Do not deploy. Neither master branch nor a release."
 fi
