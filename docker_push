@@ -8,5 +8,5 @@ elif [[ "$TRAVIS_BRANCH" == "master" ]]; then
   docker tag hnskde/qmongr hnskde/qmongr:test
   docker push hnskde/qmongr:test
 else
-  echo "Do not deploy. Neither master branch nor a release."
+  echo "Do not deploy. This is neither the master branch nor a release."
 fi
