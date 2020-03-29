@@ -38,6 +38,12 @@ after_success:
     fi
   - rm -rf qmongr.Rcheck
   - Rscript -e 'pkgdown::build_site()'
+  - |
+    if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]]; then
+      export DOCKER_ORG=hnskde
+      export IMAGE_NAME=qmongr
+      wget https://raw.githubusercontent.com/mong/scripts/master/travis/docker_push
+    fi
 
 deploy:
   # our site to gh_pages
