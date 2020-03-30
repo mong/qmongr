@@ -21,12 +21,12 @@ r_github_packages:
 
 before_install:
   - R CMD build .
-  - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t hnskde/qmongr .
+  - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t $DOCKER_ORG/$IMAGE_NAME .
   - rm qmongr_*.tar.gz
-  - docker run -d -p 127.0.0.1:3838:3838 --name qmongr hnskde/qmongr
+  - docker run -d -p 127.0.0.1:3838:3838 --name $IMAGE_NAME $DOCKER_ORG/$IMAGE_NAME
 
 before_script:
-  - docker ps | grep -q qmongr
+  - docker ps | grep -q $IMAGE_NAME
   - curl -IsSf 127.0.0.1:3838 > /dev/null
 
 after_success:
@@ -38,12 +38,7 @@ after_success:
     fi
   - rm -rf qmongr.Rcheck
   - Rscript -e 'pkgdown::build_site()'
-  - |
-    if [[ "$TRAVIS_R_VERSION_STRING" == "release" ]]; then
-      export DOCKER_ORG=hnskde
-      export IMAGE_NAME=qmongr
-      wget https://raw.githubusercontent.com/mong/scripts/master/travis/docker_push
-    fi
+  - wget https://raw.githubusercontent.com/mong/scripts/master/travis/docker_push
 
 deploy:
   # our site to gh_pages
