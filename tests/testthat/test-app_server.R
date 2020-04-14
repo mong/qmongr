@@ -1,6 +1,6 @@
 test_that("app_server", {
   expect_error(app_server())
-  shiny::testModule(app_server, {
+  shiny::testServer(app_server, {
     expect_equal(class(input), "reactivevalues")
     expect_equal(class(output), "shinyoutput")
 

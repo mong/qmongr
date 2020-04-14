@@ -1,5 +1,5 @@
 test_that("quality_overview_server without input", {
-    shiny::testModule(quality_overview_server, {
+    shiny::testServer(quality_overview_server, {
         expect_equal(class(input), "reactivevalues")
         expect_equal(class(output), "shinyoutput")
 
@@ -28,7 +28,7 @@ test_that("quality_overview_server without input", {
 })
 
 test_that("quality_overview_server errors", {
-  shiny::testModule(quality_overview_server, {
+  shiny::testServer(quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
     expect_error(output$qi_table)
 
@@ -45,7 +45,7 @@ test_that("quality_overview_server errors", {
 })
 
 test_that("quality_overview_server basic input", {
-  shiny::testModule(quality_overview_server, {
+  shiny::testServer(quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
     session$setInputs(pick_year = "2018")
     expect_equal_to_reference(output$qi_table,
@@ -88,7 +88,7 @@ test_that("quality_overview_server basic input", {
 })
 
 test_that("quality_overview_server filter medical field", {
-  shiny::testModule(quality_overview_server, {
+  shiny::testServer(quality_overview_server, {
 
     session$setInputs(pick_year = "2017")
     session$setInputs(pick_treatment_units =  "Helse Nord RHF")
@@ -123,7 +123,7 @@ test_that("quality_overview_server filter medical field", {
 })
 
 test_that("quality_overview_server filter level", {
-  shiny::testModule(quality_overview_server, {
+  shiny::testServer(quality_overview_server, {
     session$setInputs(pick_year = 2017)
     session$setInputs(pick_treatment_units =  "Helse Vest RHF")
     session$setInputs(legend_high = 1)
@@ -181,7 +181,7 @@ test_that("quality_overview_ui", {
 })
 
 test_that("info pop-up can be activated", {
-    shiny::testModule(quality_overview_server, {
+    shiny::testServer(quality_overview_server, {
         # bump the action button value to trigger pop-up
         session$setInputs(app_info = 10)
         # no actual testing of pop-up per se, any output will do
