@@ -66,3 +66,33 @@ var add_row = function (clicked_tr) {
   );
 };
 
+var qi_table = document.querySelector("#quality_overview_ui_1-qi_table");
+var current_fig_row = "";
+var button_object = [
+  {class_name_inp : "figure_button figure_button_left", type : "Radio", id: "bar",  name: "figure_button",
+    value: "bar",  icon: "fa fa-bar-chart", label : "Søyle", class_name_label: "figure_button_label", checked: true },
+  {class_name_inp : "figure_button figure_button_right", type : "Radio", id: "line", name: "figure_button",
+    value: "line", icon: "fa fa-line-chart", label : "Linje", class_name_label: "figure_button_label", checked: false}
+  ];
+
+
+qi_table.addEventListener("click", function(e){
+  var clicked_tr = tr_class_name(e.target);
+  var new_row_index;
+  var added_row;
+  var added_td;
+  if (clicked_tr.className === "indicator" ) {
+    
+    if(current_fig_row === "")  {
+      add_row(clicked_tr);
+    } else if (current_fig_row === clicked_tr.id) {
+      remove_row();
+      current_fig_row = "";
+    }else {
+      remove_row();
+      add_row(clicked_tr);
+    }
+  }
+}) ; 
+
+
