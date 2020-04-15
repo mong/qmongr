@@ -8,7 +8,10 @@ app_ui <- function() {
     qmongr::add_external_resources(),
     # List the first level UI elements here
     shiny::tagList(
-      quality_overview_ui("quality_overview_ui_1")
+      quality_overview_ui("quality_overview_ui_1"),
+      shiny::tags$script(src = "www/qmongr.js"),
+      shiny::tags$script(src = "www/d3.min.js")
+      
     )
   )
 }
@@ -25,8 +28,12 @@ add_external_resources <- function() {
     # Add here all the external resources
     # If you have a custom.css in the inst/app/www
     # Or for example, you can add shinyalert::useShinyalert() here
+    
+  
     shiny::tags$link(
       rel = "stylesheet", type = "text/css", href = "www/qmongr.css"
+      
     )
   )
 }
+
