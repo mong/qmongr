@@ -35,3 +35,11 @@ var add_figure_buttons = function (container_class, button_object) {
   });
   return (button_container);
 };
+
+//removes the figure rows when a new tr is checked
+var remove_row = function() {
+  var rm_element = document.querySelector(".tr_figure");
+  if (rm_element !== null){
+    rm_element.parentNode.removeChild(rm_element);
+  }
+} ;
