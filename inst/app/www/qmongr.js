@@ -1,4 +1,4 @@
-/function that returns the tr based on a childElement of tr
+//function that returns the tr based on a childElement of tr
 //can be used to find the tr that was clicked.
 var tr_class_name = function (clicked_element) {
   if (clicked_element.nodeName === "TR") {
@@ -44,6 +44,32 @@ var remove_row = function() {
   }
 } ;
 
+//adds a bar or line chart based on user input
+var add_figure = function () {
+  var figure_container = document.createElement('div');
+  figure_container.className = "embedded_figure";
+  
+  
+  var svg = d3.select(figure_container).append("svg")
+    .attr("width", 400)
+    .attr("height", 500);
+  var text = svg.append("text")
+    .attr("x", 200)
+    .attr("y", 250)
+    .attr("font-size", "1.3em")
+    .attr("text-anchor","middle")
+    .attr("fill","blue")
+    .text("Figure comming soon ...")
+  return(figure_container);
+};
+
+var barchart = function( container_div) {
+  
+};
+
+var linechart = function (container_div) {
+  
+};
 
 //add a row benth the clicked tr
 var add_row = function (clicked_tr) {
