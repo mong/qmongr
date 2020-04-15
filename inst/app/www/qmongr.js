@@ -43,3 +43,26 @@ var remove_row = function() {
     rm_element.parentNode.removeChild(rm_element);
   }
 } ;
+
+
+//add a row benth the clicked tr
+var add_row = function (clicked_tr) {
+  
+  new_row_index = clicked_tr.rowIndex + 1;
+  current_fig_row = clicked_tr.id;
+  added_row = clicked_tr.parentElement
+    .parentElement
+    .insertRow(new_row_index);
+  added_row.className = "tr_figure";  
+  added_td = added_row.appendChild(
+    document.createElement("td")
+  );
+  added_td.setAttribute("colspan", clicked_tr.childElementCount);
+  added_td.appendChild(
+    add_figure_buttons("tr_figure_button", button_object)
+  );
+  added_td.appendChild(
+    add_figure()
+  );
+};
+
