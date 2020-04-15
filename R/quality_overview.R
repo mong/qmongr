@@ -43,6 +43,9 @@ quality_overview_ui <- function(id) {
             outputId = ns("qi_table")
           )
         )
+      ),
+      shiny::htmlOutput(
+        ns("json")
       )
     )
   )
@@ -135,4 +138,12 @@ quality_overview_server <- function(input,
   output$qi_overview <- shiny::renderUI({
     sidebar_qo_ui("quality_overview_ui_1")
   })
+  
+  #data passed to js
+  output$json <- shiny::reactive({
+      paste('<script> data_nt = ', 
+            jsonlite::toJSON(app_data),
+            '; </script>')
+  })
+
 }
