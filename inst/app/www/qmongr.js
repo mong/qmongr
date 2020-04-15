@@ -1,3 +1,15 @@
+/function that returns the tr based on a childElement of tr
+//can be used to find the tr that was clicked.
+var tr_class_name = function (clicked_element) {
+  if (clicked_element.nodeName === "TR") {
+    	return clicked_element;
+  } else if (clicked_element.parentElement.nodeName !== "BODY" ) {
+  	return tr_class_name(clicked_element.parentElement);
+  } else {
+    return "BODY";
+  }
+};
+
 //the Radio buttons that control the type of figure that will be shown in the table
 var add_figure_buttons = function (container_class, button_object) {
   var button_container = document.createElement('div');
