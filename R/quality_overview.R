@@ -55,9 +55,8 @@ quality_overview_ui <- function(id) {
 #' @export
 #' @keywords internal
 
-quality_overview_server <- function(input,
-                                        output,
-                                        session) {
+quality_overview_server <- function(id) {
+   shiny::moduleServer(id, function(input, output, session) {
   #All the processed data
 
   config <- qmongr::get_config()
@@ -68,20 +67,13 @@ quality_overview_server <- function(input,
   grouped_by_hospital <- app_data[["grouped_by_hospital"]]
   national_data <- app_data[["national_data"]]
 
-  selected_units <- shiny::callModule(
-    top_navbar_server,
-    NULL,
+  selected_units <- top_navbar_server(NULL,
     app_data = app_data,
     config = config
   )
   filter_indicator <- shiny::reactiveValues()
-  filter_indicator$level <- shiny::callModule(
-    table_legend_server,
-    NULL
-  )
-  filter_indicator$indicator <- shiny::callModule(
-    sidebar_qo_server,
-    NULL,
+  filter_indicator$level <- table_legend_server(NULL)
+  filter_indicator$indicator <- sidebar_qo_server(NULL,
     register_data[["description"]]
   )
   #filtered data that makes up the table content
@@ -134,5 +126,6 @@ quality_overview_server <- function(input,
   #filtering by field
   output$qi_overview <- shiny::renderUI({
     sidebar_qo_ui("quality_overview_ui_1")
+  })
   })
 }

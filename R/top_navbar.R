@@ -40,7 +40,8 @@ top_navbar_ui <- function(id) {
 #' @param config configuration file
 #' @export
 #' @keywords internal
-top_navbar_server <- function(input, output, session, app_data, config) {
+top_navbar_server <- function(id, app_data, config) {
+  shiny::moduleServer(id, function(input, output, session) {
   ns <- session$ns
   # the ns function adds "quality_overview_ui_1--" to the input and
   # output names inside
@@ -116,4 +117,5 @@ top_navbar_server <- function(input, output, session, app_data, config) {
     return(selected_units)
     })
   )
+  })
 }

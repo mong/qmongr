@@ -54,7 +54,8 @@ table_legend_ui <- function(id, config) {
 #' @rdname table_legend
 #' @export
 #' @keywords internal
-table_legend_server <- function(input, output, session) {
+table_legend_server <- function(id) {
+  shiny::moduleServer(id, function(input, output, session) {
 
   filter_indicator <- shiny::reactiveValues()
   #filtering by achievement levels
@@ -88,4 +89,5 @@ table_legend_server <- function(input, output, session) {
       filter_indicator$level
     })
   )
+  })
 }

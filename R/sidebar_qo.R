@@ -34,7 +34,8 @@ sidebar_qo_ui <- function(id) {
 #' @rdname sidebar_qo
 #' @export
 #' @keywords internal
-sidebar_qo_server <- function(input, output, session, register_data_description) {
+sidebar_qo_server <- function(id, register_data_description) {
+  shiny::moduleServer(id, function(input, output, session) {
 
   filter_indicator <- shiny::reactiveValues()
   shiny::observe({
@@ -72,4 +73,5 @@ sidebar_qo_server <- function(input, output, session, register_data_description)
       filter_indicator$indicator
     })
   )
+  })
 }
