@@ -12,7 +12,7 @@ test_that("quality_overview_server without input", {
         expect_true(grepl("Hammerfest", treatment_units))
         expect_true(grepl("Troms\u00f8", treatment_units))
         expect_true(grepl("shiny-input-container", treatment_units))
-        expect_true(grepl("mock-session-pick_treatment_units", treatment_units))
+        expect_true(grepl("proxy1-pick_treatment_units", treatment_units))
         expect_true(grepl("<optgroup label=\"RHF\">", treatment_units))
         expect_true(grepl("Mo i Rana", treatment_units))
 
