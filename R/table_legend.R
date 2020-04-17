@@ -5,9 +5,6 @@
 #'
 #' @param id shiny id
 #' @param config configuration file
-#' @param input internal
-#' @param output internal
-#' @param session internal
 #'
 #' @rdname table_legend
 #'

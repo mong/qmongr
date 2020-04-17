@@ -7,16 +7,10 @@
 \usage{
 top_navbar_ui(id)
 
-top_navbar_server(input, output, session, app_data, config)
+top_navbar_server(id, app_data, config)
 }
 \arguments{
 \item{id}{shiny id}
-
-\item{input}{internal}
-
-\item{output}{internal}
-
-\item{session}{internal}
 
 \item{app_data}{provide the treatment units}
 
