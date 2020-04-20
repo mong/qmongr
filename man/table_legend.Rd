@@ -7,18 +7,12 @@
 \usage{
 table_legend_ui(id, config)
 
-table_legend_server(input, output, session)
+table_legend_server(id)
 }
 \arguments{
 \item{id}{shiny id}
 
 \item{config}{configuration file}
-
-\item{input}{internal}
-
-\item{output}{internal}
-
-\item{session}{internal}
 }
 \description{
 A shiny Module.

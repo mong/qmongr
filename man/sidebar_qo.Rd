@@ -7,16 +7,12 @@
 \usage{
 sidebar_qo_ui(id)
 
-sidebar_qo_server(input, output, session, register_data_description)
+sidebar_qo_server(id, register_data_description)
 }
 \arguments{
 \item{id}{shiny id}
 
-\item{input}{internal}
-
-\item{output}{internal}
-
-\item{session}{internal}
+\item{register_data_description}{register_data_description}
 }
 \description{
 A shiny Module.
