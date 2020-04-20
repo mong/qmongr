@@ -40,7 +40,8 @@ Imports:
     rlang,
     yaml,
     qmongrdata (>= 0.2.3),
-    lubridate
+    lubridate,
+    jsonlite
 Depends: R (>= 3.5)
 Remotes: 
     mong/qmongrdata
