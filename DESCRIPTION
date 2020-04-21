@@ -42,5 +42,6 @@ Imports:
     qmongrdata (>= 0.2.3),
     lubridate
 Depends: R (>= 3.5)
-Remotes: 
+Remotes:
+    rstudio/shiny,
     mong/qmongrdata

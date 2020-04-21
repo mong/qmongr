@@ -17,7 +17,6 @@ r_github_packages:
   - jimhester/covr
   - jimhester/lintr
   - r-lib/pkgdown
-  - rstudio/shiny
 
 before_install:
   - R CMD build .
