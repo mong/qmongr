@@ -7,7 +7,6 @@ ARG GITHUB_PAT
 ## upgrade qmongrdata from github
 RUN R -e "remotes::install_github('mong/qmongrdata', dependencies = FALSE, upgrade = 'never')"
 
-
 # second stage
 FROM hnskde/qmongr-base-r
 
@@ -22,6 +21,7 @@ COPY *.tar.gz .
 
 ## install dependencies not yet in qmongr-base-r
 RUN R -e "install.packages('yaml')"
+ARG GITHUB_PAT
 RUN R -e "remotes::install_github('rstudio/shiny')"
 
 ## install package
