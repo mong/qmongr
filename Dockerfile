@@ -22,6 +22,7 @@ COPY *.tar.gz .
 
 ## install dependencies not yet in qmongr-base-r
 RUN R -e "install.packages('yaml')"
+RUN R -e "remotes::install_github('rstudio/shiny')"
 
 ## install package
 RUN R CMD INSTALL --clean *.tar.gz
