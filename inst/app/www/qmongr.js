@@ -45,7 +45,7 @@ var remove_row = function() {
 } ;
 
 //adds a bar or line chart based on user input
-var add_figure = function () {
+/*var add_figure = function () {
   var figure_container = document.createElement('div');
   figure_container.className = "embedded_figure";
   
@@ -62,7 +62,7 @@ var add_figure = function () {
     .text("Figure coming soon ...")
   return(figure_container);
 };
-
+*/
 var barchart = function( container_div) {
   
 };

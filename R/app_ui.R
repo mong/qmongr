@@ -9,8 +9,9 @@ app_ui <- function() {
     # List the first level UI elements here
     shiny::tagList(
       quality_overview_ui("quality_overview_ui_1"),
-      shiny::tags$script(src = "www/qmongr.js"),
-      shiny::tags$script(src = "www/d3.min.js")
+      shiny::tags$script(src = "www/d3.min.js"),
+      shiny::tags$script(src = "www/barchart.js"),
+      shiny::tags$script(src = "www/qmongr.js")
       
     )
   )
