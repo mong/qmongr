@@ -1,4 +1,6 @@
-# Unreleased
+# qmongr 0.6.5
+
+Added dependency: development version of `shiny` from `rstudio/shiny` on github. `moduleServer`, introduced in version `0.6.4`, is not part of `shiny` on cran
 
 # qmongr 0.6.4
 
