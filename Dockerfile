@@ -7,6 +7,7 @@ ARG GITHUB_PAT
 ## upgrade qmongrdata from github
 RUN R -e "remotes::install_github('mong/qmongrdata', dependencies = FALSE, upgrade = 'never')"
 
+
 # second stage
 FROM hnskde/qmongr-base-r
 
@@ -18,6 +19,9 @@ LABEL no.mongr.cd.enable="true"
 
 ## add package tarball
 COPY *.tar.gz .
+
+## install dependencies not yet in qmongr-base-r
+RUN R -e "install.packages('yaml')"
 
 ## install package
 RUN R CMD INSTALL --clean *.tar.gz
