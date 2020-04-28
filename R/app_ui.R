@@ -10,6 +10,9 @@ app_ui <- function() {
     shiny::tagList(
       quality_overview_ui("quality_overview_ui_1"),
       shiny::tags$script(src = "www/d3.min.js"),
+      shiny::tags$script(src = "www/theme.js"),
+      shiny::tags$script(src = "www/margin_title.js"),
+      shiny::tags$script(src = "www/axis.js"),
       shiny::tags$script(src = "www/barchart.js"),
       shiny::tags$script(src = "www/qmongr.js")
       
