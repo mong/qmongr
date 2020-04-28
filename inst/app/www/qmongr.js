@@ -87,9 +87,13 @@ var add_row = function (clicked_tr) {
   added_td.appendChild(
     add_figure_buttons("tr_figure_button", button_object)
   );
+  var fig_cont = document.createElement('div');
+  fig_cont.setAttribute("class", "responsive_svg");
   added_td.appendChild(
-    add_figure()
+    fig_cont
   );
+  render_barchart();
+  addEventListener('resize', render_barchart);
 };
 
 var qi_table = document.querySelector("#quality_overview_ui_1-qi_table");
