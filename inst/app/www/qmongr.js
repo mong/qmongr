@@ -84,6 +84,8 @@ var add_row = function (clicked_tr) {
     document.createElement("td")
   );
   added_td.setAttribute("colspan", clicked_tr.childElementCount);
+  
+  
   added_td.appendChild(
     add_figure_buttons("tr_figure_button", button_object)
   );
@@ -92,8 +94,8 @@ var add_row = function (clicked_tr) {
   added_td.appendChild(
     fig_cont
   );
-  render_barchart();
-  addEventListener('resize', render_barchart);
+  render_line_chart();
+  addEventListener('resize', render_line_chart);
 };
 
 var qi_table = document.querySelector("#quality_overview_ui_1-qi_table");
