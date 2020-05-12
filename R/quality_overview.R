@@ -139,11 +139,11 @@ quality_overview_server <- function(input,
     sidebar_qo_ui("quality_overview_ui_1")
   })
   
-  #data passed to js
-  output$json <- shiny::reactive({
-      paste('<script> data_nt = ', 
-            jsonlite::toJSON(app_data),
-            '; </script>')
-  })
+  # #data passed to js
+  # output$json <- shiny::reactive({
+  #     paste('<script> data_nt = ', 
+  #           jsonlite::toJSON(app_data),
+  #           '; </script>')
+  # })
 
 }
