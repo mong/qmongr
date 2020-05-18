@@ -48,41 +48,41 @@ test_that("quality_overview_server basic input", {
   shiny::testServer(quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
     session$setInputs(pick_year = "2018")
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_trondheim_2018.rds")
     session$setInputs(pick_year = "2016")
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_trondheim_2016.rds")
     session$setInputs(pick_year = "2017")
 
     session$setInputs(pick_treatment_units = "Troms\u00f8")
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_tromso_2017.rds")
 
     session$setInputs(pick_treatment_units = "Helse Nord RHF")
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_helse_nord_2017.rds")
 
     session$setInputs(pick_treatment_units = "Private")
     expect_equal_to_reference(output$qi_table,
                               "data/output_qi_table_empty.rds")
     session$setInputs(pick_year = "2019")
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_private_2019.rds")
     session$setInputs(pick_treatment_units = "Bergen HF")
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_bergen_2019.rds")
 
     session$setInputs(pick_treatment_units = c("Molde",
                                                "Helgeland HF",
                                                "Helse Vest RHF"
                                                ))
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_multiple_2019.rds")
 
     suppressWarnings(session$setInputs(pick_year = "2019"))
     suppressWarnings(session$setInputs(pick_treatment_units = "Førde"))
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_forde_2019.rds")
   })
 })
@@ -94,17 +94,17 @@ test_that("quality_overview_server filter medical field", {
     session$setInputs(pick_treatment_units =  "Helse Nord RHF")
 
     session$setInputs(intensiv = 1)
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_filter_intensiv.rds")
 
     session$setInputs(alle = 1)
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_helse_nord_2017.rds")
 
     session$setInputs(pick_year = "2018")
     session$setInputs(pick_treatment_units =  "Bergen HF")
     session$setInputs(tarm = 1)
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_filter_tarm.rds")
     session$setInputs(pick_year = "2019")
     expect_equal_to_reference(output$qi_table,
@@ -113,7 +113,7 @@ test_that("quality_overview_server filter medical field", {
     session$setInputs(pick_year = "2018")
     session$setInputs(muskel = 1)
     session$setInputs(pick_treatment_units = "Bergen HF")
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_filter_muskel.rds")
 
     session$setInputs(pick_treatment_units =  "Skien")
@@ -129,14 +129,14 @@ test_that("quality_overview_server filter level", {
     session$setInputs(legend_high = 1)
     session$setInputs(legend_mod = 0)
     session$setInputs(legend_low = 0)
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_filter_level_high_2017.rds")
 
     session$setInputs(legend_high = 1)
     session$setInputs(legend_high = 1)
     session$setInputs(legend_mod = 0)
     session$setInputs(legend_low = 0)
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_filter_level_high_2017.rds")
 
     session$setInputs(pick_treatment_units =  "UNN HF")
@@ -144,14 +144,14 @@ test_that("quality_overview_server filter level", {
     session$setInputs(legend_high = 0)
     session$setInputs(legend_mod = 1)
     session$setInputs(legend_low = 0)
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_filter_level_mod_2018.rds")
 
     session$setInputs(pick_treatment_units = "Akershus HF")
     session$setInputs(legend_high = 0)
     session$setInputs(legend_mod = 0)
     session$setInputs(legend_low = 1)
-    expect_equal_to_reference(output$qi_table,
+    expect_equal_to_reference(output$qi_table[["html"]],
                               "data/output_qi_table_level_low_2018.rds")
   })
 })
