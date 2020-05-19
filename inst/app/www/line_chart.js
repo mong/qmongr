@@ -135,7 +135,7 @@ var render_line_chart = function () {
     {
       width: document.querySelector(".responsive_svg").clientWidth,
       height: 0.5 * document.querySelector(".responsive_svg").clientWidth,
-      margin: {"top": 0.2, "left": 0.1, "bottom":0.15, "right":0.15}
+      margin: {"top": 0.2, "left": 0.1, "bottom":0.15, "right":0.2}
     });
 };
 
