@@ -13,6 +13,7 @@ app_ui <- function() {
       shiny::tags$script(src = "www/theme.js"),
       shiny::tags$script(src = "www/margin_title.js"),
       shiny::tags$script(src = "www/axis.js"),
+      shiny::tags$script(src = "www/line_chart.js"),
       shiny::tags$script(src = "www/barchart.js"),
       shiny::tags$script(src = "www/qmongr.js")
       
