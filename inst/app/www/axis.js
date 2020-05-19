@@ -1,21 +1,26 @@
 var labeled_x_axis_linear = function (selection, props){
   var {
     x_scale,
+    inner_width,
+    inner_height,
     x_axis_label,
     x_axis_label_fill,
-    x_axis_label_offset ,
-    x_axis_label_font_size,
-    x_axis_tick_font_size,
+    x_axis_label_offset = inner_height/6 ,
+    x_axis_label_font_size = 9 + inner_width * 0.04  + "px",
+    x_axis_tick_font_size = 7+ inner_width *0.02  + "px",
     x_axis_tick_font_fill,
     x_axis_tick_line_stroke,
-    x_axis_tick_density,
+    x_axis_tick_number = 6,
+    x_axis_tick_size = inner_height,
+    x_axis_tick_offset = inner_height * 0.05,
     x_axis_domain_line_stroke,
-    inner_width,
-    inner_height
+    x_axis_label_font_family 
   } = props;
 
   var x_axis = d3.axisBottom(x_scale)
-    .ticks(inner_width / x_axis_tick_density);
+    .tickSize(-x_axis_tick_size)
+    .ticks(x_axis_tick_number)
+
   var x_axis_g = selection.selectAll('.x-axis').data([null]);
   x_axis_g = x_axis_g
     .enter().append('g')
@@ -25,8 +30,10 @@ var labeled_x_axis_linear = function (selection, props){
   x_axis_g.call(x_axis);
   x_axis_g
     .selectAll('.tick text')
-      .style('font-size', x_axis_tick_font_size)
-      .attr('fill', x_axis_tick_font_fill);
+      .style('font-size',  x_axis_tick_font_size)
+      .attr('fill', x_axis_tick_font_fill)
+      .attr("y",x_axis_tick_offset )
+      ;
   x_axis_g
     .selectAll('.tick line')
       .attr('stroke', x_axis_tick_line_stroke);
@@ -43,8 +50,9 @@ var labeled_x_axis_linear = function (selection, props){
       .text(x_axis_label)
       .attr('x', inner_width / 2)
       .attr('y', x_axis_label_offset)
-      .style('font-size', x_axis_label_font_size)
-      .style("font-family", "georgia, sans-serif");
+      .style('font-size',  x_axis_label_font_size)
+      .style("font-family",  x_axis_label_font_family);
+
 };
  
 
@@ -53,10 +61,10 @@ var labeled_y_axis_linear = function (selection, props){
     y_scale,
     inner_width,
     inner_height,
-    y_axis_label = "",
-    y_axis_label_fill = "",
-    y_axis_label_offset = 0,
-    y_axis_label_font_size = 0,
+    y_axis_label = "Y axis",
+    y_axis_label_fill = "black",
+    y_axis_label_offset = inner_width * 0.15,
+    y_axis_label_font_size = 7 + inner_width * 0.03 + "px",
     y_axis_label_font_family = "Areal",
     y_axis_tick_font_size = 10 + (inner_height * 0.04) + "px",
     y_axis_tick_distance_from_axis = 10 + (inner_width * 0.08),
@@ -99,12 +107,9 @@ var labeled_y_axis_linear = function (selection, props){
         .attr('transform', 'rotate(-90)')
         .attr('x', -inner_height / 2.3)
         .attr('y', y_axis_label_offset)
-        .style('font-size',y_axis_label_font_size  + "px")
+        .style('font-size',y_axis_label_font_size)
         .style('font-family', y_axis_label_font_family);
 };
-
-
-
 
 var labeled_x_axis_time = function (selection, props){
   var {
@@ -216,53 +221,42 @@ var color_legend_line_chart = function (selection, props){
           .style("fill", legend_text_fill);
 }
 
-var labeled_y_axis_band = function (selection, props){
+var y_axis_band = function (selection, props){
   var {
     y_scale,
-    y_axis_label,
-    y_axis_label_fill,
-    y_axis_label_offset ,
-    y_axis_label_font_size,
-    y_axis_tick_font_size,
-    y_axis_tick_font_fill,
-    y_axis_tick_line_stroke,
-    y_axis_tick_density,
-    y_axis_domain_line_stroke,
     inner_width,
     inner_height,
-    margin_px
+    y_axis_label_font_family = "Areal",
+    y_axis_tick_font_size = 3 + (inner_height * 0.04) + "px",
+    y_axis_tick_distance_from_axis = (inner_width * 0.03),
+    y_axis_tick_font_fill,
+    y_axis_tick_line_stroke,
+    y_axis_domain_line_stroke,
   } = props;
 
   var y_axis = d3.axisLeft(y_scale)
-  .ticks(inner_height / theme.y_axis_tick_density);
+ 
   var y_axis_g = selection.selectAll('.y-axis').data([null]);
   y_axis_g = y_axis_g
     .enter().append('g')
     .attr('class', 'y-axis')
-    .merge(y_axis_g);
-
-  y_axis_g.call(y_axis);
+    .merge(y_axis_g)
+      
+    //.attr('transform', `translate(0,${inner_height})`);
+  y_axis_g.call(y_axis)
+    .attr("text-anchor", "end");
   y_axis_g
     .selectAll('.tick text')
-    .style('font-size', theme.y_axis_tick_font_size)
-    .attr('fill', theme.y_axis_tick_font_fill);
+    .attr("x", - y_axis_tick_distance_from_axis)
+    .style('font-size', y_axis_tick_font_size)
+    .style("font-family",y_axis_label_font_family)
+    .attr('fill', y_axis_tick_font_fill);
   y_axis_g
     .selectAll('.tick line')
-    .attr('stroke', theme.y_axis_tick_line_stroke);
+    .attr('stroke', y_axis_tick_line_stroke);
   y_axis_g
     .select('.domain')
-    .attr('stroke', theme.y_axis_domain_line_stroke);
+    .attr('stroke', y_axis_domain_line_stroke);
     
-  var y_axis_label_text = y_axis_g.selectAll('.axis-label').data([null]);
-  y_axis_label_text
-    .enter().append('text')
-    .attr('class', 'axis-label')
-    .merge(y_axis_label_text)
-      .attr('fill', theme.y_axis_label_fill)
-      .text(theme.y_axis_label)
-      .attr('transform', 'rotate(-90)')
-      .attr('x', -inner_height / 2.3)
-      .attr('y', -inner_width / 6)
-      .style('font-size', margin_px.bottom/3 + "px");   
-
-};
+  
+}
