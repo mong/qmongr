@@ -15,9 +15,10 @@ var colors =   {
 
 //defines how the line chart axis look 
 var theme_line_chart = {
-  x_axis_label_fill: colors.secondary_text_color,
-  y_axis_label_fill: colors.secondary_text_color,
+  x_axis_label_fill: colors.primary_text_color,
+  y_axis_label_fill: colors.primary_text_color,
   x_axis_label: "",
+  y_axis_label: "Andel",
   x_axis_label_font_family: 'areal, Helvetica Neue',
   y_axis_label_font_family: 'areal, Helvetica Neue',
   x_axis_tick_font_fill: colors.secondary_text_color,
@@ -31,25 +32,18 @@ var theme_line_chart = {
   legend_text_font_family: 'areal, Helvetica Neue',
 };
 
-//defines how the axis look
-var theme = {
-  x_axis_label_fill: '#635F5D',
-  y_axis_label_fill: '#635F5D',
+//defines how the bar chart axis look
+var theme_bar_chart = {
+  x_axis_label_fill: colors.secondary_text_color,
+  y_axis_label_fill: colors.secondary_text_color,
   x_axis_label: "x axis",
-  y_axis_label: "y axis",
-  x_axis_label_offset: 55,
-  y_axis_label_offset: 75,
-  x_axis_label_font_size: '24px',
-  y_axis_label_font_size: '24px',
-  x_axis_tick_font_size: '16px',
-  y_axis_tick_font_size: '16px',
-  x_axis_tick_font_fill: '#8E8883',
-  y_axis_tick_font_fill: '#8E8883',
+  y_axis_label: "",
+  x_axis_label_font_family: 'areal',
+  y_axis_label_font_family: 'areal',
+  x_axis_tick_font_fill: colors.secondary_text_color,
+  y_axis_tick_font_fill: colors.primary_text_color,
   x_axis_tick_line_stroke: '#C0C0BB',
   y_axis_tick_line_stroke: 'none',
-  x_axis_tick_density: 100, // Pixels per tick.
-  y_axis_tick_density: 70,
-  x_axis_domain_line_stroke: '#C0C0BB',
+  x_axis_domain_line_stroke: 'none',
   y_axis_domain_line_stroke: 'none',
-  
 };
