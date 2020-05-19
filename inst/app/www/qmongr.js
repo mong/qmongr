@@ -44,32 +44,7 @@ var remove_row = function() {
   }
 } ;
 
-//adds a bar or line chart based on user input
-/*var add_figure = function () {
-  var figure_container = document.createElement('div');
-  figure_container.className = "embedded_figure";
-  
-  
-  var svg = d3.select(figure_container).append("svg")
-    .attr("width", 400)
-    .attr("height", 500);
-  var text = svg.append("text")
-    .attr("x", 200)
-    .attr("y", 250)
-    .attr("font-size", "1.3em")
-    .attr("text-anchor","middle")
-    .attr("fill","blue")
-    .text("Figure coming soon ...")
-  return(figure_container);
-};
-*/
-var barchart = function( container_div) {
-  
-};
 
-var linechart = function (container_div) {
-  
-};
 
 //add a row benth the clicked tr
 var add_row = function (clicked_tr) {
@@ -94,16 +69,55 @@ var add_row = function (clicked_tr) {
   added_td.appendChild(
     fig_cont
   );
-  render_line_chart();
-  addEventListener('resize', render_line_chart);
+
+  var bar = document.getElementById("table_bar");
+  var line = document.getElementById("table_line");
+  var svg_container = document.querySelector(".responsive_svg");
+  
+  if (bar.checked ) {
+    render_bar_chart();
+    addEventListener('resize', render_bar_chart);
+  } else if (line.checked){
+     render_line_chart();
+    addEventListener('resize', render_line_chart);
+    
+  }
+  
+  bar.addEventListener("click",e => {
+    if (document.getElementById("table_bar").checked ) {
+      svg_container.removeChild(svg_container.querySelector("svg"));
+      window.removeEventListener('resize', render_line_chart);
+      render_bar_chart();
+      addEventListener('resize', render_bar_chart);
+    } 
+  });
+  
+  line.addEventListener("click",e => {
+    if (document.getElementById("table_line").checked ) {
+      svg_container.removeChild(svg_container.querySelector("svg"));
+      window.removeEventListener('resize', render_bar_chart);
+      render_line_chart();
+      window.addEventListener('resize', render_line_chart);
+    } 
+  });
+ 
+
+  
+  
+  btns = document.getElementsByName("table_figure_button");
+  
+  /*btns.addEventListener("checked", e => {
+    console.log(e.target);  });*/
+ /* render_line_chart();
+  addEventListener('resize', render_line_chart);*/
 };
 
 var qi_table = document.querySelector("#quality_overview_ui_1-qi_table");
 var current_fig_row = "";
 var button_object = [
-  {class_name_inp : "figure_button figure_button_left", type : "Radio", id: "bar",  name: "figure_button",
+  {class_name_inp : "figure_button figure_button_left", type : "Radio", id: "table_bar",  name: "table_figure_button",
     value: "bar",  icon: "fa fa-bar-chart", label : "Søyle", class_name_label: "figure_button_label", checked: true },
-  {class_name_inp : "figure_button figure_button_right", type : "Radio", id: "line", name: "figure_button",
+  {class_name_inp : "figure_button figure_button_right", type : "Radio", id: "table_line", name: "table_figure_button",
     value: "line", icon: "fa fa-line-chart", label : "Linje", class_name_label: "figure_button_label", checked: false}
   ];
 
