@@ -140,10 +140,14 @@ quality_overview_server <- function(input,
   })
   
   # #data passed to js
-  # output$json <- shiny::reactive({
-  #     paste('<script> data_nt = ', 
-  #           jsonlite::toJSON(app_data),
-  #           '; </script>')
-  # })
+  output$json <- shiny::reactive({
+      paste('<script> var  description = ',
+            jsonlite::toJSON(app_data$register_data$description, na = "null"), ";",
+            'var indicator_hosp =', jsonlite::toJSON(app_data$grouped_by_hospital), ";",
+            'var indicator_hf =', jsonlite::toJSON(app_data$grouped_by_hf), ";",
+            'var indicator_rhf =', jsonlite::toJSON(app_data$grouped_by_rhf), ";",
+            'var indicator_nat =', jsonlite::toJSON(app_data$national_data), ";",
+            '; </script>')
+  })
 
 }
