@@ -1,5 +1,5 @@
 //function that returns the tr based on a childElement of tr
-//can be used to find the tr that was clicked.
+//can be used to find  tr that was clicked.
 var tr_class_name = function (clicked_element) {
   if (clicked_element.nodeName === "TR") {
     	return clicked_element;
@@ -48,7 +48,74 @@ var remove_row = function() {
 
 //add a row benth the clicked tr
 var add_row = function (clicked_tr) {
+  var clicked_indicator = clicked_tr.id;
+  var selected_treatment_units_element = document
+    .getElementById("quality_overview_ui_1-pick_treatment_units")
+    .getElementsByTagName("option");
+  var selected_treatment_units = Array
+    .from(selected_treatment_units_element)
+    .map(elem => elem.value);
+  var selected_year_element = document
+    .getElementById("quality_overview_ui_1-pick_year")
+    .getElementsByTagName("option");
+  var selected_year = Array
+    .from(selected_year_element)
+    .map(elem => Number(elem.value));
+  var figure_data = indicator_hosp
+    .filter(elem => { 
+      elem.treatment_unit = elem.SykehusNavn;
+      return( elem.KvalIndID === clicked_indicator &&
+        selected_treatment_units.includes(elem.SykehusNavn) &&
+        elem.count > 5);
+  });
+  figure_data.push(indicator_hf
+    .filter(elem => {
+      elem.treatment_unit = elem.Hfkortnavn;
+      return( elem.KvalIndID === clicked_indicator &&
+        selected_treatment_units.includes(elem.Hfkortnavn) &&
+        elem.count > 5);
+    })
+  );
+  figure_data.push(indicator_rhf
+    .filter(elem => {
+      elem.treatment_unit = elem.RHF;
+      return( elem.KvalIndID === clicked_indicator &&
+      selected_treatment_units.includes(elem.RHF) &&
+      elem.count > 5);
+    })
+  );
+  figure_data.push(indicator_nat
+    .filter(elem => {
+      elem.treatment_unit = "Nasjonalt"; 
+      return (elem.KvalIndID === clicked_indicator); 
+    })
+  );
+  figure_data = figure_data.flat();
   
+  var render_bar_chart = function () {
+    responsiv_bar_chart(
+      figure_container,
+      figure_data.filter(elem => selected_year.includes(elem.Aar)),
+      {
+        width: svg_container.clientWidth,
+        height: 0.5 * svg_container.clientWidth,
+        margin: {"top": 0.1, "left": 0.25, "bottom":0.15, "right":0.15}
+      });
+  };
+  
+  var render_line_chart = function () {
+    responsiv_line_chart(
+      figure_container,
+      figure_data ,
+      {
+        width: document.querySelector(".responsive_svg").clientWidth,
+        height: 0.5 * document.querySelector(".responsive_svg").clientWidth,
+        margin: {"top": 0.2, "left": 0.1, "bottom":0.15, "right":0.2}
+      });
+  };
+  
+  //console.log(figure_data);
+    
   new_row_index = clicked_tr.rowIndex + 1;
   current_fig_row = clicked_tr.id;
   added_row = clicked_tr.parentElement
@@ -59,15 +126,15 @@ var add_row = function (clicked_tr) {
     document.createElement("td")
   );
   added_td.setAttribute("colspan", clicked_tr.childElementCount);
-  
-  
+
   added_td.appendChild(
     add_figure_buttons("tr_figure_button", button_object)
   );
-  var fig_cont = document.createElement('div');
-  fig_cont.setAttribute("class", "responsive_svg");
+   
+  var figure_container = document.createElement('div');
+  figure_container.setAttribute("class", "responsive_svg");
   added_td.appendChild(
-    fig_cont
+    figure_container
   );
 
   var bar = document.getElementById("table_bar");
@@ -76,10 +143,10 @@ var add_row = function (clicked_tr) {
   
   if (bar.checked ) {
     render_bar_chart();
-    addEventListener('resize', render_bar_chart);
+    window.addEventListener('resize',render_bar_chart);
   } else if (line.checked){
      render_line_chart();
-    addEventListener('resize', render_line_chart);
+    window.addEventListener('resize', render_line_chart);
     
   }
   
@@ -88,28 +155,19 @@ var add_row = function (clicked_tr) {
       svg_container.removeChild(svg_container.querySelector("svg"));
       window.removeEventListener('resize', render_line_chart);
       render_bar_chart();
-      addEventListener('resize', render_bar_chart);
+      window.addEventListener('resize', render_bar_chart);
     } 
   });
   
   line.addEventListener("click",e => {
     if (document.getElementById("table_line").checked ) {
       svg_container.removeChild(svg_container.querySelector("svg"));
-      window.removeEventListener('resize', render_bar_chart);
+      window.removeEventListener('resize',render_bar_chart);
       render_line_chart();
       window.addEventListener('resize', render_line_chart);
     } 
   });
  
-
-  
-  
-  btns = document.getElementsByName("table_figure_button");
-  
-  /*btns.addEventListener("checked", e => {
-    console.log(e.target);  });*/
- /* render_line_chart();
-  addEventListener('resize', render_line_chart);*/
 };
 
 var qi_table = document.querySelector("#quality_overview_ui_1-qi_table");
