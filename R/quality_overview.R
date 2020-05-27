@@ -139,6 +139,5 @@ quality_overview_server <- function(id) {
             '; </script>')
   })
 
-
   })
 }
