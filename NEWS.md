@@ -1,4 +1,12 @@
-# Unreleased
+# qmongr 0.7.0
+
+## New feature
+
+TEXT HERE!
+
+## Internal
+
+Check `output$qi_table[["html"]]` instead of `output$qi_table` in tests.
 
 # qmongr 0.6.5
 
