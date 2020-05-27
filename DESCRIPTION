@@ -39,9 +39,8 @@ Imports:
     stringr,
     rlang,
     yaml,
-    qmongrdata (>= 0.2.3),
-    lubridate,
-    jsonlite
+    jsonlite,
+    qmongrdata (>= 0.2.3)
 Depends: R (>= 3.5)
 Remotes:
     rstudio/shiny,
