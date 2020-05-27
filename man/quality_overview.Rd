@@ -7,16 +7,10 @@
 \usage{
 quality_overview_ui(id)
 
-quality_overview_server(input, output, session)
+quality_overview_server(id)
 }
 \arguments{
 \item{id}{shiny id}
-
-\item{input}{internal}
-
-\item{output}{internal}
-
-\item{session}{internal}
 }
 \description{
 A shiny Module.

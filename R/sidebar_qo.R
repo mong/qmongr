@@ -4,9 +4,6 @@
 #' @description  A shiny Module.
 #'
 #' @param id shiny id
-#' @param input internal
-#' @param output internal
-#' @param session internal
 #'
 #' @rdname sidebar_qo
 #'
@@ -32,9 +29,11 @@ sidebar_qo_ui <- function(id) {
 }
 
 #' @rdname sidebar_qo
+#' @param register_data_description register_data_description
 #' @export
 #' @keywords internal
-sidebar_qo_server <- function(input, output, session, register_data_description) {
+sidebar_qo_server <- function(id, register_data_description) {
+  shiny::moduleServer(id, function(input, output, session) {
 
   filter_indicator <- shiny::reactiveValues()
   shiny::observe({
@@ -72,4 +71,5 @@ sidebar_qo_server <- function(input, output, session, register_data_description)
       filter_indicator$indicator
     })
   )
+  })
 }
