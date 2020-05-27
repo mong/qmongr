@@ -15,7 +15,6 @@ app_ui <- function() {
       shiny::tags$script(src = "www/line_chart.js"),
       shiny::tags$script(src = "www/barchart.js"),
       shiny::tags$script(src = "www/qmongr.js")
-      
     )
   )
 }
@@ -32,12 +31,8 @@ add_external_resources <- function() {
     # Add here all the external resources
     # If you have a custom.css in the inst/app/www
     # Or for example, you can add shinyalert::useShinyalert() here
-    
-  
     shiny::tags$link(
       rel = "stylesheet", type = "text/css", href = "www/qmongr.css"
-      
     )
   )
 }
-
