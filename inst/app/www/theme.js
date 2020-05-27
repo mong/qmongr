@@ -36,7 +36,7 @@ var theme_line_chart = {
 var theme_bar_chart = {
   x_axis_label_fill: colors.secondary_text_color,
   y_axis_label_fill: colors.secondary_text_color,
-  x_axis_label: "x axis",
+  x_axis_label: "",
   y_axis_label: "",
   x_axis_label_font_family: 'areal',
   y_axis_label_font_family: 'areal',
