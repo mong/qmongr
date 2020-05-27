@@ -42,7 +42,7 @@ var theme_bar_chart = {
   y_axis_label_font_family: 'areal',
   x_axis_tick_font_fill: colors.secondary_text_color,
   y_axis_tick_font_fill: colors.primary_text_color,
-  x_axis_tick_line_stroke: '#C0C0BB',
+  x_axis_tick_line_stroke: colors.line_color,
   y_axis_tick_line_stroke: 'none',
   x_axis_domain_line_stroke: 'none',
   y_axis_domain_line_stroke: 'none',
