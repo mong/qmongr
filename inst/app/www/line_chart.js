@@ -1,33 +1,5 @@
-//data place holder
-var data_line = [
-  {"name": "Helse Midt-Norge RHF",  "andel": 0.3,  "pop": 29000 , "year":2014},
-  {"name": "Helse Midt-Norge RHF",  "andel": 0.33,  "pop": 54000, "year":2015 },
-  {"name": "Helse Midt-Norge RHF",  "andel": 0.37,  "pop": 93000, "year":2016 },
-  {"name": "Helse Midt-Norge RHF",  "andel": 0.43,  "pop": 56000, "year":2017 },
-  {"name": "Helse Midt-Norge RHF",  "andel": 0.4,  "pop": 62000, "year":2018 },
-  {"name": "Helse Midt-Norge RHF",  "andel": 0.29,  "pop": 36000, "year":2019 },
-  {"name": "Bergen HF",   "andel": 0.36, "pop": 21000, "year":2014 },
-  {"name": "Bergen HF",   "andel": 0.386, "pop": 67000, "year":2015 },
-  {"name": "Bergen HF",   "andel": 0.21, "pop": 95000, "year":2016 },
-  {"name": "Bergen HF",   "andel": 0.355, "pop": 33000, "year":2017 },
-  {"name": "Bergen HF",   "andel": 0.432, "pop": 56000, "year":2018 },
-  {"name": "Bergen HF",   "andel": 0.314, "pop": 48000, "year":2019 },
-  {"name": "Tromsø",   "andel": 0.44, "pop": 310000, "year": 2014},
-  {"name": "Tromsø",   "andel": 0.34, "pop": 120000, "year": 2015},
-  {"name": "Tromsø",   "andel": 0.26, "pop": 220000, "year": 2016},
-  {"name": "Tromsø",   "andel": 0.3167, "pop": 680000, "year": 2017},
-  {"name": "Tromsø",   "andel": 0.395, "pop": 120000, "year": 2018},
-  {"name": "Tromsø",   "andel": 0.32, "pop": 530000, "year": 2019},
-  {"name": "Helse Nord RHF",   "andel": 0.357, "pop": 310000, "year": 2014},
-  {"name": "Helse Nord RHF",   "andel": 0.34, "pop": 120000, "year": 2015},
-  {"name": "Helse Nord RHF",   "andel": 0.23, "pop": 220000, "year": 2016},
-  {"name": "Helse Nord RHF",   "andel": 0.39, "pop": 680000, "year": 2017},
-  {"name": "Helse Nord RHF",   "andel": 0.384, "pop": 120000, "year": 2018},
-  {"name": "Helse Nord RHF",   "andel": 0.375, "pop": 530000, "year": 2019}
-];
-
 // line chart
-var responsiv_line_chart = function (container, props){
+var responsiv_line_chart = function (container,figure_data, props){
   var { 
     width,
     height,
@@ -41,6 +13,8 @@ var responsiv_line_chart = function (container, props){
   };
   var inner_width = width - margin_px.left - margin_px.right;
   var inner_height= height - margin_px.top - margin_px.bottom;
+
+  container = d3.select("." + container.className);
   
   var svg = container.selectAll("svg").data([null]);
   svg = svg
@@ -51,7 +25,7 @@ var responsiv_line_chart = function (container, props){
   .attr("height", height)
   .style("background-color", colors.background_color);
   
-  /*responsive_margin(svg, {margin_px, width, height }) */   
+   
     
   var g = svg.selectAll(".grouped_element" )
     .data([null]);
@@ -65,8 +39,6 @@ var responsiv_line_chart = function (container, props){
   
   var y_scale = d3.scaleLinear()
     .domain([0,1])
-    //d3.min(data_line, d =>{ return d.andel}),
-    //d3.max(data_line, d =>{ return d.andel})]) 
     .range([inner_height , 0]); 
   labeled_y_axis_linear(g, Object.assign({}, theme_line_chart, {
     y_scale,
@@ -77,11 +49,11 @@ var responsiv_line_chart = function (container, props){
 
   var x_scale = d3.scaleTime()
     .domain([
-      d3.min(data_line, d =>{ return new Date (d.year+ "")}),
-      d3.max(data_line, d =>{ return new Date (d.year+"")})]) 
+      d3.min(figure_data, d =>{ return new Date (d.Aar+ "")}),
+      d3.max(figure_data, d =>{ return new Date (d.Aar+"")})]) 
     .range([0, inner_width]);
 
-  var x_axis_tick_values =[...new Set(data_line.map(d =>{ return  (d.year+ "")}))];
+  var x_axis_tick_values =[...new Set(figure_data.map(d =>{ return  (d.Aar+ "")}))];
   x_axis_tick_values = x_axis_tick_values.map(d => {return new Date(d)});
 
   labeled_x_axis_time(g, Object.assign({}, theme_line_chart, {
@@ -92,16 +64,16 @@ var responsiv_line_chart = function (container, props){
   }));
 
   var nested = d3.nest()
-    .key(d=>{return (d.name)})
-    .entries(data_line);
+    .key(d=>{return (d.treatment_unit)})
+    .entries(figure_data);
 
   var line_color_scale = d3.scaleOrdinal()
     .domain(nested.map(d => {return (d.key)}))
     .range(colors.chart_colors);
 
   var lines = d3.line()
-    .x(d => {return x_scale(new Date(d.year +""))})
-    .y(d => {return y_scale(d.andel)});
+    .x(d => {return x_scale(new Date(d.Aar +""))})
+    .y(d => {return y_scale(d.indicator)});
     //.curve(d3.curveMonotoneX)
 
   var path =  g.selectAll(".table-line-chart");
@@ -128,19 +100,6 @@ var responsiv_line_chart = function (container, props){
     position_left :margin_px.left, 
   }));
 };
-
-var render_line_chart = function () {
-  responsiv_line_chart(
-    d3.select(".responsive_svg"),
-    {
-      width: document.querySelector(".responsive_svg").clientWidth,
-      height: 0.5 * document.querySelector(".responsive_svg").clientWidth,
-      margin: {"top": 0.2, "left": 0.1, "bottom":0.15, "right":0.2}
-    });
-};
-
-//render_line_chart();
-//addEventListener('resize', render_line_chart);
 
 
 
