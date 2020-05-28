@@ -174,6 +174,8 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
   }
   return(
     tags$tr(
+      id = indicator_name,
+      class = "indicator",
       tags$td(
         class = "quality_indicator",
         tags$div(

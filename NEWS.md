@@ -1,4 +1,12 @@
-# Unreleased
+# qmongr 0.7.0
+
+## Clickable elements in indicator table ([#105](https://github.com/mong/qmongr/pull/105)).
+
+Click on indicator in table will reveal barchart plot. A clickable button can change the plot to a line plot, showing a time series.
+
+## Internal
+
+Check `output$qi_table[["html"]]` instead of `output$qi_table` in tests.
 
 # qmongr 0.6.5
 
