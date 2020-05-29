@@ -1,3 +1,5 @@
+# Unreleased
+
 # qmongr 0.7.0
 
 ## Clickable elements in indicator table ([#105](https://github.com/mong/qmongr/pull/105)).
