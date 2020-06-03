@@ -60,7 +60,7 @@ quality_overview_server <- function(id) {
   #All the processed data
 
   config <- qmongr::get_config()
-  app_data <- app_data(config)
+  app_data <- qmongr::aggr_data
   register_data <- app_data[["register_data"]]
   grouped_by_hf <- app_data[["grouped_by_hf"]]
   grouped_by_rhf <- app_data[["grouped_by_rhf"]]
