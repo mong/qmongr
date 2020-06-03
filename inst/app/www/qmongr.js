@@ -110,11 +110,9 @@ var add_row = function (clicked_tr) {
       {
         width: document.querySelector(".responsive_svg").clientWidth,
         height: 0.5 * document.querySelector(".responsive_svg").clientWidth,
-        margin: {"top": 0.2, "left": 0.1, "bottom":0.15, "right":0.2}
+        margin: {"top": 0.05, "left": 0.1, "bottom":0.15, "right":0.2}
       });
   };
-  
-  //console.log(figure_data);
     
   new_row_index = clicked_tr.rowIndex + 1;
   current_fig_row = clicked_tr.id;
@@ -153,6 +151,9 @@ var add_row = function (clicked_tr) {
   bar.addEventListener("click",e => {
     if (document.getElementById("table_bar").checked ) {
       svg_container.removeChild(svg_container.querySelector("svg"));
+      svg_container.removeChild(
+        svg_container.querySelector(".line_chart_legend_table")
+      );
       window.removeEventListener('resize', render_line_chart);
       render_bar_chart();
       window.addEventListener('resize', render_bar_chart);
@@ -198,5 +199,3 @@ qi_table.addEventListener("click", function(e){
     }
   }
 }) ; 
-
-
