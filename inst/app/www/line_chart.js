@@ -15,6 +15,34 @@ var responsiv_line_chart = function (container,figure_data, props){
   var inner_height= height - margin_px.top - margin_px.bottom;
 
   container = d3.select("." + container.className);
+    
+  var x_scale = d3.scaleTime()
+    .domain([
+      d3.min(figure_data, d =>{ return new Date (d.Aar+ "")}),
+      d3.max(figure_data, d =>{ return new Date (d.Aar+"")})]) 
+    .range([0, inner_width]);
+  
+  var y_scale = d3.scaleLinear()
+    .domain([0,1])
+    .range([inner_height , 0]); 
+
+  var nested = d3.nest()
+    .key(d=>{return (d.treatment_unit)})
+    .entries(figure_data);
+
+  var line_color_scale = d3.scaleOrdinal()
+    .domain(nested.map(d => {return (d.key)}))
+    .range(colors.chart_colors);
+  
+  color_legend_line_chart(container, Object.assign({}, theme_line_chart, {
+    line_color_scale,
+    inner_width,
+    inner_height,
+    margin,
+    position_left :margin_px.left, 
+  })); 
+    
+  
   
   var svg = container.selectAll("svg").data([null]);
   svg = svg
@@ -24,8 +52,6 @@ var responsiv_line_chart = function (container,figure_data, props){
   .attr("width", width -20)
   .attr("height", height)
   .style("background-color", colors.background_color);
-  
-   
     
   var g = svg.selectAll(".grouped_element" )
     .data([null]);
@@ -37,9 +63,7 @@ var responsiv_line_chart = function (container,figure_data, props){
       .attr("transform", "translate(" + margin_px.left + " ," + margin_px.top  + ")");
   
   
-  var y_scale = d3.scaleLinear()
-    .domain([0,1])
-    .range([inner_height , 0]); 
+ 
   labeled_y_axis_linear(g, Object.assign({}, theme_line_chart, {
     y_scale,
     inner_width,
@@ -47,11 +71,7 @@ var responsiv_line_chart = function (container,figure_data, props){
   }));  
 
 
-  var x_scale = d3.scaleTime()
-    .domain([
-      d3.min(figure_data, d =>{ return new Date (d.Aar+ "")}),
-      d3.max(figure_data, d =>{ return new Date (d.Aar+"")})]) 
-    .range([0, inner_width]);
+  
 
   var x_axis_tick_values =[...new Set(figure_data.map(d =>{ return  (d.Aar+ "")}))];
   x_axis_tick_values = x_axis_tick_values.map(d => {return new Date(d)});
@@ -63,14 +83,7 @@ var responsiv_line_chart = function (container,figure_data, props){
     x_axis_tick_values
   }));
 
-  var nested = d3.nest()
-    .key(d=>{return (d.treatment_unit)})
-    .entries(figure_data);
-
-  var line_color_scale = d3.scaleOrdinal()
-    .domain(nested.map(d => {return (d.key)}))
-    .range(colors.chart_colors);
-
+  
   var lines = d3.line()
     .x(d => {return x_scale(new Date(d.Aar +""))})
     .y(d => {return y_scale(d.indicator)});
@@ -82,7 +95,7 @@ var responsiv_line_chart = function (container,figure_data, props){
     .enter()
     .append("path")
     .merge(path)
-      .attr("class","table-line-chart")
+      .attr("class",d =>`table-line-chart  ${d.key.replace(/\s/g, '')}`)
       .attr("d", d => {return lines(d.values)})
       .attr("stroke", (d) => { 
         return line_color_scale(d.key)})
@@ -93,13 +106,11 @@ var responsiv_line_chart = function (container,figure_data, props){
       .style("mix-blend-mode", "multiply");
 
 
-  color_legend_line_chart(svg, Object.assign({}, theme_line_chart, {
+  color_legend_line_chart(container, Object.assign({}, theme_line_chart, {
     line_color_scale,
     inner_width,
     inner_height,
+    margin,
     position_left :margin_px.left, 
   }));
 };
-
-
-
