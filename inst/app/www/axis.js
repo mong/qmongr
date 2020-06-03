@@ -169,6 +169,7 @@ var labeled_x_axis_time = function (selection, props){
 var color_legend_line_chart = function (selection, props){
   var {
     line_color_scale,
+    margin = {left:0.1,right:0.1},
     inner_width,
     inner_height,
     position_left,
@@ -176,7 +177,7 @@ var color_legend_line_chart = function (selection, props){
     legend_text_font_family,
     legend_text_font_size = 7 + inner_width * 0.01, 
     legend_text_offset = inner_width *0.02,
-    legend_circle_radius = (7 + inner_width * 0.01)/2,
+    legend_circle_radius = (15 + inner_width * 0.01)/2,
     legend_space_between_circles = inner_width * 0.25,
     legend_first_circle_offset =inner_width * 0.05
 
@@ -184,41 +185,70 @@ var color_legend_line_chart = function (selection, props){
   
 
   var primary_legend_group = selection.selectAll(".line_chart_legend_table").data([null])
-  primary_legend_group = primary_legend_group
+  var legend_container = primary_legend_group 
     .enter()
-    .append("g")
+    .append("div")
     .merge(primary_legend_group)
       .attr("class", "line_chart_legend_table")
-      .attr("width", inner_width)
-      .attr("height", inner_height * 0.25)
-      .attr("transform", "translate(" + position_left + " ,"
-         + inner_height * 0.2  + ")")
-    
-  var legend = primary_legend_group.selectAll("g").data(line_color_scale.domain());
+      .style("position", "relative")
+      .style("top", "0")
+      .style("left", `${margin.left * 100}%`)
+      .style("width", `${(1-margin.left-margin.right) * 100}%`)
+  var legend_list = legend_container.selectAll("ul").data([null])
+    .enter()
+    .append("ul")
+    .merge(legend_container)
+    .style("display","flex")
+    .style("justify-content", "flex-start")
+    .style("flex-wrap", "wrap")
+  var legend = legend_list.selectAll("li").data(line_color_scale.domain())
   
-  var grouped_legend = legend.enter().append('g')
-      .attr('class', 'tick');
-    grouped_legend
-      .merge(legend)
-        .attr('transform', (d, i) =>
-          `translate(
-            ${i * legend_space_between_circles + legend_first_circle_offset},
-            0)`
-        );
-    legend.exit().remove()
+  var legend_item = legend
+    .enter()
+    .append("li")
+    .style("display", "inline-block")
+    .style("margin", "5px")
+    .style("display", "flex")
     
-    grouped_legend.append("circle")
-      .merge(legend.select("circle"))
-        .attr("r", legend_circle_radius)
-        .attr("fill", line_color_scale)
-    grouped_legend.append('text')
-        .merge(legend.select('text'))
-          .text(d => d)
-          .attr('dy', '0.32em')
-          .attr("x",legend_text_offset)
-          .style("font-size", legend_text_font_size + "px")
-          .style("font-family", legend_text_font_family)
-          .style("fill", legend_text_fill);
+  legend.exit().remove() 
+  
+  legend_item
+    .merge(legend)
+    .on("mouseover", function(d){
+      var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
+
+      if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
+      d3.selectAll(`path`).style("opacity", 0.2)
+      d3.select(`svg .${d.replace(/\s/g, '')}`).style("opacity", 1)
+      }
+      d3.select(this).style("cursor", "pointer")
+    })
+    .on("mouseout", function(d){
+      d3.selectAll(`path`).style("opacity", 1)
+      
+    })
+    .on("click", function(d){
+      var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
+  
+      if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
+        d3.select(`svg path.${d.replace(/\s/g, '')}`).attr("visibility", "hidden")
+        d3.select(this).style("opacity", 0.2) 
+      } else {
+        d3.select(`svg path.${d.replace(/\s/g, '')}`).attr("visibility", null)
+        d3.select(this).style("opacity", 1) 
+      }
+    })
+    legend_item
+      .append("text")
+      .merge(legend.select("text"))
+      .text(d => d)
+
+      .style("font-size", legend_text_font_size + "px")
+      .style("font-family", legend_text_font_family)
+      .style("fill", legend_text_fill)
+      .style("padding", "5px")
+      .style("background-color", line_color_scale)
+      .style("border-radius", "5px")  
 }
 
 var y_axis_band = function (selection, props){
