@@ -44,3 +44,7 @@ test_that("load_data", {
     names(qm_data$indicator)
   )
 })
+
+test_that("app_data", {
+  expect_equal(app_data(qmongr::get_config()), qmongr::aggr_data)
+})
