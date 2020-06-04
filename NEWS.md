@@ -1,3 +1,5 @@
+# Unreleased
+
 # qmongr 0.7.1
 
 - Figure legend with interaction ([#114](https://github.com/mong/qmongr/pull/114))
