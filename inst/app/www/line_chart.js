@@ -106,11 +106,25 @@ var responsiv_line_chart = function (container,figure_data, props){
       .style("mix-blend-mode", "multiply");
 
 
-  color_legend_line_chart(container, Object.assign({}, theme_line_chart, {
-    line_color_scale,
+  var y_scale = d3.scaleLinear()
+      .domain([
+        d3.min(figure_data, d =>{ return d.indicator}),
+        d3.max(figure_data, d =>{ return d.indicator})]) 
+      .range([inner_height , 0]); 
+    
+  path  
+    .data(nested)
+    .enter()
+    .append("path")
+    .merge(path)
+      .transition().delay(2000).duration(3000)
+      .attr("d", d =>  lines(d.values));
+      
+  labeled_y_axis_linear(g, Object.assign({}, theme_line_chart, {
+    y_scale,
     inner_width,
     inner_height,
-    margin,
-    position_left :margin_px.left, 
+    transition: true,
   }));
+  
 };
