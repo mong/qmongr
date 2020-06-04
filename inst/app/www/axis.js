@@ -63,7 +63,7 @@ var labeled_y_axis_linear = function (selection, props){
     inner_height,
     y_axis_label = "Y axis",
     y_axis_label_fill = "black",
-    y_axis_label_offset = inner_width * 0.15,
+    y_axis_label_offset = inner_width * 1.15,
     y_axis_label_font_size = 7 + inner_width * 0.03 + "px",
     y_axis_label_font_family = "Areal",
     y_axis_tick_font_size = 10 + (inner_height * 0.04) + "px",
@@ -73,9 +73,10 @@ var labeled_y_axis_linear = function (selection, props){
     y_axis_tick_line_stroke,
     y_axis_tick_size = inner_width,
     y_axis_domain_line_stroke,
+    transition=false
   } = props;
 
-  var y_axis = d3.axisLeft(y_scale)
+  var y_axis = d3.axisRight(y_scale)
     .ticks(y_axis_tick_number)
     .tickSize( y_axis_tick_size);
   var y_axis_g = selection.selectAll('.y-axis').data([null]);
@@ -83,13 +84,16 @@ var labeled_y_axis_linear = function (selection, props){
     .enter().append('g')
     .attr('class', 'y-axis')
     .merge(y_axis_g)
-    .attr('transform', `translate(${inner_width},0)`);
-  y_axis_g.call(y_axis);
+    
+  transition ?
+    y_axis_g.transition().delay(2000).duration(2000).call(y_axis).nice:
+    y_axis_g.call(y_axis);
+  
   y_axis_g
     .selectAll('.tick text')
     .style('font-size',  y_axis_tick_font_size)
     .attr('fill', y_axis_tick_font_fill)
-    .attr("x", y_axis_tick_distance_from_axis);
+ 
   y_axis_g
     .selectAll('.tick line')
     .attr('stroke', y_axis_tick_line_stroke);
@@ -105,7 +109,7 @@ var labeled_y_axis_linear = function (selection, props){
       .attr('fill', y_axis_label_fill)
       .text(y_axis_label)
         .attr('transform', 'rotate(-90)')
-        .attr('x', -inner_height / 2.3)
+        .attr('x', -inner_height / 1.5)
         .attr('y', y_axis_label_offset)
         .style('font-size',y_axis_label_font_size)
         .style('font-family', y_axis_label_font_family);
@@ -218,24 +222,44 @@ var color_legend_line_chart = function (selection, props){
       var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
 
       if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
-      d3.selectAll(`path`).style("opacity", 0.2)
-      d3.select(`svg .${d.replace(/\s/g, '')}`).style("opacity", 1)
+
+      d3.selectAll(`path`)
+        .transition().duration(500)
+        .style("opacity", 0.2)
+      d3.select(`svg .${d.replace(/\s/g, '')}`)
+        .transition().duration(500)
+        .style("opacity", 1)
+
       }
       d3.select(this).style("cursor", "pointer")
     })
     .on("mouseout", function(d){
-      d3.selectAll(`path`).style("opacity", 1)
+
+      d3.selectAll(`path`)
+        .transition().duration(500)
+        .style("opacity", 1)
+
       
     })
     .on("click", function(d){
       var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
   
       if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
-        d3.select(`svg path.${d.replace(/\s/g, '')}`).attr("visibility", "hidden")
-        d3.select(this).style("opacity", 0.2) 
+
+        d3.select(`svg path.${d.replace(/\s/g, '')}`)
+          .transition().duration(1000)
+          .attr("visibility", "hidden")
+        d3.select(this)
+          .transition().duration(500)
+          .style("opacity", 0.4) 
       } else {
-        d3.select(`svg path.${d.replace(/\s/g, '')}`).attr("visibility", null)
-        d3.select(this).style("opacity", 1) 
+        d3.select(`svg path.${d.replace(/\s/g, '')}`)
+          .transition().duration(1000)
+          .attr("visibility", null)
+        d3.select(this)
+          .transition().duration(1000)
+          .style("opacity", 1) 
+
       }
     })
     legend_item
