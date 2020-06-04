@@ -1,4 +1,14 @@
-# Unreleased
+# qmongr 0.7.1
+
+- Figure legend with interaction ([#114](https://github.com/mong/qmongr/pull/114))
+
+  Added interaction to the chart lagend and fixed the layout of the legend
+- Use internal data ([#113](https://github.com/mong/qmongr/pull/113))
+
+  Aggregating data from qmongrdata takes forever,
+  and slows down the starting of the app (see issue #112).
+  In this commit, the data aggr_data is created by running
+  the function app_data() beforehand, and is used directly by the app.
 
 # qmongr 0.7.0
 

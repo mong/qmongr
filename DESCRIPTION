@@ -1,6 +1,6 @@
 Package: qmongr
 Title: Lightweight Quality Assessment of Norwegian Hospitals 
-Version: 0.7.0.9000
+Version: 0.7.1
 Authors@R: c(
     person(given = "Yohannes",
            family = "Tesfay",
