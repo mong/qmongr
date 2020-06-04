@@ -78,9 +78,8 @@ var responsiv_bar_chart = function (container, figure_data, props){
       })
       .attr("x", 0)//function(d){return x_scale(d.andel)})
       .attr("y",  d=> y_scale(d.treatment_unit))
-      .attr("width", d => x_scale(d.indicator))
-      .attr("height", y_scale.bandwidth);
-      
- 
+      .attr("height", y_scale.bandwidth)
+      .transition().duration(1000)
+      .attr("width", d => x_scale(d.indicator));
  
 };
