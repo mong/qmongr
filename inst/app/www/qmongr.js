@@ -150,10 +150,10 @@ var add_row = function (clicked_tr) {
   
   bar.addEventListener("click",e => {
     if (document.getElementById("table_bar").checked ) {
-      svg_container.removeChild(svg_container.querySelector("svg"));
-      svg_container.removeChild(
-        svg_container.querySelector(".line_chart_legend_table")
-      );
+       var figure_elemnts = svg_container.childElementCount
+       for (i = 0; i < figure_elemnts; i++){ 
+        svg_container.removeChild(svg_container.childNodes[0]);
+      }
       window.removeEventListener('resize', render_line_chart);
       render_bar_chart();
       window.addEventListener('resize', render_bar_chart);
@@ -162,7 +162,10 @@ var add_row = function (clicked_tr) {
   
   line.addEventListener("click",e => {
     if (document.getElementById("table_line").checked ) {
-      svg_container.removeChild(svg_container.querySelector("svg"));
+      var figure_elemnts = svg_container.childElementCount
+       for (i = 0; i < figure_elemnts; i++){ 
+        svg_container.removeChild(svg_container.childNodes[0]);
+      }
       window.removeEventListener('resize',render_bar_chart);
       render_line_chart();
       window.addEventListener('resize', render_line_chart);
