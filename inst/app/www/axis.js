@@ -222,25 +222,30 @@ var color_legend_line_chart = function (selection, props){
       var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
 
       if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
+
       d3.selectAll(`path`)
         .transition().duration(500)
         .style("opacity", 0.2)
       d3.select(`svg .${d.replace(/\s/g, '')}`)
         .transition().duration(500)
         .style("opacity", 1)
+
       }
       d3.select(this).style("cursor", "pointer")
     })
     .on("mouseout", function(d){
+
       d3.selectAll(`path`)
         .transition().duration(500)
         .style("opacity", 1)
+
       
     })
     .on("click", function(d){
       var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
   
       if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
+
         d3.select(`svg path.${d.replace(/\s/g, '')}`)
           .transition().duration(1000)
           .attr("visibility", "hidden")
@@ -254,6 +259,7 @@ var color_legend_line_chart = function (selection, props){
         d3.select(this)
           .transition().duration(1000)
           .style("opacity", 1) 
+
       }
     })
     legend_item

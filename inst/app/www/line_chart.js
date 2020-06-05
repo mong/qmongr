@@ -105,7 +105,6 @@ var responsiv_line_chart = function (container,figure_data, props){
       .attr("fill","none")
       .style("mix-blend-mode", "multiply");
 
-
   var y_scale = d3.scaleLinear()
       .domain([
         d3.min(figure_data, d =>{ return d.indicator}),
@@ -125,6 +124,7 @@ var responsiv_line_chart = function (container,figure_data, props){
     inner_width,
     inner_height,
     transition: true,
+
   }));
   
 };
