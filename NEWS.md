@@ -1,3 +1,7 @@
+# qmongr 0.7.3
+
+Fix barchart button bug ([#117](https://github.com/mong/qmongr/pull/117))
+
 # qmongr 0.7.2
 
 Smoother transitions ([#115](https://github.com/mong/qmongr/pull/115))
