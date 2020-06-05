@@ -1,10 +1,16 @@
-# Unreleased
+# qmongr 0.7.2
+
+Smoother transitions ([#115](https://github.com/mong/qmongr/pull/115))
+
+- zoom in to line chart
+- added delayed transitions in the bar charts and linecharts
 
 # qmongr 0.7.1
 
 - Figure legend with interaction ([#114](https://github.com/mong/qmongr/pull/114))
 
   Added interaction to the chart lagend and fixed the layout of the legend
+
 - Use internal data ([#113](https://github.com/mong/qmongr/pull/113))
 
   Aggregating data from qmongrdata takes forever,
