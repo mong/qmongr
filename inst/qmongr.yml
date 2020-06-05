@@ -11,6 +11,7 @@ app_text:
         main_column: "Kvalitetsindikator"
         national_column: "Nasjonalt"
         desired_level: "Ønsket målnivå"
+    max_nr_treatment_units: 5
     info:
         title: Informasjon
         version:

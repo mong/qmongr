@@ -65,6 +65,7 @@ top_navbar_server <- function(id, app_data, config) {
       choices =  choices_treatment,
       multiple = TRUE,
       options = list(
+        maxItems = config$app_text$max_nr_treatment_units,
         placeholder = config$app_text$menus$unit,
         onInitialize = I('function() { this.setValue(""); }')
       )
