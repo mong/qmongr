@@ -162,7 +162,7 @@ var add_row = function (clicked_tr) {
   
   line.addEventListener("click",e => {
     if (document.getElementById("table_line").checked ) {
-      var figure_elemnts = svg_container.childElementCount
+      var figure_elemnts = svg_container.childElementCount;
        for (i = 0; i < figure_elemnts; i++){ 
         svg_container.removeChild(svg_container.childNodes[0]);
       }
@@ -171,6 +171,53 @@ var add_row = function (clicked_tr) {
       window.addEventListener('resize', render_line_chart);
     } 
   });
+  
+  //indicator description
+  var long_description_container = document.createElement("div");
+  long_description_container.setAttribute("style","font-family:areal");
+  let long_description_title_cointainer = document.createElement("div");
+  long_description_title_cointainer.setAttribute("class", "long_description_title");
+  long_description_title_cointainer.setAttribute(
+    "style",
+    "display:flex;align-items:center;justify-content:flex-start;width:80%;"
+  );
+  var long_description_title =  document.createElement("h4");
+  long_description_title.innerText = "Om kvalitetsindikatoren";
+  long_description_title.setAttribute("style","margin:10px 50px;text-align:start;");
+  var arrow_down_icon = document.createElement("i");
+  arrow_down_icon.setAttribute("class","fas fa-angle-down");
+  
+  long_description_title_cointainer.appendChild(long_description_title);
+  long_description_title_cointainer.appendChild(arrow_down_icon);
+  long_description_container.appendChild(long_description_title_cointainer);
+
+
+
+  var long_description = document.createElement("p");
+  long_description.setAttribute("class","long_description");
+  var long_description_text =
+  description.filter(d=> d.IndID === clicked_indicator)[0].BeskrivelseLang === null ? 
+  description.filter(d=> d.IndID === clicked_indicator)[0].BeskrivelseKort :
+  description.filter(d=> d.IndID === clicked_indicator)[0].BeskrivelseLang;
+  
+  long_description.innerText = long_description_text;
+  long_description.setAttribute("style","transition: max-height  0.2s ease-out ;margin-left:70px; margin-top: 0;width:80%; text-align:justify; max-height:0px; overflow:hidden;");
+
+ long_description_container.appendChild(long_description);
+ added_td.appendChild(long_description_container);
+ 
+ long_description_title_cointainer.addEventListener("click", (e) => {
+    if (document.querySelector(".long_description_title i").className ===  "fas fa-angle-down") {
+      document.querySelector(".long_description").style.maxHeight = 
+      document.querySelector(".long_description").scrollHeight + "px";
+      document.querySelector(".long_description_title i").className =  "fas fa-angle-up";
+    } else if (document.querySelector(".long_description_title i").className ===  "fas fa-angle-up"){
+      document.querySelector(".long_description").style.maxHeight = 0;
+      document.querySelector(".long_description_title i").className =  "fas fa-angle-down";
+    }
+  });
+  
+  
  
 };
 
