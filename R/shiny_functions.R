@@ -39,6 +39,9 @@ qi_table <- function(table_data, selected_units, config) {
     table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]],
     table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]
   )
+  nr_treatment_units <- table_data$treatment_units %>% unique() %>% length()
+  col_width <- floor(60 /(nr_treatment_units + 1))
+  print(col_width)
   tags$table(
     tags$thead(
       tags$tr(
@@ -51,6 +54,7 @@ qi_table <- function(table_data, selected_units, config) {
           function(x) {
             shiny::tags$th(
               class = "selected_unit",
+              width = paste0(col_width,"%"),
               tags$h2(x)
             )
           }
@@ -94,7 +98,6 @@ table_body_constructor <- function(datatable, units, national, config) {
     unlist() %>%
     stringr::str_sort(locale = config$language)
   names(reg_name) <- NULL
-
   #adds a table row tag with the register names and passes it to a function
   # that adds each quality indicator
   lapply(
