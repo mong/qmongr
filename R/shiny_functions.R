@@ -10,6 +10,7 @@
 #'
 
 qi_table <- function(table_data, selected_units, config) {
+
   national <- table_data[["national"]]
   if (!rlang::is_empty(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])) {
     colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])[
@@ -41,7 +42,7 @@ qi_table <- function(table_data, selected_units, config) {
   )
   nr_treatment_units <- table_data$treatment_units %>% unique() %>% length()
   col_width <- floor(60 /(nr_treatment_units + 1))
-  print(col_width)
+ 
   tags$table(
     tags$thead(
       tags$tr(
@@ -73,6 +74,7 @@ qi_table <- function(table_data, selected_units, config) {
         config = config)
     )
   )
+
 }
 
 #'
