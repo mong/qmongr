@@ -1,4 +1,8 @@
-# Unreleased
+# qmongr 0.8.0
+
+- Limit the max nr of selected treatment units ([#119](https://github.com/mong/qmongr/pull/119))
+- Add indecator description text below the figures in the table ([#120](https://github.com/mong/qmongr/pull/120))
+- Equal column width ([#126](https://github.com/mong/qmongr/pull/126))
 
 # qmongr 0.7.3
 
