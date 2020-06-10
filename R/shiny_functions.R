@@ -41,8 +41,8 @@ qi_table <- function(table_data, selected_units, config) {
     table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]
   )
   nr_treatment_units <- table_data$treatment_units %>% unique() %>% length()
-  col_width <- floor(60 /(nr_treatment_units + 1))
- 
+  col_width <- floor(60 / (nr_treatment_units + 1))
+
   tags$table(
     tags$thead(
       tags$tr(
@@ -55,7 +55,7 @@ qi_table <- function(table_data, selected_units, config) {
           function(x) {
             shiny::tags$th(
               class = "selected_unit",
-              width = paste0(col_width,"%"),
+              width = paste0(col_width, "%"),
               tags$h2(x)
             )
           }
