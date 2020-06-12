@@ -18,8 +18,8 @@ version_info <- function(newline = "<br>") {
 
   conf <- get_config()
   pkg <- conf$app_text$info$version$app
-  m <- installed.packages()[pkg, c(1, 3)]
-  paste0(pkg, " v", m[pkg, "Version"], newline, collapse = "")
+  vpkg <- installed.packages()[pkg, 3]
+  paste0(pkg, " v", vpkg, newline, collapse = "")
 }
 
 
