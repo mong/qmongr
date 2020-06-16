@@ -10,20 +10,26 @@
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
-sidebar_qo_ui <- function(id) {
+sidebar_qo_ui <- function(id, list_of_med_fields) {
   ns <- NS(id)
-  id <- lapply(
-    names(qmongrdata::fagomr),
+  fag_id <- lapply(
+    names(list_of_med_fields),
     ns
   )
   category <- lapply(
-    qmongrdata::fagomr,
+    list_of_med_fields,
     function(x) x$name
   )
+
+  num_fagomr <- lapply(
+      list_of_med_fields,
+      function(x) x$num
+    )  %>% as.data.frame()
+
   overview_list(
-    id = id,
+    id = fag_id,
     category_name = category,
-    nr_of_reg = sample(1:5, length(category), TRUE),
+    nr_of_reg = num_fagomr,
     all_id = ns("alle")
   )
 }
