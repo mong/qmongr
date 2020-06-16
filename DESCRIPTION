@@ -44,4 +44,4 @@ Imports:
 Depends: R (>= 3.5)
 Remotes:
     rstudio/shiny,
-    mong/qmongrdata
+    mong/qmongrdata@*release
