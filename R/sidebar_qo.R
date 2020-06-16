@@ -4,6 +4,7 @@
 #' @description  A shiny Module.
 #'
 #' @param id shiny id
+#' @param list_of_med_fields List of medical fields, with number of indicators per field.
 #'
 #' @rdname sidebar_qo
 #'

@@ -5,12 +5,14 @@
 \alias{sidebar_qo_server}
 \title{sidebar}
 \usage{
-sidebar_qo_ui(id)
+sidebar_qo_ui(id, list_of_med_fields)
 
 sidebar_qo_server(id, register_data_description)
 }
 \arguments{
 \item{id}{shiny id}
+
+\item{list_of_med_fields}{List of medical fields, with number of indicators per field.}
 
 \item{register_data_description}{register_data_description}
 }
