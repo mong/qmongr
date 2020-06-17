@@ -40,7 +40,7 @@ Imports:
     rlang,
     yaml,
     jsonlite,
-    qmongrdata (>= 0.2.3)
+    qmongrdata (>= 0.2.5)
 Depends: R (>= 3.5)
 Remotes:
     rstudio/shiny,
