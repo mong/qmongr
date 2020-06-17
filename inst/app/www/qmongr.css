@@ -38,24 +38,27 @@ body {
 
 
 .table_legend .high, .table_legend .moderate, .table_legend .low {
-  flex-basis: 20%;
   text-align: center;
+  margin: 10px 1%;
+  padding: 10px 10px 5px 10px;
+  border: 2px solid #d2d3d4;
+  border-radius: 5px;
 }
 .table_legend .high a, .table_legend .moderate a, .table_legend .low a {
-  color: #00263d;
-  font-weight: 600;
+  color: #2D3034;
+  font-weight: 400;
   
 }
 
 .table_legend .high a:hover, .table_legend .moderate a:hover, .table_legend .low a:hover {
   color:  rgb(126,190,199);
-  font-weight: 600;
+  font-weight: 400;
   text-decoration:none;
 }
 
 .table_legend .high a:focus, .table_legend .moderate a:focus, .table_legend .low a:focus {
   color:  rgb(126,190,199);
-  font-weight: 600;
+  font-weight: 400;
   text-decoration:none;
 }
 
