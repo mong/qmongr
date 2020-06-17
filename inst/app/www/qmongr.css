@@ -42,12 +42,24 @@ body {
   margin: 10px 1%;
   padding: 10px 10px 5px 10px;
   border: 2px solid #d2d3d4;
-  border-radius: 5px;
+  border-radius: 35px;
+  background-color: #e2f2f5;
+  position: relative;
+  box-shadow: 0 7px 20px 0 rgba(0,0,0,0.2);
+  top: 0;
+  transition: 250ms cubic-bezier(0, 0, 0.58, 1);
 }
+
+.table_legend .high:hover, .table_legend .moderate:hover, .table_legend .low:hover{
+  box-shadow: 0 17px 20px 0 rgba(0,0,0,0.3);
+  top: -5px;
+  transition: top 250ms cubic-bezier(0, 0, 0.58, 1);
+  
+}
+
 .table_legend .high a, .table_legend .moderate a, .table_legend .low a {
   color: #2D3034;
   font-weight: 400;
-  
 }
 
 .table_legend .high a:hover, .table_legend .moderate a:hover, .table_legend .low a:hover {
