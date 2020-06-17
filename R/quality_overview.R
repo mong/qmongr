@@ -67,6 +67,28 @@ quality_overview_server <- function(id) {
   grouped_by_hospital <- app_data[["grouped_by_hospital"]]
   national_data <- app_data[["national_data"]]
 
+  num_qi_per_med_field <- shiny::reactive({
+
+    my_func <- function(x) {
+      unique_qi <- data.frame(list(IndID = unique(filtered_data()$national$KvalIndID)))
+      # Mapping table between register and indicator
+      qi_reg <- qmongrdata::IndBeskr %>%
+        dplyr::select(Register, IndID) %>%
+        dplyr::filter(Register %in% x$key)
+      # Add register ID to unique indicators
+      link_reg_uniqueqi <- dplyr::inner_join(qi_reg, unique_qi, by = "IndID")
+      # Table of number of indicators per register
+      num_qi_per_reg <- link_reg_uniqueqi$Register %>%
+        table() %>%
+        as.data.frame(stringsAsFactors = FALSE)
+      x$num <- sum(num_qi_per_reg$Freq)
+      return(x)
+    }
+
+    med_field_list <- lapply(qmongrdata::fagomr, my_func)
+    return(med_field_list)
+  })
+
   selected_units <- top_navbar_server(NULL,
     app_data = app_data,
     config = config
@@ -125,7 +147,7 @@ quality_overview_server <- function(id) {
 
   #filtering by field
   output$qi_overview <- shiny::renderUI({
-    sidebar_qo_ui("quality_overview_ui_1")
+    sidebar_qo_ui(id = "quality_overview_ui_1", list_of_med_fields = num_qi_per_med_field())
   })
 
   #data passed to js
