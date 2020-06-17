@@ -61,16 +61,16 @@ body {
 
 /* icon */
 
-.high i{
-  color: #bfe398;
+#quality_overview_ui_1-legend_high i{
+  color: #BFE389;
 }
 
-.moderate i{
-  color: orange;
+#quality_overview_ui_1-legend_mod i{
+  color: #F5A623;
 }
 
-.low i{
-  color: red;
+#quality_overview_ui_1-legend_low i{
+  color: #F04157;
 
 }
 
@@ -282,7 +282,6 @@ li {
 /*------ tr figure button ----*/
 .tr_figure td{
   text-align: center;
- 
 }
 
 .tr_figure_button{
@@ -292,8 +291,6 @@ li {
   float: right;
   margin: 1em;
   padding: 0;
-  
-
 }
 
 .figure_button_label{
@@ -304,7 +301,6 @@ li {
   margin: 0;
   line-height: 1;
   font-weight: 100;
-    
 }
 
 input[type="radio"].figure_button {
@@ -337,7 +333,6 @@ input[type="radio"].figure_button_left + label::after {
   right: -103%;
   width: 100%;
   transition: color 300ms, right 300ms cubic-bezier(0.0, 0.54, 0.21, 0.91);;
-  
   z-index: -1;
 }
 
@@ -359,6 +354,3 @@ input[type="radio"].figure_button_right:checked + label {
   border-radius: 0 25px 25px 0;
   transition: color 200ms;
 }
-
-
-
