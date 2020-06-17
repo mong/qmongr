@@ -1,4 +1,13 @@
-# Unreleased
+# qmongr 0.9.0
+
+## Real numbers in left column ([#130](https://github.com/mong/qmongr/pull/130))
+
+Number of indicators per medical field.
+
+## Internal
+
+- Use the latest released version of `qmongrdata`. At the moment, the tests in the current version of `qmongr` will fail with the latest (unreleased) version of `qmongrdata`.
+- Updated `version_info`. Previous version will fail for less than two packages ([#128](https://github.com/mong/qmongr/pull/128))
 
 # qmongr 0.8.0
 
