@@ -19,8 +19,8 @@ var theme_line_chart = {
   y_axis_label_fill: colors.primary_text_color,
   x_axis_label: "",
   y_axis_label: "Andel",
-  x_axis_label_font_family: 'areal, Helvetica Neue',
-  y_axis_label_font_family: 'areal, Helvetica Neue',
+  x_axis_label_font_family: 'arial, Helvetica Neue',
+  y_axis_label_font_family: 'arial, Helvetica Neue',
   x_axis_tick_font_fill: colors.secondary_text_color,
   y_axis_tick_font_fill: colors.secondary_text_color,
   y_axis_tick_number: 6,
@@ -29,7 +29,7 @@ var theme_line_chart = {
   x_axis_domain_line_stroke: "none",
   y_axis_domain_line_stroke: 'none',
   legend_text_fill:colors.primary_text_color,
-  legend_text_font_family: 'areal, Helvetica Neue',
+  legend_text_font_family: 'arial, Helvetica Neue',
 };
 
 //defines how the bar chart axis look
@@ -38,8 +38,8 @@ var theme_bar_chart = {
   y_axis_label_fill: colors.secondary_text_color,
   x_axis_label: "",
   y_axis_label: "",
-  x_axis_label_font_family: 'areal',
-  y_axis_label_font_family: 'areal',
+  x_axis_label_font_family: 'arial',
+  y_axis_label_font_family: 'arial',
   x_axis_tick_font_fill: colors.secondary_text_color,
   y_axis_tick_font_fill: colors.primary_text_color,
   x_axis_tick_line_stroke: colors.line_color,

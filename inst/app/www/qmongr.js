@@ -174,7 +174,7 @@ var add_row = function (clicked_tr) {
   
   //indicator description
   var long_description_container = document.createElement("div");
-  long_description_container.setAttribute("style","font-family:areal");
+  long_description_container.setAttribute("style","font-family:arial");
   let long_description_title_cointainer = document.createElement("div");
   long_description_title_cointainer.setAttribute("class", "long_description_title");
   long_description_title_cointainer.setAttribute(
