@@ -99,7 +99,7 @@ var add_row = function (clicked_tr) {
       {
         width: svg_container.clientWidth,
         height: 0.5 * svg_container.clientWidth,
-        margin: {"top": 0.1, "left": 0.25, "bottom":0.15, "right":0.15}
+        margin: {"top": 0.05, "left": 0.25, "bottom":0.15, "right":0.15}
       });
   };
   
