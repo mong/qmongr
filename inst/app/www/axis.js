@@ -271,8 +271,8 @@ var color_legend_line_chart = function (selection, props){
       .style("font-family", legend_text_font_family)
       .style("fill", legend_text_fill)
       .style("padding", "5px")
-      .style("background-color", line_color_scale)
-      .style("border-radius", "5px")  
+      .style("border-bottom",d => `3px solid ${line_color_scale(d)}`)
+      
 }
 
 var y_axis_band = function (selection, props){
@@ -296,7 +296,6 @@ var y_axis_band = function (selection, props){
     .attr('class', 'y-axis')
     .merge(y_axis_g)
       
-    //.attr('transform', `translate(0,${inner_height})`);
   y_axis_g.call(y_axis)
     .attr("text-anchor", "end");
   y_axis_g
