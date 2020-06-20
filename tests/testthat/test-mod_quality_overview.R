@@ -1,3 +1,26 @@
+text_file_tester <- function(data, ref_file) {
+  if (!file.exists(ref_file)) {
+    print(paste("The reference file", ref_file,
+                "does not exists, so we will create it"))
+    my_file <- file(ref_file, encoding = "UTF-8")
+    writeLines(as.character(data), my_file)
+    close(my_file)
+    return(TRUE)
+  } else {
+    # Read the reference file
+    my_file <- file(ref_file, encoding = "UTF-8")
+    rhs <- readLines(my_file)
+    close(my_file)
+
+    # Turn R object into vector of characters
+    lhs <- as.character(data) %>%
+      strsplit(split = "\n") %>%
+      unlist()
+
+    identical(lhs, rhs)
+  }
+}
+
 test_that("quality_overview_server without input", {
     shiny::testServer(quality_overview_server, {
         expect_equal(class(input), "reactivevalues")
@@ -16,8 +39,8 @@ test_that("quality_overview_server without input", {
         expect_true(grepl("<optgroup label=\"RHF\">", treatment_units))
         expect_true(grepl("Mo i Rana", treatment_units))
 
-        expect_equal_to_reference(output$year[["html"]],
-                                  "data/output_year_html.rds")
+        expect_true(text_file_tester(output$year[["html"]],
+                                     "data/output_year_html.html"))
         expect_equal(class(output$year[["html"]]),
                      c("html", "character"))
         expect_equal(output$year[["deps"]][[1]][["name"]],
@@ -37,35 +60,12 @@ test_that("quality_overview_server errors", {
     expect_null(output$qi_table)
 
     session$setInputs(pick_year = "qwerty")
-    expect_equal_to_reference(output$qi_table, "data/output_qi_table_empty.rds")
+    expect_true(text_file_tester(output$qi_table[["html"]], "data/output_qi_table_empty.html"))
 
     suppressWarnings(session$setInputs(pick_treatment_units = "qwerty"))
-    expect_equal_to_reference(output$qi_table, "data/output_qi_table_empty.rds")
+    expect_true(text_file_tester(output$qi_table[["html"]], "data/output_qi_table_empty.html"))
   })
 })
-
-text_file_tester <- function(data, ref_file) {
-  if (!file.exists(ref_file)) {
-    print(paste("The reference file", ref_file,
-                 "does not exists, so we have to create it"))
-    my_file <- file(ref_file, encoding = "UTF-8")
-    writeLines(as.character(data), my_file)
-    close(my_file)
-    return(TRUE)
-  } else {
-    # Read the reference file
-    my_file <- file(ref_file, encoding = "UTF-8")
-    rhs <- readLines(my_file)
-    close(my_file)
-
-    # Turn R object into vector of characters
-    lhs <- as.character(data) %>%
-      strsplit(split = "\n") %>%
-      unlist()
-
-    identical(lhs, rhs)
-  }
-}
 
 test_that("quality_overview_server basic input", {
   shiny::testServer(quality_overview_server, {
@@ -87,8 +87,8 @@ test_that("quality_overview_server basic input", {
                                  "data/output_qi_table_helse_nord_2017.html"))
 
     session$setInputs(pick_treatment_units = "Private")
-    expect_equal_to_reference(output$qi_table,
-                              "data/output_qi_table_empty.rds")
+    expect_true(text_file_tester(output$qi_table[["html"]],
+                              "data/output_qi_table_empty.html"))
     session$setInputs(pick_year = "2019")
     expect_true(text_file_tester(output$qi_table[["html"]],
                                  "data/output_qi_table_private_2019.html"))
@@ -130,8 +130,8 @@ test_that("quality_overview_server filter medical field", {
     expect_true(text_file_tester(output$qi_table[["html"]],
                                  "data/output_qi_table_filter_tarm.html"))
     session$setInputs(pick_year = "2019")
-    expect_equal_to_reference(output$qi_table,
-                              "data/output_qi_table_empty.rds")
+    expect_true(text_file_tester(output$qi_table[["html"]],
+                              "data/output_qi_table_empty.html"))
 
     session$setInputs(pick_year = "2018")
     session$setInputs(muskel = 1)
@@ -140,8 +140,8 @@ test_that("quality_overview_server filter medical field", {
                                  "data/output_qi_table_filter_muskel.html"))
 
     session$setInputs(pick_treatment_units =  "Skien")
-    expect_equal_to_reference(output$qi_table,
-                              "data/output_qi_table_empty.rds")
+    expect_true(text_file_tester(output$qi_table[["html"]],
+                              "data/output_qi_table_empty.html"))
   })
 })
 
