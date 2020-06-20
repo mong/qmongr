@@ -48,13 +48,13 @@ text_file_tester <- function(data, ref_file) {
   if (!file.exists(ref_file)) {
     print(paste("The reference file", ref_file,
                  "does not exists, so we have to create it"))
-    my_file <- file(ref_file)
+    my_file <- file(ref_file, encoding = "UTF-8")
     writeLines(as.character(data), my_file)
     close(my_file)
     return(TRUE)
   } else {
     # Read the reference file
-    my_file <- file(ref_file)
+    my_file <- file(ref_file, encoding = "UTF-8")
     rhs <- readLines(my_file)
     close(my_file)
 
