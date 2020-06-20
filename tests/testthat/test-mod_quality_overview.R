@@ -141,7 +141,7 @@ test_that("quality_overview_server filter medical field", {
 
     session$setInputs(pick_treatment_units =  "Skien")
     expect_true(text_file_tester(output$qi_table[["html"]],
-                              "data/output_qi_table_empty.html"))
+                              "data/output_qi_table_empty_skien.html"))
   })
 })
 
