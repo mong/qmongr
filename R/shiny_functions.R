@@ -42,7 +42,6 @@ qi_table <- function(table_data, selected_units, config) {
   )
   nr_treatment_units <- table_data$treatment_units %>% unique() %>% length()
   col_width <- floor(60 / (nr_treatment_units + 1))
-  nr_of_clumns = table_data$treatment_units %>% unique() %>% length() + 2
   tags$table(
     tags$thead(
       tags$tr(
