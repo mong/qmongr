@@ -206,7 +206,11 @@ tr:last-child {
   background:-o-linear-gradient(bottom, #7ebec7 5%, #58868c 100%);
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7ebec7), color-stop(1, #58868c) );
 	background:-moz-linear-gradient( center top, #7ebec7 5%, #58868c 100% );
-  text-align: center;
+  text-align: left;
+}
+
+.register-row h4 {
+  margin-left: 7px;
 }
 
 /* qi_overview*/
