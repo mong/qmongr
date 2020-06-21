@@ -186,9 +186,9 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
       tags$td(
         class = "quality_indicator",
         style="width: 40%;",
-        tags$div(
-          class = "register_name",
-          tags$h4(reg_name)),
+        # tags$div(
+        #   class = "register_name",
+        #   tags$h4(reg_name)),
         tags$div(
           class = "quality_indicator_name",
           tags$h1(indicator_title)
