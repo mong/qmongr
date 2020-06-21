@@ -213,53 +213,121 @@ var color_legend_line_chart = function (selection, props){
     .style("display", "inline-block")
     .style("margin", "5px")
     .style("display", "flex")
+    .attr("class", "legend_item")
     
   legend.exit().remove() 
   
   legend_item
     .merge(legend)
     .on("mouseover", function(d){
-      var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
-
-      if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
-
-      d3.selectAll(`path`)
+      d3.selectAll(`svg path.table-line-chart:not(.clicked)`)
         .transition().duration(500)
         .style("opacity", 0.2)
-      d3.select(`svg .${d.replace(/\s/g, '')}`)
+      d3.select(`svg path.${d.replace(/\s/g, '')}`)
         .transition().duration(500)
         .style("opacity", 1)
 
-      }
       d3.select(this).style("cursor", "pointer")
     })
     .on("mouseout", function(d){
-
-      d3.selectAll(`path`)
-        .transition().duration(500)
-        .style("opacity", 1)
-
-      
+      var nr_clicked = d3.select(".responsive_svg")
+          .selectAll("li.clicked").nodes().length
+      if (nr_clicked < 1) {
+        d3.selectAll(`path.table-line-chart:not(.clicked)`)
+          .transition().duration(500)
+          .style("opacity", 1)
+        
+      } else {
+        d3.selectAll(`path.table-line-chart:not(.clicked)`)
+          .transition().duration(500)
+          .style("opacity", 0.2)
+      }
     })
     .on("click", function(d){
-      var Clicked_legend_opacity = d3.select(this)._groups[0][0].style.opacity;
-  
-      if (Clicked_legend_opacity == 1 || Clicked_legend_opacity === "" ) {
-
-        d3.select(`svg path.${d.replace(/\s/g, '')}`)
-          .transition().duration(1000)
-          .attr("visibility", "hidden")
-        d3.select(this)
-          .transition().duration(500)
-          .style("opacity", 0.4) 
+      var clicked_legend = d3.select(this).attr("class") ;
+       
+      if (clicked_legend.includes("clicked")) {
+        var nr_clicked = d3.select(".responsive_svg")
+          .selectAll("li.clicked").nodes().length
+   
+        if (nr_clicked === 1){
+          var selected_path_class =  d3.select(`svg path.${d.replace(/\s/g, '')}`)
+            .attr("class")
+          selected_path_class = selected_path_class.replace(" clicked", "")
+          clicked_legend = clicked_legend.replace(" clicked", "")
+            
+          d3.selectAll(`svg path.table-line-chart`)
+            .attr("class", d =>`table-line-chart  ${d.key.replace(/\s/g, '')}`)
+            .transition().duration(1000)
+            .style("opacity", 1)
+          d3.selectAll(".responsive_svg li.legend_item")
+            .attr("class", clicked_legend)
+            .transition().duration(500)
+            .style("opacity", 1) 
+        } else if (nr_clicked > 1) {
+          var selected_path_class =  d3.select(`svg path.${d.replace(/\s/g, '')}`)
+            .attr("class")
+          selected_path_class = selected_path_class.replace(" clicked", "")
+          clicked_legend = clicked_legend.replace(" clicked", "")
+          d3.select(`svg path.${d.replace(/\s/g, '')}`)
+            .attr("class", selected_path_class)
+            .transition().duration(1000)
+            .style("opacity", "0.2")
+          d3.select(this)
+            .attr("class", clicked_legend)
+            .transition().duration(500)
+            .style("opacity", 0.4) 
+        } else {
+           var selected_path_class =  d3.select(`svg path.${d.replace(/\s/g, '')}`)
+            .attr("class")
+           selected_path_class = selected_path_class.replace(" clicked", "")
+           clicked_legend = clicked_legend.replace(" clicked", "")
+           d3.select(`svg path.table-line-chart`)
+            .attr("class", selected_path_class)
+            .transition().duration(1000)
+            .style("opacity", 1)
+          d3.select(".responsive_svg li.legend_item")
+            .attr("class", clicked_legend)
+            .transition().duration(500)
+            .style("opacity", 1) 
+          
+        }
       } else {
-        d3.select(`svg path.${d.replace(/\s/g, '')}`)
-          .transition().duration(1000)
-          .attr("visibility", null)
-        d3.select(this)
-          .transition().duration(1000)
-          .style("opacity", 1) 
-
+        var nr_clicked = d3.select(".responsive_svg")
+            .selectAll("li.clicked").nodes().length
+          if (nr_clicked === 0){
+            var selected_path_class =  d3.select(`svg path.${d.replace(/\s/g, '')}`)
+              .attr("class")
+             selected_path_class = `${selected_path_class} clicked`
+             clicked_legend = `${clicked_legend} clicked`
+             
+             d3.select(`svg path.${d.replace(/\s/g, '')}`)
+              .attr("class", selected_path_class)
+              .style("opacity", 1)
+            d3.select(this)
+              .attr("class", clicked_legend)
+              .style("opacity", 1) 
+            d3.selectAll(`svg path.table-line-chart:not(.clicked)`)
+              .transition().duration(500)
+              .style("opacity", 0.2)
+            d3.selectAll(".responsive_svg li.legend_item:not(.clicked)")
+              .transition().duration(500)
+              .style("opacity", 0.4)
+           } else if(nr_clicked > 0){
+              var selected_path_class =  d3.select(`svg path.${d.replace(/\s/g, '')}`)
+              .attr("class")
+             selected_path_class = `${selected_path_class} clicked`
+             clicked_legend = `${clicked_legend} clicked`
+             d3.select(`svg path.${d.replace(/\s/g, '')}`)
+              .attr("class", selected_path_class)
+              .style("opacity", 1)
+            d3.select(this)
+              .attr("class", clicked_legend)
+              .style("opacity", 1) 
+             
+           }
+        
+      
       }
     })
     legend_item
@@ -278,6 +346,7 @@ var color_legend_line_chart = function (selection, props){
 var y_axis_band = function (selection, props){
   var {
     y_scale,
+    
     inner_width,
     inner_height,
     y_axis_label_font_family = "arial",
