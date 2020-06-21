@@ -300,7 +300,7 @@ li {
 }
 
 .tr_figure_button{
-  display: block;
+  display: flex;
   border-radius: 25px;
   float: right;
   margin: 1em;
