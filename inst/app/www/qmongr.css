@@ -32,7 +32,11 @@ body {
 
 .table_legend {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  position: relative;
+  top: 0;
+  left: 28%;
+  width: 60%;
   font-size: 1em;
 }
 
@@ -46,6 +50,7 @@ body {
   background-color: #e2f2f5;
   position: relative;
   box-shadow: 0 7px 20px 0 rgba(196, 196, 196, 0.2);
+  min-width: 25%;
   top: 0;
   transition: 250ms cubic-bezier(0, 0, 0.58, 1);
 }

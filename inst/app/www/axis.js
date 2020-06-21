@@ -81,7 +81,7 @@ var labeled_y_axis_linear = function (selection, props){
   var y_axis = d3.axisRight(y_scale)
     .ticks(y_axis_tick_number)
     .tickSize( y_axis_tick_size)
-    .tickFormat(d3.format(",.0%"));;
+    .tickFormat(d3.format(",.0%"));
   var y_axis_g = selection.selectAll('.y-axis').data([null]);
   y_axis_g = y_axis_g
     .enter().append('g')
