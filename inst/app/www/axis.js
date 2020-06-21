@@ -20,6 +20,7 @@ var labeled_x_axis_linear = function (selection, props){
   var x_axis = d3.axisBottom(x_scale)
     .tickSize(-x_axis_tick_size)
     .ticks(x_axis_tick_number)
+    .tickFormat(d3.format(",.0%"));
 
   var x_axis_g = selection.selectAll('.x-axis').data([null]);
   x_axis_g = x_axis_g
@@ -28,12 +29,13 @@ var labeled_x_axis_linear = function (selection, props){
     .merge(x_axis_g)
       .attr('transform', `translate(0,${inner_height})`);
   x_axis_g.call(x_axis);
+    
   x_axis_g
     .selectAll('.tick text')
       .style('font-size',  x_axis_tick_font_size)
       .attr('fill', x_axis_tick_font_fill)
-      .attr("y",x_axis_tick_offset )
-      ;
+      .attr("y",x_axis_tick_offset );
+      
   x_axis_g
     .selectAll('.tick line')
       .attr('stroke', x_axis_tick_line_stroke);
@@ -78,7 +80,8 @@ var labeled_y_axis_linear = function (selection, props){
 
   var y_axis = d3.axisRight(y_scale)
     .ticks(y_axis_tick_number)
-    .tickSize( y_axis_tick_size);
+    .tickSize( y_axis_tick_size)
+    .tickFormat(d3.format(",.0%"));;
   var y_axis_g = selection.selectAll('.y-axis').data([null]);
   y_axis_g = y_axis_g
     .enter().append('g')
