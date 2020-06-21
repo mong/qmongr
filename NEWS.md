@@ -1,5 +1,13 @@
 # Unreleased
 
+## Include data from Hoftebrudd register ([#133](https://github.com/mong/qmongr/pull/133))
+
+## Internal
+
+- Test `html` output against `html` text files ([#134](https://github.com/mong/qmongr/pull/134)).
+- Skip testing of `app_data()` (part of [#133](https://github.com/mong/qmongr/pull/133)). No longer used by app. Will be moved to `imongr`.
+- Do not show `intensiv2` indicator (part of [#133](https://github.com/mong/qmongr/pull/133)). Only indicator that was not percentage.
+
 # qmongr 0.9.0
 
 ## Real numbers in left column ([#130](https://github.com/mong/qmongr/pull/130))
