@@ -48,7 +48,7 @@ qi_table <- function(table_data, selected_units, config) {
       tags$tr(
         tags$th(
           class = "quality_indicator",
-          style = paste0( "width: 40%;"),
+          style = paste0("width: 40%;"),
           tags$h2(config$app_text$table$main_column)
         ),
         lapply(
@@ -56,7 +56,7 @@ qi_table <- function(table_data, selected_units, config) {
           function(x) {
             shiny::tags$th(
               class = "selected_unit",
-              style = paste0( "width:",col_width, "%;"),
+              style = paste0("width:", col_width, "%;"),
               tags$h2(x)
             )
           }
@@ -185,7 +185,7 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
       class = "indicator",
       tags$td(
         class = "quality_indicator",
-        style="width: 40%;",
+        style = "width: 40%;",
         # tags$div(
         #   class = "register_name",
         #   tags$h4(reg_name)),
