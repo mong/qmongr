@@ -1,5 +1,12 @@
 # Unreleased
 
+## New table layout
+
+- The table lagends look like ordinary buttons and moved to the center of the table
+- Register names removed from indicator rows and then moved to the left in the register rows
+- Table interaction changed in the line chart
+- Axis labels changed to percentages
+
 ## Include data from Hoftebrudd register ([#133](https://github.com/mong/qmongr/pull/133))
 
 ## Internal

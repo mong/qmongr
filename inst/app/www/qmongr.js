@@ -99,7 +99,7 @@ var add_row = function (clicked_tr) {
       {
         width: svg_container.clientWidth,
         height: 0.5 * svg_container.clientWidth,
-        margin: {"top": 0.1, "left": 0.25, "bottom":0.15, "right":0.15}
+        margin: {"top": 0.05, "left": 0.25, "bottom":0.15, "right":0.15}
       });
   };
   
@@ -174,12 +174,12 @@ var add_row = function (clicked_tr) {
   
   //indicator description
   var long_description_container = document.createElement("div");
-  long_description_container.setAttribute("style","font-family:areal");
+  long_description_container.setAttribute("style","font-family:arial;");
   let long_description_title_cointainer = document.createElement("div");
   long_description_title_cointainer.setAttribute("class", "long_description_title");
   long_description_title_cointainer.setAttribute(
     "style",
-    "display:flex;align-items:center;justify-content:flex-start;width:80%;"
+    "display:flex;align-items:center;justify-content:flex-start;width:80%;cursor:pointer;"
   );
   var long_description_title =  document.createElement("h4");
   long_description_title.innerText = "Om kvalitetsindikatoren";

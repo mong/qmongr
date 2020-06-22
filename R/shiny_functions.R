@@ -42,12 +42,12 @@ qi_table <- function(table_data, selected_units, config) {
   )
   nr_treatment_units <- table_data$treatment_units %>% unique() %>% length()
   col_width <- floor(60 / (nr_treatment_units + 1))
-
   tags$table(
     tags$thead(
       tags$tr(
         tags$th(
           class = "quality_indicator",
+          style = paste0("width: 40%;"),
           tags$h2(config$app_text$table$main_column)
         ),
         lapply(
@@ -55,7 +55,7 @@ qi_table <- function(table_data, selected_units, config) {
           function(x) {
             shiny::tags$th(
               class = "selected_unit",
-              width = paste0(col_width, "%"),
+              style = paste0("width:", col_width, "%;"),
               tags$h2(x)
             )
           }
@@ -100,6 +100,7 @@ table_body_constructor <- function(datatable, units, national, config) {
     unlist() %>%
     stringr::str_sort(locale = config$language)
   names(reg_name) <- NULL
+  col_nr <-  datatable[["treatment_units"]] %>% unique() %>% length() + 2
   #adds a table row tag with the register names and passes it to a function
   # that adds each quality indicator
   lapply(
@@ -116,7 +117,7 @@ table_body_constructor <- function(datatable, units, national, config) {
       names(indicator_name) <- NULL
       tagList(
         shiny::tags$tr(class = "register-row",
-          shiny::tags$td(colspan = 7,
+          shiny::tags$td(colspan = col_nr,
                          shiny::tags$h4(rn)
           )
         ),
@@ -149,7 +150,8 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
 
   indicator_description <- indicator_description %>%
         dplyr::filter(.data[["IndID"]] ==  indicator_name)
-  reg_name <- indicator_description[["Register"]]
+  #uncoment if register name is needed
+  # in indicator row reg_name <- indicator_description[["Register"]]
   indicator_title <- indicator_description[["IndTittel"]]
   indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
 
@@ -183,9 +185,10 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
       class = "indicator",
       tags$td(
         class = "quality_indicator",
-        tags$div(
-          class = "register_name",
-          tags$h4(reg_name)),
+        style = "width: 40%;",
+        ## tags$div(
+        ##   class = "register_name",
+        ##   tags$h4(reg_name)),
         tags$div(
           class = "quality_indicator_name",
           tags$h1(indicator_title)
