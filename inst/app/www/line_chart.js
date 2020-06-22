@@ -75,6 +75,11 @@ var responsiv_line_chart = function (container,figure_data, props){
 
   var x_axis_tick_values =[...new Set(figure_data.map(d =>{ return  (d.Aar+ "")}))];
   x_axis_tick_values = x_axis_tick_values.map(d => {return new Date(d)});
+  if (x_axis_tick_values.length > 8) {
+  x_axis_tick_values = x_axis_tick_values.length % 2 === 0 ? 
+    x_axis_tick_values.filter((data,index) => index % 2 != 0 ) :
+    x_axis_tick_values.filter((data,index) => index % 2 === 0 );
+  }
 
   labeled_x_axis_time(g, Object.assign({}, theme_line_chart, {
     x_scale,
