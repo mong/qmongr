@@ -1,4 +1,4 @@
-# Unreleased
+# qmongr 0.10.0
 
 ## New table layout
 
