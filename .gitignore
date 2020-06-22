@@ -2,9 +2,9 @@
 .Rhistory
 .RData
 *.Rproj
-.DS_Store # mac
+.DS_Store
 *.xlsx
-*~ # emacs
+*~
 *.tar.gz
 docs/
 _qmongr.yml
