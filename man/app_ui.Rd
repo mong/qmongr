@@ -10,5 +10,5 @@ app_ui()
 user interface
 }
 \description{
-Shiny UI
+Constructs Shiny user interface for use in run_app
 }

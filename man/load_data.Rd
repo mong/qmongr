@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_functions.R
 \name{load_data}
 \alias{load_data}
-\title{load data from qmongrdata}
+\title{Load data}
 \usage{
 load_data(data_type = "all")
 }
@@ -15,7 +15,7 @@ and "all".}
 a list with dataframes
 }
 \description{
-load data from qmongrdata
+Load data from qmongrdata
 }
 \examples{
 indicator_description <- load_data(data_type = "description")

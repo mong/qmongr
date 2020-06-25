@@ -1,4 +1,6 @@
-#' load data from qmongrdata
+#' Load data
+#'
+#' Load data from qmongrdata
 #'
 #' @param data_type the dataframes to be loaded.
 #'    It can be "description", "indicator", "hospital_name_structure"

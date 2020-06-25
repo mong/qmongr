@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny_functions.R
 \name{table_data}
 \alias{table_data}
-\title{insert values to a td tag}
+\title{Insert values in table}
 \usage{
 table_data(units, table_cell_data, indicator_name)
 }
@@ -17,5 +17,5 @@ table_data(units, table_cell_data, indicator_name)
 the contnets of a td tag
 }
 \description{
-insert values to a td tag
+Insert values to a td tag
 }

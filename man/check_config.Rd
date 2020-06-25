@@ -2,7 +2,7 @@
 % Please edit documentation in R/config.R
 \name{check_config}
 \alias{check_config}
-\title{Check config file}
+\title{Check config}
 \usage{
 check_config(config)
 }
@@ -10,5 +10,5 @@ check_config(config)
 \item{config}{Config file to check}
 }
 \description{
-Check config file
+Check config file, forces us to create one if it doesn't pass
 }

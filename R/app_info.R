@@ -1,4 +1,7 @@
-#' Functions providing informational text about the app(s)
+#' Meta information
+#'
+#' Functions providing informational text about the app(s).
+#' Accessed by user through info button in top navigation bar
 #'
 #' @param newline String element defining line break for formatting. Default is
 #' \code{<br>}

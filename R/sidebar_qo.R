@@ -1,11 +1,17 @@
 # sidebar quality overview
 
-#' @title   sidebar
-#' @description  A shiny Module.
+#' Sidebar quality overview
+#'
+#' Sidebar quality overview module server, user interface and server functions.
+#' Lets user filter by medical field
 #'
 #' @param id shiny id
 #' @param list_of_med_fields List of medical fields, with number of indicators per field.
-#'
+#' @param register_data_description register_data_description
+#' @name sidebar_qo
+#' @aliases sidebar_qo_ui sidebar_qo_server
+NULL
+
 #' @rdname sidebar_qo
 #'
 #' @keywords internal
@@ -27,7 +33,7 @@ sidebar_qo_ui <- function(id, list_of_med_fields) {
       function(x) x$num
     )  %>% as.data.frame()
 
-  overview_list(
+  med_field_list(
     id = fag_id,
     category_name = category,
     nr_of_reg = num_fagomr,
@@ -36,7 +42,6 @@ sidebar_qo_ui <- function(id, list_of_med_fields) {
 }
 
 #' @rdname sidebar_qo
-#' @param register_data_description register_data_description
 #' @export
 #' @keywords internal
 sidebar_qo_server <- function(id, register_data_description) {

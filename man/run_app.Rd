@@ -2,10 +2,14 @@
 % Please edit documentation in R/run_app.R
 \name{run_app}
 \alias{run_app}
-\title{Run the Shiny Application}
+\title{Run}
 \usage{
 run_app()
 }
 \description{
-Run the Shiny Application
+Run the Shiny Application, use app_ui and app_server as
+ui and server respectively
+}
+\seealso{
+\code{\link{app_ui}}, \code{\link{app_server}}
 }

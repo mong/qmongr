@@ -2,7 +2,7 @@
 % Please edit documentation in R/config.R
 \name{create_config}
 \alias{create_config}
-\title{Configuration}
+\title{Create configuration file}
 \usage{
 create_config(dir = ".")
 }
@@ -10,5 +10,5 @@ create_config(dir = ".")
 \item{dir}{Folder to put config file}
 }
 \description{
-Creates a configuration file based on the default shipped with qmongr package.
+Creates a configuration file based on the default shipped with qmongr package
 }

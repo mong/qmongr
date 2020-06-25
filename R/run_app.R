@@ -1,4 +1,8 @@
-#' Run the Shiny Application
+#' Run
+#'
+#' Run the Shiny Application, use app_ui and app_server as
+#' ui and server respectively
+#' @seealso \code{\link{app_ui}}, \code{\link{app_server}}
 #'
 #' @export
 #'

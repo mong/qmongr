@@ -77,8 +77,10 @@ qi_table <- function(table_data, selected_units, config) {
 
 }
 
+#' Construct table body
 #'
-#'constructs the body of a table
+#' Constructs the body of a table, used by qi_table
+#' @seealso \code{\link{qi_table}}
 #'
 #' @param datatable a row of a df
 #' @param units selected treatment units
@@ -135,7 +137,9 @@ table_body_constructor <- function(datatable, units, national, config) {
   )
 }
 
-#' adds table rows with the values of quality indicators
+#' Add quality indicators to table
+#'
+#' Adds table rows with the values of quality indicators
 #' @inheritParams table_body_constructor
 #' @param indicator_name names of the input qi
 #' @param indicator_description indicator description
@@ -230,7 +234,9 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
   )
 }
 
-#'insert values to a td tag
+#' Insert values in table
+#'
+#'Insert values to a td tag
 #'
 #' @inheritParams indicator_rows
 #' @param table_cell_data table cell data
@@ -291,7 +297,9 @@ table_data <- function(units, table_cell_data, indicator_name) {
   }
 }
 
-#'adds an icon to the table cells with qi
+#' Add icon
+#'
+#' Adds an icon to the table cells with quality indicators
 #'
 #' @param level the indicator level
 #'

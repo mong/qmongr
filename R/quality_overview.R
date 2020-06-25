@@ -1,10 +1,15 @@
 # Module UI
 
-#' @title   quality_overview_ui and quality_overview_server
-#' @description  A shiny Module.
+#' Quality overview
+#'
+#' Quality overview module server, user interface and server functions.
+#' Present results of search to user as table
 #'
 #' @param id shiny id
-#'
+#' @name quality_overview
+#' @aliases quality_overview_ui quality_overview_server
+NULL
+
 #' @rdname quality_overview
 #'
 #' @keywords internal

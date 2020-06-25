@@ -1,13 +1,18 @@
 # Table legend UI
 
-#' @title   Table legend
-#' @description  A shiny Module.
+#' Table legend
+#'
+#' Table legend module server, user interface and server functions.
+#' Buttons to filter by level of precision (maaloppnaaelse),
+#' low, medium or high
 #'
 #' @param id shiny id
 #' @param config configuration file
-#'
+#' @name table_legend
+#' @aliases table_legend_ui table_legend_server
+NULL
+
 #' @rdname table_legend
-#'
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
