@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny_functions.R
 \name{table_body_constructor}
 \alias{table_body_constructor}
-\title{constructs the body of a table}
+\title{Construct table body}
 \usage{
 table_body_constructor(datatable, units, national, config)
 }
@@ -19,5 +19,8 @@ table_body_constructor(datatable, units, national, config)
 a row of html table
 }
 \description{
-constructs the body of a table
+Constructs the body of a table, used by qi_table
+}
+\seealso{
+\code{\link{qi_table}}
 }

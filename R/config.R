@@ -15,9 +15,9 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-#' Configuration
+#' Create configuration file
 #'
-#' Creates a configuration file based on the default shipped with qmongr package.
+#' Creates a configuration file based on the default shipped with qmongr package
 #'
 #' @param dir Folder to put config file
 #'
@@ -33,9 +33,9 @@ create_config <- function(dir = ".") {
   }
 }
 
-#' Retrieve Config
+#' Retrieve Configuration
 #'
-#' Retrieves config file.
+#' Retrieve configuration file, checks it first
 #'
 #' @param dir Folder location of _qmongr.yml file
 #'
@@ -50,8 +50,9 @@ get_config <- function(dir = ".") {
   check_config(config)
   return(config)
 }
-
-#' Check config file
+#' Check config
+#'
+#' Check config file, forces us to create one if it doesn't pass
 #'
 #' @param config Config file to check
 #'

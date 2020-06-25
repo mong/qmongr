@@ -2,10 +2,11 @@
 % Please edit documentation in R/app_ui.R
 \name{add_external_resources}
 \alias{add_external_resources}
-\title{attaches external resources to the head tag}
+\title{Attach external resources}
 \usage{
 add_external_resources()
 }
 \description{
-attaches external resources to the head tag
+Attaches external resources to the head tag, used
+to construct user interface
 }

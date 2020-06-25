@@ -2,7 +2,7 @@
 % Please edit documentation in R/app_server.R
 \name{app_server}
 \alias{app_server}
-\title{Server side logic of the application}
+\title{Server logic}
 \usage{
 app_server(input, output, session)
 }

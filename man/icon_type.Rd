@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny_functions.R
 \name{icon_type}
 \alias{icon_type}
-\title{adds an icon to the table cells with qi}
+\title{Add icon}
 \usage{
 icon_type(level)
 }
@@ -10,5 +10,5 @@ icon_type(level)
 \item{level}{the indicator level}
 }
 \description{
-adds an icon to the table cells with qi
+Adds an icon to the table cells with quality indicators
 }

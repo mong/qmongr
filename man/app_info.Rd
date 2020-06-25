@@ -4,7 +4,7 @@
 \alias{app_info}
 \alias{version_info}
 \alias{no_opt_out_ok}
-\title{Functions providing informational text about the app(s)}
+\title{Meta information}
 \usage{
 version_info(newline = "<br>")
 
@@ -18,7 +18,8 @@ no_opt_out_ok()
 String formatted in some sensible manner
 }
 \description{
-Functions providing informational text about the app(s)
+Functions providing informational text about the app(s).
+Accessed by user through info button in top navigation bar
 }
 \examples{
 version_info()
