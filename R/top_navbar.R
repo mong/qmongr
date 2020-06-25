@@ -1,12 +1,20 @@
 # Top navbar UI
 
-#' @title   top navbar
-#' @description  A shiny Module.
+#' Top navbar
+#'
+#' Table navigation bar
+#' module server, user interface and server functions.
+#' Lets user search for RHFs, HFs or hospitals, look at specific
+#' years and get version information about the app
 #'
 #' @param id shiny id
-#'
-#' @rdname mod_top_navbar
-#'
+#' @param config configuration file
+#' @param app_data provide the treatment units
+#' @name top_navbar
+#' @aliases top_navbar_ui top_navbar_server
+NULL
+
+#' @rdname top_navbar
 #' @keywords internal
 #' @export
 #' @importFrom shiny NS tagList
@@ -32,9 +40,7 @@ top_navbar_ui <- function(id) {
   )
 }
 
-#' @rdname mod_top_navbar
-#' @param app_data provide the treatment units
-#' @param config configuration file
+#' @rdname top_navbar
 #' @export
 #' @keywords internal
 top_navbar_server <- function(id, app_data, config) {

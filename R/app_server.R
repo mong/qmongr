@@ -1,3 +1,5 @@
+#'Server logic
+#'
 #' Server side logic of the application
 #'
 #' @param input shiny input components

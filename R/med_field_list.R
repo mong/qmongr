@@ -1,12 +1,16 @@
-#' Makes html list of clickable links
+#' Clickable links list
+#'
+#' Makes html list of clickable links, used to make the sidebar
+#' quality overview user interface
 #' @param id unique id for each link
 #' @param category_name the names of a category that will
 #'  be displayed
 #' @param nr_of_reg the nr of registers included in a category
 #' @param all_id the inputId for the Alle actionLink
+#' @seealso \code{\link{sidebar_qo_ui}}
 #' @importFrom shiny tags
 #' @return html tags
-overview_list <- function(id, category_name, nr_of_reg, all_id) {
+med_field_list <- function(id, category_name, nr_of_reg, all_id) {
   tags$ul(
     tags$li(
       class = "title",

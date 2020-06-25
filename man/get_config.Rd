@@ -2,7 +2,7 @@
 % Please edit documentation in R/config.R
 \name{get_config}
 \alias{get_config}
-\title{Retrieve Config}
+\title{Retrieve Configuration}
 \usage{
 get_config(dir = ".")
 }
@@ -10,5 +10,5 @@ get_config(dir = ".")
 \item{dir}{Folder location of _qmongr.yml file}
 }
 \description{
-Retrieves config file.
+Retrieve configuration file, checks it first
 }

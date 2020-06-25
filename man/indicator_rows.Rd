@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny_functions.R
 \name{indicator_rows}
 \alias{indicator_rows}
-\title{adds table rows with the values of quality indicators}
+\title{Add quality indicators to table}
 \usage{
 indicator_rows(
   indicator_name,
@@ -27,5 +27,5 @@ indicator_rows(
 \item{national}{a df with national indicator values}
 }
 \description{
-adds table rows with the values of quality indicators
+Adds table rows with the values of quality indicators
 }

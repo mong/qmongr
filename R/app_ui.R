@@ -1,5 +1,7 @@
 #' Shiny UI
 #'
+#' Constructs Shiny user interface for use in run_app
+#'
 #' @return user interface
 #' @export
 app_ui <- function() {
@@ -18,8 +20,10 @@ app_ui <- function() {
     )
   )
 }
-
-#' attaches external resources to the head tag
+#' Attach external resources
+#'
+#' Attaches external resources to the head tag, used
+#' to construct user interface
 #'
 #' @export
 
