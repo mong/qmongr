@@ -76,44 +76,42 @@ quality_overview_server <- function(id) {
 
   #add nr to lsit of med
   num_qi_per_med_field <- shiny::reactive({
-    
     my_func <- function(x, unique_qi) {
-      unique_qi <- data.frame(IndID=unique_qi)
-      
+      unique_qi <- data.frame(IndID = unique_qi)
+
       # Mapping table between register and indicator
-      qi_reg <- #qi_reg %>% 
+      qi_reg <- #qi_reg %>%
         qmongrdata::IndBeskr %>%
         dplyr::select(.data[["Register"]], .data[["IndID"]]) %>%
         dplyr::filter(.data[["Register"]] %in% x$key)
       # Add register ID to unique indicators
       link_reg_uniqueqi <- dplyr::inner_join(qi_reg, unique_qi, by = "IndID")
-      
+
       # Table of number of indicators per register
       num_qi_per_reg <- link_reg_uniqueqi["Register"] %>%
         table() %>%
         as.data.frame(stringsAsFactors = FALSE)
-      
+
       x$num <- sum(num_qi_per_reg$Freq)
       return(x)
     }
-    
-    if(shiny::isTruthy(input$pick_treatment_units)){
+
+    if (shiny::isTruthy(input$pick_treatment_units)) {
       selected_indicators <- filtered_data()$national$KvalIndID %>% unique
         #base::union(
         # c(filtered_data()$RHF$KvalIndID, filtered_data()$HF$KvalIndID),
-        # filtered_data()$SykehusNavn$KvalIndID        )
-    }else {
-      selected_indicators <- national_data %>% 
+        # filtered_data()$SykehusNavn$KvalIndID)
+    } else {
+      selected_indicators <- national_data %>%
         dplyr::filter(
           .data[[config$data$column$year]] == shiny::req(input$pick_year),
           #.data[[config$data$column$qi_id]] %in% filter_indicator$indicator(),
           .data[["level"]] %in% filter_indicator$level()
         ) %>%
-        purrr::pluck("KvalIndID") %>% 
+        purrr::pluck("KvalIndID") %>%
         unique()
-      
     }
-    
+
     med_field_list <- lapply(qmongrdata::fagomr, my_func, selected_indicators)
     return(med_field_list)
   })
@@ -165,11 +163,11 @@ quality_overview_server <- function(id) {
       dplyr::filter(.data[[config$data$column$year]] == selected_units()$year)
     return(selected_data)
   })
-  
+
   #table output
   output$qi_table <- shiny::renderUI({
-    
-    if (!shiny::isTruthy(input$pick_treatment_units)){
+
+    if (!shiny::isTruthy(input$pick_treatment_units)) {
       national_table_data <- national_data %>%
         dplyr::filter(
           .data[[config$data$column$year]] == shiny::req(input$pick_year),
@@ -185,10 +183,9 @@ quality_overview_server <- function(id) {
       if (length(shiny::req(selected_units()$year)) > 1) {
         return(NULL)
       }
-      
       qmongr::qi_table(filtered_data(), selected_units(), config)
     }
-    
+
   })
 
 
