@@ -33,22 +33,24 @@ quality_overview_ui <- function(id) {
       ),
       shiny::fluidRow(
         shiny::column(
-          offset = 1,
-          width = 2,
+          #offset = 1,
+          width = 3,
+          style = "padding-left: 2%;",
           shiny::uiOutput(
             outputId = ns("qi_overview")
           )
         ),
         shiny::column(
-          width = 8,
+          width = 9,
+          style = "padding-right: 2%;",
           shiny::uiOutput(
             outputId = ns("qi_table")
           )
         )
-      ),
-      shiny::htmlOutput(
-        ns("json")
-      )
+      )#,
+      # shiny::htmlOutput(
+      #   ns("json")
+      # )
     )
   )
 }
