@@ -141,22 +141,21 @@ var add_row = function (clicked_tr) {
   
   if (bar.checked ) {
     render_bar_chart();
-    window.addEventListener('resize',render_bar_chart);
+    window.onresize = render_bar_chart;
   } else if (line.checked){
-     render_line_chart();
-    window.addEventListener('resize', render_line_chart);
+    render_line_chart();
+    window.onresize = render_line_chart;
     
   }
   
   bar.addEventListener("click",e => {
     if (document.getElementById("table_bar").checked ) {
-       var figure_elemnts = svg_container.childElementCount
+       var figure_elemnts = svg_container.childElementCount;
        for (i = 0; i < figure_elemnts; i++){ 
         svg_container.removeChild(svg_container.childNodes[0]);
       }
-      window.removeEventListener('resize', render_line_chart);
       render_bar_chart();
-      window.addEventListener('resize', render_bar_chart);
+      window.onresize = render_bar_chart;
     } 
   });
   
@@ -166,9 +165,8 @@ var add_row = function (clicked_tr) {
        for (i = 0; i < figure_elemnts; i++){ 
         svg_container.removeChild(svg_container.childNodes[0]);
       }
-      window.removeEventListener('resize',render_bar_chart);
       render_line_chart();
-      window.addEventListener('resize', render_line_chart);
+      window.onresize = render_line_chart;
     } 
   });
   
@@ -211,14 +209,16 @@ var add_row = function (clicked_tr) {
       document.querySelector(".long_description").style.maxHeight = 
       document.querySelector(".long_description").scrollHeight + "px";
       document.querySelector(".long_description_title i").className =  "fas fa-angle-up";
+       
     } else if (document.querySelector(".long_description_title i").className ===  "fas fa-angle-up"){
       document.querySelector(".long_description").style.maxHeight = 0;
       document.querySelector(".long_description_title i").className =  "fas fa-angle-down";
+       
     }
   });
   
-  
- 
+  clicked_tr.scrollIntoView({behavior:"smooth"});
+  //added_row.scrollIntoView({behavior:"smooth"});
 };
 
 var qi_table = document.querySelector("#quality_overview_ui_1-qi_table");
