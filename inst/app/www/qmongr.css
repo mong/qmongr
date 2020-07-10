@@ -57,6 +57,7 @@ body {
     position: -webkit-sticky;
     top: -70px;
     z-index: 11;
+    transition: top 200ms ease-in-out;
   }
   .treatment_unit:hover {
     top: -10px;
