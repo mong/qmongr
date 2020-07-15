@@ -1,5 +1,7 @@
-// set time out due to delayed loading of shiny elements
-// top property of position is variable because the width of the top navbar changes
+//Hides part of the top navbar and displays it in full on mouse over.
+//
+//setTimeOut due to delayed loading of shiny elements
+//top property of position is variable because the width of the top navbar changes
 setTimeout(function() {
 document.getElementById("quality_overview_ui_1-pick_treatment_units").onchange = function (e){
   var top_nav_bar = document.querySelector(".treatment_unit");
@@ -20,3 +22,4 @@ document.querySelector(".treatment_unit").onmouseleave = function (e){
   top_nav_bar.setAttribute("style", "top:" + -top_tu + "px;");
 };
 }, 3000);
+
