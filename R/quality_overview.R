@@ -73,7 +73,7 @@ quality_overview_server <- function(id) {
   grouped_by_hospital <- app_data[["grouped_by_hospital"]]
   national_data <- app_data[["national_data"]]
 
-  #add nr to lsit of med
+  #add nr to list of med
   num_qi_per_med_field <- shiny::reactive({
     my_func <- function(x, unique_qi) {
       unique_qi <- data.frame(IndID = unique_qi)
@@ -97,14 +97,10 @@ quality_overview_server <- function(id) {
 
     if (shiny::isTruthy(input$pick_treatment_units)) {
       selected_indicators <- filtered_data()$national$KvalIndID %>% unique
-        #base::union(
-        # c(filtered_data()$RHF$KvalIndID, filtered_data()$HF$KvalIndID),
-        # filtered_data()$SykehusNavn$KvalIndID)
     } else {
       selected_indicators <- national_data %>%
         dplyr::filter(
           .data[[config$data$column$year]] == shiny::req(input$pick_year),
-          #.data[[config$data$column$qi_id]] %in% filter_indicator$indicator(),
           .data[["level"]] %in% filter_indicator$level()
         ) %>%
         purrr::pluck("KvalIndID") %>%
