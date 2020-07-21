@@ -1,3 +1,16 @@
+# qmongr 0.11.0
+
+## Show national numbers as default ([#142](https://github.com/mong/qmongr/pull/142))
+
+## Minor
+
+- Show every other year in figure if the tot nr of years are more than 8 ([#135](https://github.com/mong/qmongr/pull/135)).
+
+## Internal
+
+- Use the cran version of shiny ([#144](https://github.com/mong/qmongr/pull/144)).
+- Removed load_data func. and all its children func. ([#141](https://github.com/mong/qmongr/pull/141)).
+
 # qmongr 0.10.0
 
 ## New table layout
