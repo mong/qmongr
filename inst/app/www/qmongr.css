@@ -6,9 +6,11 @@ body {
 }
 
 .treatment_unit {
-  margin: 20px auto;
+  /*margin: 20px auto;
   padding: 10px;
-  width: 90%;
+  width: 90%;*/
+  padding: 3px 10px;
+  margin: 0;
   background-color: rgb(126,190,199);
 }
 
@@ -36,7 +38,7 @@ body {
   position: relative;
   top: 0;
   left: 28%;
-  width: 60%;
+  width: 70%;
   font-size: 1em;
 }
 
@@ -44,13 +46,14 @@ body {
 .table_legend .high, .table_legend .moderate, .table_legend .low {
   text-align: center;
   margin: 10px 1%;
-  padding: 10px 10px 5px 10px;
+  /*padding: 10px 10px 5px 10px;*/
+  padding: 8px 5px 2px 5px;
   border: 2px solid #d2d3d4;
   border-radius: 35px;
   background-color: #e2f2f5;
   position: relative;
   box-shadow: 0 7px 20px 0 rgba(196, 196, 196, 0.2);
-  min-width: 25%;
+  min-width: 22%;
   top: 0;
   transition: 250ms cubic-bezier(0, 0, 0.58, 1);
 }
@@ -112,7 +115,7 @@ body {
 }
 
 .level i{
-  font-size: 0.65em;
+  font-size: 0.9em;
 }
 
 /* table*/
@@ -122,6 +125,7 @@ table {
   width: 100%;
   border-spacing: 0;
   margin-bottom: 50px;
+  line-height: 1.14;
 }
 
 thead {
@@ -131,7 +135,8 @@ thead {
 
 thead tr {
   box-shadow: -1px 2px 2px -1px black;
-  height: 60px;
+  /*height: 60px;*/
+  height: 40px;
 }
 
 tbody tr {
@@ -155,13 +160,17 @@ th h2 {
  
 }
 
-.selected_unit {
-  text-align: center;
+
+.selected_unit .value,
+.selected_unit .ones_of_total,
+.nationally .value,
+.nationally .ones_of_total{
+  display: flex;
+  justify-content: center;
 }
 
-.nationally {
+.nationally, .selected_unit{
   text-align: center;
-
 }
 
 .register_name h4 {
@@ -171,30 +180,31 @@ th h2 {
 }
 
 .quality_indicator_name h1{
-  margin: 10px 15% 5px 7px;
-  font-size: 1.5em;
+  margin: 10px 5px 10px 7px;
+  font-size: 1.3em;
   font-weight: 100;
  }
 
 .qi_long_description p{
-  margin: 5px 5% 20px 7px;
+  margin: 5px 5px 10px 7px;
   color: #7d8588;
   font-size: 1em;
 }
 
 .desired_target_level h4{
-  margin: 20px 15% 10px 7px;
+  margin: 5px 5px 10px 7px;
   color: #7ebec7;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 1em;
 }
 
 tbody .selected_unit {
-  background-color: rgba(126,190,199,0.20);
+  background-color: rgba(126,190,199,0.05);
 }
 
 
 tbody .indicator:hover {
-  background-color: rgba(126,190,199,0.30);
+  background-color: rgba(126,190,199,0.15);
   cursor: pointer;
 }
 

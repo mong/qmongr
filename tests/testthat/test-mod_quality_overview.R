@@ -50,6 +50,16 @@ test_that("quality_overview_server without input", {
     })
 })
 
+test_that("quality_overview_server without treatment unit", {
+  shiny::testServer(quality_overview_server, {
+    session$setInputs(pick_treatment_units = NULL)
+    session$setInputs(pick_year = "2018")
+    expect_true(text_file_tester(output$qi_table[["html"]],
+                                 "data/output_qi_table_default_2018.html"))
+  })
+})
+
+
 test_that("quality_overview_server errors", {
   shiny::testServer(quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
