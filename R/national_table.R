@@ -283,7 +283,7 @@ indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "Nat
           class = "level",
           tags$div(
             class = "value",
-            #style = "display:flex;justify-content:center;",
+            style = "display:flex;justify-content:center;",
             tags$h3(
               paste0(indicator_value),
               icon_type(level)
@@ -292,7 +292,7 @@ indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "Nat
         ),
         tags$div(
           class = "ones_of_total",
-          #style = "display:flex;justify-content:center;",
+          style = "display:flex;justify-content:center;",
           tags$p(paste0(number_of_ones, " av ", total))
         )
       )
