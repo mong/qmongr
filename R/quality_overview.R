@@ -33,7 +33,6 @@ quality_overview_ui <- function(id) {
       ),
       shiny::fluidRow(
         shiny::column(
-          #offset = 1,
           width = 3,
           style = "padding-left: 2%;",
           shiny::uiOutput(
