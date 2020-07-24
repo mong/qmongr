@@ -35,7 +35,6 @@ Imports:
     shiny (>= 1.5.0),
     shinyalert,
     dplyr,
-    tidyr,
     stringr,
     rlang,
     yaml,
