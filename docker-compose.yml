@@ -1,0 +1,46 @@
+version: '3.6'
+
+services:
+
+  db:
+    image: mariadb
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: imongr
+      MYSQL_USER: imongr
+      MYSQL_PASSWORD: imongr
+    volumes:
+      - ./imongr_db_dump.sql.tar.gz:/docker-entrypoint-initdb.d/imongr_db_dump.sql.tar.gz
+
+  dev:
+    depends_on:
+      - db
+    image: hnskde/mongr-dev
+    restart: "no"
+    volumes:
+      - ~/.ssh:/home/rstudio/.ssh
+      - ~/.gitconfig:/home/rstudio/.gitconfig
+    ports:
+      - 8787:8787
+    dns:
+      - 8.8.8.8
+    environment:
+      PASSWORD: password
+      IMONGR_CONTEXT: DEV
+      IMONGR_DB_HOST: db
+      IMONGR_DB_NAME: imongr
+      IMONGR_DB_USER: imongr
+      IMONGR_DB_PASS: imongr
+      IMONGR_ADMINER_URL: http://localhost:8888
+
+  adminer:
+    depends_on:
+      - db
+    image: adminer
+    restart: "no"
+    environment:
+      ADMINER_PLUGINS: frames
+    ports:
+      - 8888:8080
+
