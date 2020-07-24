@@ -2,7 +2,6 @@
 % Please edit documentation in R/med_field_list.R
 \name{med_field_list}
 \alias{med_field_list}
-\alias{qi_overview}
 \title{Clickable links list}
 \usage{
 med_field_list(id, category_name, nr_of_reg, all_id)
