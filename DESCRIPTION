@@ -30,7 +30,8 @@ Suggests:
     covr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
-Imports: 
+Imports:
+    imongr,
     magrittr,
     shiny (>= 1.5.0),
     shinyalert,
@@ -43,4 +44,5 @@ Imports:
     qmongrdata (>= 0.2.5)
 Depends: R (>= 3.5)
 Remotes:
+    mong/imongr@*release,
     mong/qmongrdata@*release

@@ -2,6 +2,7 @@
 
 export("%>%")
 export(add_external_resources)
+export(agg_data)
 export(app_server)
 export(app_ui)
 export(create_config)
