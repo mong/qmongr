@@ -11,7 +11,7 @@ services:
       MYSQL_USER: imongr
       MYSQL_PASSWORD: imongr
     volumes:
-      - ./imongr_db_dump.sql.tar.gz:/docker-entrypoint-initdb.d/imongr_db_dump.sql.tar.gz
+      - ./imongr_db_dump.sql.gz:/docker-entrypoint-initdb.d/imongr_db_dump.sql.gz
 
   dev:
     depends_on:

@@ -65,7 +65,7 @@ You may also use the docker development environment provided:
 ```
 docker-compose up
 ```
-This contains three containers: a database server, [an admin interface](localhost:8888) to the database and the [R-Studio IDE](localhost:8787). Assuming that a database dump (_e.g._ imongr_db_dump.sql.tar.gz) exists in the root of this project the database will also be populated by relevant data as the containers are started.
+This contains three containers: a database server, [an admin interface](http://localhost:8888) to the database and the [R-Studio IDE](http://localhost:8787). Assuming that a database dump (_e.g._ imongr_db_dump.sql.gz) exists in the root of this project the database will also be populated by relevant data as the containers are started.
 
 ## Ethics
 Please note that the 'qmongr' project is released with a
