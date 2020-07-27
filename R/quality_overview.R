@@ -67,6 +67,7 @@ quality_overview_server <- function(id) {
 
   config <- qmongr::get_config()
   app_data <- qmongr::agg_data()
+  print(str(app_data))
   register_data <- app_data[["register_data"]]
   grouped_by_hf <- app_data[["grouped_by_hf"]]
   grouped_by_rhf <- app_data[["grouped_by_rhf"]]
@@ -80,7 +81,8 @@ quality_overview_server <- function(id) {
 
       # Mapping table between register and indicator
       qi_reg <- #qi_reg %>%
-        qmongrdata::IndBeskr %>%
+        #qmongrdata::IndBeskr %>%
+        app_data$register_data$description %>% 
         dplyr::select(.data[["Register"]], .data[["IndID"]]) %>%
         dplyr::filter(.data[["Register"]] %in% x$key)
       # Add register ID to unique indicators
@@ -171,7 +173,8 @@ quality_overview_server <- function(id) {
         )
       qmongr::national_table(
         national_table_data,
-        qmongrdata::IndBeskr,
+        #qmongrdata::IndBeskr,
+        app_data$register_data$description,
         config
       )
     } else {
