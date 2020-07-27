@@ -38,7 +38,7 @@ agg_data <- function() {
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
          grouped_by_rhf = grouped_by_rhf,
-         national_data)
+         national_data = national_data)
   } else {
     qmongr::aggr_data
   }
