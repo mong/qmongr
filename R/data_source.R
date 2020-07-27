@@ -13,6 +13,7 @@ agg_data <- function() {
   
   if (Sys.getenv("IMONGR_CONTEXT") == "DEV" |
       grepl("node", Sys.getenv("NODE_NAME"))) {
+    # nocov start ,  testing in imongr
     conf <- get_config()
     pool <- imongr::make_pool()
     on.exit(imongr::drain_pool(pool))
@@ -39,6 +40,7 @@ agg_data <- function() {
          grouped_by_hf = grouped_by_hf,
          grouped_by_rhf = grouped_by_rhf,
          national_data = national_data)
+    # nocov end
   } else {
     qmongr::aggr_data
   }
