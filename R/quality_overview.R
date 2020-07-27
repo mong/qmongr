@@ -79,9 +79,7 @@ quality_overview_server <- function(id) {
       unique_qi <- data.frame(IndID = unique_qi)
 
       # Mapping table between register and indicator
-      qi_reg <- #qi_reg %>%
-        #qmongrdata::IndBeskr %>%
-        app_data$register_data$description %>% 
+      qi_reg <- app_data$register_data$description %>% 
         dplyr::select(.data[["Register"]], .data[["IndID"]]) %>%
         dplyr::filter(.data[["Register"]] %in% x$key)
       # Add register ID to unique indicators
@@ -172,7 +170,6 @@ quality_overview_server <- function(id) {
         )
       qmongr::national_table(
         national_table_data,
-        #qmongrdata::IndBeskr,
         app_data$register_data$description,
         config
       )
