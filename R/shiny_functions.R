@@ -264,7 +264,6 @@ table_data <- function(units, table_cell_data, indicator_name) {
   year <- table_cell_data[[config[["data"]][["column"]][["year"]]]]
   total <- table_cell_data[["count"]]
   level <- table_cell_data[["level"]]
-  print(table_cell_data)
   if (table_cell_data[[config$data$column$qi_id]] == "intensiv2") {
     indicator_value <- table_cell_data[["indicator"]]
     number_of_ones <- ""
