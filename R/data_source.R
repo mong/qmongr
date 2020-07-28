@@ -35,7 +35,7 @@ agg_data <- function() {
     names(grouped_by_rhf)[names(grouped_by_rhf) == "OrgNr"] <- "OrgNrRHF"
     names(grouped_by_rhf)[names(grouped_by_rhf) == "unit_name"] <- "RHF"
     national_data <- df[df$unit_level == "nasjonal", ]
-    list(register_data = list(description = description),
+    list(register_data = list(description = tibble::tibble(description)),
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
          grouped_by_rhf = grouped_by_rhf,
