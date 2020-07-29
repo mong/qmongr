@@ -7,6 +7,8 @@ ARG GITHUB_PAT
 ## upgrade qmongrdata from github
 RUN R -e "remotes::install_github('mong/qmongrdata@*release', dependencies = FALSE, upgrade = 'never')"
 
+## upgrade imongr from github
+RUN R -e "remotes::install_github('mong/imongr@*release', upgrade = 'never')"
 
 # second stage
 FROM hnskde/qmongr-base-r
