@@ -7,12 +7,16 @@ ARG GITHUB_PAT
 ## upgrade qmongrdata from github
 RUN R -e "remotes::install_github('mong/qmongrdata@*release', dependencies = FALSE, upgrade = 'never')"
 
+## upgrade imongr from github
+RUN R -e "remotes::install_github('mong/imongr@*release', upgrade = 'never')"
 
 # second stage
 FROM hnskde/qmongr-base-r
 
 ## copy updated from intermediate stage
 COPY --from=intermediate --chown=root:staff /usr/local/lib/R/site-library/qmongrdata /usr/local/lib/R/site-library/qmongrdata/
+
+COPY --from=intermediate --chown=root:staff /usr/local/lib/R/site-library/imongr /usr/local/lib/R/site-library/imongr/
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 LABEL no.mongr.cd.enable="true"
