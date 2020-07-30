@@ -17,7 +17,7 @@
 #'
 
 national_table <- function(input_data, indicator_description, config) {
-
+  
   tags$table(
     tags$thead(
       tags$tr(
@@ -59,7 +59,7 @@ tbody_content <- function(input_data, indicator_description, config) {
     purrr::pluck(register_col_id) %>%
     unique() %>%
     stringr::str_sort(locale = config$language)
-
+  
   lapply(
     register_name,
     function(reg_name) {
@@ -70,7 +70,7 @@ tbody_content <- function(input_data, indicator_description, config) {
         unique()
       input_data <- input_data %>%
         dplyr::filter(.data[[indicator_col_id]] %in% indicators_in_reg)
-
+      
       shiny::tagList(
         register_tr(
           register_name = reg_name,
@@ -102,13 +102,13 @@ national_register_content <- function(input_data, indicator_description, config)
   indicator_name <- input_data %>%
     purrr::pluck(indicator_col_id) %>%
     unique()
-
+  
   lapply(
     indicator_name,
     function(indicator_name) {
       indicator_description <- indicator_description %>%
         dplyr::filter(.data[["IndID"]] == indicator_name)
-
+      
       input_data <- input_data %>%
         dplyr::filter(.data[[indicator_col_id]] == indicator_name)
       table_d <- nattional_indicator_content(
@@ -137,7 +137,7 @@ national_register_content <- function(input_data, indicator_description, config)
 #'
 
 nattional_indicator_content <- function(input_data, indicator_description, config) {
-
+  
   return(
     shiny::tagList(
       description_td(
@@ -212,7 +212,7 @@ description_td <- function(description_row, desired_level_text) {
   )
   indicator_long_desc <- description_row["BeskrivelseKort"]
   indicator_title <- description_row["IndTittel"]
-
+  
   return(
     tags$td(
       class = "quality_indicator",
@@ -275,7 +275,7 @@ indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "Nat
         total * td_data[["indicator"]]
       )
     }
-
+    
     return(
       shiny::tags$td(
         class = class_name,
@@ -283,7 +283,7 @@ indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "Nat
           class = "level",
           tags$div(
             class = "value",
-            #style = "display:flex;justify-content:center;",
+            style = "display:flex;justify-content:center;",
             tags$h3(
               paste0(indicator_value),
               icon_type(level)
@@ -292,7 +292,7 @@ indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "Nat
         ),
         tags$div(
           class = "ones_of_total",
-          #style = "display:flex;justify-content:center;",
+          style = "display:flex;justify-content:center;",
           tags$p(paste0(number_of_ones, " av ", total))
         )
       )
