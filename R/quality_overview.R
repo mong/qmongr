@@ -201,9 +201,6 @@ quality_overview_server <- function(id) {
          ;</script>",
         shiny::tags$script(src = "www/qmongr.js")
       )
-    
-  })
-
-
+    })
   })
 }

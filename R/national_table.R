@@ -101,7 +101,6 @@ national_register_content <- function(input_data, indicator_description, config)
   indicator_name <- input_data %>%
     purrr::pluck(indicator_col_id) %>%
     unique()
-  
   lapply(
     indicator_name,
     function(indicator_name) {
