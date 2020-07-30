@@ -1,6 +1,3 @@
-html{
-  scroll-behavior : smooth;
-}
 body {
  margin: 0;
  padding: 0;
@@ -463,4 +460,26 @@ input[type="radio"].figure_button_right:checked + label {
   color:  #EEF6F7;
   border-radius: 0 25px 25px 0;
   transition: color 200ms;
+}
+
+/*------ tr indicator desctiption ----*/
+.description_title_container {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  margin-left: 10%;
+  width:80%;
+  cursor:pointer;
+}
+.description_title_container h4 {
+  margin: 10px;
+}
+.description_content {
+  max-height: 0px;
+  margin-left:16%;
+  margin-top: 0;
+  width:70%;
+  text-align:justify;
+  overflow:hidden;
+  transition: max-height  0.2s ease-out;
 }
