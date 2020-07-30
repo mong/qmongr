@@ -33,7 +33,6 @@ quality_overview_ui <- function(id) {
       ),
       shiny::fluidRow(
         shiny::column(
-          #offset = 1,
           width = 3,
           style = "padding-left: 2%;",
           shiny::uiOutput(
@@ -67,21 +66,20 @@ quality_overview_server <- function(id) {
   #All the processed data
 
   config <- qmongr::get_config()
-  app_data <- qmongr::aggr_data
+  app_data <- qmongr::agg_data()
   register_data <- app_data[["register_data"]]
   grouped_by_hf <- app_data[["grouped_by_hf"]]
   grouped_by_rhf <- app_data[["grouped_by_rhf"]]
   grouped_by_hospital <- app_data[["grouped_by_hospital"]]
   national_data <- app_data[["national_data"]]
 
-  #add nr to lsit of med
+  #add nr to list of med
   num_qi_per_med_field <- shiny::reactive({
     my_func <- function(x, unique_qi) {
       unique_qi <- data.frame(IndID = unique_qi)
 
       # Mapping table between register and indicator
-      qi_reg <- #qi_reg %>%
-        qmongrdata::IndBeskr %>%
+      qi_reg <- app_data$register_data$description %>%
         dplyr::select(.data[["Register"]], .data[["IndID"]]) %>%
         dplyr::filter(.data[["Register"]] %in% x$key)
       # Add register ID to unique indicators
@@ -98,14 +96,10 @@ quality_overview_server <- function(id) {
 
     if (shiny::isTruthy(input$pick_treatment_units)) {
       selected_indicators <- filtered_data()$national$KvalIndID %>% unique
-        #base::union(
-        # c(filtered_data()$RHF$KvalIndID, filtered_data()$HF$KvalIndID),
-        # filtered_data()$SykehusNavn$KvalIndID)
     } else {
       selected_indicators <- national_data %>%
         dplyr::filter(
           .data[[config$data$column$year]] == shiny::req(input$pick_year),
-          #.data[[config$data$column$qi_id]] %in% filter_indicator$indicator(),
           .data[["level"]] %in% filter_indicator$level()
         ) %>%
         purrr::pluck("KvalIndID") %>%
@@ -176,7 +170,7 @@ quality_overview_server <- function(id) {
         )
       qmongr::national_table(
         national_table_data,
-        qmongrdata::IndBeskr,
+        app_data$register_data$description,
         config
       )
     } else {
