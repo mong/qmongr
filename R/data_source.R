@@ -1,5 +1,5 @@
 #' Provide data for qmongr
-#' 
+#'
 #' Provide data sets used by qmongr. Currently based on context (env vars)
 #'
 #' @return List of data sets
@@ -10,7 +10,7 @@ NULL
 #' @rdname data_source
 #' @export
 agg_data <- function() {
-  
+
   if (Sys.getenv("IMONGR_CONTEXT") == "DEV" |
       grepl("node", Sys.getenv("NODE_NAME"))) {
     # nocov start ,  testing in imongr
