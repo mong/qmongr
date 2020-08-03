@@ -17,7 +17,6 @@
 #'
 
 national_table <- function(input_data, indicator_description, config) {
-
   tags$table(
     tags$thead(
       tags$tr(
@@ -102,13 +101,11 @@ national_register_content <- function(input_data, indicator_description, config)
   indicator_name <- input_data %>%
     purrr::pluck(indicator_col_id) %>%
     unique()
-
   lapply(
     indicator_name,
     function(indicator_name) {
       indicator_description <- indicator_description %>%
         dplyr::filter(.data[["IndID"]] == indicator_name)
-
       input_data <- input_data %>%
         dplyr::filter(.data[[indicator_col_id]] == indicator_name)
       table_d <- nattional_indicator_content(
@@ -137,7 +134,6 @@ national_register_content <- function(input_data, indicator_description, config)
 #'
 
 nattional_indicator_content <- function(input_data, indicator_description, config) {
-
   return(
     shiny::tagList(
       description_td(

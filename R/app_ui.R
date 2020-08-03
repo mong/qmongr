@@ -10,8 +10,7 @@ app_ui <- function() {
     qmongr::add_external_resources(),
     # List the first level UI elements here
     shiny::tagList(
-      quality_overview_ui("quality_overview_ui_1"),
-      shiny::tags$script(src = "www/qmongr.js")
+      quality_overview_ui("quality_overview_ui_1")
     )
   )
 }
