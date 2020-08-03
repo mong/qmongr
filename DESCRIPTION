@@ -1,6 +1,6 @@
 Package: qmongr
 Title: Lightweight Quality Assessment of Norwegian Hospitals 
-Version: 0.11.0.9000
+Version: 0.12.0
 Authors@R: c(
     person(given = "Yohannes",
            family = "Tesfay",
@@ -40,8 +40,8 @@ Imports:
     rlang,
     yaml,
     jsonlite,
-    qmongrdata (>= 0.2.5),
-    tibble
+    tibble,
+    qmongrdata (>= 0.2.5)
 Depends: R (>= 3.5)
 Remotes:
     mong/imongr@*release,

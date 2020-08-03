@@ -1,4 +1,12 @@
-# Unreleased
+# qmongr 0.12.0
+
+## Fixed top navbar, sidebar, legend and table header when scrolling ([#149](https://github.com/mong/qmongr/pull/149))
+
+## Internal
+
+- Docker dev. env. ([#146](https://github.com/mong/qmongr/pull/146) and [2321028](https://github.com/mong/qmongr/commit/2321028)). Added a docker compose file. 
+- `js` in a bundle ([#139](https://github.com/mong/qmongr/pull/139)). `js` code and development moved to https://github.com/mong/qmongjs
+- Function for reading data from database ([#148](https://github.com/mong/qmongr/pull/148))
 
 # qmongr 0.11.0
 
