@@ -1,3 +1,5 @@
+# Unreleased
+
 # qmongr 0.12.0
 
 ## Fixed top navbar, sidebar, legend and table header when scrolling ([#149](https://github.com/mong/qmongr/pull/149))
