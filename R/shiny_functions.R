@@ -172,17 +172,12 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
   year <- national[[config[["data"]][["column"]][["year"]]]]
   total_n <- national[["count"]]
   level <- national[["level"]]
-  if (national[[config[["data"]][["column"]][["qi_id"]]]] == "intensiv2") {
-    indicator_value_n <- national[["indicator"]]
-    number_of_ones_n <- ""
-  } else {
-    indicator_value_n <- paste0(round(
-      national[["indicator"]] * 100
-    ), "%")
-    number_of_ones_n <- round(
-      total_n * national[["indicator"]]
-    )
-  }
+  indicator_value_n <- paste0(round(
+    national[["indicator"]] * 100
+  ), "%")
+  number_of_ones_n <- round(
+    total_n * national[["indicator"]]
+  )
   return(
     tags$tr(
       id = indicator_name,
@@ -264,17 +259,12 @@ table_data <- function(units, table_cell_data, indicator_name) {
   year <- table_cell_data[[config[["data"]][["column"]][["year"]]]]
   total <- table_cell_data[["count"]]
   level <- table_cell_data[["level"]]
-  if (table_cell_data[[config$data$column$qi_id]] == "intensiv2") {
-    indicator_value <- table_cell_data[["indicator"]]
-    number_of_ones <- ""
-  } else {
-    indicator_value <- paste0(round(
-      table_cell_data[["indicator"]] * 100
-    ), "%")
-    number_of_ones <- round(
-      total * table_cell_data[["indicator"]]
-    )
-  }
+  indicator_value <- paste0(round(
+    table_cell_data[["indicator"]] * 100
+  ), "%")
+  number_of_ones <- round(
+    total * table_cell_data[["indicator"]]
+  )
 
     return(
       shiny::tags$td(class = "selected_unit",
