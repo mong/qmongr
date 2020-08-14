@@ -260,17 +260,12 @@ indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "Nat
   } else {
     total <- td_data[["count"]]
     level <- td_data[["level"]]
-    if (td_data[col_name_indicator_id] == "intensiv2") {
-      indicator_value <- td_data[["indicator"]]
-      number_of_ones <- ""
-    } else {
-      indicator_value <- paste0(round(
-        td_data[["indicator"]] * 100
-      ), "%")
-      number_of_ones <- round(
-        total * td_data[["indicator"]]
-      )
-    }
+    indicator_value <- paste0(round(
+      td_data[["indicator"]] * 100
+    ), "%")
+    number_of_ones <- round(
+      total * td_data[["indicator"]]
+    )
 
     return(
       shiny::tags$td(
