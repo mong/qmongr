@@ -93,7 +93,7 @@ qi_table <- function(table_data, selected_units, config) {
 #' @export
 #'
 table_body_constructor <- function(datatable, units, national, config) {
-  indicator_description <- qmongrdata::IndBeskr
+  indicator_description <- qmongr::agg_data()$register_data$description
   reg_name <- indicator_description %>%
     dplyr::filter(.data[["IndID"]] %in%
       unique(datatable[[config$data$column$qi_id]])) %>%
