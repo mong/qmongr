@@ -37,23 +37,23 @@ agg_data <- function() {
     names(grouped_by_rhf)[names(grouped_by_rhf) == "orgnr"] <- "OrgNrRHF"
     names(grouped_by_rhf)[names(grouped_by_rhf) == "unit_name"] <- "RHF"
     national_data <- df[df$unit_level == "national", ]
-    
+
     # imongr::get_registry_name() may be ext towards handling vector args...
     rid <- description$registry_id
     rname <- vector()
     for (i in seq_len(length(rid))) {
       rname <- c(rname, imongr::get_registry_name(pool, rid[i]))
     }
-    
-    description <- description %>% 
-      tibble::tibble() %>% 
+
+    description <- description %>%
+      tibble::tibble() %>%
       dplyr::rename(IndID = id, IndTittel = title, IndNavn = name,
                     MaalNivaaGronn = level_green, MaalNivaaGul = level_yellow,
                     MaalRetn = level_direction,
                     BeskrivelseKort = short_description,
-                    BeskrivelseLang = long_description) %>% 
+                    BeskrivelseLang = long_description) %>%
       dplyr::mutate(Register = rname)
-    
+
     list(register_data = list(description = description),
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
