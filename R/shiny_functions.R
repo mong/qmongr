@@ -9,38 +9,16 @@
 #' @export
 #'
 
-qi_table <- function(table_data, selected_units, config) {
+qi_table <- function(table_data, selected_units, indicator_description, config) {
 
   national <- table_data[["national"]]
-  if (!rlang::is_empty(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])) {
-    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])[
-      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]) ==
-        config[["data"]][["column"]][["unit_id"]][["rhf"]]] <- "OrgNr"
-    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]])[
-      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]) ==
-        config[["data"]][["column"]][["unit_name"]][["rhf"]]] <- "treatment_units"
-  }
-  if (!rlang::is_empty(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])) {
-    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])[
-      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]]) ==
-        config[["data"]][["column"]][["unit_id"]][["hf"]]] <- "OrgNr"
-    colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])[
-      colnames(table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]])
-      == "Hfkortnavn"] <- "treatment_units"
-  }
-  if (!rlang::is_empty(table_data$Sykehus)) {
-    colnames(table_data$Sykehus)[
-      colnames(table_data$Sykehus) == "SykehusId"] <- "OrgNr"
-    colnames(table_data$Sykehus)[
-      colnames(table_data$Sykehus) ==
-        config[["data"]][["column"]][["unit_name"]][["sh"]]] <- "treatment_units"
-  }
   table_data <- dplyr::bind_rows(
-    table_data[["Sykehus"]],
-    table_data[[config[["data"]][["column"]][["unit_name"]][["hf"]]]],
-    table_data[[config[["data"]][["column"]][["unit_name"]][["rhf"]]]]
+    table_data[[config$treatment_unit_level$hospital]],
+    table_data[[config$treatment_unit_level$hf]],
+    table_data[[config$treatment_unit_level$rhf]]
   )
-  nr_treatment_units <- table_data$treatment_units %>% unique() %>% length()
+
+  nr_treatment_units <- table_data[[config$column$treatment_unit]] %>% unique() %>% length()
   col_width <- floor(60 / (nr_treatment_units + 1))
   tags$table(
     tags$thead(
@@ -51,7 +29,7 @@ qi_table <- function(table_data, selected_units, config) {
           tags$h2(config$app_text$table$main_column)
         ),
         lapply(
-          table_data$treatment_units %>% unique(),
+          table_data[[config$column$treatment_unit]] %>% unique(),
           function(x) {
             shiny::tags$th(
               class = "selected_unit",
@@ -71,6 +49,7 @@ qi_table <- function(table_data, selected_units, config) {
         datatable = table_data,
         units = selected_units,
         national = national,
+        indicator_description = indicator_description,
         config = config)
     )
   )
@@ -92,17 +71,18 @@ qi_table <- function(table_data, selected_units, config) {
 #' @return a row of html table
 #' @export
 #'
-table_body_constructor <- function(datatable, units, national, config) {
-  indicator_description <- qmongr::agg_data()$register_data$description
+table_body_constructor <- function(datatable, units, national, indicator_description, config) {
+
   reg_name <- indicator_description %>%
-    dplyr::filter(.data[["IndID"]] %in%
-      unique(datatable[[config$data$column$qi_id]])) %>%
-    dplyr::select(.data[[config$data$column$source]]) %>%
+    dplyr::filter(.data[[config$column$id]] %in%
+      unique(datatable[[config$column$indicator_id]])) %>%
+    dplyr::select(.data[[config$column$registry_full_name]]) %>%
     unique() %>%
     unlist() %>%
     stringr::str_sort(locale = config$language)
   names(reg_name) <- NULL
-  col_nr <-  datatable[["treatment_units"]] %>% unique() %>% length() + 2
+  col_nr <-  datatable[[config$column$treatment_unit]] %>% unique() %>% length() + 2
+
   #adds a table row tag with the register names and passes it to a function
   # that adds each quality indicator
   lapply(
@@ -110,9 +90,9 @@ table_body_constructor <- function(datatable, units, national, config) {
     function(rn) {
       indicator_name <- indicator_description %>%
         dplyr::filter(
-          .data[[config$data$column$source]] == rn,
-          .data[["IndID"]] %in% datatable[[config$data$column$qi_id]]) %>%
-        dplyr::select(.data[["IndID"]]) %>%
+          .data[[config$column$registry_full_name]] == rn,
+          .data[[config$column$id]] %in% datatable[[config$column$indicator_id]]) %>%
+        dplyr::select(.data[[config$column$id]]) %>%
         unique() %>%
         unlist() %>%
         stringr::str_sort(locale = config$language)
@@ -153,30 +133,34 @@ table_body_constructor <- function(datatable, units, national, config) {
 indicator_rows <- function(indicator_name, indicator_description, config, datatable, units, national) {
 
   indicator_description <- indicator_description %>%
-        dplyr::filter(.data[["IndID"]] ==  indicator_name)
-  #uncoment if register name is needed
-  # in indicator row reg_name <- indicator_description[["Register"]]
-  indicator_title <- indicator_description[["IndTittel"]]
-  indicator_long_desc <- indicator_description[["BeskrivelseKort"]]
+        dplyr::filter(.data[[config$column$id]] ==  indicator_name)
+
+  indicator_title <- indicator_description[[config$column$indicator_title]]
+  indicator_long_desc <- indicator_description[[config$column$indicator_short_description]]
 
   indicator_desired_level <- datatable %>%
-    dplyr::filter(.data[[config$data$column$qi_id]] == indicator_name) %>%
-    dplyr::select(.data[["desired_level"]]) %>%
-    unique() %>%
-    as.list.data.frame() %>%
-    as.array()
-  treatment_units <- datatable$treatment_units %>% unique()
+    dplyr::filter(.data[[config$column$indicator_id]] == indicator_name) %>%
+    dplyr::select(.data[[config$column$level_direction]]) %>%
+    unique()
+
+  if (indicator_desired_level == 1) {
+    indicator_desired_level <-  config$desired_level$high
+  } else if (indicator_desired_level == 0) {
+    indicator_desired_level <- config$desired_level$low
+  }
+
+  treatment_units <- datatable[[config$column$treatment_unit]] %>% unique()
 
   national <- national %>% dplyr::filter(
-    .data[[config[["data"]][["column"]][["qi_id"]]]] == indicator_name)
-  year <- national[[config[["data"]][["column"]][["year"]]]]
-  total_n <- national[["count"]]
-  level <- national[["level"]]
+    .data[[config$column$indicator_id]] == indicator_name)
+  year <- national[[config$column$year]]
+  total_n <- national[[config$column$denominator]]
+  level <- national[[config$column$achieved_level]]
   indicator_value_n <- paste0(round(
-    national[["indicator"]] * 100
+    national[[config$column$variable]] * 100
   ), "%")
   number_of_ones_n <- round(
-    total_n * national[["indicator"]]
+    total_n * national[[config$column$variable]]
   )
   return(
     tags$tr(
@@ -205,7 +189,8 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
         treatment_units,
         qmongr::table_data,
         table_cell_data = datatable,
-        indicator_name = indicator_name
+        indicator_name = indicator_name,
+        config = config
       ),
       tags$td(
         class = "nationally",
@@ -242,11 +227,13 @@ indicator_rows <- function(indicator_name, indicator_description, config, datata
 #' @return the contnets of a td tag
 #' @export
 #'
-table_data <- function(units, table_cell_data, indicator_name) {
-  config <- qmongr::get_config()
+table_data <- function(units, table_cell_data, indicator_name, config) {
+
   table_cell_data <- table_cell_data %>%
-    dplyr::filter(.data[["treatment_units"]] == units,
-                  .data[[config$data$column$qi_id]] == indicator_name)
+    dplyr::filter(
+      .data[[config$column$treatment_unit]] == units,
+      .data[[config$column$indicator_id]] == indicator_name
+    )
 
   if (nrow(table_cell_data) == 0) {
     return(
@@ -256,14 +243,14 @@ table_data <- function(units, table_cell_data, indicator_name) {
       )
     )
   } else {
-  year <- table_cell_data[[config[["data"]][["column"]][["year"]]]]
-  total <- table_cell_data[["count"]]
-  level <- table_cell_data[["level"]]
+  year <- table_cell_data[[config$column$year]]
+  total <- table_cell_data[[config$column$denominator]]
+  level <- table_cell_data[[config$column$achieved_level]]
   indicator_value <- paste0(round(
-    table_cell_data[["indicator"]] * 100
+    table_cell_data[[config$column$variable]] * 100
   ), "%")
   number_of_ones <- round(
-    total * table_cell_data[["indicator"]]
+    total * table_cell_data[[config$column$variable]]
   )
 
     return(

@@ -52,15 +52,15 @@ top_navbar_server <- function(id, app_data, config) {
   #list of treatment units
   choices_treatment <- list(
     "RHF" = app_data[["grouped_by_rhf"]] %>%
-      purrr::pluck(config$data$column$unit_name$rhf) %>%
+      purrr::pluck(config$column$treatment_unit) %>%
       unique() %>%
       stringr::str_sort(locale = config$language),
     "HF" = app_data[["grouped_by_hf"]] %>%
-      purrr::pluck(config$data$column$unit_name$hfshort) %>%
+      purrr::pluck(config$column$treatment_unit) %>%
       unique() %>%
       stringr::str_sort(locale = config$language),
     "Sykehus" = app_data[["grouped_by_hospital"]] %>%
-      purrr::pluck(config$data$column$unit_name$sh) %>%
+      purrr::pluck(config$column$treatment_unit) %>%
       unique() %>%
       stringr::str_sort(locale = config$language))
 
@@ -83,7 +83,7 @@ top_navbar_server <- function(id, app_data, config) {
     shiny::selectInput(
       label = NULL,
       inputId = ns("pick_year"),
-      choices = c(2016, 2017, 2018, 2019) %>%
+      choices = c(2016, 2017, 2018) %>%
         sort(decreasing = T)
     )
   })
@@ -108,13 +108,13 @@ top_navbar_server <- function(id, app_data, config) {
   return(
     selected_units = shiny::reactive({
       selected_units <- list()
-      selected_units[[config$data$column$unit_name$rhf]] <- input$pick_treatment_units[
+      selected_units[[config$treatment_unit_level$rhf]] <- input$pick_treatment_units[
         shiny::req(input$pick_treatment_units) %in%
-          choices_treatment[[config$data$column$unit_name$rhf]]]
-      selected_units[[config$data$column$unit_name$hf]] <- input$pick_treatment_units[
+          choices_treatment$RHF]
+      selected_units[[config$treatment_unit_level$hf]] <- input$pick_treatment_units[
         shiny::req(input$pick_treatment_units) %in%
           choices_treatment$HF]
-      selected_units[[config$data$column$unit_name$sh]] <- input$pick_treatment_units[
+      selected_units[[config$treatment_unit_level$hospital]] <- input$pick_treatment_units[
       shiny::req(input$pick_treatment_units) %in%
         choices_treatment$Sykehus]
       selected_units[["year"]] <- input$pick_year

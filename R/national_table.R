@@ -48,14 +48,13 @@ national_table <- function(input_data, indicator_description, config) {
 #' @export
 #'
 tbody_content <- function(input_data, indicator_description, config) {
-  indicator_col_id <- config$data$column$qi_id
-  register_col_id <- config$data$column$source
+  indicator_col_id <- config$column$indicator_id
   register_name <- indicator_description %>%
     dplyr::filter(
-      .data[["IndID"]] %in%
+      .data[[config$column$id]] %in%
         unique(input_data[[indicator_col_id]])
     ) %>%
-    purrr::pluck(register_col_id) %>%
+    purrr::pluck(config$column$registry_full_name) %>%
     unique() %>%
     stringr::str_sort(locale = config$language)
 
@@ -63,9 +62,9 @@ tbody_content <- function(input_data, indicator_description, config) {
     register_name,
     function(reg_name) {
       indicator_description <- indicator_description %>%
-        dplyr::filter(.data[[register_col_id]] == reg_name)
+        dplyr::filter(.data[[config$column$registry_full_name]] == reg_name)
       indicators_in_reg <- indicator_description %>%
-        purrr::pluck("IndID") %>%
+        purrr::pluck(config$column$id) %>%
         unique()
       input_data <- input_data %>%
         dplyr::filter(.data[[indicator_col_id]] %in% indicators_in_reg)
@@ -97,7 +96,7 @@ tbody_content <- function(input_data, indicator_description, config) {
 #' @export
 #'
 national_register_content <- function(input_data, indicator_description, config) {
-  indicator_col_id <- config$data$column$qi_id
+  indicator_col_id <- config$column$indicator_id
   indicator_name <- input_data %>%
     purrr::pluck(indicator_col_id) %>%
     unique()
@@ -105,7 +104,7 @@ national_register_content <- function(input_data, indicator_description, config)
     indicator_name,
     function(indicator_name) {
       indicator_description <- indicator_description %>%
-        dplyr::filter(.data[["IndID"]] == indicator_name)
+        dplyr::filter(.data[[config$column$id]] == indicator_name)
       input_data <- input_data %>%
         dplyr::filter(.data[[indicator_col_id]] == indicator_name)
       table_d <- nattional_indicator_content(
@@ -141,8 +140,9 @@ nattional_indicator_content <- function(input_data, indicator_description, confi
         desired_level_text = config$app_text$indicators$high),
       indicator_value_td(
         td_data = input_data,
-        col_name_indicator_id = config$data$column$qi_id,
-        class_name = "nationally"
+        col_name_indicator_id = config$column$indicator_id,
+        class_name = "nationally",
+        config = config
       )
     )
   )
@@ -196,18 +196,18 @@ register_tr <- function(register_name, col_span) {
 
 description_td <- function(description_row, desired_level_text) {
   #config$app_text$table$desired_level
-  if (description_row["MaalRetn"] == 0) {
+  if (description_row[config$column$level_direction] == 0) {
     direction <-  "< "
-  } else if (description_row["MaalRetn"] == 1) {
+  } else if (description_row[config$column$level_direction] == 1) {
     direction <-   "> "
   }
-  green_value <- paste0(description_row["MaalNivaaGronn"] * 100, "%")
+  green_value <- paste0(description_row[config$column$level_green] * 100, "%")
   indicator_desired_level <- paste(
     desired_level_text, ": ",
     direction, green_value, sep = ""
   )
-  indicator_long_desc <- description_row["BeskrivelseKort"]
-  indicator_title <- description_row["IndTittel"]
+  indicator_long_desc <- description_row[config$column$indicator_short_description]
+  indicator_title <- description_row[config$column$indicator_title]
 
   return(
     tags$td(
@@ -249,7 +249,7 @@ description_td <- function(description_row, desired_level_text) {
 #' @export
 #'
 
-indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "National") {
+indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "National", config) {
   if (nrow(td_data) == 0) {
     return(
       tags$td(
@@ -258,13 +258,13 @@ indicator_value_td <- function(td_data, col_name_indicator_id, class_name = "Nat
       )
     )
   } else {
-    total <- td_data[["count"]]
-    level <- td_data[["level"]]
+    total <- td_data[[config$column$denominator]]
+    level <- td_data[[config$column$achieved_level]]
     indicator_value <- paste0(round(
-      td_data[["indicator"]] * 100
+      td_data[[config$column$variable]] * 100
     ), "%")
     number_of_ones <- round(
-      total * td_data[["indicator"]]
+      total * td_data[[config$column$variabl]]
     )
 
     return(
