@@ -169,32 +169,34 @@ quality_overview_server <- function(id) {
 
   #table output
   output$qi_table <- shiny::renderUI({
-
-    if (!shiny::isTruthy(input$pick_treatment_units)) {
-      national_table_data <- national_data %>%
-        dplyr::filter(
-          .data[[config$column$year]] == shiny::req(input$pick_year),
-          .data[[config$column$indicator_id]] %in% filter_indicator$indicator(),
-          .data[[config$column$achieved_level]] %in% filter_indicator$level()
+    if (shiny::isTruthy(input$pick_year)) {
+      if (!shiny::isTruthy(input$pick_treatment_units)) {
+        national_table_data <- national_data %>%
+          dplyr::filter(
+            .data[[config$column$year]] == shiny::req(input$pick_year),
+            .data[[config$column$indicator_id]] %in% filter_indicator$indicator(),
+            .data[[config$column$achieved_level]] %in% filter_indicator$level()
+          )
+        qmongr::national_table(
+          input_data = national_table_data,
+          indicator_description = app_data$register_data$description,
+          config = config
         )
-      qmongr::national_table(
-        input_data = national_table_data,
-        indicator_description = app_data$register_data$description,
-        config = config
-      )
 
-    } else {
-      if (length(shiny::req(selected_units()$year)) > 1) {
-        return(NULL)
+      } else {
+        if (length(shiny::req(selected_units()$year)) > 1) {
+          return(NULL)
+        }
+        qmongr::qi_table(filtered_data(), selected_units(), register_data$description, config)
       }
-      qmongr::qi_table(filtered_data(), selected_units(), register_data$description, config)
     }
-
   })
 
   #filtering by field
   output$qi_overview <- shiny::renderUI({
+    if (shiny::isTruthy(input$pick_year)) {
       sidebar_qo_ui(id = "quality_overview_ui_1", list_of_med_fields = num_qi_per_med_field())
+    }
   })
 
   #data passed to js
@@ -207,8 +209,8 @@ quality_overview_server <- function(id) {
       #   "var indicator_rhf =", jsonlite::toJSON(app_data$grouped_by_rhf), ";",
       #   "var indicator_nat =", jsonlite::toJSON(app_data$national_data), ";",
       #   "
-      #    ;</script>",  shiny::tags$script(src = "www/qmongr.js")
-      #
+      #    ;</script>"#,  shiny::tags$script(src = "www/qmongr.js")
+      # 
       # )
     })
   })
