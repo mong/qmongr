@@ -19,6 +19,8 @@ table_body_constructor(
 
 \item{national}{a df with national indicator values}
 
+\item{indicator_description}{indicator description}
+
 \item{config}{the configuration setup}
 }
 \value{

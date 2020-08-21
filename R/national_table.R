@@ -190,7 +190,8 @@ register_tr <- function(register_name, col_span) {
 #' @param desired_level_text text from config about the desired level
 #' @return to td tag with three div, the first with the indicator title,
 #' the second has the description and the last surround the desired levels
-#'
+#' @param config the configuration setup
+#' 
 #' @importFrom shiny tags
 #' @export
 #'
@@ -241,6 +242,7 @@ description_td <- function(description_row, desired_level_text, config) {
 #' @param col_name_indicator_id column name of the indicator column
 #'  from config
 #' @param class_name class name of the td. can be "selected_unit" or "National"
+#' @param config the configuration setup
 #'
 #' @return td with two divs. The first includes the indicator value
 #'  and corresponding icon and the second the number of individuals

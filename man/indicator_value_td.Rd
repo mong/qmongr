@@ -19,6 +19,8 @@ corresponds to the selected unit}
 from config}
 
 \item{class_name}{class name of the td. can be "selected_unit" or "National"}
+
+\item{config}{the configuration setup}
 }
 \value{
 td with two divs. The first includes the indicator value

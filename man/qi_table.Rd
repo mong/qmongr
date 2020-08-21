@@ -12,6 +12,8 @@ table from}
 
 \item{selected_units}{the chosen unit}
 
+\item{indicator_description}{indicator description}
+
 \item{config}{the configuration setup}
 }
 \description{

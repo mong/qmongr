@@ -4,6 +4,7 @@
 #'   table from
 #' @param selected_units the chosen unit
 #' @param config the configuration setup
+#' @param indicator_description indicator description
 #'
 #' @importFrom shiny tags
 #' @export
@@ -65,6 +66,7 @@ qi_table <- function(table_data, selected_units, indicator_description, config) 
 #' @param units selected treatment units
 #' @param national a df with national indicator values
 #' @param config the configuration setup
+#' @param indicator_description indicator description
 #'
 #' @importFrom rlang .data
 #' @importFrom shiny tags
