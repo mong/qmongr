@@ -32,21 +32,6 @@ app_text:
             - Mottatt
             - Akkurat
             - Livet er herlig!
-data:
-    column:
-        year: "Aar"
-        qi_id: "KvalIndID"
-        unit_name:
-            sh: "SykehusNavn"
-            hf: "HF"
-            rhf: "RHF"
-            hfshort: "Hfkortnavn"
-        unit_id:
-            sh: "OrgNrShus"
-            hf: "OrgNrHF"
-            rhf: "OrgNrRHF"
-        variable: "Variabel"
-        source: "Register"
 
 table:
     aggregated_data: agg_data

@@ -3,3 +3,20 @@
 config <- qmongr::get_config()
 aggr_data <- qmongrdata:::app_data(config)
 usethis::use_data(aggr_data, overwrite = TRUE)
+
+
+## Renamed columns Aug. 21 2020
+
+aggr_data <- qmongr::aggr_data
+aggr_data$register_data$description <- aggr_data$register_data$description
+aggr_data$register_data$description <- aggr_data$register_data$description %>% dplyr::rename(id = IndID)
+aggr_data$register_data$description <- aggr_data$register_data$description %>% dplyr::rename(registry_id = Register, title = IndTittel, name = IndNavn, level_green = MaalNivaaGronn, level_yellow = MaalNivaaGul)
+aggr_data$register_data$description <- aggr_data$register_data$description %>% dplyr::rename(short_description = BeskrivelseKort, long_description = BeskrivelseLang)
+aggr_data$register_data$description <- aggr_data$register_data$description %>% dplyr::rename(level_direction = MaalRetn)
+aggr_data$grouped_by_hospital <- aggr_data$grouped_by_hospital %>% dplyr::rename(year = Aar, ind_id = KvalIndID, var = count, unit_name = SykehusNavn, orgnr = OrgNrShus)
+aggr_data$grouped_by_hf <- aggr_data$grouped_by_hf %>% dplyr::rename(year = Aar, ind_id = KvalIndID, var = count, unit_name = Hfkortnavn, orgnr = OrgNrHF)
+aggr_data$grouped_by_rhf <- aggr_data$grouped_by_rhf %>% dplyr::rename(year = Aar, ind_id = KvalIndID, var = count, unit_name = RHF, orgnr = OrgNrRHF)
+aggr_data$national_data <- aggr_data$national_data %>% dplyr::rename(year = Aar, ind_id = KvalIndID, var = count)
+
+
+usethis::use_data(aggr_data, overwrite = TRUE)
