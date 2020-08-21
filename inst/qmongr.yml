@@ -18,7 +18,8 @@ app_text:
         version:
             app:
             - qmongr
-            - qmongrdata
+            - imongr
+            - shiny
         action_button:
             no_opt_out_ok:
             - Den er grei

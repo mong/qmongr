@@ -1,5 +1,7 @@
 # Unreleased
 
+## No longer using qmongrdata ([#159](https://github.com/mong/qmongr/pull/159)
+
 # qmongr 0.13.0
 
 ## Use imongr database ([#156](https://github.com/mong/qmongr/pull/156)
