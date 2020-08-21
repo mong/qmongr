@@ -4,7 +4,7 @@
 \alias{description_td}
 \title{td tag with indicator description}
 \usage{
-description_td(description_row, desired_level_text)
+description_td(description_row, desired_level_text, config)
 }
 \arguments{
 \item{description_row}{a single row from the description table which
@@ -12,6 +12,8 @@ includes the indicator id, indicator title and a short description
 of the indicator and the desired indicator values}
 
 \item{desired_level_text}{text from config about the desired level}
+
+\item{config}{the configuration setup}
 }
 \value{
 to td tag with three div, the first with the indicator title,

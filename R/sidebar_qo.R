@@ -44,7 +44,7 @@ sidebar_qo_ui <- function(id, list_of_med_fields) {
 #' @rdname sidebar_qo
 #' @export
 #' @keywords internal
-sidebar_qo_server <- function(id, register_data_description) {
+sidebar_qo_server <- function(id, register_data_description, config) {
   shiny::moduleServer(id, function(input, output, session) {
 
   filter_indicator <- shiny::reactiveValues()
@@ -58,9 +58,9 @@ sidebar_qo_server <- function(id, register_data_description) {
             clicked_reg <- qmongrdata::fagomr[[x]][["key"]]
             filter_indicator$indicator <- register_data_description %>%
               dplyr::filter(
-                .data[["Register"]] %in% clicked_reg
+                .data[[config$column$registry_short_name]] %in% clicked_reg
               ) %>%
-              purrr::pluck("IndID") %>%
+              purrr::pluck(config$column$id) %>%
               unique()
           }
         )
@@ -69,7 +69,7 @@ sidebar_qo_server <- function(id, register_data_description) {
     shiny::observeEvent(
       input$alle, {
         filter_indicator$indicator <- register_data_description %>%
-          purrr::pluck("IndID") %>%
+          purrr::pluck(config$column$id) %>%
           unique()
       })
   })
@@ -77,7 +77,7 @@ sidebar_qo_server <- function(id, register_data_description) {
     indicator <- shiny::reactive({
       if (rlang::is_empty(filter_indicator$indicator)) {
         filter_indicator$indicator <- register_data_description %>%
-          purrr::pluck("IndID") %>%
+          purrr::pluck(config$column$id) %>%
           unique()
       }
       filter_indicator$indicator

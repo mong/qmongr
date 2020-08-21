@@ -18,24 +18,22 @@ agg_data <- function() {
     pool <- imongr::make_pool()
     on.exit(imongr::drain_pool(pool))
     description <- imongr::get_indicator(pool)
+    registry <- imongr::get_registry(pool)
+
+    registry <- dplyr::rename(
+      registry,
+      rname = name,
+      registry_id = id
+    )
+    description <- description %>% dplyr::inner_join(registry, by = conf$column$registry_id)
     df <- imongr::get_agg_data(pool)
-    # some vars need to be translated
-    # should be avoided when agreemnt upon consistent data model...
-    names(df)[names(df) == "IndID"] <- conf$data$column$qi_id
     # split unit levels and continue renaming
-    grouped_by_hospital <- df[df$unit_level == "shus", ]
-    names(grouped_by_hospital)[names(grouped_by_hospital) == "OrgNr"] <-
-      "OrgNrShus"
-    names(grouped_by_hospital)[names(grouped_by_hospital) == "unit_name"] <-
-      "SykehusNavn"
+    grouped_by_hospital <- df[df$unit_level == "hospital", ]
     grouped_by_hf <- df[df$unit_level == "hf", ]
-    names(grouped_by_hf)[names(grouped_by_hf) == "OrgNr"] <- "OrgNrHF"
-    names(grouped_by_hf)[names(grouped_by_hf) == "unit_name"] <- "Hfkortnavn"
     grouped_by_rhf <- df[df$unit_level == "rhf", ]
-    names(grouped_by_rhf)[names(grouped_by_rhf) == "OrgNr"] <- "OrgNrRHF"
-    names(grouped_by_rhf)[names(grouped_by_rhf) == "unit_name"] <- "RHF"
-    national_data <- df[df$unit_level == "nasjonal", ]
-    list(register_data = list(description = tibble::tibble(description)),
+    national_data <- df[df$unit_level == "nation", ]
+
+    list(register_data = list(description = description),
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
          grouped_by_rhf = grouped_by_rhf,

@@ -4,7 +4,7 @@
 \alias{table_data}
 \title{Insert values in table}
 \usage{
-table_data(units, table_cell_data, indicator_name)
+table_data(units, table_cell_data, indicator_name, config)
 }
 \arguments{
 \item{units}{selected treatment units}
@@ -12,6 +12,8 @@ table_data(units, table_cell_data, indicator_name)
 \item{table_cell_data}{table cell data}
 
 \item{indicator_name}{names of the input qi}
+
+\item{config}{the configuration setup}
 }
 \value{
 the contnets of a td tag

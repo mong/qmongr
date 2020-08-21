@@ -4,7 +4,12 @@
 \alias{indicator_value_td}
 \title{adds td tag around indicator values}
 \usage{
-indicator_value_td(td_data, col_name_indicator_id, class_name = "National")
+indicator_value_td(
+  td_data,
+  col_name_indicator_id,
+  class_name = "National",
+  config
+)
 }
 \arguments{
 \item{td_data}{a row of indicator data from the dataframe that
@@ -14,6 +19,8 @@ corresponds to the selected unit}
 from config}
 
 \item{class_name}{class name of the td. can be "selected_unit" or "National"}
+
+\item{config}{the configuration setup}
 }
 \value{
 td with two divs. The first includes the indicator value
