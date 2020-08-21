@@ -18,6 +18,27 @@ aggr_data$grouped_by_hf <- aggr_data$grouped_by_hf %>% dplyr::rename(year = Aar,
 aggr_data$grouped_by_rhf <- aggr_data$grouped_by_rhf %>% dplyr::rename(year = Aar, ind_id = KvalIndID, denominator = count, unit_name = RHF, orgnr = OrgNrRHF, var = indicator)
 aggr_data$national_data <- aggr_data$national_data %>% dplyr::rename(year = Aar, ind_id = KvalIndID, denominator = count, var = indicator)
 
+aggr_data$grouped_by_hospital <- aggr_data$grouped_by_hospital %>%
+  dplyr::mutate(desired_level = dplyr::case_when(desired_level == "Høyt" ~ 1,
+                                                 desired_level == "Lavt" ~ 0)) %>%
+  dplyr::rename(level_direction = desired_level)
+
+aggr_data$grouped_by_hf <- aggr_data$grouped_by_hf %>%
+  dplyr::mutate(desired_level = dplyr::case_when(desired_level == "Høyt" ~ 1,
+                                                 desired_level == "Lavt" ~ 0)) %>%
+  dplyr::rename(level_direction = desired_level)
+
+aggr_data$grouped_by_rhf <- aggr_data$grouped_by_rhf %>%
+  dplyr::mutate(desired_level = dplyr::case_when(desired_level == "Høyt" ~ 1,
+                                                 desired_level == "Lavt" ~ 0)) %>%
+  dplyr::rename(level_direction = desired_level)
+
+aggr_data$national_data <- aggr_data$national_data %>%
+  dplyr::mutate(desired_level = dplyr::case_when(desired_level == "Høyt" ~ 1,
+                                                 desired_level == "Lavt" ~ 0)) %>%
+  dplyr::rename(level_direction = desired_level)
+
+
 aggr_data$national_data$unit_name <- "Nasjonalt"
 
 
