@@ -191,13 +191,12 @@ register_tr <- function(register_name, col_span) {
 #' @return to td tag with three div, the first with the indicator title,
 #' the second has the description and the last surround the desired levels
 #' @param config the configuration setup
-#' 
+#'
 #' @importFrom shiny tags
 #' @export
 #'
 
 description_td <- function(description_row, desired_level_text, config) {
-  #config$app_text$table$desired_level
   if (description_row[config$column$level_direction] == 0) {
     direction <-  "< "
   } else if (description_row[config$column$level_direction] == 1) {
