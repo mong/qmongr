@@ -42,7 +42,18 @@ aggr_data$national_data <- aggr_data$national_data %>%
 aggr_data$national_data$unit_name <- "Nasjonalt"
 
 
-aggr_data$register_data$description$full_name <- "Norsk bløtskaderegister"
+aggr_data$register_data$description <- aggr_data$register_data$description %>%
+  dplyr::mutate(full_name = dplyr::case_when(
+    registry_id == "intensiv" ~ "Intensiv",
+    registry_id == "nkr_nakke" ~ "Nakke",
+    registry_id == "muskel" ~ "Muskel",
+    registry_id == "nnrr" ~ "NNRR",
+    registry_id == "norgast" ~ "Norgast",
+    registry_id == "norvas" ~ "Norvas",
+    registry_id == "nra" ~ "NRA",
+    registry_id == "rygg" ~ "Rygg",
+    registry_id == "hoftebrudd" ~ "Hoftebrudd"
+  ))
 
 usethis::use_data(aggr_data, overwrite = TRUE)
 
