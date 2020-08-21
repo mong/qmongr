@@ -68,5 +68,3 @@ aggr_data$register_data$description <- aggr_data$register_data$description %>%
   ))
 
 usethis::use_data(aggr_data, overwrite = TRUE)
-
-
