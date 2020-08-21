@@ -137,7 +137,8 @@ nattional_indicator_content <- function(input_data, indicator_description, confi
     shiny::tagList(
       description_td(
         description_row = indicator_description,
-        desired_level_text = config$app_text$indicators$high),
+        desired_level_text = config$app_text$indicators$high,
+        config = config),
       indicator_value_td(
         td_data = input_data,
         col_name_indicator_id = config$column$indicator_id,
@@ -194,7 +195,7 @@ register_tr <- function(register_name, col_span) {
 #' @export
 #'
 
-description_td <- function(description_row, desired_level_text) {
+description_td <- function(description_row, desired_level_text, config) {
   #config$app_text$table$desired_level
   if (description_row[config$column$level_direction] == 0) {
     direction <-  "< "

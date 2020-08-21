@@ -178,9 +178,9 @@ quality_overview_server <- function(id) {
           .data[[config$column$achieved_level]] %in% filter_indicator$level()
         )
       qmongr::national_table(
-        national_table_data,
-        app_data$register_data$description,
-        config
+        input_data = national_table_data,
+        indicator_description = app_data$register_data$description,
+        config = config
       )
 
     } else {
