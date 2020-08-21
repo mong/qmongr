@@ -4,7 +4,7 @@
 \alias{description_td}
 \title{td tag with indicator description}
 \usage{
-description_td(description_row, desired_level_text)
+description_td(description_row, desired_level_text, config)
 }
 \arguments{
 \item{description_row}{a single row from the description table which

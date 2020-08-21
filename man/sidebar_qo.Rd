@@ -8,7 +8,7 @@
 \usage{
 sidebar_qo_ui(id, list_of_med_fields)
 
-sidebar_qo_server(id, register_data_description)
+sidebar_qo_server(id, register_data_description, config)
 }
 \arguments{
 \item{id}{shiny id}

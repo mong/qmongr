@@ -4,7 +4,12 @@
 \alias{indicator_value_td}
 \title{adds td tag around indicator values}
 \usage{
-indicator_value_td(td_data, col_name_indicator_id, class_name = "National")
+indicator_value_td(
+  td_data,
+  col_name_indicator_id,
+  class_name = "National",
+  config
+)
 }
 \arguments{
 \item{td_data}{a row of indicator data from the dataframe that

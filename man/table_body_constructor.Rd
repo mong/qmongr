@@ -4,7 +4,13 @@
 \alias{table_body_constructor}
 \title{Construct table body}
 \usage{
-table_body_constructor(datatable, units, national, config)
+table_body_constructor(
+  datatable,
+  units,
+  national,
+  indicator_description,
+  config
+)
 }
 \arguments{
 \item{datatable}{a row of a df}

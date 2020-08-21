@@ -4,7 +4,7 @@
 \alias{qi_table}
 \title{html table}
 \usage{
-qi_table(table_data, selected_units, config)
+qi_table(table_data, selected_units, indicator_description, config)
 }
 \arguments{
 \item{table_data}{a dataframe to construct the
