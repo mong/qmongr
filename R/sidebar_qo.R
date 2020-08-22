@@ -49,13 +49,13 @@ sidebar_qo_server <- function(id, register_data_description, config) {
 
   filter_indicator <- shiny::reactiveValues()
   shiny::observe({
-    fagomr <- names(qmongrdata::fagomr)
+    fagomr <- names(qmongr::fagomr)
     clicked_register <- lapply(
       fagomr,
       function(x) {
         shiny::observeEvent(
           input[[x]], {
-            clicked_reg <- qmongrdata::fagomr[[x]][["key"]]
+            clicked_reg <- qmongr::fagomr[[x]][["key"]]
             filter_indicator$indicator <- register_data_description %>%
               dplyr::filter(
                 .data[[config$column$registry_short_name]] %in% clicked_reg

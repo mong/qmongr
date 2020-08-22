@@ -118,7 +118,7 @@ quality_overview_server <- function(id) {
         unique()
     }
 
-    med_field_list <- lapply(qmongrdata::fagomr, my_func, selected_indicators)
+    med_field_list <- lapply(qmongr::fagomr, my_func, selected_indicators)
     return(med_field_list)
   })
 

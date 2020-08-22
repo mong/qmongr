@@ -3,7 +3,7 @@
 \docType{data}
 \name{aggr_data}
 \alias{aggr_data}
-\title{Data used by the app}
+\title{Data used by the app if database is not used}
 \format{
 An object of class \code{list} of length 5.
 }
@@ -11,6 +11,6 @@ An object of class \code{list} of length 5.
 aggr_data
 }
 \description{
-Data used by the app
+Data used by the app if database is not used
 }
 \keyword{datasets}

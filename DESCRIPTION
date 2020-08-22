@@ -40,9 +40,7 @@ Imports:
     rlang,
     yaml,
     jsonlite,
-    tibble,
-    qmongrdata (>= 0.2.5)
+    tibble
 Depends: R (>= 3.5)
 Remotes:
-    mong/imongr@*release,
-    mong/qmongrdata@*release
+    mong/imongr@*release
