@@ -1,4 +1,9 @@
-# Unreleased
+# qmongr 0.13.2
+
+## Minor
+
+- Fixed start up error ([#161](https://github.com/mong/qmongr/pull/161).
+- Reintroduced 2019 data ([#162](https://github.com/mong/qmongr/pull/162).
 
 # qmongr 0.13.1
 

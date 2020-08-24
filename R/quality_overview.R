@@ -210,7 +210,7 @@ quality_overview_server <- function(id) {
       #   "var indicator_nat =", jsonlite::toJSON(app_data$national_data), ";",
       #   "
       #    ;</script>"#,  shiny::tags$script(src = "www/qmongr.js")
-      # 
+      #
       # )
     })
   })
