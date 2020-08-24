@@ -83,7 +83,7 @@ top_navbar_server <- function(id, app_data, config) {
     shiny::selectInput(
       label = NULL,
       inputId = ns("pick_year"),
-      choices = c(2016, 2017, 2018) %>%
+      choices = c(2016, 2017, 2018, 2019) %>%
         sort(decreasing = T)
     )
   })
