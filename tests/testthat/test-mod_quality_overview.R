@@ -46,7 +46,7 @@ test_that("quality_overview_server without input", {
         expect_equal(output$year[["deps"]][[1]][["name"]],
                      "selectize")
 
-        expect_error(output$qi_table)
+        expect_null(output$qi_table)
     })
 })
 
@@ -63,7 +63,7 @@ test_that("quality_overview_server without treatment unit", {
 test_that("quality_overview_server errors", {
   shiny::testServer(quality_overview_server, {
     session$setInputs(pick_treatment_units = "Trondheim")
-    expect_error(output$qi_table)
+    expect_null(output$qi_table)
 
     session$setInputs(pick_treatment_units = "Trondheim")
     session$setInputs(pick_year = c("2017", "2018", "2019"))
