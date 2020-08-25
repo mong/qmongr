@@ -1,19 +1,27 @@
-# Unreleased
+# qmongr 0.14.0
+
+## Hamburger menu next to figures ([#164](https://github.com/mong/qmongr/pull/164))
+
+- Zoom out and in
+- Show target levels in graph
+- Close figure
+
+Javascript reactivated (deactivated in [qmongr 0.13.0](#qmongr-0130))
 
 # qmongr 0.13.2
 
 ## Minor
 
-- Fixed start up error ([#161](https://github.com/mong/qmongr/pull/161).
-- Reintroduced 2019 data ([#162](https://github.com/mong/qmongr/pull/162).
+- Fixed start up error ([#161](https://github.com/mong/qmongr/pull/161)).
+- Reintroduced 2019 data ([#162](https://github.com/mong/qmongr/pull/162)).
 
 # qmongr 0.13.1
 
-## No longer using qmongrdata ([#159](https://github.com/mong/qmongr/pull/159)
+## No longer using qmongrdata ([#159](https://github.com/mong/qmongr/pull/159))
 
 # qmongr 0.13.0
 
-## Use imongr database ([#156](https://github.com/mong/qmongr/pull/156)
+## Use imongr database ([#156](https://github.com/mong/qmongr/pull/156))
 
 ## Internal
 
