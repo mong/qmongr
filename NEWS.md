@@ -1,3 +1,5 @@
+# Unreleased
+
 # qmongr 0.14.0
 
 ## Hamburger menu next to figures ([#164](https://github.com/mong/qmongr/pull/164))
