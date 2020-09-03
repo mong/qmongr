@@ -1,4 +1,6 @@
-# Unreleased
+# qmongr 0.14.1
+
+- "Alle" -> "Alle indikatorer" in left side menu ([165](https://github.com/mong/qmongr/pull/165))
 
 # qmongr 0.14.0
 
