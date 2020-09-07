@@ -20,7 +20,7 @@ med_field_list <- function(id, category_name, nr_of_reg, all_id) {
           class = "qi_category",
           shiny::actionLink(
             inputId = all_id,
-            shiny::tags$h2("Alle")
+            shiny::tags$h2("Alle indikatorer")
           )
         ),
         tags$div(
