@@ -19,7 +19,8 @@ kreft:
         - lymfoid
         - melanom
         - prostata
-        - tarmkreft
+        - tarmkreft_colon
+        - tarmkreft_rectum
 
 luft:
     name: "Luftveier"
@@ -51,7 +52,7 @@ muskel:
         - nnrr
         - muskel
         - nkr_nakke
-        - rygg
+        - nkr_rygg
 
 tarm:
     name: "Mage og tarm"
