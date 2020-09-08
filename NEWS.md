@@ -1,3 +1,9 @@
+# qmongr 0.14.2
+
+Updated `fagomr`  according to database update:
+- Split `tarmkreft` into `tarmkreft_colon` and `tarmkreft_rectum`.
+- Renamed `rygg` to `nkr_rygg` (to be consistent with `nkr_nakke`).
+
 # qmongr 0.14.1
 
 - "Alle" -> "Alle indikatorer" in left side menu ([165](https://github.com/mong/qmongr/pull/165))
