@@ -8,3 +8,4 @@
 *.tar.gz
 docs/
 _qmongr.yml
+*.gz
