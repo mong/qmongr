@@ -35,6 +35,13 @@ get_data <- function() {
       dplyr::left_join(include, by = c("ind_id" = "id"))
     df <- df %>%
       dplyr::filter(.data$include == 1)
+    ## coverage
+    if (conf$coverage$use) {
+      df <- df %>% 
+        dplyr::filter(!is.na(dg))
+      df <- df %>% 
+        dplyr::filter(dg >= conf$coverage$level)
+    }
     
     # split unit levels and continue renaming
     grouped_by_hospital <- df[df$unit_level == "hospital", ]
