@@ -27,6 +27,15 @@ get_data <- function() {
     )
     description <- description %>% dplyr::inner_join(registry, by = conf$column$registry_id)
     df <- imongr::get_agg_data(pool)
+    
+    # filters
+    ## include
+    include <- dplyr::select(description, id, include)
+    df <- df %>% 
+      dplyr::left_join(include, by = c("ind_id" = "id"))
+    df <- df %>%
+      dplyr::filter(.data$include == 1)
+    
     # split unit levels and continue renaming
     grouped_by_hospital <- df[df$unit_level == "hospital", ]
     grouped_by_hf <- df[df$unit_level == "hf", ]
