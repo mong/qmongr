@@ -4,6 +4,7 @@
 #'
 #' @return List of data sets
 #' @name data_source
+#' @importFrom rlang .data
 #' @aliases get_data
 NULL
 
@@ -28,28 +29,28 @@ get_data <- function() {
     description <- description %>%
       dplyr::inner_join(registry, by = conf$column$registry_id)
     df <- imongr::get_agg_data(pool)
-    
+
     # filter
     ## include
-    include <- dplyr::select(description, id, include)
-    df <- df %>% 
+    include <- dplyr::select(description, .data$id, .data$include)
+    df <- df %>%
       dplyr::left_join(include, by = c("ind_id" = "id"))
     df <- df %>%
       dplyr::filter(.data$include == 1)
     ## coverage
     if (conf$filter$coverage$use) {
-      df <- df %>% 
-        dplyr::filter(!is.na(dg))
-      df <- df %>% 
-        dplyr::filter(dg >= conf$filter$coverage$level)
+      df <- df %>%
+        dplyr::filter(!is.na(.data$dg))
+      df <- df %>%
+        dplyr::filter(.data$dg >= conf$filter$coverage$level)
     }
     ## age
     if (conf$filter$age$use) {
       year_end <- as.numeric(format(Sys.Date(), "%Y")) - conf$filter$age$years
-      df <- df %>% 
+      df <- df %>%
         dplyr::filter(year >= year_end)
     }
-    
+
     # split unit levels and continue renaming
     grouped_by_hospital <- df[df$unit_level == "hospital", ]
     grouped_by_hf <- df[df$unit_level == "hf", ]
