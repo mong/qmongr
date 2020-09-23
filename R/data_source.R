@@ -4,12 +4,12 @@
 #'
 #' @return List of data sets
 #' @name data_source
-#' @aliases agg_data
+#' @aliases get_data
 NULL
 
 #' @rdname data_source
 #' @export
-agg_data <- function() {
+get_data <- function() {
 
   if (Sys.getenv("IMONGR_CONTEXT") == "DEV" |
       grepl("node", Sys.getenv("NODE_NAME"))) {
