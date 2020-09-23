@@ -25,10 +25,11 @@ get_data <- function() {
       rname = name,
       registry_id = id
     )
-    description <- description %>% dplyr::inner_join(registry, by = conf$column$registry_id)
+    description <- description %>%
+      dplyr::inner_join(registry, by = conf$column$registry_id)
     df <- imongr::get_agg_data(pool)
     
-    # filters
+    # filter
     ## include
     include <- dplyr::select(description, id, include)
     df <- df %>% 
@@ -36,11 +37,17 @@ get_data <- function() {
     df <- df %>%
       dplyr::filter(.data$include == 1)
     ## coverage
-    if (conf$coverage$use) {
+    if (conf$filter$coverage$use) {
       df <- df %>% 
         dplyr::filter(!is.na(dg))
       df <- df %>% 
-        dplyr::filter(dg >= conf$coverage$level)
+        dplyr::filter(dg >= conf$filter$coverage$level)
+    }
+    ## age
+    if (conf$filter$age$use) {
+      year_end <- as.numeric(format(Sys.Date(), "%Y")) - conf$filter$age$years
+      df <- df %>% 
+        dplyr::filter(year >= year_end)
     }
     
     # split unit levels and continue renaming

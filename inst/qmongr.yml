@@ -98,6 +98,10 @@ desired_level:
     high: Høyt
     low: Lavt
 
-coverage:
-    use: TRUE
-    level: 0.60
+filter:
+    coverage:
+      use: TRUE
+      level: 0.60
+    age:
+      use: TRUE
+      years: 4
