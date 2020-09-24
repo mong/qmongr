@@ -100,7 +100,7 @@ desired_level:
 
 filter:
     coverage:
-      use: TRUE
+      use: FALSE
       level: 0.60
     age:
       use: TRUE
