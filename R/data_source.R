@@ -47,8 +47,12 @@ get_data <- function() {
     ## age
     if (conf$filter$age$use) {
       year_end <- as.numeric(format(Sys.Date(), "%Y")) - conf$filter$age$years
+      selectable_treatment_units <- df %>%
+        dplyr::filter(year >= year_end) %>%
+        dplyr::select(conf$column$treatment_unit) %>% 
+        purrr::pluck()
       df <- df %>%
-        dplyr::filter(year >= year_end)
+        dplyr::filter(conf$column$treatment_unit %in% selectable_treatment_units)
     }
 
     # split unit levels and continue renaming
