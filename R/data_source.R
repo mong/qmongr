@@ -39,6 +39,7 @@ get_data <- function() {
       dplyr::filter(.data$include == 1)
     ## coverage
     if (conf$filter$coverage$use) {
+      print("Filter by coverage")
       df <- df %>%
         dplyr::filter(!is.na(.data$dg))
       df <- df %>%
@@ -49,10 +50,10 @@ get_data <- function() {
       year_end <- as.numeric(format(Sys.Date(), "%Y")) - conf$filter$age$years
       selectable_treatment_units <- df %>%
         dplyr::filter(year >= year_end) %>%
-        dplyr::select(conf$column$treatment_unit) %>% 
-        purrr::pluck()
-      df <- df %>%
-        dplyr::filter(conf$column$treatment_unit %in% selectable_treatment_units)
+        dplyr::select(conf$column$treatment_unit) %>%
+        dplyr::distinct() %>%
+        dplyr::pull()
+      df <- df[df[[conf$column$treatment_unit]] %in% selectable_treatment_units, ]
     }
 
     # split unit levels and continue renaming
