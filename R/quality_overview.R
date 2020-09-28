@@ -17,9 +17,8 @@ NULL
 #' @importFrom shiny NS tagList
 quality_overview_ui <- function(id) {
   ns <- shiny::NS(id)
-  config <- qmongr::get_config()
   tagList(
-    shiny::tags$div(id="root"),
+    shiny::tags$div(id = "root"),
     shiny::htmlOutput(ns("json"))
   )
 }
@@ -34,8 +33,6 @@ quality_overview_ui <- function(id) {
 quality_overview_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
   #All the processed data
-
-  config <- qmongr::get_config()
   app_data <- qmongr::get_data()
   register_data <- app_data[["register_data"]]
   grouped_by_hf <- app_data[["grouped_by_hf"]]
@@ -47,17 +44,15 @@ quality_overview_server <- function(id) {
   output$json <- shiny::reactive({
       paste(
         "<script> var  description = ",
-        jsonlite::toJSON(app_data$register_data$description, na = "null"), ";",
-        "var indicator_hosp =", jsonlite::toJSON(app_data$grouped_by_hospital), ";",
-        "var indicator_hf =", jsonlite::toJSON(app_data$grouped_by_hf), ";",
-        "var indicator_rhf =", jsonlite::toJSON(app_data$grouped_by_rhf), ";",
-        "var indicator_nat =", jsonlite::toJSON(app_data$national_data), ";",
-        "
-         ;</script>",
+          jsonlite::toJSON(app_data$register_data$description, na = "null"), ";",
+          "var indicator_hosp =", jsonlite::toJSON(app_data$grouped_by_hospital), ";",
+          "var indicator_hf =", jsonlite::toJSON(app_data$grouped_by_hf), ";",
+          "var indicator_rhf =", jsonlite::toJSON(app_data$grouped_by_rhf), ";",
+          "var indicator_nat =", jsonlite::toJSON(app_data$national_data), ";",
+        "</script>",
         shiny::tags$script(src = "www/static/js/2.beed7ed9.chunk.js"),
         shiny::tags$script(src = "www/static/js/main.4df13da0.chunk.js"),
         shiny::tags$script(src = "www/static/js/runtime-main.9eb13299.js")
-        
       )
     })
   })
