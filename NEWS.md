@@ -1,4 +1,13 @@
-# Unreleased
+# qmongr 0.15.0
+
+## Pre-filter data on server side before sending to browser ([#175](https://github.com/mong/qmongr/pull/175))
+
+- Only data with `include = 1`
+- Filter out treatment units with no data four last year
+
+## Minor
+
+- Info pop-up closer to top
 
 # qmongr 0.14.2
 
