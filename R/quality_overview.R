@@ -44,11 +44,11 @@ quality_overview_server <- function(id) {
   output$json <- shiny::reactive({
       paste(
         "<script> var  description = ",
-          jsonlite::toJSON(app_data$register_data$description, na = "null"), ";",
-          "var indicator_hosp =", jsonlite::toJSON(app_data$grouped_by_hospital), ";",
-          "var indicator_hf =", jsonlite::toJSON(app_data$grouped_by_hf), ";",
-          "var indicator_rhf =", jsonlite::toJSON(app_data$grouped_by_rhf), ";",
-          "var indicator_nat =", jsonlite::toJSON(app_data$national_data), ";",
+          jsonlite::toJSON(register_data$description, na = "null"), ";",
+          "var indicator_hosp =", jsonlite::toJSON(grouped_by_hospital), ";",
+          "var indicator_hf =", jsonlite::toJSON(grouped_by_hf), ";",
+          "var indicator_rhf =", jsonlite::toJSON(grouped_by_rhf), ";",
+          "var indicator_nat =", jsonlite::toJSON(national_data), ";",
         "</script>",
         shiny::tags$script(src = "www/static/js/2.beed7ed9.chunk.js"),
         shiny::tags$script(src = "www/static/js/main.4df13da0.chunk.js"),
