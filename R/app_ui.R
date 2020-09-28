@@ -30,7 +30,13 @@ add_external_resources <- function() {
     # If you have a custom.css in the inst/app/www
     # Or for example, you can add shinyalert::useShinyalert() here
     shiny::tags$link(
-      rel = "stylesheet", type = "text/css", href = "www/qmongr.css"
+      rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/all.min.css"
+    ),
+    shiny::tags$link(
+      rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/v4-shims.min.css"
+    ),
+    shiny::tags$link(
+      rel = "stylesheet", type = "text/css", href = "www/css/main.fdfd4b95.chunk.css"
     )
   )
 }
