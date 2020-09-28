@@ -19,38 +19,8 @@ quality_overview_ui <- function(id) {
   ns <- shiny::NS(id)
   config <- qmongr::get_config()
   tagList(
-    shiny::fluidPage(
-      shinyalert::useShinyalert(),
-      shiny::tags$div(
-        class = "treatment_unit",
-        shiny::fluidRow(
-          top_navbar_ui("quality_overview_ui_1")
-        )
-      ),
-      table_legend_ui(
-        "quality_overview_ui_1",
-        config = config
-      ),
-      shiny::fluidRow(
-        shiny::column(
-          width = 3,
-          style = "padding-left: 2%;",
-          shiny::uiOutput(
-            outputId = ns("qi_overview")
-          )
-        ),
-        shiny::column(
-          width = 9,
-          style = "padding-right: 2%;",
-          shiny::uiOutput(
-            outputId = ns("qi_table")
-          )
-        )
-      ),
-       shiny::htmlOutput(
-         ns("json")
-       )
-    )
+    shiny::tags$div(id="root"),
+    shiny::htmlOutput(ns("json"))
   )
 }
 
@@ -73,132 +43,6 @@ quality_overview_server <- function(id) {
   grouped_by_hospital <- app_data[["grouped_by_hospital"]]
   national_data <- app_data[["national_data"]]
 
-  selected_units <- top_navbar_server(
-    NULL,
-    app_data = app_data,
-    config = config
-  )
-  #add nr to list of med
-  num_qi_per_med_field <- shiny::reactive({
-    my_func <- function(x, unique_qi) {
-      unique_qi <- data.frame(id = unique_qi)
-
-      # Mapping table between register and indicator
-      qi_reg <- app_data$register_data$description %>%
-        dplyr::select(
-          .data[[config$column$registry_short_name]],
-          .data[[config$column$id]]
-        ) %>%
-        dplyr::filter(.data[[config$column$registry_short_name]] %in% x$key)
-      # Add register ID to unique indicators
-      link_reg_uniqueqi <- dplyr::inner_join(
-        qi_reg,
-        unique_qi,
-        by = config$column$id
-      )
-
-      # Table of number of indicators per register
-      num_qi_per_reg <- link_reg_uniqueqi[config$column$registry_short_name] %>%
-        table() %>%
-        as.data.frame(stringsAsFactors = FALSE)
-
-      x$num <- sum(num_qi_per_reg$Freq)
-      return(x)
-    }
-
-    if (shiny::isTruthy(input$pick_treatment_units)) {
-      selected_indicators <- filtered_data()$national[[config$column$indicator_id]] %>% unique
-    } else {
-      selected_indicators <- national_data %>%
-        dplyr::filter(
-          .data[[config$column$year]] == shiny::req(input$pick_year),
-          .data[[config$column$achieved_level]] %in% filter_indicator$level()
-        ) %>%
-        purrr::pluck(config$column$indicator_id) %>%
-        unique()
-    }
-
-    med_field_list <- lapply(qmongr::fagomr, my_func, selected_indicators)
-    return(med_field_list)
-  })
-
-
-  filter_indicator <- shiny::reactiveValues()
-  filter_indicator$level <- table_legend_server(NULL)
-  filter_indicator$indicator <- sidebar_qo_server(NULL,
-    register_data[["description"]], config
-  )
-  #filtered data that makes up the table content
-  filtered_data <- shiny::reactive({
-    selected_data <- list()
-    if (!rlang::is_empty(selected_units()[[config$treatment_unit_level$rhf]])) {
-
-      selected_data[[config$treatment_unit_level$rhf]] <- grouped_by_rhf %>%
-        dplyr::filter(
-          .data[[config$column$treatment_unit]] %in% selected_units()$rhf,
-          .data[[config$column$denominator]] > 5,
-          .data[[config$column$year]] == selected_units()$year,
-          .data[[config$column$indicator_id]] %in% filter_indicator$indicator(),
-          .data[[config$column$achieved_level]] %in% filter_indicator$level()
-        )
-    }
-    if (!rlang::is_empty(selected_units()[[config$treatment_unit_level$hf]])) {
-      selected_data[[config$treatment_unit_level$hf]] <- grouped_by_hf %>%
-        dplyr::filter(
-          .data[[config$column$treatment_unit]] %in% selected_units()$hf,
-          .data[[config$column$denominator]] > 5,
-          .data[[config$column$year]] == selected_units()$year,
-          .data[[config$column$indicator_id]] %in% filter_indicator$indicator(),
-          .data[[config$column$achieved_level]] %in% filter_indicator$level()
-        )
-    }
-    if (!rlang::is_empty(selected_units()[[config$treatment_unit_level$hospital]])) {
-      selected_data[[config$treatment_unit_level$hospital]] <- grouped_by_hospital %>%
-        dplyr::filter(
-          .data[[config$column$treatment_unit]] %in% selected_units()$hospital,
-          .data[[config$column$denominator]] > 5,
-          .data[[config$column$year]] == selected_units()$year,
-          .data[[config$column$indicator_id]] %in% filter_indicator$indicator(),
-          .data[[config$column$achieved_level]] %in% filter_indicator$level()
-        )
-    }
-    selected_data$national <- national_data %>%
-      dplyr::filter(.data[[config$column$year]] == selected_units()$year)
-    return(selected_data)
-  })
-
-  #table output
-  output$qi_table <- shiny::renderUI({
-    if (shiny::isTruthy(input$pick_year)) {
-      if (!shiny::isTruthy(input$pick_treatment_units)) {
-        national_table_data <- national_data %>%
-          dplyr::filter(
-            .data[[config$column$year]] == shiny::req(input$pick_year),
-            .data[[config$column$indicator_id]] %in% filter_indicator$indicator(),
-            .data[[config$column$achieved_level]] %in% filter_indicator$level()
-          )
-        qmongr::national_table(
-          input_data = national_table_data,
-          indicator_description = app_data$register_data$description,
-          config = config
-        )
-
-      } else {
-        if (length(shiny::req(selected_units()$year)) > 1) {
-          return(NULL)
-        }
-        qmongr::qi_table(filtered_data(), selected_units(), register_data$description, config)
-      }
-    }
-  })
-
-  #filtering by field
-  output$qi_overview <- shiny::renderUI({
-    if (shiny::isTruthy(input$pick_year)) {
-      sidebar_qo_ui(id = "quality_overview_ui_1", list_of_med_fields = num_qi_per_med_field())
-    }
-  })
-
   #data passed to js
   output$json <- shiny::reactive({
       paste(
@@ -210,8 +54,10 @@ quality_overview_server <- function(id) {
         "var indicator_nat =", jsonlite::toJSON(app_data$national_data), ";",
         "
          ;</script>",
-        shiny::tags$script(src = "www/qmongr.js")
-
+        shiny::tags$script(src = "www/static/js/2.beed7ed9.chunk.js"),
+        shiny::tags$script(src = "www/static/js/main.4df13da0.chunk.js"),
+        shiny::tags$script(src = "www/static/js/runtime-main.9eb13299.js")
+        
       )
     })
   })
