@@ -2,10 +2,10 @@
 % Please edit documentation in R/data_source.R
 \name{data_source}
 \alias{data_source}
-\alias{agg_data}
+\alias{get_data}
 \title{Provide data for qmongr}
 \usage{
-agg_data()
+get_data()
 }
 \value{
 List of data sets

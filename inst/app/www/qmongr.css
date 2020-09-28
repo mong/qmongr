@@ -522,3 +522,8 @@ input[type="radio"].figure_button_right:checked + label {
   border-radius: 0 25px 25px 0;
   transition: color 200ms;
 }
+
+/* -------- info pop-up mods --------------*/
+.sweet-alert {
+ top:20% !important;
+}

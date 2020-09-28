@@ -2,12 +2,12 @@
 
 export("%>%")
 export(add_external_resources)
-export(agg_data)
 export(app_server)
 export(app_ui)
 export(create_config)
 export(description_td)
 export(get_config)
+export(get_data)
 export(icon_type)
 export(indicator_rows)
 export(indicator_value_td)
