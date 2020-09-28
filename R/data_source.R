@@ -11,16 +11,16 @@ NULL
 #' @rdname data_source
 #' @export
 get_data <- function() {
-
+  
   if (Sys.getenv("IMONGR_CONTEXT") == "DEV" |
       grepl("node", Sys.getenv("NODE_NAME"))) {
     # nocov start ,  testing in imongr
     conf <- get_config()
     pool <- imongr::make_pool()
     on.exit(imongr::drain_pool(pool))
-    description <- imongr::get_indicator(pool)
-    registry <- imongr::get_registry(pool)
-
+    description <- imongr::get_table(pool, "ind")
+    registry <- imongr::get_table(pool, "registry")
+    
     registry <- dplyr::rename(
       registry,
       rname = name,
@@ -28,8 +28,8 @@ get_data <- function() {
     )
     description <- description %>%
       dplyr::inner_join(registry, by = conf$column$registry_id)
-    df <- imongr::get_agg_data(pool)
-
+    df <- imongr::get_table(pool, "agg_data")
+    
     # filter
     ## include
     include <- dplyr::select(description, .data$id, .data$include)
@@ -39,6 +39,7 @@ get_data <- function() {
       dplyr::filter(.data$include == 1)
     ## coverage
     if (conf$filter$coverage$use) {
+      print("Filter by coverage")
       df <- df %>%
         dplyr::filter(!is.na(.data$dg))
       df <- df %>%
@@ -49,18 +50,18 @@ get_data <- function() {
       year_end <- as.numeric(format(Sys.Date(), "%Y")) - conf$filter$age$years
       selectable_treatment_units <- df %>%
         dplyr::filter(year >= year_end) %>%
-        dplyr::select(conf$column$treatment_unit) %>% 
-        purrr::pluck()
-      df <- df %>%
-        dplyr::filter(conf$column$treatment_unit %in% selectable_treatment_units)
+        dplyr::select(conf$column$treatment_unit) %>%
+        dplyr::distinct() %>%
+        dplyr::pull()
+      df <- df[df[[conf$column$treatment_unit]] %in% selectable_treatment_units, ]
     }
-
+    
     # split unit levels and continue renaming
     grouped_by_hospital <- df[df$unit_level == "hospital", ]
     grouped_by_hf <- df[df$unit_level == "hf", ]
     grouped_by_rhf <- df[df$unit_level == "rhf", ]
     national_data <- df[df$unit_level == "nation", ]
-
+    
     list(register_data = list(description = description),
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
