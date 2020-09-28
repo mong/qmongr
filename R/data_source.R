@@ -18,8 +18,8 @@ get_data <- function() {
     conf <- get_config()
     pool <- imongr::make_pool()
     on.exit(imongr::drain_pool(pool))
-    description <- imongr::get_indicator(pool)
-    registry <- imongr::get_registry(pool)
+    description <- imongr::get_table(pool, "ind")
+    registry <- imongr::get_table(pool, "registry")
 
     registry <- dplyr::rename(
       registry,
@@ -28,7 +28,7 @@ get_data <- function() {
     )
     description <- description %>%
       dplyr::inner_join(registry, by = conf$column$registry_id)
-    df <- imongr::get_agg_data(pool)
+    df <- imongr::get_table(pool, "agg_data")
 
     # filter
     ## include
