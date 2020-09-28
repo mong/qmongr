@@ -209,11 +209,10 @@ quality_overview_server <- function(id) {
         "var indicator_hf =", jsonlite::toJSON(app_data$grouped_by_hf), ";",
         "var indicator_rhf =", jsonlite::toJSON(app_data$grouped_by_rhf), ";",
         "var indicator_nat =", jsonlite::toJSON(app_data$national_data), ";",
-        "
-         ;</script>",
+        "</script>",
         shiny::tags$script(src = "www/js/2.beed7ed9.chunk.js"),
         shiny::tags$script(src = "www/js/main.4df13da0.chunk.js"),
-        shiny::tags$script(src = "www/js/runtime-main.9eb13299.js"),
+        shiny::tags$script(src = "www/js/runtime-main.9eb13299.js")
 
       )
     })
