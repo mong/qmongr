@@ -1,3 +1,9 @@
+# qmongr 0.15.1
+
+## Fix app so it will work with imongr >= 0.12 ([#176](https://github.com/mong/qmongr/pull/176))
+
+The functions `get_indicator`, `get_registry` and `get_agg_data` replaced by `get_table` function.
+
 # qmongr 0.15.0
 
 ## Pre-filter data on server side before sending to browser ([#175](https://github.com/mong/qmongr/pull/175))
