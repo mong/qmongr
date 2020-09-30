@@ -1,6 +1,6 @@
 # qmongr 0.16.0
 
-## Total rewrite of web page ([#179](https://github.com/mong/qmongr/pull/179))
+## Major rewrite of code ([#179](https://github.com/mong/qmongr/pull/179))
 
 Almost all `R` code has been replaced by `react.js`.
 
