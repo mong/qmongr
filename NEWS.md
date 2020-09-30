@@ -1,3 +1,9 @@
+# qmongr 0.16.0
+
+## Total rewrite of web page ([#179](https://github.com/mong/qmongr/pull/179))
+
+Almost all `R` code has been replaced by `react.js`.
+
 # qmongr 0.15.1
 
 ## Fix app so it will work with imongr >= 0.12 ([#176](https://github.com/mong/qmongr/pull/176))
