@@ -51,7 +51,7 @@ quality_overview_server <- function(id) {
           "var indicator_nat =", jsonlite::toJSON(national_data), ";",
         "</script>",
         shiny::tags$script(src = "www/static/js/2.beed7ed9.chunk.js"),
-        shiny::tags$script(src = "www/static/js/main.878af3a4.chunk.js"),
+        shiny::tags$script(src = "www/static/js/main.89d1cb26.chunk.js"),
         shiny::tags$script(src = "www/static/js/runtime-main.9eb13299.js")
       )
     })
