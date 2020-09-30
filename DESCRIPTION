@@ -34,13 +34,10 @@ Imports:
     imongr (>= 0.12.0),
     magrittr,
     shiny (>= 1.5.0),
-    shinyalert,
     dplyr,
-    stringr,
     rlang,
     yaml,
-    jsonlite,
-    tibble
+    jsonlite
 Depends: R (>= 3.5)
 Remotes:
     mong/imongr@*release
