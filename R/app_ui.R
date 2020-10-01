@@ -36,7 +36,7 @@ add_external_resources <- function() {
       rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/v4-shims.min.css"
     ),
     shiny::tags$link(
-      rel = "stylesheet", type = "text/css", href = "www/static/css/main.68fae183.chunk.css"
+      rel = "stylesheet", type = "text/css", href = "www/static/css/main.61f0f717.chunk.css"
     )
   )
 }
