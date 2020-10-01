@@ -1,3 +1,7 @@
+# qmongr 0.16.1
+
+Fix header and update medical fields ([#182](https://github.com/mong/qmongr/pull/182))
+
 # qmongr 0.16.0
 
 ## Major rewrite of code ([#179](https://github.com/mong/qmongr/pull/179))
@@ -6,9 +10,7 @@ Almost all `R` code has been replaced by `react.js`.
 
 # qmongr 0.15.1
 
-## Fix app so it will work with imongr >= 0.12 ([#176](https://github.com/mong/qmongr/pull/176))
-
-The functions `get_indicator`, `get_registry` and `get_agg_data` replaced by `get_table` function.
+Fix app so it will work with imongr >= 0.12 ([#176](https://github.com/mong/qmongr/pull/176)). The functions `get_indicator`, `get_registry` and `get_agg_data` replaced by `get_table` function.
 
 # qmongr 0.15.0
 
