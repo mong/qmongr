@@ -55,6 +55,9 @@ get_data <- function() {
         dplyr::pull()
       df <- df[df[[conf$column$treatment_unit]] %in% selectable_treatment_units, ]
     }
+    if (conf$filter$denominator$use) {
+      df <- df[df[[conf$column$denominator]] > conf$filter$denominator$level, ]
+    }
 
     # split unit levels and continue renaming
     grouped_by_hospital <- df[df$unit_level == "hospital", ]
