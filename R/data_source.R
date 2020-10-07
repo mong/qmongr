@@ -45,6 +45,11 @@ get_data <- function() {
       df <- df %>%
         dplyr::filter(.data$dg >= conf$filter$coverage$level)
     }
+    ## filter if N < 5
+    if (conf$filter$denominator$use) {
+      df <- df[df[[conf$column$denominator]] > conf$filter$denominator$level, ]
+    }
+
     ## age
     if (conf$filter$age$use) {
       year_end <- as.numeric(format(Sys.Date(), "%Y")) - conf$filter$age$years
@@ -55,9 +60,6 @@ get_data <- function() {
         dplyr::pull()
       df <- df[df[[conf$column$treatment_unit]] %in% selectable_treatment_units, ]
     }
-    if (conf$filter$denominator$use) {
-      df <- df[df[[conf$column$denominator]] > conf$filter$denominator$level, ]
-    }
 
     # split unit levels and continue renaming
     grouped_by_hospital <- df[df$unit_level == "hospital", ]
@@ -65,11 +67,52 @@ get_data <- function() {
     grouped_by_rhf <- df[df$unit_level == "rhf", ]
     national_data <- df[df$unit_level == "nation", ]
 
+    hospital <-  grouped_by_hospital[[conf$column$treatment_unit]] %>%
+      unique()
+    ## tu names in one table
+    tu_names <-  data.frame(hospital = hospital) %>%
+      left_join(
+        imongr::get_table(pool, "hospital") %>%
+        dplyr::select(
+          conf$column$tu_name_short,
+          conf$column$orgnr_local,
+          conf$column$orgnr_hf
+        ),
+        by = c(hospital = conf$column$tu_name_short)
+      ) %>%
+      left_join(
+        imongr::get_table(pool, "hf") %>%
+          dplyr::select(
+            conf$column$tu_name_short,
+            conf$column$tu_name_full,
+            conf$column$orgnr_local,
+            conf$column$orgnr_rhf
+          ),
+        by = c(hf_orgnr = conf$column$orgnr_local)
+      ) %>%
+      dplyr::rename(hf = short_name, hf_full = full_name) %>%
+      left_join(
+        imongr::get_table(pool, "rhf") %>%
+          dplyr::select(
+            conf$column$tu_name_short,
+            conf$column$tu_name_full,
+            conf$column$orgnr_local
+          ),
+        by = c(rhf_orgnr = conf$column$orgnr_local)
+      ) %>%
+      dplyr::rename(rhf = short_name, rhf_full = full_name) %>%
+      dplyr::select(
+        hospital, hf, hf_full, rhf
+      ) %>%
+      dplyr::distinct()
+
+    #return
     list(register_data = list(description = description),
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
          grouped_by_rhf = grouped_by_rhf,
-         national_data = national_data)
+         national_data = national_data,
+         tu_names = tu_names)
     # nocov end
   } else {
     qmongr::aggr_data

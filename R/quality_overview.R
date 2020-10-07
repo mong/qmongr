@@ -39,7 +39,7 @@ quality_overview_server <- function(id) {
   grouped_by_rhf <- app_data[["grouped_by_rhf"]]
   grouped_by_hospital <- app_data[["grouped_by_hospital"]]
   national_data <- app_data[["national_data"]]
-
+  tu_names <- app_data[["tu_names"]]
   #data passed to js
   output$json <- shiny::reactive({
       paste(
@@ -49,6 +49,7 @@ quality_overview_server <- function(id) {
           "var indicator_hf =", jsonlite::toJSON(grouped_by_hf), ";",
           "var indicator_rhf =", jsonlite::toJSON(grouped_by_rhf), ";",
           "var indicator_nat =", jsonlite::toJSON(national_data), ";",
+          "var tu_names =", jsonlite::toJSON(tu_names), ";",
         "</script>",
         shiny::tags$script(src = "www/static/js/2.beed7ed9.chunk.js"),
         shiny::tags$script(src = "www/static/js/main.b7e8452b.chunk.js"),
