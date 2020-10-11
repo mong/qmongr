@@ -71,7 +71,7 @@ get_data <- function() {
       unique()
     ## tu names in one table
     tu_names <-  data.frame(hospital = hospital) %>%
-      left_join(
+      dplyr::left_join(
         imongr::get_table(pool, "hospital") %>%
         dplyr::select(
           conf$column$tu_name_short,
@@ -80,7 +80,7 @@ get_data <- function() {
         ),
         by = c(hospital = conf$column$tu_name_short)
       ) %>%
-      left_join(
+      dplyr::left_join(
         imongr::get_table(pool, "hf") %>%
           dplyr::select(
             conf$column$tu_name_short,
@@ -91,7 +91,7 @@ get_data <- function() {
         by = c(hf_orgnr = conf$column$orgnr_local)
       ) %>%
       dplyr::rename(hf = short_name, hf_full = full_name) %>%
-      left_join(
+      dplyr::left_join(
         imongr::get_table(pool, "rhf") %>%
           dplyr::select(
             conf$column$tu_name_short,
