@@ -37,6 +37,7 @@ add_external_resources <- function() {
     ),
     shiny::tags$link(
       rel = "stylesheet", type = "text/css", href = "www/static/css/main.61f0f717.chunk.css"
-    )
+    ),
+    shiny::tags$script(src = "www/iframeResizer.contentWindow.min.js")
   )
 }

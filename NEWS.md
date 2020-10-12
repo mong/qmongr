@@ -1,4 +1,6 @@
-# Unreleased
+# qmongr 0.16.2
+
+Included `iframeResizer.js` ([#183](https://github.com/mong/qmongr/pull/183)).
 
 # qmongr 0.16.1
 
