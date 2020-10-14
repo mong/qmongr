@@ -7,7 +7,7 @@ app_text:
         high: "Høy måloppnåelse"
         moderate: "Moderat måloppnåelse"
         low: "Lav måloppnåelse"
-
+    
     table:
         main_column: "Kvalitetsindikator"
         national_column: "Nasjonalt"
@@ -71,7 +71,12 @@ column:
     max_indicator_value: max_value
     min_denominator: min_denominator
     id: id
-
+    tu_name_full: full_name
+    tu_name_short: short_name
+    orgnr_hf: hf_orgnr
+    orgnr_rhf: rhf_orgnr
+    orgnr_local: orgnr
+  
 indicator_type:
     andel:
       db: andel
@@ -79,7 +84,7 @@ indicator_type:
     median:
       db: median
       full_name: Median
-
+    
 treatment_unit_level:
     rhf: rhf
     hf: hf

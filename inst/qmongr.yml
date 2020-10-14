@@ -71,7 +71,12 @@ column:
     max_indicator_value: max_value
     min_denominator: min_denominator
     id: id
-
+    tu_name_full: full_name
+    tu_name_short: short_name
+    orgnr_hf: hf_orgnr
+    orgnr_rhf: rhf_orgnr
+    orgnr_local: orgnr
+  
 indicator_type:
     andel:
       db: andel
