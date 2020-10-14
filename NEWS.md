@@ -1,3 +1,7 @@
+# qmongr 0.17.0
+
+Added treatment unit selection menu ([#186](https://github.com/mong/qmongr/pull/186)).
+
 # qmongr 0.16.3
 
 Filter out data with denominator < 5 ([#185](https://github.com/mong/qmongr/pull/185)).
