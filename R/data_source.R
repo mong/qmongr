@@ -45,6 +45,11 @@ get_data <- function() {
       df <- df %>%
         dplyr::filter(.data$dg >= conf$filter$coverage$level)
     }
+    ## filter if N < 5
+    if (conf$filter$denominator$use) {
+      df <- df[df[[conf$column$denominator]] > conf$filter$denominator$level, ]
+    }
+
     ## age
     if (conf$filter$age$use) {
       year_end <- as.numeric(format(Sys.Date(), "%Y")) - conf$filter$age$years

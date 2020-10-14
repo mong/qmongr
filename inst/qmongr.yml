@@ -71,7 +71,7 @@ column:
     max_indicator_value: max_value
     min_denominator: min_denominator
     id: id
-  
+
 indicator_type:
     andel:
       db: andel
@@ -102,6 +102,9 @@ filter:
     coverage:
       use: FALSE
       level: 0.60
+    denominator:
+      use: TRUE
+      level: 5
     age:
       use: TRUE
       years: 4
