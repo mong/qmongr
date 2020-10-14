@@ -1,3 +1,7 @@
+# qmongr 0.17.1
+
+Alphabetic sorting of treatment units in menu  ([#188](https://github.com/mong/qmongr/pull/188)).
+
 # qmongr 0.17.0
 
 Added treatment unit selection menu ([#186](https://github.com/mong/qmongr/pull/186)).
