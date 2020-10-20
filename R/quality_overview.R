@@ -16,10 +16,8 @@ NULL
 #' @export
 #' @importFrom shiny NS tagList
 quality_overview_ui <- function(id) {
-  ns <- shiny::NS(id)
   tagList(
     shiny::tags$div(id = "root"),
-    # shiny::htmlOutput(ns("json"))
     shiny::tags$script(src = "www/static/js/2.295d41d0.chunk.js"),
     shiny::tags$script(src = "www/static/js/main.9db8647e.chunk.js"),
     shiny::tags$script(src = "www/static/js/runtime-main.7678d803.js")
@@ -43,43 +41,40 @@ quality_overview_server <- function(id) {
     grouped_by_hospital <- app_data[["grouped_by_hospital"]]
     national_data <- app_data[["national_data"]]
     tu_names <- app_data[["tu_names"]]
-    
+
     shiny::observe({
       session$sendCustomMessage(
-        type = 'tu_names',
+        type = "tu_names",
         message =  jsonlite::toJSON(tu_names)
       )
     })
-    
     shiny::observe({
       session$sendCustomMessage(
-        type = 'description',
+        type = "description",
         message =  jsonlite::toJSON(register_data$description, na = "null")
       )
     })
     shiny::observe({
       session$sendCustomMessage(
-        type = 'nation',
+        type = "nation",
         message =  jsonlite::toJSON(national_data)
       )
     })
-    
     shiny::observe({
       session$sendCustomMessage(
-        type = 'hospital',
+        type = "hospital",
         message =  jsonlite::toJSON(grouped_by_hospital)
       )
     })
     shiny::observe({
       session$sendCustomMessage(
-        type = 'hf',
+        type = "hf",
         message =  jsonlite::toJSON(grouped_by_hf)
       )
     })
-    
     shiny::observe({
       session$sendCustomMessage(
-        type = 'rhf',
+        type = "rhf",
         message =  jsonlite::toJSON(grouped_by_rhf)
       )
     })
