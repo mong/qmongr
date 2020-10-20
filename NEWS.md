@@ -1,3 +1,7 @@
+# qmongr 0.17.2
+
+Changed traffic light colors ([#189](https://github.com/mong/qmongr/pull/189)). Stronger red and green. Better suited for colors in graphs. This version of qmongjs: https://github.com/mong/qmongjs/commit/8a2de2df0
+
 # qmongr 0.17.1
 
 Alphabetic sorting of treatment units in menu  ([#188](https://github.com/mong/qmongr/pull/188)).
