@@ -44,6 +44,46 @@ quality_overview_server <- function(id) {
     national_data <- app_data[["national_data"]]
     tu_names <- app_data[["tu_names"]]
     
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'tu_names',
+        message =  jsonlite::toJSON(tu_names)
+      )
+    })
+
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'description',
+        message =  jsonlite::toJSON(jsonlite::toJSON(register_data$description, na = "null"))
+        )
+    })
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'nation',
+        message =  jsonlite::toJSON(national_data)
+      )
+    })
+
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'hospital',
+        message =  jsonlite::toJSON(grouped_by_hospital)
+      )
+    })
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'hf',
+        message =  jsonlite::toJSON(grouped_by_hf)
+      )
+    })
+
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'rhf',
+        message =  jsonlite::toJSON(grouped_by_rhf)
+      )
+    })
+    
     #data passed to js
     # output$json <- shiny::reactive({
     #     paste(
