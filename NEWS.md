@@ -1,3 +1,15 @@
+# qmongr 0.18.0
+
+## New top page layout ([#190](https://github.com/mong/qmongr/pull/190))
+
+- Included header with SKDE logo and short description.
+- Changed the layout of "Velg behandlingsenhet.
+- Removed some empty "fagområde" (will be reintroduced later)
+
+## Minor
+
+- Fixed scrolling and resize page error 
+
 # qmongr 0.17.2
 
 Changed traffic light colors ([#189](https://github.com/mong/qmongr/pull/189)). Stronger red and green. Better suited for colors in graphs. This version of qmongjs: https://github.com/mong/qmongjs/commit/8a2de2df0
