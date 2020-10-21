@@ -9,9 +9,7 @@ app_ui <- function() {
     # Leave this function for adding external resources
     qmongr::add_external_resources(),
     # List the first level UI elements here
-    shiny::tagList(
-      quality_overview_ui("quality_overview_ui_1")
-    )
+    shiny::htmlOutput("json")
   )
 }
 #' Attach external resources
