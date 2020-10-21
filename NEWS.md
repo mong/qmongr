@@ -1,3 +1,7 @@
+# qmongr 0.18.1
+
+Fix legend position ([#192](https://github.com/mong/qmongr/pull/192))
+
 # qmongr 0.18.0
 
 ## New top page layout ([#190](https://github.com/mong/qmongr/pull/190))
