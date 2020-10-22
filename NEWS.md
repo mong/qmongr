@@ -1,3 +1,7 @@
+# qmongr 0.18.2
+
+Some logo stuff ...
+
 # qmongr 0.18.1
 
 Fix legend position ([#192](https://github.com/mong/qmongr/pull/192))
