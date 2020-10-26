@@ -22,7 +22,8 @@ quality_overview_ui <- function(id) {
     # shiny::htmlOutput(ns("json"))
     shiny::tags$script(src = "www/static/js/2.295d41d0.chunk.js"),
     shiny::tags$script(src = "www/static/js/main.9db8647e.chunk.js"),
-    shiny::tags$script(src = "www/static/js/runtime-main.7678d803.js")
+    shiny::tags$script(src = "www/static/js/runtime-main.7678d803.js")#,
+    #shiny::tags$script(src = "www/static/js/test.js")
   )
 }
 
@@ -44,21 +45,44 @@ quality_overview_server <- function(id) {
     national_data <- app_data[["national_data"]]
     tu_names <- app_data[["tu_names"]]
     
-    #data passed to js
-    # output$json <- shiny::reactive({
-    #     paste(
-    #       "<script> var  description = ",
-    #         jsonlite::toJSON(register_data$description, na = "null"), ";",
-    #         "var indicator_hosp =", jsonlite::toJSON(grouped_by_hospital), ";",
-    #         "var indicator_hf =", jsonlite::toJSON(grouped_by_hf), ";",
-    #         "var indicator_rhf =", jsonlite::toJSON(grouped_by_rhf), ";",
-    #         "var indicator_nat =", jsonlite::toJSON(national_data), ";",
-    #         "var tu_names =", jsonlite::toJSON(tu_names), ";",
-    #       "</script>",
-    #       shiny::tags$script(src = "www/static/js/2.6f4bb256.chunk.js"),
-    #       shiny::tags$script(src = "www/static/js/main.ba5d11a4.chunk.js"),
-    #       shiny::tags$script(src = "www/static/js/runtime-main.7678d803.js")
-    #     )
-    #   })
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'tu_names',
+        message =  jsonlite::toJSON(tu_names)
+      )
+    })
+    
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'description',
+        message =  jsonlite::toJSON(register_data$description, na = "null")
+      )
+    })
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'nation',
+        message =  jsonlite::toJSON(national_data)
+      )
+    })
+    
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'hospital',
+        message =  jsonlite::toJSON(grouped_by_hospital)
+      )
+    })
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'hf',
+        message =  jsonlite::toJSON(grouped_by_hf)
+      )
+    })
+    
+    shiny::observe({
+      session$sendCustomMessage(
+        type = 'rhf',
+        message =  jsonlite::toJSON(grouped_by_rhf)
+      )
+    })
   })
 }
