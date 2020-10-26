@@ -1,3 +1,7 @@
+# qmongr 0.18.3
+
+Favicon
+
 # qmongr 0.18.2
 
 Some logo stuff ...
