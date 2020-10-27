@@ -1,3 +1,7 @@
+# qmongr 1.0.0
+
+## First official release
+
 # qmongr 0.18.5
 
 Filter "dekningsgrad" and low N.
