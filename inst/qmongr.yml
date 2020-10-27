@@ -108,7 +108,7 @@ filter:
       use: FALSE
       level: 0.60
     denominator:
-      use: TRUE
+      use: FALSE
       level: 5
     age:
       use: TRUE

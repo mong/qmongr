@@ -1,3 +1,7 @@
+# qmongr 0.18.5
+
+Filter "dekningsgrad" and low N.
+
 # qmongr 0.18.4
 
 Show stuff from app faster, before data is loaded.
