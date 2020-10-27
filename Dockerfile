@@ -3,6 +3,9 @@ FROM hnskde/qmongr-base-r
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 LABEL no.mongr.cd.enable="true"
 
+# install imongr and its dependencies
+RUN R -e "remotes::install_github('mong/imongr@*release')"
+
 ## add package tarball
 COPY *.tar.gz .
 
