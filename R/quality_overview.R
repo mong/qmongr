@@ -19,7 +19,7 @@ quality_overview_ui <- function(id) {
   tagList(
     shiny::tags$div(id = "root"),
     shiny::tags$script(src = "www/static/js/2.6f4bb256.chunk.js"),
-    shiny::tags$script(src = "www/static/js/main.2d5ba336.chunk.js"),
+    shiny::tags$script(src = "www/static/js/main.60b624a5.chunk.js"),
     shiny::tags$script(src = "www/static/js/runtime-main.7678d803.js")
   )
 }
