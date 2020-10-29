@@ -36,7 +36,8 @@ get_data <- function() {
     df <- df %>%
       dplyr::left_join(include, by = c("ind_id" = "id"))
     df <- df %>%
-      dplyr::filter(.data$include == 1)
+      dplyr::filter(.data$include == 1) %>%
+      dplyr::filter(year != as.numeric(format(Sys.Date(), "%Y")))
     ## coverage
     if (conf$filter$coverage$use) {
       print("Filter by coverage")
