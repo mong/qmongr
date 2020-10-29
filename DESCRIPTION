@@ -1,6 +1,6 @@
 Package: qmongr
 Title: Lightweight Quality Assessment of Norwegian Hospitals 
-Version: 0.18.3
+Version: 1.0.0
 Authors@R: c(
     person(given = "Yohannes",
            family = "Tesfay",
@@ -31,7 +31,7 @@ Suggests:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
-    imongr (>= 0.12.0),
+    imongr (>= 0.13.0),
     magrittr,
     shiny (>= 1.5.0),
     dplyr,
