@@ -39,7 +39,6 @@ get_data <- function() {
       dplyr::filter(.data$include == 1)
     ## coverage
     if (conf$filter$coverage$use) {
-      print("Filter by coverage")
       df <- df %>%
         dplyr::filter(!is.na(.data$dg))
       df <- df %>%
