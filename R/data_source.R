@@ -105,7 +105,6 @@ get_data <- function() {
       ) %>%
       dplyr::distinct()
 
-    #return
     list(register_data = list(description = description),
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
