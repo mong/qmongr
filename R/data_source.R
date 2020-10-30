@@ -40,7 +40,6 @@ get_data <- function() {
       dplyr::filter(year != as.numeric(format(Sys.Date(), "%Y")))
     ## coverage
     if (conf$filter$coverage$use) {
-      print("Filter by coverage")
       df <- df %>%
         dplyr::filter(!is.na(.data$dg))
       df <- df %>%
@@ -107,7 +106,6 @@ get_data <- function() {
       ) %>%
       dplyr::distinct()
 
-    #return
     list(register_data = list(description = description),
          grouped_by_hospital = grouped_by_hospital,
          grouped_by_hf = grouped_by_hf,
