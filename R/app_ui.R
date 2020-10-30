@@ -7,7 +7,7 @@
 app_ui <- function() {
   shiny::addResourcePath(
     "www", system.file("app/www", package = "qmongr")
-  )  
+  )
   shiny::tagList(
     shiny::tags$head(
       shiny::tags$link(
