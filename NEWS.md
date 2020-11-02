@@ -1,3 +1,11 @@
+# Unreleased
+
+## Internal
+
+- fix travis.com error
+- rm fagomr from qmongr. Now in qmongjs
+- rm info section from qmongr.yml. Not used anymore
+
 # qmongr 1.0.0
 
 ## First official release

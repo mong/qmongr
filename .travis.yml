@@ -21,6 +21,7 @@ r_github_packages:
   - r-lib/pkgdown
 
 before_install:
+  - sudo apt-get -y install libharfbuzz-dev libfribidi-dev 
   - R CMD build .
   - docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t $DOCKER_ORG/$IMAGE_NAME .
   - rm qmongr_*.tar.gz
