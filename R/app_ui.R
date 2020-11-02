@@ -10,7 +10,7 @@ app_ui <- function() {
   )
   shiny::tagList(
     shiny::tags$head(
-      shiny::tags$title("Velg sykehus"),
+      shiny::tags$title("Resultater | SKDE"),
       shiny::tags$link(
         rel = "icon", type = "image/png", href = "www/hn.png"
       ),
