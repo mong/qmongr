@@ -13,27 +13,6 @@ app_text:
         national_column: "Nasjonalt"
         desired_level: "Ønsket målnivå"
     max_nr_treatment_units: 5
-    info:
-        title: Informasjon
-        version:
-            app:
-            - qmongr
-            - imongr
-            - shiny
-        action_button:
-            no_opt_out_ok:
-            - Den er grei
-            - Om du sier det, så
-            - Ok, da
-            - Javel, da
-            - Ja, da er det vel sånn
-            - Fint
-            - Flott!
-            - Klart
-            - Mottatt
-            - Akkurat
-            - Livet er herlig!
-
 table:
     aggregated_data: agg_data
     indicator_data: data
