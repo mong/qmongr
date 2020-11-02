@@ -1,10 +1,12 @@
-# Unreleased
+# qmongr 1.0.1
 
 ## Internal
 
-- fix travis.com error
-- rm fagomr from qmongr. Now in qmongjs
-- rm info section from qmongr.yml. Not used anymore
+- Removed shiny module quality_overview
+- Added type to all the links and script tags
+- Fixed travis.com error
+- Removed `fagomr` from `qmongr`. Now in `qmongjs`
+- Removed info section from qmongr.yml. Not used anymore
 
 # qmongr 1.0.0
 
