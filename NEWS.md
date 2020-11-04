@@ -1,3 +1,10 @@
+# qmongr 1.0.2
+
+## Minor
+
+- Percentage below 10 is shown with one decimal place.
+- < replaced by ≤; > replaced by ≥
+
 # qmongr 1.0.1
 
 ## Internal
