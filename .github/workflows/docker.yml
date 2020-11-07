@@ -21,7 +21,9 @@ jobs:
           install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: Rscript {0}
+        shell: |
+          Rscript {0}
+          R CMD build .
 
       - name: Cache R packages
         uses: actions/cache@v2
@@ -30,17 +32,8 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install dependencies
-        run: |
-          install.packages(c("remotes"))
-          remotes::install_deps(dependencies = TRUE)
-        shell: |
-          Rscript {0}
-          R CMD build .
       - name: Push to Docker Hub
         if: github.event_name == 'pull_request'
-        shell: |
-          R CMD build .
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
