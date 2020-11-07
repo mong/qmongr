@@ -34,12 +34,13 @@ jobs:
         run: |
           install.packages(c("remotes"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("lintr")
         shell: |
           Rscript {0}
           R CMD build .
       - name: Push to Docker Hub
         if: github.event_name == 'pull_request'
+        shell: |
+          R CMD build .
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
