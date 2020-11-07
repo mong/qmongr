@@ -35,8 +35,9 @@ jobs:
           install.packages(c("remotes"))
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("lintr")
-        shell: Rscript {0}
-        shell: R CMD build .
+        shell: |
+          Rscript {0}
+          R CMD build .
       - name: Push to Docker Hub
         if: github.event_name == 'pull_request'
         uses: docker/build-push-action@v2
