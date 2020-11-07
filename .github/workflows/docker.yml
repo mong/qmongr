@@ -14,24 +14,11 @@ jobs:
     name: Push Docker image to docker hub
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
-      - name: Query dependencies
-        run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: |
-          Rscript {0}
-          R CMD build .
-
-      - name: Cache R packages
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: R setup
+        uses: r-lib/actions/setup-r@v1
+        shell: R CMD build .
       - name: Push to Docker Hub
         if: github.event_name == 'pull_request'
         uses: docker/build-push-action@v1
