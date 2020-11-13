@@ -1,3 +1,7 @@
+# qmongr 1.0.3
+
+- Replaced Travis CI and Appveyor with Github Actions ([#210](https://github.com/mong/qmongr/pull/210))
+
 # qmongr 1.0.2
 
 ## Minor
