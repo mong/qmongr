@@ -1,3 +1,24 @@
+# qmongr 1.0.3
+
+- Replaced Travis CI and Appveyor with Github Actions ([#210](https://github.com/mong/qmongr/pull/210))
+
+# qmongr 1.0.2
+
+## Minor
+
+- Percentage below 10 is shown with one decimal place.
+- < replaced by ≤; > replaced by ≥
+
+# qmongr 1.0.1
+
+## Internal
+
+- Removed shiny module quality_overview
+- Added type to all the links and script tags
+- Fixed travis.com error
+- Removed `fagomr` from `qmongr`. Now in `qmongjs`
+- Removed info section from qmongr.yml. Not used anymore
+
 # qmongr 1.0.0
 
 ## First official release

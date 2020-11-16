@@ -5,42 +5,28 @@
 #' @return user interface
 #' @export
 app_ui <- function() {
-  shiny::tagList(
-    # Leave this function for adding external resources
-    qmongr::add_external_resources(),
-    # List the first level UI elements here
-    shiny::tagList(
-      quality_overview_ui("quality_overview_ui_1")
-    )
-  )
-}
-#' Attach external resources
-#'
-#' Attaches external resources to the head tag, used
-#' to construct user interface
-#'
-#' @export
-
-add_external_resources <- function() {
-   shiny::addResourcePath(
+  shiny::addResourcePath(
     "www", system.file("app/www", package = "qmongr")
-   )
-  shiny::tags$head(
-    # Add here all the external resources
-    # If you have a custom.css in the inst/app/www
-    # Or for example, you can add shinyalert::useShinyalert() here
-    shiny::tags$link(
-      rel = "icon", type = "image/png", href = "www/hn.png"
+  )
+  shiny::tagList(
+    shiny::tags$head(
+      shiny::tags$link(
+        rel = "icon", type = "image/png", href = "www/hn.png"
       ),
-    shiny::tags$link(
-      rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/all.min.css"
+      shiny::tags$link(
+        rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/all.min.css"
+      ),
+      shiny::tags$link(
+        rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/v4-shims.min.css"
+      ),
+      shiny::tags$link(
+        rel = "stylesheet", type = "text/css", href = "www/static/css/main.e193dd5b.chunk.css"
+      ),
+      shiny::tags$script(type = "application/javascript", src = "www/iframeResizer.contentWindow.min.js")
     ),
-    shiny::tags$link(
-      rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/v4-shims.min.css"
-    ),
-    shiny::tags$link(
-      rel = "stylesheet", type = "text/css", href = "www/static/css/main.e193dd5b.chunk.css"
-    ),
-    shiny::tags$script(src = "www/iframeResizer.contentWindow.min.js")
+    shiny::tags$div(id = "root"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/2.6f4bb256.chunk.js"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/main.17f6f674.chunk.js"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/runtime-main.7678d803.js")
   )
 }
