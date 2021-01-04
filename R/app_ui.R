@@ -20,13 +20,13 @@ app_ui <- function() {
         rel = "stylesheet", type = "text/css", href = "www/fontawesome/css/v4-shims.min.css"
       ),
       shiny::tags$link(
-        rel = "stylesheet", type = "text/css", href = "www/static/css/main.e193dd5b.chunk.css"
+        rel = "stylesheet", type = "text/css", href = "www/static/css/main.12134d93.chunk.css"
       ),
       shiny::tags$script(type = "application/javascript", src = "www/iframeResizer.contentWindow.min.js")
     ),
     shiny::tags$div(id = "root"),
-    shiny::tags$script(type = "application/javascript", src = "www/static/js/2.6f4bb256.chunk.js"),
-    shiny::tags$script(type = "application/javascript", src = "www/static/js/main.17f6f674.chunk.js"),
-    shiny::tags$script(type = "application/javascript", src = "www/static/js/runtime-main.7678d803.js")
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/2.b302f297.chunk.js"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/main.1b02f25c.chunk.js"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/runtime-main.2f21b62d.js")
   )
 }
