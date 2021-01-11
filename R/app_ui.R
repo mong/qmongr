@@ -26,7 +26,7 @@ app_ui <- function() {
     ),
     shiny::tags$div(id = "root"),
     shiny::tags$script(type = "application/javascript", src = "www/static/js/2.b302f297.chunk.js"),
-    shiny::tags$script(type = "application/javascript", src = "www/static/js/main.1b02f25c.chunk.js"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/main.706117f6.chunk.js"),
     shiny::tags$script(type = "application/javascript", src = "www/static/js/runtime-main.2f21b62d.js")
   )
 }
