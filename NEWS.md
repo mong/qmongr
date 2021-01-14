@@ -1,18 +1,3 @@
-# qmongr 1.1.0
-
-## New features
-
-- Filter out lines completly when picking "Måloppnåelse" (https://github.com/mong/qmongjs/pull/69). Thus, when looking at red then rows without red are removed from the table.
-- Detect outdated browser (https://github.com/mong/qmongjs/pull/78 and https://github.com/mong/qmongjs/pull/79).
-- User can now download graphs (https://github.com/mong/qmongjs/pull/76 and https://github.com/mong/qmongjs/pull/97).
-- Sort indicators by defined order and not alphabetically (https://github.com/mong/qmongjs/pull/77).
-- Escape pop-up window ("Vis alle") with `Esc` key (https://github.com/mong/qmongjs/pull/95).
-
-## Internal
-
-- Rafactor code.
-- Use `typescript`.
-
 # qmongr 1.0.3
 
 - Replaced Travis CI and Appveyor with Github Actions ([#210](https://github.com/mong/qmongr/pull/210))
