@@ -1,3 +1,13 @@
+# qmongr 1.2.0
+
+## New features
+
+- query-parameter for all filters (https://github.com/mong/qmongjs/pull/102)
+
+## Minor
+
+- Improvements in downloaded png (https://github.com/mong/qmongjs/pull/189)
+
 # qmongr 1.1.0
 
 ## New features
