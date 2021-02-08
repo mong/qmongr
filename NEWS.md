@@ -1,14 +1,19 @@
 # qmongr 1.2.0
 
+Using commit [80b3ec8](https://github.com/mong/qmongjs/commit/80b3ec8) of `qmongjs`
+
 ## New features
 
-- query-parameter for all filters (https://github.com/mong/qmongjs/pull/102)
+- Implemented query-parameter for all filters (https://github.com/mong/qmongjs/pull/102)
+- Implemented Sentry.io for exception tracking (https://github.com/mong/qmongjs/pull/120)
 
 ## Minor
 
 - Improvements in downloaded png (https://github.com/mong/qmongjs/pull/189)
 
 # qmongr 1.1.0
+
+Using commit [aa19d26](https://github.com/mong/qmongjs/commit/aa19d26) of qmongjs. 
 
 ## New features
 
