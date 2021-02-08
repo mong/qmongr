@@ -25,8 +25,8 @@ app_ui <- function() {
       shiny::tags$script(type = "application/javascript", src = "www/iframeResizer.contentWindow.min.js")
     ),
     shiny::tags$div(id = "root"),
-    shiny::tags$script(type = "application/javascript", src = "www/static/js/2.cc5356c6.chunk.js"),
-    shiny::tags$script(type = "application/javascript", src = "www/static/js/main.4f28b275.chunk.js"),
-    shiny::tags$script(type = "application/javascript", src = "www/static/js/runtime-main.bda3ca67.js")
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/2.314f7489.chunk.js"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/main.52e8a3f8.chunk.js"),
+    shiny::tags$script(type = "application/javascript", src = "www/static/js/runtime-main.e823afca.js")
   )
 }
