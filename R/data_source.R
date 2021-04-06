@@ -37,7 +37,7 @@ get_data <- function() {
       dplyr::left_join(include, by = c("ind_id" = "id"))
     df <- df %>%
       dplyr::filter(.data$include == 1) %>%
-      dplyr::filter(.data$type != "dg") %>%
+      dplyr::filter(.data$type != "dg")
     ## coverage
     if (conf$filter$coverage$use) {
       df <- df %>%
