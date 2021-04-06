@@ -31,12 +31,13 @@ get_data <- function() {
     df <- imongr::get_table(pool, "agg_data")
 
     # filter
-    ## include
-    include <- dplyr::select(description, .data$id, .data$include)
+    ## include == 1 and type not "dg"
+    include <- dplyr::select(description, .data$id, .data$include, .data$type)
     df <- df %>%
       dplyr::left_join(include, by = c("ind_id" = "id"))
     df <- df %>%
-      dplyr::filter(.data$include == 1)
+      dplyr::filter(.data$include == 1) %>%
+      dplyr::filter(.data$type != "dg") %>%
     ## coverage
     if (conf$filter$coverage$use) {
       df <- df %>%
