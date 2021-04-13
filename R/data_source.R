@@ -30,8 +30,7 @@ get_data <- function() {
       dplyr::inner_join(registry, by = conf$column$registry_id)
     df <- imongr::get_table(pool, "agg_data")
 
-    # filter
-    # Keep include == 1 and type == "andel"
+    # filter (keep) include == 1 and type == "andel"
     # qmongjs is not able to show other types than "andel"
     include <- dplyr::select(description, .data$id, .data$include, .data$type)
     df <- df %>%
