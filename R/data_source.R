@@ -30,14 +30,16 @@ get_data <- function() {
       dplyr::inner_join(registry, by = conf$column$registry_id)
     df <- imongr::get_table(pool, "agg_data")
 
-    # filter (keep) include == 1 and type == "andel"
-    # qmongjs is not able to show other types than "andel"
     include <- dplyr::select(description, .data$id, .data$include, .data$type)
     df <- df %>%
       dplyr::left_join(include, by = c("ind_id" = "id"))
+    # Only keep include == 1, type == "andel" and context == "caregiver"
+    # qmongr is not able to show other types than "andel" or
+    # other context than "caregiver.
     df <- df %>%
       dplyr::filter(.data$include == 1) %>%
-      dplyr::filter(.data$type == "andel")
+      dplyr::filter(.data$type == "andel") %>%
+      dplyr::filter(.data$context == "caregiver")
     ## coverage
     if (conf$filter$coverage$use) {
       df <- df %>%
