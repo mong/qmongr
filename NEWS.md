@@ -1,3 +1,7 @@
+# qmongr 1.3.0
+
+Only keep data with `type == "andel"` and `context == "caregiver"` ([#218](https://github.com/mong/qmongr/pull/218)).
+
 # qmongr 1.2.0
 
 Using commit [80b3ec8](https://github.com/mong/qmongjs/commit/80b3ec8) of `qmongjs`
